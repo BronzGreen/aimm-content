@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wat is data? - Interactief Model</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useMemo } = React;
+
+function DataVerkenner() {
+  const SOORTEN = [
+    {
+      id: "getallen",
+      label: "Getallen",
+      icon: "123",
+      color: { bg: "bg-blue-50", border: "border-blue-500", text: "text-blue-700", accent: "bg-blue-500", light: "bg-blue-100" },
+      beschrijving: "Meetwaarden en tellingen die sensoren en tellers maken.",
+      voorbeelden: [
+        { tekst: "Temperatuur: 182 graden", bron: "Oven" },
+        { tekst: "Gewicht: 502 gram", bron: "Weegschaal" },
+        { tekst: "Productieteller: 1.247 stuks", bron: "Scherm op machine" },
+        { tekst: "Druk: 4,2 bar", bron: "Druksensor" },
+        { tekst: "Snelheid: 120 m/min", bron: "Aandrijving" },
+      ],
+      weetje: "Een weegschaal maakt 2.400 datapunten per uur. Per dag is dat bijna 40.000!",
+    },
+    {
+      id: "teksten",
+      label: "Teksten",
+      icon: "Abc",
+      color: { bg: "bg-emerald-50", border: "border-emerald-500", text: "text-emerald-700", accent: "bg-emerald-500", light: "bg-emerald-100" },
+      beschrijving: "Woorden, codes en namen die iets vertellen over het proces.",
+      voorbeelden: [
+        { tekst: "Foutcode: E-403", bron: "Machine-display" },
+        { tekst: "Batch: LOT-2026-0411", bron: "Label" },
+        { tekst: "Logboek: 'Lager vervangen'", bron: "Operator-invoer" },
+        { tekst: "Productnaam op etiket", bron: "Printer" },
+        { tekst: "Naam operator in systeem", bron: "Inlog" },
+      ],
+      weetje: "Foutcodes zijn data. Ze vertellen precies wat er misgaat, zonder dat je de machine hoeft te openen.",
+    },
+    {
+      id: "beelden",
+      label: "Beelden",
+      icon: "[  ]",
+      color: { bg: "bg-amber-50", border: "border-amber-500", text: "text-amber-700", accent: "bg-amber-500", light: "bg-amber-100" },
+      beschrijving: "Foto's, video's en scans die een machine of camera maakt.",
+      voorbeelden: [
+        { tekst: "Foto voor kwaliteitscontrole", bron: "Camera op lijn" },
+        { tekst: "Barcodescan van product", bron: "Scanner" },
+        { tekst: "Warmtebeeld van motor", bron: "Thermische camera" },
+        { tekst: "Video van de productielijn", bron: "Bewakingscamera" },
+        { tekst: "Scan van een label", bron: "OCR-scanner" },
+      ],
+      weetje: "Een enkele foto bevat miljoenen datapunten (pixels). Een camera die elk product fotografeert maakt enorm veel data.",
+    },
+    {
+      id: "signalen",
+      label: "Signalen",
+      icon: "~|~",
+      color: { bg: "bg-purple-50", border: "border-purple-500", text: "text-purple-700", accent: "bg-purple-500", light: "bg-purple-100" },
+      beschrijving: "Aan/uit, hoog/laag en andere simpele signalen van sensoren.",
+      voorbeelden: [
+        { tekst: "Groen lampje = alles OK", bron: "Statuslamp" },
+        { tekst: "Trillingssensor op motor", bron: "Sensor" },
+        { tekst: "Drukventiel: open of dicht", bron: "Klep" },
+        { tekst: "Noodstop: ingedrukt ja/nee", bron: "Noodknop" },
+        { tekst: "Deur sensor: open of dicht", bron: "Veiligheidsklep" },
+      ],
+      weetje: "Signalen zijn simpel (aan of uit), maar heel belangrijk. Ze beschermen jou en de machine.",
+    },
+  ];
+
+  const QUIZ = [
+    { vraag: "De temperatuur op het scherm: 182 graden", antwoord: "getallen", uitleg: "Dit is een getal. Een meting van de sensor." },
+    { vraag: "Een foutcode op het scherm: E-403", antwoord: "teksten", uitleg: "Dit is tekst. Een code die iets vertelt." },
+    { vraag: "Een foto van een product door de camera", antwoord: "beelden", uitleg: "Dit is een beeld. Een foto gemaakt door een camera." },
+    { vraag: "Het groene lampje op de machine", antwoord: "signalen", uitleg: "Dit is een signaal. Aan of uit, groen of rood." },
+    { vraag: "Het gewicht op de weegschaal: 502 gram", antwoord: "getallen", uitleg: "Dit is een getal. Een meetwaarde." },
+    { vraag: "De naam van de operator in het logboek", antwoord: "teksten", uitleg: "Dit is tekst. Woorden in een systeem." },
+    { vraag: "Een scan van een barcode", antwoord: "beelden", uitleg: "Dit is een beeld. Een scan die de camera maakt." },
+    { vraag: "De noodstop: ingedrukt of niet", antwoord: "signalen", uitleg: "Dit is een signaal. Ja of nee, aan of uit." },
+  ];
+
+  const [activeTab, setActiveTab] = useState("verkennen");
+  const [activeSoort, setActiveSoort] = useState(null);
+  const [quizIndex, setQuizIndex] = useState(0);
+  const [quizAntwoord, setQuizAntwoord] = useState(null);
+  const [quizScore, setQuizScore] = useState(0);
+  const [quizAfgerond, setQuizAfgerond] = useState(false);
+
+  const active = SOORTEN.find(s => s.id === activeSoort);
+
+  const handleQuizAntwoord = (antwoord) => {
+    setQuizAntwoord(antwoord);
+    if (antwoord === QUIZ[quizIndex].antwoord) {
+      setQuizScore(prev => prev + 1);
+    }
+  };
+
+  const handleVolgende = () => {
+    if (quizIndex < QUIZ.length - 1) {
+      setQuizIndex(prev => prev + 1);
+      setQuizAntwoord(null);
+    } else {
+      setQuizAfgerond(true);
+    }
+  };
+
+  const handleReset = () => {
+    setQuizIndex(0);
+    setQuizAntwoord(null);
+    setQuizScore(0);
+    setQuizAfgerond(false);
+    setActiveSoort(null);
+    setActiveTab("verkennen");
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-white border-b px-6 py-4">
+        <h1 className="text-2xl font-bold text-gray-900">Wat is data?</h1>
+        <p className="text-gray-500 mt-1">Verken de vier soorten data op jouw werkvloer</p>
+      </div>
+
+      <div className="max-w-5xl mx-auto p-4 md:p-6">
+        {/* Intro */}
+        <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-xl text-sm text-blue-800 mb-6">
+          <span className="text-lg">i</span>
+          <div>
+            <strong>Data = gegevens.</strong> Het zijn getallen, teksten, beelden en signalen die machines en mensen maken. Op elke werkvloer wordt al data verzameld. Vaak zonder dat je het doorhebt.
+          </div>
+        </div>
+
+        {/* Tabs */}
+        <div className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-6">
+          {[
+            { id: "verkennen", label: "Verkennen" },
+            { id: "quiz", label: "Testen" },
+          ].map(tab => (
+            <button
+              key={tab.id}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-all flex-1 ${
+                activeTab === tab.id
+                  ? "bg-white shadow-sm text-gray-900"
+                  : "text-gray-500 hover:text-gray-700"
+              }`}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* TAB: Verkennen */}
+        {activeTab === "verkennen" && (
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-6">
+            {/* Klikbare kaarten */}
+            <div className="space-y-3">
+              <p className="text-sm text-gray-500 mb-2">Klik op een soort data om meer te leren.</p>
+              {SOORTEN.map(soort => (
+                <button
+                  key={soort.id}
+                  onClick={() => setActiveSoort(activeSoort === soort.id ? null : soort.id)}
+                  className={`w-full p-4 rounded-xl border-2 text-left transition-all ${soort.color.bg} ${
+                    activeSoort === soort.id
+                      ? `${soort.color.border} shadow-lg scale-[1.02]`
+                      : "border-transparent hover:shadow-md hover:scale-[1.01]"
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <span className={`${soort.color.accent} text-white px-2 py-1 rounded-lg text-sm font-bold`}>
+                        {soort.icon}
+                      </span>
+                      <div>
+                        <div className={`font-bold ${soort.color.text}`}>{soort.label}</div>
+                        <div className="text-sm text-gray-500">{soort.beschrijving}</div>
+                      </div>
+                    </div>
+                    <span className={`transition-transform text-gray-400 ${activeSoort === soort.id ? "rotate-180" : ""}`}>
+                      v
+                    </span>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {/* Detail paneel */}
+            <div className={`transition-all duration-300 ${active ? "opacity-100" : "opacity-40"}`}>
+              {active ? (
+                <div className={`p-6 rounded-xl border-2 ${active.color.bg} ${active.color.border}`}>
+                  <h2 className={`text-xl font-bold mb-3 ${active.color.text}`}>{active.label}</h2>
+                  <p className="mb-4 text-gray-700">{active.beschrijving}</p>
+
+                  <div className="mb-4">
+                    <div className="font-medium mb-2 text-gray-800">Voorbeelden op de werkvloer:</div>
+                    <div className="space-y-2">
+                      {active.voorbeelden.map((v, i) => (
+                        <div key={i} className={`flex items-center gap-3 p-2 ${active.color.light} rounded-lg text-sm`}>
+                          <span className={`${active.color.accent} text-white text-xs px-2 py-0.5 rounded`}>
+                            {v.bron}
+                          </span>
+                          <span className="text-gray-700">{v.tekst}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className={`p-3 rounded-lg ${active.color.light} text-sm`}>
+                    <strong>Wist je dat?</strong> {active.weetje}
+                  </div>
+                </div>
+              ) : (
+                <div className="p-6 rounded-xl border-2 border-dashed border-gray-300 text-center text-gray-400 h-full flex items-center justify-center">
+                  <div>
+                    <div className="text-4xl mb-2">?</div>
+                    <div>Klik links op een soort data</div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* TAB: Quiz */}
+        {activeTab === "quiz" && (
+          <div className="max-w-2xl mx-auto">
+            {!quizAfgerond ? (
+              <div>
+                {/* Voortgang */}
+                <div className="flex items-center gap-2 mb-6">
+                  <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-blue-500 rounded-full transition-all duration-500"
+                      style={{ width: `${((quizIndex + 1) / QUIZ.length) * 100}%` }}
+                    />
+                  </div>
+                  <span className="text-sm text-gray-500 font-mono">{quizIndex + 1}/{QUIZ.length}</span>
+                </div>
+
+                {/* Vraag */}
+                <div className="bg-white rounded-xl shadow-sm border p-6 mb-6">
+                  <p className="text-sm text-gray-500 mb-2">Welke soort data is dit?</p>
+                  <p className="text-lg font-medium text-gray-900 mb-1">
+                    "{QUIZ[quizIndex].vraag}"
+                  </p>
+                </div>
+
+                {/* Antwoord-opties */}
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  {SOORTEN.map(soort => {
+                    const isGekozen = quizAntwoord === soort.id;
+                    const isJuist = soort.id === QUIZ[quizIndex].antwoord;
+                    const toonResultaat = quizAntwoord !== null;
+
+                    let style = `${soort.color.bg} border-transparent hover:shadow-md`;
+                    if (toonResultaat && isJuist) {
+                      style = "bg-green-100 border-green-500 shadow-md";
+                    } else if (toonResultaat && isGekozen && !isJuist) {
+                      style = "bg-red-100 border-red-500 shadow-md";
+                    }
+
+                    return (
+                      <button
+                        key={soort.id}
+                        onClick={() => !quizAntwoord && handleQuizAntwoord(soort.id)}
+                        disabled={quizAntwoord !== null}
+                        className={`p-4 rounded-xl border-2 text-left transition-all ${style} ${
+                          quizAntwoord ? "cursor-default" : "cursor-pointer"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className={`${soort.color.accent} text-white px-2 py-1 rounded text-sm font-bold`}>
+                            {soort.icon}
+                          </span>
+                          <span className="font-medium text-gray-800">{soort.label}</span>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Feedback */}
+                {quizAntwoord && (
+                  <div className={`p-4 rounded-xl mb-4 ${
+                    quizAntwoord === QUIZ[quizIndex].antwoord
+                      ? "bg-green-50 border border-green-200"
+                      : "bg-red-50 border border-red-200"
+                  }`}>
+                    <p className="font-medium mb-1">
+                      {quizAntwoord === QUIZ[quizIndex].antwoord ? "Goed!" : "Niet helemaal."}
+                    </p>
+                    <p className="text-sm text-gray-700">{QUIZ[quizIndex].uitleg}</p>
+                  </div>
+                )}
+
+                {/* Volgende-knop */}
+                {quizAntwoord && (
+                  <button
+                    onClick={handleVolgende}
+                    className="w-full px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
+                  >
+                    {quizIndex < QUIZ.length - 1 ? "Volgende vraag" : "Bekijk resultaat"}
+                  </button>
+                )}
+              </div>
+            ) : (
+              /* Resultaat */
+              <div className="bg-white rounded-xl shadow-sm border p-8 text-center">
+                <div className="text-5xl font-bold text-blue-500 mb-2">{quizScore}/{QUIZ.length}</div>
+                <p className="text-gray-600 mb-2">
+                  {quizScore === QUIZ.length
+                    ? "Uitstekend! Je herkent alle soorten data."
+                    : quizScore >= QUIZ.length * 0.75
+                    ? "Goed gedaan! Je kent de meeste soorten data."
+                    : quizScore >= QUIZ.length * 0.5
+                    ? "Een goede start. Bekijk de vier soorten nog eens."
+                    : "Nog even oefenen. Ga terug naar 'Verkennen' en bekijk de voorbeelden."}
+                </p>
+                <p className="text-sm text-gray-400 mb-6">
+                  Je hebt {quizScore} van de {QUIZ.length} vragen goed beantwoord.
+                </p>
+                <button
+                  onClick={handleReset}
+                  className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+                >
+                  Opnieuw beginnen
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Footer */}
+        <div className="text-center text-xs text-gray-400 mt-8">
+          Data Literacy - AIMM Curriculum | Module 1: Gebruik | v1.0
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<DataVerkenner />);
+</script>
+</body>
+</html>

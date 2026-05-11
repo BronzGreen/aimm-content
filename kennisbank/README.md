@@ -45,7 +45,7 @@ in de hoofdrepo. Belangrijke velden voor reviewers:
 
 | ID | Title | Domain | Subdomain | Updated |
 |---|---|---|---|---|
-| _(nog geen artefacten — Sprint 1 tracer)_ | | | | |
+| [`ko-data-lit-101`](./data_literacy/data_begrippen/ko-data-lit-101.md) | Wat is data? Voorbeelden van je eigen werkvloer | `data_literacy` | `data_begrippen` | 2026-05-11 |
 
 ## Teruggetrokken kennisobjecten
 
