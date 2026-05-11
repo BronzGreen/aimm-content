@@ -60,7 +60,7 @@ een tabel:
 
 | ID | Title | Audience | Niveau | Updated |
 |---|---|---|---|---|
-| _(nog geen artefacten — Sprint 1 tracer)_ | | | | |
+| [`lo-data-lit-101`](./lo-data-lit-101/) | Wat is data? Voorbeelden van je eigen werkvloer | operator | MBO-3 / B1 | 2026-05-11 |
 
 ## Teruggetrokken leerobjecten
 

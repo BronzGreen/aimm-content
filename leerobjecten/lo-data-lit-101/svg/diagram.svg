@@ -1,0 +1,117 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 900 620" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Vier soorten data op de werkvloer</title>
+  <desc id="desc">Een overzichtsdiagram dat de vier soorten data op de werkvloer toont: getallen, teksten, beelden en signalen. Elke soort wordt uitgelegd met een icoon, een korte beschrijving en concrete voorbeelden van machines en productieprocessen.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="g-blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="g-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="g-orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E67E22"/>
+      <stop offset="100%" stop-color="#D35400"/>
+    </linearGradient>
+    <linearGradient id="g-purple" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9B59B6"/>
+      <stop offset="100%" stop-color="#8E44AD"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="900" height="620" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="450" y="42" text-anchor="middle" font-size="24" font-weight="700" fill="#2C3E50" letter-spacing="1">Vier soorten data op de werkvloer</text>
+  <text x="450" y="66" text-anchor="middle" font-size="13" fill="#7f8c8d" letter-spacing="0.5">Data = gegevens. Getallen, teksten, beelden en signalen van jouw machines.</text>
+
+  <!-- Centraal label -->
+  <circle cx="450" cy="200" r="52" fill="#2C3E50" filter="url(#shadow)"/>
+  <text x="450" y="195" text-anchor="middle" font-size="16" font-weight="700" fill="white">DATA</text>
+  <text x="450" y="213" text-anchor="middle" font-size="11" fill="#B0BEC5">= gegevens</text>
+
+  <!-- Verbindingslijnen van centrum naar kaarten -->
+  <line x1="398" y1="190" x2="255" y2="170" stroke="#3498DB" stroke-width="2" opacity="0.4"/>
+  <line x1="502" y1="190" x2="645" y2="170" stroke="#2ECC71" stroke-width="2" opacity="0.4"/>
+  <line x1="398" y1="210" x2="255" y2="350" stroke="#E67E22" stroke-width="2" opacity="0.4"/>
+  <line x1="502" y1="210" x2="645" y2="350" stroke="#9B59B6" stroke-width="2" opacity="0.4"/>
+
+  <!-- KAART 1: GETALLEN (linksboven) -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="100" width="215" height="170" rx="12" fill="white"/>
+    <rect x="40" y="100" width="215" height="44" rx="12" fill="url(#g-blue)"/>
+    <rect x="40" y="132" width="215" height="12" fill="url(#g-blue)"/>
+    <!-- Icoon: 123 -->
+    <text x="60" y="130" font-size="18" font-weight="700" fill="white">123</text>
+    <text x="155" y="128" text-anchor="middle" font-size="14" font-weight="700" fill="white">GETALLEN</text>
+    <text x="55" y="168" font-size="11" fill="#2C3E50" font-weight="600">Meetwaarden en tellingen</text>
+    <text x="55" y="190" font-size="10" fill="#555">Temperatuur: 182 graden</text>
+    <text x="55" y="207" font-size="10" fill="#555">Gewicht: 502 gram</text>
+    <text x="55" y="224" font-size="10" fill="#555">Teller: 1.247 stuks</text>
+    <text x="55" y="241" font-size="10" fill="#555">Druk: 4,2 bar</text>
+    <text x="55" y="258" font-size="10" fill="#7f8c8d" font-style="italic">Elke seconde een nieuw getal</text>
+  </g>
+
+  <!-- KAART 2: TEKSTEN (rechtsboven) -->
+  <g filter="url(#shadow)">
+    <rect x="645" y="100" width="215" height="170" rx="12" fill="white"/>
+    <rect x="645" y="100" width="215" height="44" rx="12" fill="url(#g-green)"/>
+    <rect x="645" y="132" width="215" height="12" fill="url(#g-green)"/>
+    <!-- Icoon: Abc -->
+    <text x="665" y="130" font-size="18" font-weight="700" fill="white">Abc</text>
+    <text x="757" y="128" text-anchor="middle" font-size="14" font-weight="700" fill="white">TEKSTEN</text>
+    <text x="660" y="168" font-size="11" fill="#2C3E50" font-weight="600">Woorden, codes en namen</text>
+    <text x="660" y="190" font-size="10" fill="#555">Foutcode: E-403</text>
+    <text x="660" y="207" font-size="10" fill="#555">Batch: LOT-2026-0411</text>
+    <text x="660" y="224" font-size="10" fill="#555">Logboek: "Lager vervangen"</text>
+    <text x="660" y="241" font-size="10" fill="#555">Productnaam op label</text>
+    <text x="660" y="258" font-size="10" fill="#7f8c8d" font-style="italic">Codes vertellen wat er gebeurt</text>
+  </g>
+
+  <!-- KAART 3: BEELDEN (linksonder) -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="300" width="215" height="170" rx="12" fill="white"/>
+    <rect x="40" y="300" width="215" height="44" rx="12" fill="url(#g-orange)"/>
+    <rect x="40" y="332" width="215" height="12" fill="url(#g-orange)"/>
+    <!-- Icoon: camera -->
+    <text x="56" y="330" font-size="16" font-weight="700" fill="white">[  ]</text>
+    <text x="155" y="328" text-anchor="middle" font-size="14" font-weight="700" fill="white">BEELDEN</text>
+    <text x="55" y="368" font-size="11" fill="#2C3E50" font-weight="600">Foto's, video's en scans</text>
+    <text x="55" y="390" font-size="10" fill="#555">Camera voor kwaliteitscontrole</text>
+    <text x="55" y="407" font-size="10" fill="#555">Barcodescan van een product</text>
+    <text x="55" y="424" font-size="10" fill="#555">Thermische camera</text>
+    <text x="55" y="441" font-size="10" fill="#555">Video van de productielijn</text>
+    <text x="55" y="458" font-size="10" fill="#7f8c8d" font-style="italic">Een foto = duizenden datapunten</text>
+  </g>
+
+  <!-- KAART 4: SIGNALEN (rechtsonder) -->
+  <g filter="url(#shadow)">
+    <rect x="645" y="300" width="215" height="170" rx="12" fill="white"/>
+    <rect x="645" y="300" width="215" height="44" rx="12" fill="url(#g-purple)"/>
+    <rect x="645" y="332" width="215" height="12" fill="url(#g-purple)"/>
+    <!-- Icoon: signaal -->
+    <text x="662" y="330" font-size="16" font-weight="700" fill="white">~|~</text>
+    <text x="757" y="328" text-anchor="middle" font-size="14" font-weight="700" fill="white">SIGNALEN</text>
+    <text x="660" y="368" font-size="11" fill="#2C3E50" font-weight="600">Aan/uit, hoog/laag, snelheid</text>
+    <text x="660" y="390" font-size="10" fill="#555">Groen lampje = alles OK</text>
+    <text x="660" y="407" font-size="10" fill="#555">Trillingssensor op motor</text>
+    <text x="660" y="424" font-size="10" fill="#555">Drukventiel: open of dicht</text>
+    <text x="660" y="441" font-size="10" fill="#555">Noodstop: ingedrukt ja/nee</text>
+    <text x="660" y="458" font-size="10" fill="#7f8c8d" font-style="italic">Simpel maar belangrijk</text>
+  </g>
+
+  <!-- Onderbalk: samenvatting -->
+  <rect role="presentation" x="40" y="510" width="820" height="60" rx="10" fill="#2C3E50" filter="url(#shadow)"/>
+  <text x="450" y="536" text-anchor="middle" font-size="14" font-weight="600" fill="white">Op een gemiddelde productielijn worden per dag meer dan 100.000 datapunten verzameld</text>
+  <text x="450" y="556" text-anchor="middle" font-size="11" fill="#B0BEC5">Temperatuur + gewicht + snelheid + camera's + foutcodes = heel veel data</text>
+
+  <!-- Bronvermelding -->
+  <text x="450" y="605" text-anchor="middle" font-size="10" fill="#999">Data Literacy - AIMM Curriculum | Module 1: Gebruik | v1.0</text>
+</svg>
