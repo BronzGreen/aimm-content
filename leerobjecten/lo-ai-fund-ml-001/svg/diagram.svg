@@ -1,0 +1,171 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1920 1080" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Vier ML-leerklassen voor Predictive Maintenance, gerangschikt naar label-beschikbaarheid</title>
+  <desc id="desc">Een 2x2-matrix die de vier ML-leerklassen voor PdM positioneert. De horizontale as toont de hoeveelheid gelabelde data, van geen labels links naar veel gelabelde data rechts. De verticale as toont online versus offline beslissen. Linksboven: Reinforcement Learning, voor online beslisproblemen zonder vooraf labels. Linksonder: Unsupervised Learning, voor anomaliedetectie en clustering zonder labels. Rechtsonder: Supervised Learning, voor RUL-regressie en classificatie met gelabelde failure-data. Het midden van de matrix bevat Semi-supervised Learning, voor de realistische situatie van weinig labels en veel ongelabelde data. Naast elke leerklasse staat een typische PdM-toepassing.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="3" dy="4" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+    <linearGradient id="g-super" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="g-unsuper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9B59B6"/>
+      <stop offset="100%" stop-color="#8E44AD"/>
+    </linearGradient>
+    <linearGradient id="g-semi" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="g-reinf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E67E22"/>
+      <stop offset="100%" stop-color="#D35400"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="1920" height="1080" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="960" y="65" text-anchor="middle" font-size="40" font-weight="700" fill="#2C3E50">Vier ML-leerklassen voor PdM — welke past bij jullie data?</text>
+  <text x="960" y="105" text-anchor="middle" font-size="20" fill="#7f8c8d">Datasituatie + probleemtype bepalen samen de juiste leerklasse</text>
+
+  <!-- ── ASSEN ── -->
+  <!-- X-as label -->
+  <text x="960" y="900" text-anchor="middle" font-size="18" font-weight="700" fill="#2C3E50" letter-spacing="2">→ HOEVEELHEID GELABELDE DATA →</text>
+  <line x1="200" y1="850" x2="1720" y2="850" stroke="#7f8c8d" stroke-width="2"/>
+  <polygon points="1720,844 1735,850 1720,856" fill="#7f8c8d"/>
+  <text x="220" y="875" text-anchor="middle" font-size="14" fill="#7f8c8d">geen labels</text>
+  <text x="700" y="875" text-anchor="middle" font-size="14" fill="#7f8c8d">weinig labels</text>
+  <text x="1220" y="875" text-anchor="middle" font-size="14" fill="#7f8c8d">veel labels</text>
+  <text x="1700" y="875" text-anchor="middle" font-size="14" fill="#7f8c8d">volledige historie</text>
+
+  <!-- Y-as label -->
+  <text x="105" y="500" text-anchor="middle" font-size="18" font-weight="700" fill="#2C3E50" letter-spacing="2" transform="rotate(-90, 105, 500)">↑ ONLINE / REALTIME ↑</text>
+  <line x1="160" y1="180" x2="160" y2="850" stroke="#7f8c8d" stroke-width="2"/>
+  <polygon points="154,180 160,165 166,180" fill="#7f8c8d"/>
+  <text x="135" y="200" text-anchor="middle" font-size="13" fill="#7f8c8d" transform="rotate(-90, 135, 200)">online</text>
+  <text x="135" y="800" text-anchor="middle" font-size="13" fill="#7f8c8d" transform="rotate(-90, 135, 800)">offline</text>
+
+  <!-- ── KWADRANT 1 (linksboven): Reinforcement ── -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="200" y="180" width="600" height="320" rx="20" fill="white" stroke="#D35400" stroke-width="2"/>
+  </g>
+  <rect role="presentation" x="200" y="180" width="600" height="80" rx="20" fill="url(#g-reinf)"/>
+  <rect role="presentation" x="200" y="240" width="600" height="20" fill="url(#g-reinf)"/>
+  <text x="500" y="220" text-anchor="middle" font-size="16" font-weight="700" fill="white" letter-spacing="3">LEERKLASSE 4</text>
+  <text x="500" y="248" text-anchor="middle" font-size="28" font-weight="700" fill="white">Reinforcement Learning</text>
+
+  <text x="500" y="295" text-anchor="middle" font-size="16" fill="#2C3E50" font-style="italic">"Leren door beslissen + feedback achteraf"</text>
+
+  <text x="240" y="335" font-size="15" fill="#2C3E50">📊 <tspan font-weight="700">Data:</tspan> geen labels nodig vooraf</text>
+  <text x="240" y="365" font-size="15" fill="#2C3E50">🎯 <tspan font-weight="700">Doel:</tspan> beleid optimaliseren over tijd</text>
+  <text x="240" y="395" font-size="15" fill="#2C3E50">⚙️ <tspan font-weight="700">Sterk bij:</tspan> dynamische beslissingen</text>
+
+  <rect role="presentation" x="240" y="415" width="520" height="70" rx="8" fill="#FDEBD0" stroke="#D35400" stroke-width="1.5"/>
+  <text x="500" y="440" text-anchor="middle" font-size="14" font-weight="700" fill="#D35400">PdM-toepassing</text>
+  <text x="500" y="463" text-anchor="middle" font-size="13" fill="#2C3E50">Adaptief onderhoudsbeleid:</text>
+  <text x="500" y="478" text-anchor="middle" font-size="13" fill="#2C3E50">per dag uitstellen / doen / vervangen</text>
+
+  <!-- ── KWADRANT 2 (rechtsboven): Supervised online ── -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1120" y="180" width="600" height="320" rx="20" fill="white" stroke="#2980B9" stroke-width="2"/>
+  </g>
+  <rect role="presentation" x="1120" y="180" width="600" height="80" rx="20" fill="url(#g-super)"/>
+  <rect role="presentation" x="1120" y="240" width="600" height="20" fill="url(#g-super)"/>
+  <text x="1420" y="220" text-anchor="middle" font-size="16" font-weight="700" fill="white" letter-spacing="3">LEERKLASSE 1</text>
+  <text x="1420" y="248" text-anchor="middle" font-size="28" font-weight="700" fill="white">Supervised Learning</text>
+
+  <text x="1420" y="295" text-anchor="middle" font-size="16" fill="#2C3E50" font-style="italic">"Voorspellen op basis van bekende voorbeelden"</text>
+
+  <text x="1160" y="335" font-size="15" fill="#2C3E50">📊 <tspan font-weight="700">Data:</tspan> gelabelde failure-historie</text>
+  <text x="1160" y="365" font-size="15" fill="#2C3E50">🎯 <tspan font-weight="700">Doel:</tspan> classificatie of regression</text>
+  <text x="1160" y="395" font-size="15" fill="#2C3E50">⚙️ <tspan font-weight="700">Sterk bij:</tspan> voldoende labels</text>
+
+  <rect role="presentation" x="1160" y="415" width="520" height="70" rx="8" fill="#EBF5FB" stroke="#2980B9" stroke-width="1.5"/>
+  <text x="1420" y="440" text-anchor="middle" font-size="14" font-weight="700" fill="#2980B9">PdM-toepassing</text>
+  <text x="1420" y="463" text-anchor="middle" font-size="13" fill="#2C3E50">RUL-regressie (aircraft engines)</text>
+  <text x="1420" y="478" text-anchor="middle" font-size="13" fill="#2C3E50">Failure-classificatie binnen N cycli</text>
+
+  <!-- ── KWADRANT 3 (linksonder): Unsupervised ── -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="200" y="540" width="600" height="320" rx="20" fill="white" stroke="#8E44AD" stroke-width="2"/>
+  </g>
+  <rect role="presentation" x="200" y="540" width="600" height="80" rx="20" fill="url(#g-unsuper)"/>
+  <rect role="presentation" x="200" y="600" width="600" height="20" fill="url(#g-unsuper)"/>
+  <text x="500" y="580" text-anchor="middle" font-size="16" font-weight="700" fill="white" letter-spacing="3">LEERKLASSE 2</text>
+  <text x="500" y="608" text-anchor="middle" font-size="28" font-weight="700" fill="white">Unsupervised Learning</text>
+
+  <text x="500" y="655" text-anchor="middle" font-size="16" fill="#2C3E50" font-style="italic">"Patronen vinden zonder vooraf labels"</text>
+
+  <text x="240" y="695" font-size="15" fill="#2C3E50">📊 <tspan font-weight="700">Data:</tspan> alleen sensor-stroom, geen labels</text>
+  <text x="240" y="725" font-size="15" fill="#2C3E50">🎯 <tspan font-weight="700">Doel:</tspan> clustering, anomaliedetectie</text>
+  <text x="240" y="755" font-size="15" fill="#2C3E50">⚙️ <tspan font-weight="700">Sterk bij:</tspan> nieuwe lijn, geen historie</text>
+
+  <rect role="presentation" x="240" y="775" width="520" height="70" rx="8" fill="#F4ECF7" stroke="#8E44AD" stroke-width="1.5"/>
+  <text x="500" y="800" text-anchor="middle" font-size="14" font-weight="700" fill="#8E44AD">PdM-toepassing</text>
+  <text x="500" y="823" text-anchor="middle" font-size="13" fill="#2C3E50">Anomaliedetectie op vibration-stroom</text>
+  <text x="500" y="838" text-anchor="middle" font-size="13" fill="#2C3E50">Clustering van afwijkend machinegedrag</text>
+
+  <!-- ── KWADRANT 4 (rechtsonder): Supervised — opnieuw, voor RUL ── -->
+  <!-- (Supervised heeft eigenlijk twee plekken — visualiseren we als één breed kwadrant rechts) -->
+  <!-- Hier nemen we Supervised offline (RUL batch) -->
+
+  <!-- ── MIDDEN: Semi-supervised (de realistische situatie) ── -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="820" y="540" width="900" height="320" rx="20" fill="white" stroke="#27AE60" stroke-width="2"/>
+  </g>
+  <rect role="presentation" x="820" y="540" width="900" height="80" rx="20" fill="url(#g-semi)"/>
+  <rect role="presentation" x="820" y="600" width="900" height="20" fill="url(#g-semi)"/>
+  <text x="1270" y="580" text-anchor="middle" font-size="16" font-weight="700" fill="white" letter-spacing="3">LEERKLASSE 3 — DE REALISTISCHE PdM-SITUATIE</text>
+  <text x="1270" y="608" text-anchor="middle" font-size="28" font-weight="700" fill="white">Semi-supervised Learning</text>
+
+  <text x="1270" y="655" text-anchor="middle" font-size="16" fill="#2C3E50" font-style="italic">"Combineren — leren van het beetje labels dat we hebben"</text>
+
+  <text x="860" y="695" font-size="15" fill="#2C3E50">📊 <tspan font-weight="700">Data:</tspan> weinig gelabelde uitval-cases (50-200)</text>
+  <text x="1280" y="695" font-size="15" fill="#2C3E50">+ veel ongelabelde productiecycli (duizenden)</text>
+
+  <text x="860" y="725" font-size="15" fill="#2C3E50">🎯 <tspan font-weight="700">Doel:</tspan> classificatie of regression met realistische data</text>
+
+  <text x="860" y="755" font-size="15" fill="#2C3E50">⚙️ <tspan font-weight="700">Sterk bij:</tspan> typische maakindustrie — uitval is zeldzaam, productiedata is overvloedig</text>
+
+  <rect role="presentation" x="860" y="775" width="820" height="70" rx="8" fill="#D5F5E3" stroke="#27AE60" stroke-width="1.5"/>
+  <text x="1270" y="800" text-anchor="middle" font-size="14" font-weight="700" fill="#27AE60">PdM-toepassing</text>
+  <text x="1270" y="823" text-anchor="middle" font-size="13" fill="#2C3E50">Failure-classificatie op fabrieksdata: 50 gelabelde uitvalcases + 5000 ongelabelde cycli</text>
+  <text x="1270" y="838" text-anchor="middle" font-size="13" fill="#2C3E50">→ in recent PdM-onderzoek de snelst groeiende leerklasse</text>
+
+  <!-- ── ONDERAAN: drie PdM-probleemtypen → leerklasse ── -->
+  <text x="960" y="945" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50">Drie PdM-probleemtypen — welke leerklasse hoort erbij?</text>
+
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="80" y="965" width="580" height="80" rx="14" fill="white" stroke="#2980B9" stroke-width="2"/>
+  </g>
+  <rect role="presentation" x="80" y="965" width="120" height="80" rx="14" fill="url(#g-super)"/>
+  <text x="140" y="1000" text-anchor="middle" font-size="14" fill="white" font-weight="700">Regression</text>
+  <text x="140" y="1023" text-anchor="middle" font-size="11" fill="white">"voorspel een getal"</text>
+  <text x="430" y="998" text-anchor="middle" font-size="15" fill="#2C3E50" font-weight="600">RUL — hoeveel cycli nog over?</text>
+  <text x="430" y="1025" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic">→ Supervised (gelabelde failure-tijden)</text>
+
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="680" y="965" width="580" height="80" rx="14" fill="white" stroke="#2980B9" stroke-width="2"/>
+  </g>
+  <rect role="presentation" x="680" y="965" width="120" height="80" rx="14" fill="url(#g-super)"/>
+  <text x="740" y="1000" text-anchor="middle" font-size="14" fill="white" font-weight="700">Classification</text>
+  <text x="740" y="1023" text-anchor="middle" font-size="11" fill="white">"voorspel een klasse"</text>
+  <text x="1030" y="998" text-anchor="middle" font-size="15" fill="#2C3E50" font-weight="600">Welke uitvalmode? Failure binnen N?</text>
+  <text x="1030" y="1025" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic">→ Supervised of Semi-supervised</text>
+
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1280" y="965" width="580" height="80" rx="14" fill="white" stroke="#8E44AD" stroke-width="2"/>
+  </g>
+  <rect role="presentation" x="1280" y="965" width="120" height="80" rx="14" fill="url(#g-unsuper)"/>
+  <text x="1340" y="1000" text-anchor="middle" font-size="14" fill="white" font-weight="700">Clustering</text>
+  <text x="1340" y="1023" text-anchor="middle" font-size="11" fill="white">"groepeer op gelijkenis"</text>
+  <text x="1630" y="998" text-anchor="middle" font-size="15" fill="#2C3E50" font-weight="600">Welke machines lijken op elkaar?</text>
+  <text x="1630" y="1025" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic">→ Unsupervised (geen labels nodig)</text>
+
+  <!-- Bronvermelding -->
+  <text x="960" y="1070" text-anchor="middle" font-size="13" fill="#999">Vier ML-leerklassen — AIMM Curriculum | Module 2: Train | v1.0</text>
+</svg>
