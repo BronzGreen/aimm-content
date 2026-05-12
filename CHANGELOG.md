@@ -8,6 +8,46 @@
 
 ---
 
+## 2026-05-12 — marathon-2026-05-12 (4-domein publish)
+
+**Kontext:** Vier nieuwe leerobjecten gepubliceerd via `aimm publish`, één
+per inhoudelijk domein. Eerste keer dat het kernteam meerdere LO's tegelijk
+in de showcase ziet — bedoeld om diversiteit te tonen en het lees-patroon
+te valideren over verschillende doelgroepen heen (operator MBO-3, teamleider
+MBO-4, operator MBO-4).
+
+Toegevoegd:
+
+- `kennisbank/spc/spc/ko-spc-101.md` + `leerobjecten/lo-spc-101/` —
+  Regelkaart lezen (SPC, operator MBO-3, B1, 40 min). Volledig artefact-set
+  inclusief Slidev-presentatie.
+- `kennisbank/oee/oee/ko-oee-001.md` + `leerobjecten/lo-oee-001/` —
+  OEE-basics (operator MBO-3, B1).
+- `kennisbank/industry_4_0/iot_in_productie/ko-industry-4-0-iiot-001.md`
+  + `leerobjecten/lo-industry40-iiot-001/` — IIoT-introductie (teamleider
+  MBO-4, B1). Trainer.yaml is in deze LO nog niet gevalideerd; alleen
+  trainee-laag in showcase.
+- `kennisbank/ai_fundamentals/.../ko-ai-fundamentals-ml-001.md`
+  + `leerobjecten/lo-ai-fund-ml-001/` — Machine Learning basics
+  (operator MBO-4, B1).
+
+**Bevindingen uit de marathon (adapter-warnings, surface voor kernteam-review):**
+
+- Schema-quirk in alle 4 LO's: `status`, `updated_at`, `validated_by` staan
+  op root-niveau i.p.v. in `metadata:`-blok. Adapter normaliseert voor
+  showcase; brede schema-hygiene-PR nodig (issue #53-achtig in hoofdrepo).
+- `target_audience`-varianten (`operator_mbo3`, `operator_mbo4`,
+  `teamleider_mbo4`, `trainer_begeleider_voor_operator_mbo3`) wijken af
+  van de Pydantic-enum. Adapter normaliseert naar de basisrol op basis van
+  prefix. Eén bug ontdekt tijdens marathon (volgorde van normalize-checks
+  zette teamleider-LO's ten onrechte naar operator); gefixt en
+  lo-industry40-iiot-001 opnieuw gepubliceerd binnen deze branch.
+- Niet alle developer.yamls hebben een schema-conform `metadata.status`
+  blok — adapter skipt ze met heldere reden (alleen lo-spc-101 had een
+  publiceerbare developer-laag in deze ronde).
+
+---
+
 ## 2026-05-12 — publish-2026-05-12-first-adapter-run
 
 **Kontext:** Eerste publicatie via `aimm publish` (ShowcaseRepoAdapter,
