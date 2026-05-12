@@ -14,7 +14,7 @@ guidance_style: trainen
 duration_minutes: 40
 status: validated
 updated_at: '2026-05-12'
-correlation_id: marathon-2026-05-12-lo-spc-101
+correlation_id: marathon-2026-05-12-lo-spc-101-trainee-path-fix
 ---
 
 # Wat SPC is — regelkaart-fundament — voor de trainer
@@ -77,4 +77,4 @@ Geef de deelnemer mee dat hij/zij deze week één keer bewust langs een grafiek,
 
 - **Volledig draaiboek:** [`draaiboek.md`](./draaiboek.md)
 - **Slidev presentatie:** [`slidev/presentatie.slidev.md`](./slidev/presentatie.slidev.md)
-- **Trainee-versie:** `../../trainee/lo-spc-101/lo-spc-101-trainee.md`
+- **Trainee-versie:** [`trainee.md`](./trainee.md)
