@@ -1,0 +1,125 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1920 1080" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">De OEE-formule: Beschikbaarheid x Prestatie x Kwaliteit</title>
+  <desc id="desc">Een visualisatie van de OEE-formule met drie gekleurde componenten: Beschikbaarheid (blauw), Prestatie (oranje) en Kwaliteit (groen). Elk component beantwoordt een vraag over de machine, heeft een formule en een voorbeeldpercentage. Door de drie te vermenigvuldigen ontstaat het OEE-totaal van 77 procent. Onderaan een schaal die laat zien wat verschillende OEE-waarden betekenen, van wereldklasse tot actie nodig.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="3" dy="4" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+    <linearGradient id="g-blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="g-orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E67E22"/>
+      <stop offset="100%" stop-color="#D35400"/>
+    </linearGradient>
+    <linearGradient id="g-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="g-total" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34495E"/>
+      <stop offset="100%" stop-color="#2C3E50"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="1920" height="1080" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="960" y="80" text-anchor="middle" font-size="42" font-weight="700" fill="#2C3E50" letter-spacing="2">OEE = Beschikbaarheid x Prestatie x Kwaliteit</text>
+  <text x="960" y="120" text-anchor="middle" font-size="22" fill="#7f8c8d">Drie vragen samen in één getal — hoe goed draait jouw machine echt?</text>
+
+  <!-- Component 1: BESCHIKBAARHEID (links) -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="120" y="200" width="420" height="500" rx="20" fill="white"/>
+    <rect role="presentation" x="120" y="200" width="420" height="100" rx="20" fill="url(#g-blue)"/>
+    <rect role="presentation" x="120" y="270" width="420" height="30" fill="url(#g-blue)"/>
+  </g>
+  <text x="330" y="245" text-anchor="middle" font-size="18" font-weight="600" fill="white" letter-spacing="2">COMPONENT 1</text>
+  <text x="330" y="280" text-anchor="middle" font-size="32" font-weight="700" fill="white">BESCHIKBAARHEID</text>
+  <text x="330" y="345" text-anchor="middle" font-size="22" font-weight="600" fill="#2C3E50">Draait de machine?</text>
+  <text x="330" y="380" text-anchor="middle" font-size="16" fill="#7f8c8d">Hoeveel van de geplande tijd</text>
+  <text x="330" y="402" text-anchor="middle" font-size="16" fill="#7f8c8d">is hij echt aan het draaien?</text>
+
+  <rect role="presentation" x="160" y="430" width="340" height="80" rx="10" fill="#EBF5FB" stroke="#3498DB" stroke-width="2"/>
+  <text x="330" y="465" text-anchor="middle" font-size="16" fill="#2980B9" font-weight="600">Draaitijd</text>
+  <line x1="200" y1="478" x2="460" y2="478" stroke="#2980B9" stroke-width="2"/>
+  <text x="330" y="500" text-anchor="middle" font-size="16" fill="#2980B9" font-weight="600">Geplande productietijd</text>
+
+  <text x="330" y="560" text-anchor="middle" font-size="18" fill="#555">Voorbeeld:</text>
+  <text x="330" y="590" text-anchor="middle" font-size="16" fill="#555">Stilstand: 60 min op 480 min</text>
+
+  <rect role="presentation" x="200" y="615" width="260" height="60" rx="10" fill="url(#g-blue)"/>
+  <text x="330" y="657" text-anchor="middle" font-size="36" font-weight="700" fill="white">87,5%</text>
+
+  <!-- Maal-teken 1 -->
+  <text x="615" y="475" text-anchor="middle" font-size="80" font-weight="300" fill="#7f8c8d">x</text>
+
+  <!-- Component 2: PRESTATIE (midden) -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="690" y="200" width="420" height="500" rx="20" fill="white"/>
+    <rect role="presentation" x="690" y="200" width="420" height="100" rx="20" fill="url(#g-orange)"/>
+    <rect role="presentation" x="690" y="270" width="420" height="30" fill="url(#g-orange)"/>
+  </g>
+  <text x="900" y="245" text-anchor="middle" font-size="18" font-weight="600" fill="white" letter-spacing="2">COMPONENT 2</text>
+  <text x="900" y="280" text-anchor="middle" font-size="32" font-weight="700" fill="white">PRESTATIE</text>
+  <text x="900" y="345" text-anchor="middle" font-size="22" font-weight="600" fill="#2C3E50">Draait hij snel genoeg?</text>
+  <text x="900" y="380" text-anchor="middle" font-size="16" fill="#7f8c8d">Haalt hij de bedoelde snelheid,</text>
+  <text x="900" y="402" text-anchor="middle" font-size="16" fill="#7f8c8d">of zijn er korte stops?</text>
+
+  <rect role="presentation" x="730" y="430" width="340" height="80" rx="10" fill="#FDF2E9" stroke="#E67E22" stroke-width="2"/>
+  <text x="900" y="465" text-anchor="middle" font-size="16" fill="#D35400" font-weight="600">Werkelijke output</text>
+  <line x1="770" y1="478" x2="1030" y2="478" stroke="#D35400" stroke-width="2"/>
+  <text x="900" y="500" text-anchor="middle" font-size="16" fill="#D35400" font-weight="600">Theoretische output</text>
+
+  <text x="900" y="560" text-anchor="middle" font-size="18" fill="#555">Voorbeeld:</text>
+  <text x="900" y="590" text-anchor="middle" font-size="16" fill="#555">90 stuks van de 100 mogelijke</text>
+
+  <rect role="presentation" x="770" y="615" width="260" height="60" rx="10" fill="url(#g-orange)"/>
+  <text x="900" y="657" text-anchor="middle" font-size="36" font-weight="700" fill="white">90,0%</text>
+
+  <!-- Maal-teken 2 -->
+  <text x="1185" y="475" text-anchor="middle" font-size="80" font-weight="300" fill="#7f8c8d">x</text>
+
+  <!-- Component 3: KWALITEIT (rechts) -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1260" y="200" width="420" height="500" rx="20" fill="white"/>
+    <rect role="presentation" x="1260" y="200" width="420" height="100" rx="20" fill="url(#g-green)"/>
+    <rect role="presentation" x="1260" y="270" width="420" height="30" fill="url(#g-green)"/>
+  </g>
+  <text x="1470" y="245" text-anchor="middle" font-size="18" font-weight="600" fill="white" letter-spacing="2">COMPONENT 3</text>
+  <text x="1470" y="280" text-anchor="middle" font-size="32" font-weight="700" fill="white">KWALITEIT</text>
+  <text x="1470" y="345" text-anchor="middle" font-size="22" font-weight="600" fill="#2C3E50">Maakt hij goede producten?</text>
+  <text x="1470" y="380" text-anchor="middle" font-size="16" fill="#7f8c8d">Hoeveel zijn in één keer goed,</text>
+  <text x="1470" y="402" text-anchor="middle" font-size="16" fill="#7f8c8d">zonder afkeur of herbewerking?</text>
+
+  <rect role="presentation" x="1300" y="430" width="340" height="80" rx="10" fill="#E9F7EF" stroke="#27AE60" stroke-width="2"/>
+  <text x="1470" y="465" text-anchor="middle" font-size="16" fill="#27AE60" font-weight="600">Goede producten (in 1x)</text>
+  <line x1="1340" y1="478" x2="1600" y2="478" stroke="#27AE60" stroke-width="2"/>
+  <text x="1470" y="500" text-anchor="middle" font-size="16" fill="#27AE60" font-weight="600">Totaal geproduceerd</text>
+
+  <text x="1470" y="560" text-anchor="middle" font-size="18" fill="#555">Voorbeeld:</text>
+  <text x="1470" y="590" text-anchor="middle" font-size="16" fill="#555">98 van 100 in één keer goed</text>
+
+  <rect role="presentation" x="1340" y="615" width="260" height="60" rx="10" fill="url(#g-green)"/>
+  <text x="1470" y="657" text-anchor="middle" font-size="36" font-weight="700" fill="white">98,0%</text>
+
+  <!-- = teken naar totaal -->
+  <text x="960" y="780" text-anchor="middle" font-size="36" font-weight="600" fill="#7f8c8d">0,875 x 0,90 x 0,98 =</text>
+
+  <!-- Totaal -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="660" y="810" width="600" height="160" rx="20" fill="url(#g-total)"/>
+  </g>
+  <text x="960" y="855" text-anchor="middle" font-size="20" font-weight="600" fill="#B0BEC5" letter-spacing="3">OEE-TOTAAL</text>
+  <text x="960" y="935" text-anchor="middle" font-size="84" font-weight="700" fill="white">77%</text>
+
+  <!-- Schaal onderaan -->
+  <text x="960" y="1010" text-anchor="middle" font-size="16" fill="#7f8c8d">40% — actie nodig &#160;&#160;|&#160;&#160; 60% — typisch &#160;&#160;|&#160;&#160; 85% — world class &#160;&#160;|&#160;&#160; 100% — perfect</text>
+
+  <!-- Bronvermelding -->
+  <text x="960" y="1050" text-anchor="middle" font-size="14" fill="#999">OEE — AIMM Curriculum | Module 1: Gebruik | v1.0</text>
+</svg>
