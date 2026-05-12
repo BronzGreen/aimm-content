@@ -1,0 +1,121 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1920 1080" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">IIoT-volwassenheidsladder: vier niveaus van single-message-AI naar continu data-driven werkprocessen</title>
+  <desc id="desc">Een horizontale evolutie-ladder met vier opklimmende niveaus. Niveau 0 (links) toont losse sensoren zonder koppeling. Niveau 1 toont een AI-systeem dat losse meldingen stuurt naar een mens. Niveau 2 toont continue dashboards waarop een mens patronen scant. Niveau 3 (rechts) toont een platform dat AI-detectie automatisch koppelt aan werkorders, planning en autonomous services. Onder elke niveau staat de typische beslis-cyclus en een korte beschrijving van wat het platform op dat niveau doet.</desc>
+
+  <!-- Achtergrond -->
+  <rect width="1920" height="1080" fill="#0A1628"/>
+
+  <!-- Titel -->
+  <text x="960" y="80" text-anchor="middle" font-size="44" fill="#FFFFFF" font-weight="600">IIoT-volwassenheidsladder</text>
+  <text x="960" y="125" text-anchor="middle" font-size="22" fill="#8A9BAD">Van losse meldingen naar continu data-driven werkprocessen</text>
+
+  <!-- Ladder-as -->
+  <line x1="180" y1="640" x2="1740" y2="640" stroke="#1E9695" stroke-width="3" role="presentation"/>
+  <polygon points="1740,640 1715,625 1715,655" fill="#1E9695" role="presentation"/>
+
+  <!-- Trapjes (oplopende lijnen) -->
+  <line x1="180" y1="640" x2="495" y2="640" stroke="#2BC4C3" stroke-width="3" role="presentation"/>
+  <line x1="495" y1="640" x2="495" y2="540" stroke="#2BC4C3" stroke-width="3" role="presentation"/>
+  <line x1="495" y1="540" x2="855" y2="540" stroke="#2BC4C3" stroke-width="3" role="presentation"/>
+  <line x1="855" y1="540" x2="855" y2="440" stroke="#2BC4C3" stroke-width="3" role="presentation"/>
+  <line x1="855" y1="440" x2="1230" y2="440" stroke="#2BC4C3" stroke-width="3" role="presentation"/>
+  <line x1="1230" y1="440" x2="1230" y2="340" stroke="#2BC4C3" stroke-width="3" role="presentation"/>
+  <line x1="1230" y1="340" x2="1620" y2="340" stroke="#2BC4C3" stroke-width="3" role="presentation"/>
+
+  <!-- NIVEAU 0 -->
+  <g>
+    <rect x="200" y="660" width="295" height="200" rx="12" fill="#132240" stroke="#8A9BAD" stroke-width="2"/>
+    <text x="347" y="700" text-anchor="middle" font-size="22" fill="#FFFFFF" font-weight="600">Niveau 0</text>
+    <text x="347" y="730" text-anchor="middle" font-size="20" fill="#FF6B35" font-weight="600">Geen platform</text>
+    <text x="347" y="775" text-anchor="middle" font-size="16" fill="#FFFFFF">Losse sensoren</text>
+    <text x="347" y="800" text-anchor="middle" font-size="16" fill="#FFFFFF">Lokale displays</text>
+    <text x="347" y="825" text-anchor="middle" font-size="16" fill="#FFFFFF">Handmatige observatie</text>
+    <text x="347" y="850" text-anchor="middle" font-size="14" fill="#8A9BAD" font-style="italic">Reactief — pas bij storing</text>
+
+    <!-- Iconografie: losse sensoren -->
+    <circle cx="270" cy="595" r="16" fill="#8A9BAD" role="presentation"/>
+    <circle cx="320" cy="595" r="16" fill="#8A9BAD" role="presentation"/>
+    <circle cx="370" cy="595" r="16" fill="#8A9BAD" role="presentation"/>
+    <circle cx="420" cy="595" r="16" fill="#8A9BAD" role="presentation"/>
+    <text x="347" y="565" text-anchor="middle" font-size="13" fill="#8A9BAD">Niet gekoppeld</text>
+  </g>
+
+  <!-- NIVEAU 1 -->
+  <g>
+    <rect x="555" y="560" width="300" height="220" rx="12" fill="#132240" stroke="#FF6B35" stroke-width="2"/>
+    <text x="705" y="600" text-anchor="middle" font-size="22" fill="#FFFFFF" font-weight="600">Niveau 1</text>
+    <text x="705" y="630" text-anchor="middle" font-size="20" fill="#FF6B35" font-weight="600">Single-message-AI</text>
+    <text x="705" y="675" text-anchor="middle" font-size="16" fill="#FFFFFF">"Dit gaat fout. Doe X."</text>
+    <text x="705" y="700" text-anchor="middle" font-size="16" fill="#FFFFFF">Eén melding, één actie</text>
+    <text x="705" y="725" text-anchor="middle" font-size="16" fill="#FFFFFF">Mens beslist + handelt</text>
+    <text x="705" y="755" text-anchor="middle" font-size="14" fill="#8A9BAD" font-style="italic">Verandert het werkproces niet</text>
+
+    <!-- Iconografie: AI -> mail -> mens -->
+    <rect x="595" y="500" width="50" height="40" rx="4" fill="#1E9695" role="presentation"/>
+    <text x="620" y="525" text-anchor="middle" font-size="14" fill="#FFFFFF">AI</text>
+    <line x1="650" y1="520" x2="700" y2="520" stroke="#1E9695" stroke-width="2" role="presentation"/>
+    <polygon points="700,520 690,515 690,525" fill="#1E9695" role="presentation"/>
+    <rect x="705" y="500" width="50" height="40" rx="4" fill="#FF6B35" role="presentation"/>
+    <text x="730" y="525" text-anchor="middle" font-size="14" fill="#FFFFFF">✉</text>
+    <line x1="760" y1="520" x2="810" y2="520" stroke="#FF6B35" stroke-width="2" role="presentation"/>
+    <polygon points="810,520 800,515 800,525" fill="#FF6B35" role="presentation"/>
+    <circle cx="830" cy="520" r="14" fill="#FFC857" role="presentation"/>
+  </g>
+
+  <!-- NIVEAU 2 -->
+  <g>
+    <rect x="915" y="460" width="315" height="240" rx="12" fill="#132240" stroke="#FFC857" stroke-width="2"/>
+    <text x="1072" y="500" text-anchor="middle" font-size="22" fill="#FFFFFF" font-weight="600">Niveau 2</text>
+    <text x="1072" y="530" text-anchor="middle" font-size="20" fill="#FFC857" font-weight="600">Dashboard-driven</text>
+    <text x="1072" y="575" text-anchor="middle" font-size="16" fill="#FFFFFF">Continu zichtbaar</text>
+    <text x="1072" y="600" text-anchor="middle" font-size="16" fill="#FFFFFF">Real-time KPIs</text>
+    <text x="1072" y="625" text-anchor="middle" font-size="16" fill="#FFFFFF">Mens scant patronen</text>
+    <text x="1072" y="650" text-anchor="middle" font-size="16" fill="#FFFFFF">Proactief handelen</text>
+    <text x="1072" y="680" text-anchor="middle" font-size="14" fill="#8A9BAD" font-style="italic">Schaalt slecht — dashboards stapelen op</text>
+
+    <!-- Iconografie: dashboard met grafiekjes -->
+    <rect x="965" y="395" width="215" height="50" rx="6" fill="#0A1628" stroke="#FFC857" stroke-width="2" role="presentation"/>
+    <polyline points="975,435 990,420 1005,425 1020,415 1035,420 1050,410" fill="none" stroke="#2ECC71" stroke-width="2" role="presentation"/>
+    <polyline points="1060,435 1075,425 1090,430 1105,420 1120,418 1135,415" fill="none" stroke="#FFC857" stroke-width="2" role="presentation"/>
+    <polyline points="1145,425 1160,418 1170,422 1175,415" fill="none" stroke="#FF6B35" stroke-width="2" role="presentation"/>
+  </g>
+
+  <!-- NIVEAU 3 -->
+  <g>
+    <rect x="1290" y="360" width="330" height="340" rx="12" fill="#132240" stroke="#2ECC71" stroke-width="3"/>
+    <text x="1455" y="400" text-anchor="middle" font-size="22" fill="#FFFFFF" font-weight="600">Niveau 3</text>
+    <text x="1455" y="430" text-anchor="middle" font-size="20" fill="#2ECC71" font-weight="600">Continu data-driven</text>
+    <text x="1455" y="475" text-anchor="middle" font-size="16" fill="#FFFFFF">End-to-end gekoppeld</text>
+    <text x="1455" y="500" text-anchor="middle" font-size="16" fill="#FFFFFF">Werkorders automatisch</text>
+    <text x="1455" y="525" text-anchor="middle" font-size="16" fill="#FFFFFF">Predictive maintenance</text>
+    <text x="1455" y="550" text-anchor="middle" font-size="16" fill="#FFFFFF">Autonomous services</text>
+    <text x="1455" y="575" text-anchor="middle" font-size="16" fill="#FFFFFF">Remote monitoring</text>
+    <text x="1455" y="615" text-anchor="middle" font-size="14" fill="#8A9BAD" font-style="italic">Mens beslist op uitzonderingen</text>
+    <text x="1455" y="640" text-anchor="middle" font-size="14" fill="#8A9BAD" font-style="italic">Systeem rouleert routine</text>
+    <text x="1455" y="675" text-anchor="middle" font-size="14" fill="#2ECC71" font-weight="600">Proactief vóór storing</text>
+
+    <!-- Iconografie: gekoppeld systeem -->
+    <rect x="1330" y="300" width="56" height="40" rx="4" fill="#1E9695" role="presentation"/>
+    <text x="1358" y="325" text-anchor="middle" font-size="13" fill="#FFFFFF">Data</text>
+    <rect x="1396" y="300" width="56" height="40" rx="4" fill="#2BC4C3" role="presentation"/>
+    <text x="1424" y="325" text-anchor="middle" font-size="13" fill="#FFFFFF">AI</text>
+    <rect x="1462" y="300" width="56" height="40" rx="4" fill="#FFC857" role="presentation"/>
+    <text x="1490" y="325" text-anchor="middle" font-size="13" fill="#0A1628">Plan</text>
+    <rect x="1528" y="300" width="56" height="40" rx="4" fill="#2ECC71" role="presentation"/>
+    <text x="1556" y="325" text-anchor="middle" font-size="13" fill="#FFFFFF">Actie</text>
+    <line x1="1386" y1="320" x2="1396" y2="320" stroke="#FFFFFF" stroke-width="2" role="presentation"/>
+    <line x1="1452" y1="320" x2="1462" y2="320" stroke="#FFFFFF" stroke-width="2" role="presentation"/>
+    <line x1="1518" y1="320" x2="1528" y2="320" stroke="#FFFFFF" stroke-width="2" role="presentation"/>
+  </g>
+
+  <!-- Springpunt-annotatie -->
+  <g>
+    <line x1="855" y1="900" x2="1230" y2="900" stroke="#FF6B35" stroke-width="3" stroke-dasharray="6,4" role="presentation"/>
+    <text x="1042" y="935" text-anchor="middle" font-size="18" fill="#FF6B35" font-weight="600">Echte transformatie-sprong</text>
+    <text x="1042" y="960" text-anchor="middle" font-size="14" fill="#8A9BAD">van zichtbaar naar gekoppeld — vaak organisatorisch lastiger dan technisch</text>
+  </g>
+
+  <!-- Footer-bron -->
+  <text x="1900" y="1055" text-anchor="end" font-size="13" fill="#8A9BAD" font-style="italic">Bron: Hydle &amp; Schupfer (2026) — ko-industry-4-0-iiot-001</text>
+</svg>
