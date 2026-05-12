@@ -8,6 +8,33 @@
 
 ---
 
+## 2026-05-12 — publish-2026-05-12-first-adapter-run
+
+**Kontext:** Eerste publicatie via `aimm publish` (ShowcaseRepoAdapter,
+Sprint 2 stappen 3 + 3.5 in de hoofdrepo). Vervangt hand-crafted Sprint 1
+tracer-content met auto-gegenereerde output. Bevestigt dat het end-to-end
+flow werkt: gevalideerde KO+LO in AIMM → adapter met platte frontmatter +
+enrichments → showcase-repo.
+
+Gewijzigd:
+
+- `lo-data-lit-101/trainee.md` — inline SVG na H1, Werkbladen-footer met
+  links per Kolb-fase, Verder-sectie met links naar KO + trainer + interactief
+  model. Frontmatter platgeslagen (showcase-subset van Pydantic-schema).
+- `lo-data-lit-101/trainer.md` — path-rewrites (`./draaiboek.md`,
+  `./slidev/presentatie.slidev.md`, `./trainee.md`); kleine YAML-formatting-
+  verschillen.
+- `lo-data-lit-101/README.md` — geregenereerd met auto-LO-overview vanuit
+  pipeline-yamls.
+- `ko-data-lit-101.md` — frontmatter platgeslagen (id/title/type/domain/
+  subdomain/summary/source_centrality/source_ref/status/updated_at).
+
+Warning gerapporteerd door adapter: `trainer.yaml` heeft
+`target_audience: trainer` — niet schema-conform; gecorrigeerd naar
+`operator` in showcase-frontmatter (zie [issue #53](https://github.com/BronzGreen/aimm/issues/53)).
+
+---
+
 ## 2026-05-12 — sprint-1-tracer-lo-data-lit-101
 
 **Kontext:** Sprint 1 tracer-bullet voor ADR-040 — eerste volledig gepubliceerde

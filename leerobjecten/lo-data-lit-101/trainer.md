@@ -2,7 +2,7 @@
 id: lo-data-lit-101-trainer
 knowledge_object_id: ko-data-lit-101
 version: trainer
-title: "Wat is data? Voorbeelden van je eigen werkvloer — voor de trainer"
+title: Wat is data? Voorbeelden van je eigen werkvloer (pre-workshop terughalen)
 target_audience: operator
 content_level: MBO-3
 language_level: B2
@@ -13,8 +13,8 @@ kolb_start_phase: ervaren
 guidance_style: trainen
 duration_minutes: 5
 status: validated
-updated_at: 2026-05-11
-correlation_id: tracer-2026-05-12-lo-data-lit-101
+updated_at: '2026-05-11'
+correlation_id: publish-2026-05-12-first-adapter-run
 ---
 
 # Wat is data? Voorbeelden van je eigen werkvloer — voor de trainer
@@ -60,11 +60,11 @@ De deelnemer kan in eigen woorden uitleggen wat data is en benoemt minstens drie
 
 ## Voorbereiding
 
-- [ ] Reserve-prints werkblad [wb-01-ervaren.md](./werkbladen/wb-01-ervaren.md) (5 stuks voor wie het was vergeten)
+- [ ] Reserve-prints werkblad wb-01-ervaren.md (5 stuks voor wie het was vergeten)
 - [ ] Flap-over met vier kolommen voorgemarkeerd: GETAL | TEKST | BEELD | SIGNAAL
 - [ ] Stiften (1 kleur per kolom of zwart met streepjes-systeem)
 - [ ] Eigen openingsvoorbeeld paraat (oven, weegschaal, CNC-frees)
-- [ ] Optioneel: [svg/diagram.svg](./svg/diagram.svg) op A3, foto van een dashboard uit de eigen fabriek
+- [ ] Optioneel: diagram-lo-data-lit-101.svg op A3, foto van een dashboard uit de eigen fabriek
 
 ## Transferopdracht
 
@@ -73,6 +73,5 @@ Geen aparte transferopdracht in dit blok — die is ingebed in werkblad 4 (data-
 ## Verdere details
 
 - **Volledig draaiboek:** [`draaiboek.md`](./draaiboek.md)
-- **Slidev-presentatie:** [`slidev/presentatie.slidev.md`](./slidev/presentatie.slidev.md)
+- **Slidev presentatie:** [`slidev/presentatie.slidev.md`](./slidev/presentatie.slidev.md)
 - **Trainee-versie:** [`trainee.md`](./trainee.md)
-- **Kennisobject:** [`ko-data-lit-101`](../../kennisbank/data_literacy/data_begrippen/ko-data-lit-101.md)
