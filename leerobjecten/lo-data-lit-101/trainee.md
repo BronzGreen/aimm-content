@@ -2,7 +2,7 @@
 id: lo-data-lit-101-trainee
 knowledge_object_id: ko-data-lit-101
 version: trainee
-title: "Wat is data? Voorbeelden van je eigen werkvloer"
+title: Wat is data? Voorbeelden van je eigen werkvloer
 target_audience: operator
 content_level: MBO-3
 language_level: B1
@@ -13,11 +13,13 @@ kolb_start_phase: ervaren
 guidance_style: trainen
 duration_minutes: 35
 status: validated
-updated_at: 2026-05-11
-correlation_id: tracer-2026-05-12-lo-data-lit-101
+updated_at: '2026-05-11'
+correlation_id: publish-2026-05-12-first-adapter-run
 ---
 
 # Wat is data eigenlijk, en waar zit het op jouw werkvloer?
+
+![Diagram](./svg/diagram.svg)
 
 Je werkt elke dag met data, ook als je het niet zo noemt. Een temperatuurmeting, een teller op het scherm, een foutcode in het logboek — het zijn allemaal datapunten. Als je weet wat data is en waar het zit, kun je betere beslissingen nemen op je werkplek.
 
@@ -36,8 +38,6 @@ Data is informatie in een vorm die je kunt opslaan, doorgeven of analyseren. Op 
 4. **Signalen** — trillingen, geluid, stroomverbruik over de tijd
 
 Elke meter, elk scherm, elke melding op je werkplek levert één van deze vier soorten op.
-
-![Vier soorten data](./svg/diagram.svg)
 
 ## Voorbeelden van je eigen werkvloer
 
@@ -73,10 +73,10 @@ Kies deze week een machine of werkplek waar je vaak komt. Zoek daar bewust naar 
 
 ## Werkbladen (Kolb-cyclus)
 
-1. [Werkblad 1 — Ervaren](./werkbladen/wb-01-ervaren.md): data zoeken op je eigen werkvloer
-2. [Werkblad 2 — Reflecteren](./werkbladen/wb-02-reflecteren.md): wat viel je op?
-3. [Werkblad 3 — Theoretiseren](./werkbladen/wb-03-theoretiseren.md): de vier datasoorten
-4. [Werkblad 4 — Experimenteren](./werkbladen/wb-04-experimenteren.md): actieplan voor je eigen machine
+1. [`wb-01-ervaren.md`](./werkbladen/wb-01-ervaren.md) — Ervaren
+2. [`wb-02-reflecteren.md`](./werkbladen/wb-02-reflecteren.md) — Reflecteren
+3. [`wb-03-theoretiseren.md`](./werkbladen/wb-03-theoretiseren.md) — Theoretiseren
+4. [`wb-04-experimenteren.md`](./werkbladen/wb-04-experimenteren.md) — Experimenteren
 
 ## Verder
 
