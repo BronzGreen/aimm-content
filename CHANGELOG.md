@@ -7,6 +7,17 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-18 — publish-sprint3-acceptance-5
+
+**Kontext:** Republish post #83 bron-fixes (acceptance-test resterende 3)
+
+Gewijzigd:
+
+- `leerobjecten/lo-ai-fund-ml-001/trainee.md`
+- `kennisbank/ai_fundamentals/supervised_vs_unsupervised/ko-ai-fundamentals-ml-001.md`
+- `leerobjecten/lo-ai-fund-ml-001/trainer.md`
+- `leerobjecten/lo-ai-fund-ml-001/README.md`
+
 ## 2026-05-18 — publish-sprint3-acceptance-4
 
 **Kontext:** Republish post #83 bron-fixes (acceptance-test resterende 3)

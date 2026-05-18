@@ -7,14 +7,14 @@ target_audience: operator
 content_level: MBO-4
 language_level: B2
 bloom_level: toepassen
-knowledge_type: conceptueel
+knowledge_type: declaratief
 competency_stage: bewust_bekwaam
 kolb_start_phase: ervaren
 guidance_style: trainen
 duration_minutes: 50
 status: validated
 updated_at: '2026-05-12'
-correlation_id: marathon-2026-05-12-lo-ai-fund-ml-001
+correlation_id: sprint3-acceptance-5
 ---
 
 # Welke vorm van AI-leren past bij de data die jullie feitelijk in huis hebben?

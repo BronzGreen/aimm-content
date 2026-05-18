@@ -11,7 +11,7 @@ source_centrality: 0.85
 source_ref: Nacchia et al. (2021). Systematic Mapping of ML for PdM, §3.2 (p. 11-12)
 status: validated
 updated_at: '2026-05-12'
-correlation_id: marathon-2026-05-12-lo-ai-fund-ml-001
+correlation_id: sprint3-acceptance-5
 ---
 
 # Vier ML-leerklassen voor Predictive Maintenance
