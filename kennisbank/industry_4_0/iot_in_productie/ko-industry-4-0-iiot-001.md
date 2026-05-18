@@ -13,7 +13,7 @@ source_ref: Hydle & Schupfer (2026). Digitalization and Platformization for Sust
   in Steen (ed.) Sustainability Transitions, ch. 11 (p. 314-315)
 status: validated
 updated_at: '2026-05-12'
-correlation_id: marathon-2026-05-12-lo-industry40-iiot-001-fixed
+correlation_id: sprint3-acceptance-4
 ---
 
 # Industriële platformen: van single-message-AI naar data-driven besluitvorming

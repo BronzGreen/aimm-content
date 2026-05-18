@@ -2,6 +2,7 @@
 id: lo-industry40-iiot-001-trainee
 knowledge_object_id: ko-industry-4-0-iiot-001
 version: trainee
+title: IIoT-volwassenheidsladder — van connected naar autonomous
 target_audience: teamleider
 content_level: MBO-4
 language_level: B2
@@ -9,11 +10,11 @@ bloom_level: analyseren
 knowledge_type: conditioneel
 competency_stage: bewust_onbekwaam
 kolb_start_phase: ervaren
-guidance_style: overtuigen
+guidance_style: coachen
 duration_minutes: 70
 status: validated
 updated_at: '2026-05-12'
-correlation_id: marathon-2026-05-12-lo-industry40-iiot-001-fixed
+correlation_id: sprint3-acceptance-4
 ---
 
 # Op welk niveau staat jullie IIoT-platform nu, en wat is de eerstvolgende stap die echt iets verandert?

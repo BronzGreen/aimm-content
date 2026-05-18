@@ -7,6 +7,16 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-18 — publish-sprint3-acceptance-4
+
+**Kontext:** Republish post #83 bron-fixes (acceptance-test resterende 3)
+
+Gewijzigd:
+
+- `leerobjecten/lo-industry40-iiot-001/trainee.md`
+- `kennisbank/industry_4_0/iot_in_productie/ko-industry-4-0-iiot-001.md`
+- `leerobjecten/lo-industry40-iiot-001/README.md`
+
 ## 2026-05-18 — publish-sprint3-acceptance-2
 
 **Kontext:** Republish post #83 bron-fixes (acceptance-test resterende 3)

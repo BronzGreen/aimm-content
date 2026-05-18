@@ -1,4 +1,4 @@
-# lo-industry40-iiot-001 — lo-industry40-iiot-001
+# lo-industry40-iiot-001 — IIoT-volwassenheidsladder — van connected naar autonomous
 
 > **Status:** gevalideerd · **Doelgroep:** MBO-4 operator, B2 · **Duur trainee:** 70 min
 
@@ -24,7 +24,7 @@
 | Kennistype | conditioneel |
 | Kolb-startfase | ervaren |
 | Competentiestadium | bewust_onbekwaam |
-| Begeleidingsstijl | overtuigen |
+| Begeleidingsstijl | coachen |
 
 ## Feedback
 
