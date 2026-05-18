@@ -7,6 +7,24 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-18 — publish-ronde2-lo-oee-002
+
+**Kontext:** Ronde 2: lo-oee-002 (uitbreiding showcase 5 → 9 LOs)
+
+Toegevoegd:
+
+- `leerobjecten/lo-oee-002/trainee.md`
+- `kennisbank/oee/beschikbaarheid/ko-oee-002.md`
+- `leerobjecten/lo-oee-002/trainer.md`
+- `leerobjecten/lo-oee-002/draaiboek.md`
+- `leerobjecten/lo-oee-002/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-oee-002/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-oee-002/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-oee-002/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-oee-002/svg/diagram.svg`
+- `leerobjecten/lo-oee-002/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-oee-002/README.md`
+
 ## 2026-05-18 — publish-sprint3-acceptance-5
 
 **Kontext:** Republish post #83 bron-fixes (acceptance-test resterende 3)
