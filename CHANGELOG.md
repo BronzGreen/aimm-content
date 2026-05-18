@@ -7,6 +7,17 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-18 — publish-sprint3-acceptance-2
+
+**Kontext:** Republish post #83 bron-fixes (acceptance-test resterende 3)
+
+Gewijzigd:
+
+- `leerobjecten/lo-spc-101/trainee.md`
+- `kennisbank/spc/fundament/ko-spc-101.md`
+- `leerobjecten/lo-spc-101/trainer.md`
+- `leerobjecten/lo-spc-101/README.md`
+
 ## 2026-05-18 — publish-sprint3-acceptance-3
 
 **Kontext:** Republish post Sprint 3 hardening (acceptance-test)

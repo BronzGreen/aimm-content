@@ -1,4 +1,4 @@
-# lo-spc-101 — lo-spc-101
+# lo-spc-101 — Wat SPC is — procesgedrag in tijd, niet inspectie achteraf
 
 > **Status:** gevalideerd · **Doelgroep:** MBO-3 operator, B1 · **Duur trainee:** 40 min
 

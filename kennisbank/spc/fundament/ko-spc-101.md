@@ -16,7 +16,7 @@ source_ref: ASQ Control Chart definitie; ISO 7870-1, 7870-2; Shewhart (1931); NI
   Engineering Statistics Handbook
 status: validated
 updated_at: '2026-05-12'
-correlation_id: marathon-2026-05-12-lo-spc-101-trainee-path-fix
+correlation_id: sprint3-acceptance-2
 ---
 
 # Wat SPC is — procesgedrag in tijd, niet inspectie achteraf
