@@ -21,7 +21,7 @@
 | | |
 |---|---|
 | Bloom-niveau | toepassen |
-| Kennistype | conceptueel |
+| Kennistype | declaratief |
 | Kolb-startfase | ervaren |
 | Competentiestadium | bewust_bekwaam |
 | Begeleidingsstijl | trainen |

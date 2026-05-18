@@ -5,8 +5,59 @@
 > Conform ADR-040 #7 is een kontext-regel verplicht bij runs met meer dan
 > één wijziging — automatische runs worden later (indien ingevoerd) gemarkeerd
 > als "Automatische publish".
-
 ---
+
+## 2026-05-18 — publish-sprint3-acceptance-5
+
+**Kontext:** Republish post #83 bron-fixes (acceptance-test resterende 3)
+
+Gewijzigd:
+
+- `leerobjecten/lo-ai-fund-ml-001/trainee.md`
+- `kennisbank/ai_fundamentals/supervised_vs_unsupervised/ko-ai-fundamentals-ml-001.md`
+- `leerobjecten/lo-ai-fund-ml-001/trainer.md`
+- `leerobjecten/lo-ai-fund-ml-001/README.md`
+
+## 2026-05-18 — publish-sprint3-acceptance-4
+
+**Kontext:** Republish post #83 bron-fixes (acceptance-test resterende 3)
+
+Gewijzigd:
+
+- `leerobjecten/lo-industry40-iiot-001/trainee.md`
+- `kennisbank/industry_4_0/iot_in_productie/ko-industry-4-0-iiot-001.md`
+- `leerobjecten/lo-industry40-iiot-001/README.md`
+
+## 2026-05-18 — publish-sprint3-acceptance-2
+
+**Kontext:** Republish post #83 bron-fixes (acceptance-test resterende 3)
+
+Gewijzigd:
+
+- `leerobjecten/lo-spc-101/trainee.md`
+- `kennisbank/spc/fundament/ko-spc-101.md`
+- `leerobjecten/lo-spc-101/trainer.md`
+- `leerobjecten/lo-spc-101/README.md`
+
+## 2026-05-18 — publish-sprint3-acceptance-3
+
+**Kontext:** Republish post Sprint 3 hardening (acceptance-test)
+
+Gewijzigd:
+
+- `leerobjecten/lo-oee-001/trainee.md`
+- `kennisbank/oee/oee_berekening/ko-oee-001.md`
+- `leerobjecten/lo-oee-001/trainer.md`
+
+## 2026-05-18 — publish-sprint3-acceptance-1
+
+**Kontext:** Republish post Sprint 3 hardening (acceptance-test)
+
+Gewijzigd:
+
+- `leerobjecten/lo-data-lit-101/trainee.md`
+- `kennisbank/data_literacy/data_begrippen/ko-data-lit-101.md`
+- `leerobjecten/lo-data-lit-101/trainer.md`
 
 ## 2026-05-12 — marathon-2026-05-12 (4-domein publish)
 

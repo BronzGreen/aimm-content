@@ -2,6 +2,7 @@
 id: lo-spc-101-trainee
 knowledge_object_id: ko-spc-101
 version: trainee
+title: Wat SPC is — procesgedrag in tijd, niet inspectie achteraf
 target_audience: operator
 content_level: MBO-3
 language_level: B1
@@ -13,7 +14,7 @@ guidance_style: instrueren
 duration_minutes: 40
 status: validated
 updated_at: '2026-05-12'
-correlation_id: marathon-2026-05-12-lo-spc-101-trainee-path-fix
+correlation_id: sprint3-acceptance-2
 ---
 
 # Wat staat er op die grafiek bij mijn machine?

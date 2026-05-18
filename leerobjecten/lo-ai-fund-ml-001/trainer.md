@@ -5,7 +5,7 @@ version: trainer
 title: Vier ML-leerklassen — welke past bij welk PdM-probleem? — trainer-pakket
 target_audience: operator
 content_level: MBO-3
-language_level: B2-C1
+language_level: B2
 bloom_level: begrijpen
 knowledge_type: declaratief
 competency_stage: bewust_onbekwaam
@@ -14,7 +14,7 @@ guidance_style: trainen
 duration_minutes: 50
 status: validated
 updated_at: '2026-05-12'
-correlation_id: marathon-2026-05-12-lo-ai-fund-ml-001
+correlation_id: sprint3-acceptance-5
 ---
 
 # Vier ML-leerklassen voor PdM — voor de trainer

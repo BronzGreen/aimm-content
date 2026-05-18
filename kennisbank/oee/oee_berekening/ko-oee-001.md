@@ -10,7 +10,7 @@ source_centrality: 0.7
 source_ref: Competentieframework AIMM — SPC & OEE
 status: validated
 updated_at: '2026-05-12'
-correlation_id: marathon-2026-05-12-lo-oee-001
+correlation_id: sprint3-acceptance-3
 ---
 
 # Wat is OEE? Hoe goed draait jouw machine echt?

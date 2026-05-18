@@ -14,7 +14,7 @@ guidance_style: trainen
 duration_minutes: 5
 status: validated
 updated_at: '2026-05-11'
-correlation_id: publish-2026-05-12-first-adapter-run
+correlation_id: sprint3-acceptance-1
 ---
 
 # Wat is data? Voorbeelden van je eigen werkvloer — voor de trainer
