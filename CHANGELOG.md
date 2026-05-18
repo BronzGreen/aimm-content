@@ -7,6 +7,16 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-18 — publish-sprint3-acceptance-3
+
+**Kontext:** Republish post Sprint 3 hardening (acceptance-test)
+
+Gewijzigd:
+
+- `leerobjecten/lo-oee-001/trainee.md`
+- `kennisbank/oee/oee_berekening/ko-oee-001.md`
+- `leerobjecten/lo-oee-001/trainer.md`
+
 ## 2026-05-18 — publish-sprint3-acceptance-1
 
 **Kontext:** Republish post Sprint 3 hardening (acceptance-test)
