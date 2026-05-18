@@ -5,8 +5,17 @@
 > Conform ADR-040 #7 is een kontext-regel verplicht bij runs met meer dan
 > één wijziging — automatische runs worden later (indien ingevoerd) gemarkeerd
 > als "Automatische publish".
-
 ---
+
+## 2026-05-18 — publish-sprint3-acceptance-1
+
+**Kontext:** Republish post Sprint 3 hardening (acceptance-test)
+
+Gewijzigd:
+
+- `leerobjecten/lo-data-lit-101/trainee.md`
+- `kennisbank/data_literacy/data_begrippen/ko-data-lit-101.md`
+- `leerobjecten/lo-data-lit-101/trainer.md`
 
 ## 2026-05-12 — marathon-2026-05-12 (4-domein publish)
 
