@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Loop Simulatie</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    const MELDINGEN = [
+      {
+        id: 1,
+        beschrijving: "Temperatuur motor: 87\u00b0C (normaal: 65\u201370\u00b0C)",
+        context: "Machine draait al 4 uur, geen bijzonderheden",
+        juisteAntwoord: "terecht",
+        uitleg: "87\u00b0C is ver boven normaal. Na 4 uur draaien hoort de temperatuur stabiel te zijn. Dit wijst op een probleem, bijvoorbeeld een koelprobleem of overbelasting.",
+      },
+      {
+        id: 2,
+        beschrijving: "Trillingen: 0,6 mm/s (normaal: 0,2\u20130,4 mm/s)",
+        context: "Net opgestart, machine warmt op",
+        juisteAntwoord: "vals_alarm",
+        uitleg: "Bij het opstarten kunnen trillingen kort hoger zijn. 0,6 mm/s is licht verhoogd maar past bij opstart. Na 15 minuten zou dit moeten zakken.",
+      },
+      {
+        id: 3,
+        beschrijving: "Druk: 4,5 bar (normaal: 3,0\u20133,5 bar)",
+        context: "Midden in productie, normaal product",
+        juisteAntwoord: "terecht",
+        uitleg: "4,5 bar is 1 bar boven het maximum. Bij normaal product en normale productie is dit een duidelijke afwijking. Mogelijke oorzaak: verstopte filter of klep.",
+      },
+      {
+        id: 4,
+        beschrijving: "Energieverbruik: 11 kWh (normaal: 8\u201310 kWh)",
+        context: "Nieuw, zwaarder product in productie",
+        juisteAntwoord: "vals_alarm",
+        uitleg: "Het zwaardere product vraagt meer energie. 11 kWh is logisch voor dit product. De AI houdt nog geen rekening met productwisselingen \u2014 jouw feedback leert het systeem dat dit normaal is.",
+      },
+      {
+        id: 5,
+        beschrijving: "Temperatuur stijgt: 68\u2192 70\u2192 73\u2192 77\u2192 82\u00b0C in 2 uur",
+        context: "Constante productie, geen wisselingen",
+        juisteAntwoord: "terecht",
+        uitleg: "Een geleidelijk stijgende temperatuur bij constante productie is een collectieve anomalie. Dit patroon wijst op slijtage of een verslechterende koeling.",
+      },
+      {
+        id: 6,
+        beschrijving: "Snelheid: 1450 rpm (normaal: 1500 rpm)",
+        context: "Machine draait normaal, geen klachten",
+        juisteAntwoord: "vals_alarm",
+        uitleg: "Een verschil van 50 rpm (3%) is binnen de normale variatie. Machines draaien zelden exact op de ingestelde waarde. Dit is geen reden voor alarm.",
+      },
+      {
+        id: 7,
+        beschrijving: "Geen melding, maar stroom is 15% hoger dan gisteren",
+        context: "Zelfde product, zelfde instellingen als gisteren",
+        juisteAntwoord: "gemist",
+        uitleg: "De AI gaf geen melding, maar 15% hoger stroomverbruik bij dezelfde omstandigheden is verdacht. Dit kan wijzen op extra weerstand (slijtage lager, vastlopen). Jouw observatie helpt de AI om dit patroon te leren herkennen.",
+      },
+      {
+        id: 8,
+        beschrijving: "Trillingen normaal, maar geluid klinkt anders",
+        context: "Operator hoort iets, sensoren meten niets afwijkends",
+        juisteAntwoord: "gemist",
+        uitleg: "Soms pikt een operator iets op dat sensoren missen. Een ander geluid kan wijzen op een probleem dat de huidige sensoren niet meten. Door dit te melden, leert het bedrijf welke sensoren ze eventueel moeten toevoegen.",
+      },
+    ]
+
+    const FEEDBACK_EFFECT = {
+      correct: { nauwkeurigheid: 3, valseAlarmen: -2 },
+      fout: { nauwkeurigheid: -1, valseAlarmen: 1 },
+    }
+
+    function FeedbackLoopSimulatie() {
+      const [huidigeIndex, setHuidigeIndex] = useState(0)
+      const [antwoorden, setAntwoorden] = useState([])
+      const [gekozen, setGekozen] = useState(null)
+      const [toonUitleg, setToonUitleg] = useState(false)
+
+      const huidigeMelding = MELDINGEN[huidigeIndex] || null
+      const isKlaar = huidigeIndex >= MELDINGEN.length
+
+      // Bereken nauwkeurigheid en valse alarmen over tijd
+      const geschiedenis = useMemo(() => {
+        let nauwkeurigheid = 62
+        let valseAlarmen = 38
+        const punten = [{ ronde: 0, nauwkeurigheid, valseAlarmen }]
+
+        antwoorden.forEach((a, i) => {
+          const effect = a.correct ? FEEDBACK_EFFECT.correct : FEEDBACK_EFFECT.fout
+          nauwkeurigheid = Math.min(98, Math.max(40, nauwkeurigheid + effect.nauwkeurigheid))
+          valseAlarmen = Math.min(60, Math.max(5, valseAlarmen + effect.valseAlarmen))
+          punten.push({ ronde: i + 1, nauwkeurigheid, valseAlarmen })
+        })
+
+        return punten
+      }, [antwoorden])
+
+      const laatsteStats = geschiedenis[geschiedenis.length - 1]
+      const aantalCorrect = antwoorden.filter((a) => a.correct).length
+
+      function geefAntwoord(keuze) {
+        setGekozen(keuze)
+        setToonUitleg(true)
+      }
+
+      function volgende() {
+        const correct = gekozen === huidigeMelding.juisteAntwoord
+        setAntwoorden([...antwoorden, { meldingId: huidigeMelding.id, keuze: gekozen, correct }])
+        setGekozen(null)
+        setToonUitleg(false)
+        setHuidigeIndex(huidigeIndex + 1)
+      }
+
+      function reset() {
+        setHuidigeIndex(0)
+        setAntwoorden([])
+        setGekozen(null)
+        setToonUitleg(false)
+      }
+
+      // Grafiek parameters
+      const grafiekBreedte = 500
+      const grafiekHoogte = 200
+      const padding = { top: 20, right: 20, bottom: 30, left: 45 }
+      const plotW = grafiekBreedte - padding.left - padding.right
+      const plotH = grafiekHoogte - padding.top - padding.bottom
+
+      function maakLijn(punten, veld, kleur) {
+        if (punten.length < 2) return null
+        const maxRonde = MELDINGEN.length
+        const d = punten
+          .map((p, i) => {
+            const x = padding.left + (p.ronde / maxRonde) * plotW
+            const y = padding.top + plotH - (p[veld] / 100) * plotH
+            return `${i === 0 ? "M" : "L"} ${x} ${y}`
+          })
+          .join(" ")
+        return <path d={d} fill="none" stroke={kleur} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      }
+
+      const keuzeKleuren = {
+        terecht: { bg: "#fee2e2", border: "#ef4444", text: "#991b1b", label: "Terecht alarm" },
+        vals_alarm: { bg: "#fef9c3", border: "#eab308", text: "#854d0e", label: "Vals alarm" },
+        gemist: { bg: "#dbeafe", border: "#3b82f6", text: "#1e3a5f", label: "Gemist door AI" },
+      }
+
+      return (
+        <div style={{ minHeight: "100vh", backgroundColor: "#f9fafb", padding: "24px", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+          <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+            {/* Header */}
+            <h1 style={{ fontSize: "24px", fontWeight: "bold", color: "#111827", marginBottom: "4px" }}>
+              Feedback Loop Simulatie
+            </h1>
+            <p style={{ color: "#6b7280", marginBottom: "24px", fontSize: "14px" }}>
+              Jouw feedback maakt het AI-systeem slimmer. Beoordeel elke melding en zie het effect.
+            </p>
+
+            {/* Statistieken bovenaan */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "12px", marginBottom: "24px" }}>
+              <div style={{ backgroundColor: "white", borderRadius: "12px", padding: "16px", boxShadow: "0 1px 3px rgba(0,0,0,0.1)" }}>
+                <div style={{ fontSize: "12px", color: "#6b7280", marginBottom: "4px" }}>AI-nauwkeurigheid</div>
+                <div style={{ fontSize: "28px", fontWeight: "bold", color: laatsteStats.nauwkeurigheid >= 75 ? "#059669" : "#d97706" }}>
+                  {laatsteStats.nauwkeurigheid}%
+                </div>
+              </div>
+              <div style={{ backgroundColor: "white", borderRadius: "12px", padding: "16px", boxShadow: "0 1px 3px rgba(0,0,0,0.1)" }}>
+                <div style={{ fontSize: "12px", color: "#6b7280", marginBottom: "4px" }}>Valse alarmen</div>
+                <div style={{ fontSize: "28px", fontWeight: "bold", color: laatsteStats.valseAlarmen <= 15 ? "#059669" : "#dc2626" }}>
+                  {laatsteStats.valseAlarmen}%
+                </div>
+              </div>
+              <div style={{ backgroundColor: "white", borderRadius: "12px", padding: "16px", boxShadow: "0 1px 3px rgba(0,0,0,0.1)" }}>
+                <div style={{ fontSize: "12px", color: "#6b7280", marginBottom: "4px" }}>Jouw score</div>
+                <div style={{ fontSize: "28px", fontWeight: "bold", color: "#3b82f6" }}>
+                  {aantalCorrect}/{antwoorden.length}
+                </div>
+              </div>
+            </div>
+
+            {/* Grafiek */}
+            <div style={{ backgroundColor: "white", borderRadius: "12px", padding: "16px", marginBottom: "24px", boxShadow: "0 1px 3px rgba(0,0,0,0.1)" }}>
+              <div style={{ fontSize: "14px", fontWeight: "600", color: "#374151", marginBottom: "8px" }}>
+                Verbetering over tijd
+              </div>
+              <svg viewBox={`0 0 ${grafiekBreedte} ${grafiekHoogte}`} style={{ width: "100%", height: "auto" }}>
+                {/* Achtergrondlijnen */}
+                {[0, 25, 50, 75, 100].map((v) => {
+                  const y = padding.top + plotH - (v / 100) * plotH
+                  return (
+                    <g key={v}>
+                      <line x1={padding.left} y1={y} x2={padding.left + plotW} y2={y} stroke="#e5e7eb" strokeWidth="1" />
+                      <text x={padding.left - 8} y={y + 4} textAnchor="end" fontSize="10" fill="#9ca3af">
+                        {v}%
+                      </text>
+                    </g>
+                  )
+                })}
+                {/* X-as labels */}
+                {Array.from({ length: MELDINGEN.length + 1 }, (_, i) => {
+                  const x = padding.left + (i / MELDINGEN.length) * plotW
+                  return (
+                    <text key={i} x={x} y={grafiekHoogte - 5} textAnchor="middle" fontSize="10" fill="#9ca3af">
+                      {i}
+                    </text>
+                  )
+                })}
+                <text x={grafiekBreedte / 2} y={grafiekHoogte} textAnchor="middle" fontSize="10" fill="#6b7280">
+                </text>
+                {/* Lijnen */}
+                {maakLijn(geschiedenis, "nauwkeurigheid", "#059669")}
+                {maakLijn(geschiedenis, "valseAlarmen", "#dc2626")}
+                {/* Punten */}
+                {geschiedenis.map((p, i) => {
+                  const x = padding.left + (p.ronde / MELDINGEN.length) * plotW
+                  return (
+                    <g key={i}>
+                      <circle cx={x} cy={padding.top + plotH - (p.nauwkeurigheid / 100) * plotH} r="4" fill="#059669" />
+                      <circle cx={x} cy={padding.top + plotH - (p.valseAlarmen / 100) * plotH} r="4" fill="#dc2626" />
+                    </g>
+                  )
+                })}
+              </svg>
+              <div style={{ display: "flex", gap: "16px", justifyContent: "center", marginTop: "8px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "12px", color: "#059669" }}>
+                  <span style={{ width: "12px", height: "3px", backgroundColor: "#059669", borderRadius: "2px", display: "inline-block" }} />
+                  Nauwkeurigheid
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "12px", color: "#dc2626" }}>
+                  <span style={{ width: "12px", height: "3px", backgroundColor: "#dc2626", borderRadius: "2px", display: "inline-block" }} />
+                  Valse alarmen
+                </div>
+              </div>
+            </div>
+
+            {/* Melding of eindscherm */}
+            {!isKlaar ? (
+              <div style={{ backgroundColor: "white", borderRadius: "12px", padding: "24px", boxShadow: "0 1px 3px rgba(0,0,0,0.1)" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+                  <span style={{ fontSize: "13px", color: "#6b7280" }}>
+                    Melding {huidigeIndex + 1} van {MELDINGEN.length}
+                  </span>
+                  <span style={{
+                    fontSize: "12px",
+                    padding: "2px 10px",
+                    borderRadius: "9999px",
+                    backgroundColor: huidigeMelding.juisteAntwoord === "gemist" ? "#dbeafe" : "#fef3c7",
+                    color: huidigeMelding.juisteAntwoord === "gemist" ? "#1e40af" : "#92400e",
+                  }}>
+                    {huidigeMelding.juisteAntwoord === "gemist" ? "Geen AI-melding" : "AI-melding"}
+                  </span>
+                </div>
+
+                <div style={{ backgroundColor: "#f3f4f6", borderRadius: "8px", padding: "16px", marginBottom: "12px" }}>
+                  <div style={{ fontWeight: "600", fontSize: "16px", color: "#111827", marginBottom: "8px" }}>
+                    {huidigeMelding.beschrijving}
+                  </div>
+                  <div style={{ fontSize: "14px", color: "#6b7280" }}>
+                    Context: {huidigeMelding.context}
+                  </div>
+                </div>
+
+                {!toonUitleg ? (
+                  <div>
+                    <p style={{ fontSize: "14px", color: "#374151", marginBottom: "12px" }}>Wat is jouw beoordeling?</p>
+                    <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                      {Object.entries(keuzeKleuren).map(([keuze, stijl]) => (
+                        <button
+                          key={keuze}
+                          onClick={() => geefAntwoord(keuze)}
+                          style={{
+                            flex: "1",
+                            minWidth: "140px",
+                            padding: "12px 16px",
+                            borderRadius: "10px",
+                            border: `2px solid ${stijl.border}`,
+                            backgroundColor: stijl.bg,
+                            color: stijl.text,
+                            fontWeight: "600",
+                            fontSize: "14px",
+                            cursor: "pointer",
+                            transition: "transform 0.1s",
+                          }}
+                          onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
+                          onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                        >
+                          {stijl.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    {/* Resultaat */}
+                    <div
+                      style={{
+                        padding: "16px",
+                        borderRadius: "10px",
+                        marginBottom: "16px",
+                        backgroundColor: gekozen === huidigeMelding.juisteAntwoord ? "#d1fae5" : "#fee2e2",
+                        border: `2px solid ${gekozen === huidigeMelding.juisteAntwoord ? "#059669" : "#dc2626"}`,
+                      }}
+                    >
+                      <div style={{ fontWeight: "bold", fontSize: "16px", marginBottom: "8px", color: gekozen === huidigeMelding.juisteAntwoord ? "#065f46" : "#991b1b" }}>
+                        {gekozen === huidigeMelding.juisteAntwoord ? "Goed beoordeeld!" : "Niet helemaal \u2014 kijk waarom:"}
+                      </div>
+                      <div style={{ fontSize: "14px", lineHeight: "1.6" }}>
+                        <div style={{ marginBottom: "4px" }}>
+                          <strong>Jouw antwoord:</strong> {keuzeKleuren[gekozen].label}
+                        </div>
+                        <div style={{ marginBottom: "8px" }}>
+                          <strong>Juiste antwoord:</strong> {keuzeKleuren[huidigeMelding.juisteAntwoord].label}
+                        </div>
+                        <div>{huidigeMelding.uitleg}</div>
+                      </div>
+                    </div>
+
+                    {/* Effect op AI */}
+                    <div style={{ backgroundColor: "#f0f9ff", borderRadius: "8px", padding: "12px", marginBottom: "16px", fontSize: "13px", color: "#1e40af" }}>
+                      {gekozen === huidigeMelding.juisteAntwoord ? (
+                        <span>
+                          <strong>Effect van jouw feedback:</strong> De AI leert van je correcte beoordeling.
+                          Nauwkeurigheid stijgt, valse alarmen dalen. Zo wordt het systeem steeds beter.
+                        </span>
+                      ) : (
+                        <span>
+                          <strong>Effect:</strong> Als je verkeerde feedback geeft, kan de AI de verkeerde patronen leren.
+                          Daarom is het belangrijk om goed te kijken naar context en normaalwaarden.
+                        </span>
+                      )}
+                    </div>
+
+                    <button
+                      onClick={volgende}
+                      style={{
+                        width: "100%",
+                        padding: "12px",
+                        borderRadius: "10px",
+                        border: "none",
+                        backgroundColor: "#3b82f6",
+                        color: "white",
+                        fontWeight: "600",
+                        fontSize: "15px",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {huidigeIndex < MELDINGEN.length - 1 ? "Volgende melding \u2192" : "Bekijk resultaat"}
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              /* Eindscherm */
+              <div style={{ backgroundColor: "white", borderRadius: "12px", padding: "24px", boxShadow: "0 1px 3px rgba(0,0,0,0.1)" }}>
+                <h2 style={{ fontSize: "20px", fontWeight: "bold", color: "#111827", marginBottom: "16px" }}>
+                  Resultaat: {aantalCorrect} van {MELDINGEN.length} correct
+                </h2>
+
+                <div style={{
+                  padding: "16px",
+                  borderRadius: "10px",
+                  marginBottom: "20px",
+                  backgroundColor: aantalCorrect >= 6 ? "#d1fae5" : "#fef3c7",
+                  border: `2px solid ${aantalCorrect >= 6 ? "#059669" : "#d97706"}`,
+                }}>
+                  <p style={{ fontSize: "14px", lineHeight: "1.6", color: "#374151" }}>
+                    {aantalCorrect >= 7
+                      ? "Uitstekend! Je hebt een goed oog voor afwijkingen en je feedback is waardevol voor het AI-systeem."
+                      : aantalCorrect >= 5
+                      ? "Goed gedaan! Je herkent de meeste situaties. Let extra op de contextuele meldingen \u2014 die zijn het lastigst."
+                      : "Dit is een goed begin. Oefening helpt \u2014 en dat geldt ook voor de AI. Hoe meer feedback, hoe beter het wordt."}
+                  </p>
+                </div>
+
+                <div style={{ marginBottom: "20px" }}>
+                  <h3 style={{ fontSize: "15px", fontWeight: "600", color: "#374151", marginBottom: "12px" }}>
+                    Wat heb je gezien?
+                  </h3>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                    <li style={{ display: "flex", gap: "8px", marginBottom: "8px", fontSize: "14px", color: "#374151" }}>
+                      <span style={{ color: "#059669", fontWeight: "bold" }}>{"\u2713"}</span>
+                      De AI-nauwkeurigheid steeg van {geschiedenis[0].nauwkeurigheid}% naar {laatsteStats.nauwkeurigheid}%
+                    </li>
+                    <li style={{ display: "flex", gap: "8px", marginBottom: "8px", fontSize: "14px", color: "#374151" }}>
+                      <span style={{ color: "#059669", fontWeight: "bold" }}>{"\u2713"}</span>
+                      Valse alarmen daalden van {geschiedenis[0].valseAlarmen}% naar {laatsteStats.valseAlarmen}%
+                    </li>
+                    <li style={{ display: "flex", gap: "8px", marginBottom: "8px", fontSize: "14px", color: "#374151" }}>
+                      <span style={{ color: "#3b82f6", fontWeight: "bold" }}>{"\u279C"}</span>
+                      Jouw feedback maakt het verschil: de AI leert van elke beoordeling
+                    </li>
+                  </ul>
+                </div>
+
+                <div style={{
+                  backgroundColor: "#eff6ff",
+                  borderRadius: "8px",
+                  padding: "16px",
+                  marginBottom: "20px",
+                  fontSize: "14px",
+                  color: "#1e40af",
+                  lineHeight: "1.6",
+                }}>
+                  <strong>De feedbackloop werkt zo:</strong> Jij beoordeelt een melding {"\u2192"} het systeem leert
+                  van jouw beoordeling {"\u2192"} de volgende melding is nauwkeuriger {"\u2192"} minder valse alarmen {"\u2192"}
+                  meer vertrouwen in het systeem {"\u2192"} betere samenwerking mens-AI.
+                </div>
+
+                {/* Overzicht per melding */}
+                <div style={{ marginBottom: "20px" }}>
+                  <h3 style={{ fontSize: "15px", fontWeight: "600", color: "#374151", marginBottom: "12px" }}>
+                    Overzicht per melding
+                  </h3>
+                  {antwoorden.map((a, i) => {
+                    const melding = MELDINGEN[i]
+                    return (
+                      <div
+                        key={i}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "10px",
+                          padding: "8px 12px",
+                          borderRadius: "8px",
+                          marginBottom: "4px",
+                          backgroundColor: a.correct ? "#f0fdf4" : "#fef2f2",
+                          fontSize: "13px",
+                        }}
+                      >
+                        <span style={{ fontWeight: "bold", color: a.correct ? "#059669" : "#dc2626", width: "20px" }}>
+                          {a.correct ? "\u2713" : "\u2717"}
+                        </span>
+                        <span style={{ flex: 1, color: "#374151" }}>{melding.beschrijving.substring(0, 50)}...</span>
+                        <span style={{ color: "#6b7280", fontSize: "12px" }}>
+                          {keuzeKleuren[a.keuze].label}
+                        </span>
+                      </div>
+                    )
+                  })}
+                </div>
+
+                <button
+                  onClick={reset}
+                  style={{
+                    width: "100%",
+                    padding: "12px",
+                    borderRadius: "10px",
+                    border: "2px solid #d1d5db",
+                    backgroundColor: "white",
+                    color: "#374151",
+                    fontWeight: "600",
+                    fontSize: "15px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Opnieuw beginnen
+                </button>
+              </div>
+            )}
+
+            {/* Reset knop (altijd zichtbaar als er antwoorden zijn) */}
+            {antwoorden.length > 0 && !isKlaar && (
+              <div style={{ textAlign: "center", marginTop: "16px" }}>
+                <button
+                  onClick={reset}
+                  style={{
+                    padding: "8px 20px",
+                    borderRadius: "8px",
+                    border: "1px solid #d1d5db",
+                    backgroundColor: "white",
+                    color: "#6b7280",
+                    fontSize: "13px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Opnieuw beginnen
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<FeedbackLoopSimulatie />);
+  </script>
+</body>
+</html>

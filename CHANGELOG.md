@@ -7,6 +7,25 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde5-lo-smart-mfg-094
+
+**Kontext:** Ronde 5: lo-smart-mfg-094 (showcase 17 -> 21)
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-094/trainee.md`
+- `kennisbank/smart_manufacturing/predictive_maintenance/ko-smart-mfg-094.md`
+- `leerobjecten/lo-smart-mfg-094/trainer.md`
+- `leerobjecten/lo-smart-mfg-094/werkbladen/wb-actieplan-meldingen-werkvloer.md`
+- `leerobjecten/lo-smart-mfg-094/werkbladen/wb-casuskaarten-8-meldingen.md`
+- `leerobjecten/lo-smart-mfg-094/werkbladen/wb-handout-beoordelingsprotocol.md`
+- `leerobjecten/lo-smart-mfg-094/werkbladen/wb-reflectie-patronen.md`
+- `leerobjecten/lo-smart-mfg-094/werkbladen/wb-scoringsformulier.md`
+- `leerobjecten/lo-smart-mfg-094/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-094/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-094/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-094/README.md`
+
 ## 2026-05-19 — publish-ronde5-lo-oee-004
 
 **Kontext:** Ronde 5: lo-oee-004 (showcase 17 -> 21)

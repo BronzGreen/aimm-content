@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-labelledby="title desc" font-family="Segoe UI, Arial, sans-serif">
+  <title id="title">Feedback-loop bij AI-meldingen</title>
+  <desc id="desc">Cyclusdiagram dat de samenwerking tussen AI en operator toont in vier stappen: het AI-systeem meldt een afwijking, de operator beoordeelt of de melding klopt, het systeem leert van die beoordeling, en daardoor worden de meldingen steeds beter. Dit is een continu verbeterproces.</desc>
+
+  <defs>
+    <marker id="arrow-cycle" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB" role="presentation"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect width="600" height="400" fill="#F8FAFC" rx="8" role="presentation"/>
+
+  <!-- Titel -->
+  <text x="300" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#1E293B">Feedback-loop: samen beter worden</text>
+  <text x="300" y="56" text-anchor="middle" font-size="12" fill="#64748B">Hoe jouw beoordeling het AI-systeem slimmer maakt</text>
+
+  <!-- Stap 1: AI meldt — linksboven -->
+  <rect x="60" y="85" width="200" height="100" rx="12" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5"/>
+  <text x="160" y="115" text-anchor="middle" font-size="24" role="presentation">&#x1F514;</text>
+  <text x="160" y="140" text-anchor="middle" font-size="14" font-weight="bold" fill="#2563EB">1. AI meldt</text>
+  <text x="160" y="158" text-anchor="middle" font-size="11" fill="#1E40AF">Het systeem detecteert</text>
+  <text x="160" y="172" text-anchor="middle" font-size="11" fill="#1E40AF">een afwijking</text>
+
+  <!-- Pijl 1 naar 2 (boven, links naar rechts) -->
+  <path d="M 262 135 L 338 135" fill="none" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arrow-cycle)"/>
+
+  <!-- Stap 2: Operator beoordeelt — rechtsboven -->
+  <rect x="340" y="85" width="200" height="100" rx="12" fill="#FEF3C7" stroke="#D97706" stroke-width="2.5"/>
+  <text x="440" y="115" text-anchor="middle" font-size="24" role="presentation">&#x1F9D1;&#x200D;&#x1F527;</text>
+  <text x="440" y="140" text-anchor="middle" font-size="14" font-weight="bold" fill="#D97706">2. Operator beoordeelt</text>
+  <text x="440" y="158" text-anchor="middle" font-size="11" fill="#92400E">Klopt de melding?</text>
+  <text x="440" y="172" text-anchor="middle" font-size="11" fill="#92400E">Terecht of vals alarm?</text>
+
+  <!-- Pijl 2 naar 3 (rechts, boven naar onder) -->
+  <path d="M 440 187 L 440 218" fill="none" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arrow-cycle)"/>
+
+  <!-- Stap 3: Systeem leert — rechtsonder -->
+  <rect x="340" y="220" width="200" height="100" rx="12" fill="#ECFDF5" stroke="#059669" stroke-width="2.5"/>
+  <text x="440" y="250" text-anchor="middle" font-size="24" role="presentation">&#x1F4C8;</text>
+  <text x="440" y="275" text-anchor="middle" font-size="14" font-weight="bold" fill="#059669">3. Systeem leert</text>
+  <text x="440" y="293" text-anchor="middle" font-size="11" fill="#065F46">Het AI past zich aan</text>
+  <text x="440" y="307" text-anchor="middle" font-size="11" fill="#065F46">op basis van feedback</text>
+
+  <!-- Pijl 3 naar 4 (onder, rechts naar links) -->
+  <path d="M 338 270 L 262 270" fill="none" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arrow-cycle)"/>
+
+  <!-- Stap 4: Betere meldingen — linksonder -->
+  <rect x="60" y="220" width="200" height="100" rx="12" fill="#F0FDF4" stroke="#16A34A" stroke-width="2.5"/>
+  <text x="160" y="250" text-anchor="middle" font-size="24" role="presentation">&#x2705;</text>
+  <text x="160" y="275" text-anchor="middle" font-size="14" font-weight="bold" fill="#16A34A">4. Betere meldingen</text>
+  <text x="160" y="293" text-anchor="middle" font-size="11" fill="#166534">Minder vals alarm,</text>
+  <text x="160" y="307" text-anchor="middle" font-size="11" fill="#166534">preciezere waarschuwingen</text>
+
+  <!-- Pijl 4 terug naar 1 (links, onder naar boven) -->
+  <path d="M 160 218 L 160 187" fill="none" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arrow-cycle)"/>
+
+  <!-- Centraal label -->
+  <circle cx="300" cy="202" r="35" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" role="presentation"/>
+  <text x="300" y="198" text-anchor="middle" font-size="11" font-weight="bold" fill="#2563EB">Continue</text>
+  <text x="300" y="212" text-anchor="middle" font-size="11" font-weight="bold" fill="#2563EB">verbetering</text>
+
+  <!-- Kernboodschap onderaan -->
+  <rect x="60" y="340" width="480" height="40" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="300" y="365" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E40AF">Jouw feedback maakt het systeem beter. Elke beoordeling telt.</text>
+
+  <!-- Bron -->
+  <text x="590" y="392" text-anchor="end" font-size="8" fill="#94A3B8">AIMM | ko-smart-mfg-094</text>
+</svg>
