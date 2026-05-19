@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Common cause versus special cause variatie — twee tijdreeksen vergeleken</title>
+  <desc id="desc">Twee grafieken naast elkaar. Links: een tijdreeks van meetwaarden die willekeurig schommelen rond de centrumlijn binnen het normale bereik — dit is common cause variatie, het normale gedrag van het proces. Rechts: een tijdreeks waar eerst dezelfde willekeurige spreiding zichtbaar is, daarna een trend van vier oplopende metingen en een laatste meting buiten de bovengrens — dit is special cause variatie, een signaal dat er iets ánders is gebeurd. Onder de grafieken staat een actie-vergelijking: bij common cause niets bijstellen, bij special cause de oorzaak onderzoeken.</desc>
+
+  <defs>
+    <linearGradient id="bg-common" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ECFDF5"/>
+      <stop offset="100%" stop-color="#D1FAE5"/>
+    </linearGradient>
+    <linearGradient id="bg-special" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FEF2F2"/>
+      <stop offset="100%" stop-color="#FECACA"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="dot-green" markerWidth="8" markerHeight="8" refX="4" refY="4">
+      <circle cx="4" cy="4" r="3.5" fill="#10B981"/>
+    </marker>
+    <marker id="dot-red" markerWidth="8" markerHeight="8" refX="4" refY="4">
+      <circle cx="4" cy="4" r="3.5" fill="#EF4444"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="900" height="620" fill="#F8F6F0"/>
+
+  <!-- Titel -->
+  <text x="450" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50" letter-spacing="1">Common cause vs special cause</text>
+  <text x="450" y="62" text-anchor="middle" font-size="13" fill="#7f8c8d" letter-spacing="0.5">Wanneer is variatie normaal — en wanneer een signaal?</text>
+
+  <!-- ─────────── LINKS: COMMON CAUSE ─────────── -->
+  <g>
+    <!-- Paneel-achtergrond -->
+    <rect x="40" y="90" width="395" height="290" rx="10" fill="url(#bg-common)" filter="url(#shadow)"/>
+
+    <!-- Paneel-titel -->
+    <text x="237" y="118" text-anchor="middle" font-size="16" font-weight="700" fill="#065F46">COMMON CAUSE</text>
+    <text x="237" y="138" text-anchor="middle" font-size="12" fill="#047857" font-style="italic">Normale systeemvariatie — laat met rust</text>
+
+    <!-- Grafiek-assen -->
+    <!-- Bovengrens (UCL) -->
+    <line x1="70" y1="170" x2="410" y2="170" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="415" y="174" font-size="9" fill="#6B7280">UCL</text>
+    <!-- Centrumlijn -->
+    <line x1="70" y1="240" x2="410" y2="240" stroke="#10B981" stroke-width="1.5"/>
+    <text x="415" y="244" font-size="9" fill="#10B981" font-weight="600">CL</text>
+    <!-- Ondergrens (LCL) -->
+    <line x1="70" y1="310" x2="410" y2="310" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="415" y="314" font-size="9" fill="#6B7280">LCL</text>
+    <!-- X-as -->
+    <line x1="70" y1="340" x2="410" y2="340" stroke="#374151" stroke-width="1.5"/>
+    <!-- Y-as -->
+    <line x1="70" y1="160" x2="70" y2="340" stroke="#374151" stroke-width="1.5"/>
+
+    <!-- Y-label -->
+    <text x="58" y="250" text-anchor="middle" font-size="10" font-weight="600" fill="#374151" transform="rotate(-90,58,250)">gewicht (g)</text>
+    <!-- X-label -->
+    <text x="240" y="358" text-anchor="middle" font-size="10" fill="#374151">tijd (meting 1 → 12)</text>
+
+    <!-- Datapunten — willekeurige spreiding rond CL (y=240, range 170-310) -->
+    <polyline points="90,235 118,228 146,252 174,242 202,222 230,248 258,238 286,255 314,232 342,245 370,230 398,250"
+              fill="none" stroke="#10B981" stroke-width="1.8" opacity="0.6"/>
+    <circle cx="90"  cy="235" r="4.5" fill="#10B981"/>
+    <circle cx="118" cy="228" r="4.5" fill="#10B981"/>
+    <circle cx="146" cy="252" r="4.5" fill="#10B981"/>
+    <circle cx="174" cy="242" r="4.5" fill="#10B981"/>
+    <circle cx="202" cy="222" r="4.5" fill="#10B981"/>
+    <circle cx="230" cy="248" r="4.5" fill="#10B981"/>
+    <circle cx="258" cy="238" r="4.5" fill="#10B981"/>
+    <circle cx="286" cy="255" r="4.5" fill="#10B981"/>
+    <circle cx="314" cy="232" r="4.5" fill="#10B981"/>
+    <circle cx="342" cy="245" r="4.5" fill="#10B981"/>
+    <circle cx="370" cy="230" r="4.5" fill="#10B981"/>
+    <circle cx="398" cy="250" r="4.5" fill="#10B981"/>
+  </g>
+
+  <!-- ─────────── RECHTS: SPECIAL CAUSE ─────────── -->
+  <g>
+    <!-- Paneel-achtergrond -->
+    <rect x="465" y="90" width="395" height="290" rx="10" fill="url(#bg-special)" filter="url(#shadow)"/>
+
+    <!-- Paneel-titel -->
+    <text x="662" y="118" text-anchor="middle" font-size="16" font-weight="700" fill="#991B1B">SPECIAL CAUSE</text>
+    <text x="662" y="138" text-anchor="middle" font-size="12" fill="#B91C1C" font-style="italic">Er is iets ánders gebeurd — onderzoek</text>
+
+    <!-- Grafiek-assen -->
+    <line x1="495" y1="170" x2="835" y2="170" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="840" y="174" font-size="9" fill="#6B7280">UCL</text>
+    <line x1="495" y1="240" x2="835" y2="240" stroke="#10B981" stroke-width="1.5"/>
+    <text x="840" y="244" font-size="9" fill="#10B981" font-weight="600">CL</text>
+    <line x1="495" y1="310" x2="835" y2="310" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="840" y="314" font-size="9" fill="#6B7280">LCL</text>
+    <line x1="495" y1="340" x2="835" y2="340" stroke="#374151" stroke-width="1.5"/>
+    <line x1="495" y1="160" x2="495" y2="340" stroke="#374151" stroke-width="1.5"/>
+
+    <text x="483" y="250" text-anchor="middle" font-size="10" font-weight="600" fill="#374151" transform="rotate(-90,483,250)">gewicht (g)</text>
+    <text x="665" y="358" text-anchor="middle" font-size="10" fill="#374151">tijd (meting 1 → 12)</text>
+
+    <!-- Datapunten: eerst common-spread, daarna trend omhoog, eindigt buiten UCL -->
+    <polyline points="515,238 543,250 571,232 599,245 627,235 655,228 683,215 711,200 739,185 767,170 795,155 823,140"
+              fill="none" stroke="#EF4444" stroke-width="1.8" opacity="0.6"/>
+    <!-- Eerste 5 punten: normaal -->
+    <circle cx="515" cy="238" r="4.5" fill="#10B981"/>
+    <circle cx="543" cy="250" r="4.5" fill="#10B981"/>
+    <circle cx="571" cy="232" r="4.5" fill="#10B981"/>
+    <circle cx="599" cy="245" r="4.5" fill="#10B981"/>
+    <circle cx="627" cy="235" r="4.5" fill="#10B981"/>
+    <!-- Trend begint: punten 6-11 stijgen gestaag -->
+    <circle cx="655" cy="228" r="4.5" fill="#F59E0B"/>
+    <circle cx="683" cy="215" r="4.5" fill="#F59E0B"/>
+    <circle cx="711" cy="200" r="4.5" fill="#F59E0B"/>
+    <circle cx="739" cy="185" r="4.5" fill="#F59E0B"/>
+    <circle cx="767" cy="170" r="4.5" fill="#F59E0B"/>
+    <!-- Punt 12: BUITEN UCL — rood alarm -->
+    <circle cx="795" cy="155" r="5.5" fill="#EF4444" stroke="#7F1D1D" stroke-width="1.5"/>
+    <circle cx="823" cy="140" r="6" fill="#EF4444" stroke="#7F1D1D" stroke-width="2"/>
+
+    <!-- Annotatie: trend -->
+    <path d="M655,205 Q700,180 760,160" fill="none" stroke="#B45309" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <text x="710" y="195" text-anchor="middle" font-size="10" font-weight="600" fill="#B45309">trend ↑</text>
+
+    <!-- Annotatie: punt buiten grenzen -->
+    <line x1="795" y1="135" x2="795" y2="105" stroke="#7F1D1D" stroke-width="1.2"/>
+    <text x="775" y="100" font-size="10" font-weight="600" fill="#7F1D1D">buiten UCL!</text>
+  </g>
+
+  <!-- ─────────── ACTIE-VERGELIJKING ─────────── -->
+  <g>
+    <!-- Links: actie bij common cause -->
+    <rect x="40" y="410" width="395" height="125" rx="10" fill="white" stroke="#10B981" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="60" y="438" font-size="13" font-weight="700" fill="#065F46">✓ Wat doe je?</text>
+    <text x="60" y="462" font-size="12" fill="#1F2937">
+      <tspan x="60" dy="0">• Niets bijstellen — schommeling is normaal</tspan>
+      <tspan x="60" dy="20">• Blijf meten en bijhouden</tspan>
+      <tspan x="60" dy="20">• Bijstellen maakt het juist instabieler</tspan>
+      <tspan x="60" dy="20">  (overcontrol)</tspan>
+    </text>
+
+    <!-- Rechts: actie bij special cause -->
+    <rect x="465" y="410" width="395" height="125" rx="10" fill="white" stroke="#EF4444" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="485" y="438" font-size="13" font-weight="700" fill="#991B1B">✓ Wat doe je?</text>
+    <text x="485" y="462" font-size="12" fill="#1F2937">
+      <tspan x="485" dy="0">• Onderzoek wat er is veranderd</tspan>
+      <tspan x="485" dy="20">• Koppel aan een gebeurtenis (matrijswissel,</tspan>
+      <tspan x="485" dy="20">  nieuwe batch, gereedschap, sensor)</tspan>
+      <tspan x="485" dy="20">• Neem de oorzaak weg</tspan>
+    </text>
+  </g>
+
+  <!-- ─────────── KERNREGEL ─────────── -->
+  <rect x="100" y="555" width="700" height="35" rx="8" fill="#1F2937"/>
+  <text x="450" y="578" text-anchor="middle" font-size="13" font-weight="600" fill="white">SPC beoordeelt tijdreeksen — geen losse meetwaarden</text>
+
+  <!-- Bronvermelding -->
+  <text x="450" y="608" text-anchor="middle" font-size="10" fill="#999">Bron: Deming (1986) Out of the Crisis · Wheeler (1993) Understanding Variation · AIMM SPC Module 1</text>
+</svg>

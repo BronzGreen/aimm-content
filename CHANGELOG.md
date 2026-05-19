@@ -7,6 +7,24 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde4-lo-spc-104
+
+**Kontext:** Ronde 4: lo-spc-104 (showcase 13 -> 17 LOs)
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-104/trainee.md`
+- `kennisbank/spc/variatie_analyse/ko-spc-104.md`
+- `leerobjecten/lo-spc-104/trainer.md`
+- `leerobjecten/lo-spc-104/draaiboek.md`
+- `leerobjecten/lo-spc-104/werkbladen/wb-01-storingsquiz.md`
+- `leerobjecten/lo-spc-104/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-104/werkbladen/wb-03-handout-theorie.md`
+- `leerobjecten/lo-spc-104/werkbladen/wb-04-actieplan.md`
+- `leerobjecten/lo-spc-104/svg/diagram.svg`
+- `leerobjecten/lo-spc-104/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-104/README.md`
+
 ## 2026-05-19 — publish-ronde3-lo-smart-mfg-010
 
 **Kontext:** Ronde 3: lo-smart-mfg-010 (showcase 9 → 13 LOs)
