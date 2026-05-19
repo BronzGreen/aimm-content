@@ -7,6 +7,24 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde7-lo-smart-mfg-601
+
+**Kontext:** Ronde 7: lo-smart-mfg-601 (showcase 25 -> 29)
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-601/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-601.md`
+- `leerobjecten/lo-smart-mfg-601/trainer.md`
+- `leerobjecten/lo-smart-mfg-601/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-601/werkbladen/wb-01-storingsquiz.md`
+- `leerobjecten/lo-smart-mfg-601/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-smart-mfg-601/werkbladen/wb-03-theorie-handout.md`
+- `leerobjecten/lo-smart-mfg-601/werkbladen/wb-04-actieplan.md`
+- `leerobjecten/lo-smart-mfg-601/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-601/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-601/README.md`
+
 ## 2026-05-19 — publish-ronde7-lo-industry40-021
 
 **Kontext:** Ronde 7: lo-industry40-021 (showcase 25 -> 29)

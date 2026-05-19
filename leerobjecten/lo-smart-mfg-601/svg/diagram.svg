@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" font-family="Arial, sans-serif">
+  <title>Het data flywheel — waarom gelabelde foto's een bottleneck zijn</title>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2c5f2d"/>
+    </marker>
+  </defs>
+
+  <!-- Titel -->
+  <text x="400" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#1a1a1a">
+    Het data flywheel
+  </text>
+  <text x="400" y="68" text-anchor="middle" font-size="14" fill="#555">
+    Meer foto's en labels → beter model → meer inzet → nog meer foto's
+  </text>
+
+  <!-- Cirkel-achtergrond -->
+  <circle cx="400" cy="330" r="210" fill="none" stroke="#e0e0e0" stroke-width="2" stroke-dasharray="6 4"/>
+
+  <!-- Node 1: Foto's labelen -->
+  <g transform="translate(400,150)">
+    <rect x="-110" y="-38" width="220" height="76" rx="8" fill="#fff4d6" stroke="#d4a017" stroke-width="2"/>
+    <text x="0" y="-8" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">Foto's maken</text>
+    <text x="0" y="14" text-anchor="middle" font-size="13" fill="#333">en labelen</text>
+    <text x="0" y="32" text-anchor="middle" font-size="11" fill="#666">(100-300 per defect)</text>
+  </g>
+
+  <!-- Node 2: Model traint -->
+  <g transform="translate(620,310)">
+    <rect x="-100" y="-38" width="200" height="76" rx="8" fill="#e0f0e3" stroke="#2c5f2d" stroke-width="2"/>
+    <text x="0" y="-8" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">Model traint</text>
+    <text x="0" y="14" text-anchor="middle" font-size="13" fill="#333">op jouw foto's</text>
+    <text x="0" y="32" text-anchor="middle" font-size="11" fill="#666">(kant-en-klare software)</text>
+  </g>
+
+  <!-- Node 3: Camera herkent -->
+  <g transform="translate(500,510)">
+    <rect x="-110" y="-38" width="220" height="76" rx="8" fill="#d9e8f5" stroke="#1a5490" stroke-width="2"/>
+    <text x="0" y="-8" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">Camera herkent</text>
+    <text x="0" y="14" text-anchor="middle" font-size="13" fill="#333">defecten op de lijn</text>
+    <text x="0" y="32" text-anchor="middle" font-size="11" fill="#666">(automatische check)</text>
+  </g>
+
+  <!-- Node 4: Meer inzet -->
+  <g transform="translate(300,510)">
+    <rect x="-110" y="-38" width="220" height="76" rx="8" fill="#f3e0f0" stroke="#7a3b82" stroke-width="2"/>
+    <text x="0" y="-8" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">Meer vertrouwen,</text>
+    <text x="0" y="14" text-anchor="middle" font-size="13" fill="#333">meer inzet</text>
+    <text x="0" y="32" text-anchor="middle" font-size="11" fill="#666">(volgende producten)</text>
+  </g>
+
+  <!-- Node 5: Nog meer foto's -->
+  <g transform="translate(180,310)">
+    <rect x="-100" y="-38" width="200" height="76" rx="8" fill="#ffe4e1" stroke="#b5352f" stroke-width="2"/>
+    <text x="0" y="-8" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">Nog meer foto's</text>
+    <text x="0" y="14" text-anchor="middle" font-size="13" fill="#333">gelabeld</text>
+    <text x="0" y="32" text-anchor="middle" font-size="11" fill="#666">(de cirkel herhaalt)</text>
+  </g>
+
+  <!-- Pijlen -->
+  <path d="M 485 200 Q 570 230 580 275" fill="none" stroke="#2c5f2d" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M 585 360 Q 575 440 550 475" fill="none" stroke="#2c5f2d" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M 385 520 L 320 520" fill="none" stroke="#2c5f2d" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M 225 475 Q 195 430 185 360" fill="none" stroke="#2c5f2d" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M 220 272 Q 240 220 300 195" fill="none" stroke="#2c5f2d" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Kernboodschap binnenin de cirkel -->
+  <g transform="translate(400,330)">
+    <text x="0" y="-15" text-anchor="middle" font-size="18" font-weight="bold" fill="#b5352f">
+      De bottleneck?
+    </text>
+    <text x="0" y="12" text-anchor="middle" font-size="16" fill="#1a1a1a">
+      Niet het model.
+    </text>
+    <text x="0" y="34" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">
+      Jouw foto's.
+    </text>
+  </g>
+
+  <!-- Footer -->
+  <text x="400" y="582" text-anchor="middle" font-size="11" fill="#888" font-style="italic">
+    AIMM × BronzGreen | ko-smart-mfg-601 | MBO-3 operator | Module 1: Gebruik
+  </text>
+</svg>
