@@ -1,0 +1,205 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 900 520"
+     font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Eindcontrole vs. AI-inspectie tussentijds</title>
+  <desc id="desc">Een diagram met twee tijdlijnen. Boven: het traditionele proces waar een defect product alle 6 stappen doorloopt en pas aan het einde wordt afgekeurd. Onder: het AI-proces waar een camera het defect na stap 2 detecteert en het product direct uit de lijn haalt, zodat stap 3 tot 6 worden bespaard.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="grad-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="100%" stop-color="#DC2626"/>
+    </linearGradient>
+    <linearGradient id="grad-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="grad-blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="grad-gray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9CA3AF"/>
+      <stop offset="100%" stop-color="#6B7280"/>
+    </linearGradient>
+    <linearGradient id="grad-amber" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <marker id="arrow-gray" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#9CA3AF"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#10B981"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="900" height="520" fill="#FAFAF8" rx="8"/>
+
+  <!-- Titel -->
+  <text x="450" y="38" text-anchor="middle" font-size="20" font-weight="700" fill="#1F2937" letter-spacing="0.5">Eindcontrole vs. AI-inspectie</text>
+  <text x="450" y="58" text-anchor="middle" font-size="12" fill="#6B7280">Waar in de lijn controleer je kwaliteit?</text>
+
+  <!-- ============================================ -->
+  <!-- BOVEN: Traditioneel proces (rood thema)      -->
+  <!-- ============================================ -->
+
+  <!-- Label -->
+  <text x="50" y="100" font-size="13" font-weight="700" fill="#DC2626">TRADITIONEEL</text>
+  <text x="50" y="116" font-size="10" fill="#6B7280">Controle aan het einde</text>
+
+  <!-- Lijn -->
+  <line x1="80" y1="165" x2="830" y2="165" stroke="#E5E7EB" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Stap 1: Snijden -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="140" width="90" height="50" rx="8" fill="url(#grad-gray)"/>
+    <text x="105" y="163" text-anchor="middle" font-size="11" font-weight="600" fill="white">Snijden</text>
+    <text x="105" y="178" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">Stap 1</text>
+  </g>
+
+  <!-- Stap 2: Frezen (defect ontstaat) -->
+  <g filter="url(#shadow)">
+    <rect x="180" y="140" width="90" height="50" rx="8" fill="url(#grad-amber)"/>
+    <text x="225" y="163" text-anchor="middle" font-size="11" font-weight="600" fill="white">Frezen</text>
+    <text x="225" y="178" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">Stap 2</text>
+  </g>
+  <!-- Defect label -->
+  <text x="225" y="130" text-anchor="middle" font-size="9" font-weight="600" fill="#D97706">Defect ontstaat!</text>
+  <line x1="225" y1="133" x2="225" y2="140" stroke="#D97706" stroke-width="1.5"/>
+
+  <!-- Stap 3: Boren (verspild) -->
+  <g filter="url(#shadow)" opacity="0.6">
+    <rect x="300" y="140" width="90" height="50" rx="8" fill="url(#grad-red)"/>
+    <text x="345" y="163" text-anchor="middle" font-size="11" font-weight="600" fill="white">Boren</text>
+    <text x="345" y="178" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">Stap 3</text>
+  </g>
+
+  <!-- Stap 4: Schuren (verspild) -->
+  <g filter="url(#shadow)" opacity="0.6">
+    <rect x="420" y="140" width="90" height="50" rx="8" fill="url(#grad-red)"/>
+    <text x="465" y="163" text-anchor="middle" font-size="11" font-weight="600" fill="white">Schuren</text>
+    <text x="465" y="178" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">Stap 4</text>
+  </g>
+
+  <!-- Stap 5: Coaten (verspild) -->
+  <g filter="url(#shadow)" opacity="0.6">
+    <rect x="540" y="140" width="90" height="50" rx="8" fill="url(#grad-red)"/>
+    <text x="585" y="163" text-anchor="middle" font-size="11" font-weight="600" fill="white">Coaten</text>
+    <text x="585" y="178" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">Stap 5</text>
+  </g>
+
+  <!-- Stap 6: Eindcontrole -->
+  <g filter="url(#shadow)">
+    <rect x="660" y="140" width="110" height="50" rx="8" fill="url(#grad-red)"/>
+    <text x="715" y="163" text-anchor="middle" font-size="11" font-weight="600" fill="white">Eindcontrole</text>
+    <text x="715" y="178" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">Stap 6</text>
+  </g>
+
+  <!-- Afgekeurd label -->
+  <text x="800" y="160" font-size="18" fill="#DC2626">&#10008;</text>
+  <text x="800" y="178" font-size="9" font-weight="600" fill="#DC2626">Afgekeurd</text>
+
+  <!-- Bracket: verspilde stappen -->
+  <line x1="300" y1="200" x2="630" y2="200" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/>
+  <line x1="300" y1="195" x2="300" y2="200" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/>
+  <line x1="630" y1="195" x2="630" y2="200" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/>
+  <text x="465" y="218" text-anchor="middle" font-size="11" font-weight="600" fill="#DC2626">4 stappen voor niets</text>
+
+  <!-- ============================================ -->
+  <!-- Scheidingslijn                                -->
+  <!-- ============================================ -->
+  <line x1="50" y1="250" x2="850" y2="250" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="6,4"/>
+  <rect x="390" y="240" width="120" height="20" rx="10" fill="#FAFAF8"/>
+  <text x="450" y="254" text-anchor="middle" font-size="10" font-weight="600" fill="#6B7280">vs.</text>
+
+  <!-- ============================================ -->
+  <!-- ONDER: AI-inspectie proces (groen thema)     -->
+  <!-- ============================================ -->
+
+  <!-- Label -->
+  <text x="50" y="290" font-size="13" font-weight="700" fill="#059669">MET AI-INSPECTIE</text>
+  <text x="50" y="306" font-size="10" fill="#6B7280">Controle na de kritieke stap</text>
+
+  <!-- Lijn -->
+  <line x1="80" y1="355" x2="560" y2="355" stroke="#E5E7EB" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Stap 1: Snijden -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="330" width="90" height="50" rx="8" fill="url(#grad-gray)"/>
+    <text x="105" y="353" text-anchor="middle" font-size="11" font-weight="600" fill="white">Snijden</text>
+    <text x="105" y="368" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">Stap 1</text>
+  </g>
+
+  <!-- Stap 2: Frezen -->
+  <g filter="url(#shadow)">
+    <rect x="180" y="330" width="90" height="50" rx="8" fill="url(#grad-amber)"/>
+    <text x="225" y="353" text-anchor="middle" font-size="11" font-weight="600" fill="white">Frezen</text>
+    <text x="225" y="368" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">Stap 2</text>
+  </g>
+
+  <!-- AI Camera -->
+  <g filter="url(#shadow)">
+    <rect x="300" y="325" width="100" height="60" rx="10" fill="url(#grad-blue)" stroke="#2563EB" stroke-width="2"/>
+    <text x="350" y="348" text-anchor="middle" font-size="10" font-weight="700" fill="white">AI Camera</text>
+    <text x="350" y="363" text-anchor="middle" font-size="18" fill="white">&#128247;</text>
+    <text x="350" y="378" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.7)">99,5% nauwkeurig</text>
+  </g>
+
+  <!-- Pijl naar beneden: afgekeurd product eruit -->
+  <line x1="350" y1="390" x2="350" y2="430" stroke="#DC2626" stroke-width="2" marker-end="url(#arrow-gray)"/>
+  <g filter="url(#shadow)">
+    <rect x="310" y="432" width="80" height="30" rx="6" fill="#FEF2F2" stroke="#FECACA" stroke-width="1"/>
+    <text x="350" y="450" text-anchor="middle" font-size="9" font-weight="600" fill="#DC2626">Eruit / terug</text>
+  </g>
+
+  <!-- Pijl naar rechts: goed product door -->
+  <line x1="405" y1="355" x2="435" y2="355" stroke="#10B981" stroke-width="2" marker-end="url(#arrow-green)"/>
+
+  <!-- Goed product gaat door -->
+  <g filter="url(#shadow)">
+    <rect x="440" y="330" width="110" height="50" rx="8" fill="url(#grad-green)"/>
+    <text x="495" y="350" text-anchor="middle" font-size="10" font-weight="600" fill="white">Stap 3-6</text>
+    <text x="495" y="365" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">Alleen goede</text>
+    <text x="495" y="377" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">producten</text>
+  </g>
+
+  <!-- Goedgekeurd label -->
+  <text x="575" y="350" font-size="18" fill="#059669">&#10004;</text>
+  <text x="575" y="370" font-size="9" font-weight="600" fill="#059669">Bespaard!</text>
+
+  <!-- ============================================ -->
+  <!-- Resultaat-box rechtsonder                    -->
+  <!-- ============================================ -->
+  <g filter="url(#shadow)">
+    <rect x="640" y="290" width="210" height="100" rx="10" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.5"/>
+    <text x="745" y="315" text-anchor="middle" font-size="12" font-weight="700" fill="#065F46">Resultaat pilotproject</text>
+    <text x="745" y="338" text-anchor="middle" font-size="11" fill="#047857">Doorvoer: +55%</text>
+    <text x="745" y="358" text-anchor="middle" font-size="11" fill="#047857">Nauwkeurigheid: 99,5%</text>
+    <text x="745" y="378" text-anchor="middle" font-size="10" fill="#6B7280">Isolatiepanelen fabriek</text>
+  </g>
+
+  <!-- Legenda -->
+  <g transform="translate(60, 485)">
+    <rect x="0" y="0" width="12" height="12" rx="3" fill="#9CA3AF"/>
+    <text x="18" y="11" font-size="10" fill="#6B7280">Normale stap</text>
+
+    <rect x="140" y="0" width="12" height="12" rx="3" fill="#F59E0B"/>
+    <text x="158" y="11" font-size="10" fill="#6B7280">Kritieke stap</text>
+
+    <rect x="280" y="0" width="12" height="12" rx="3" fill="#EF4444"/>
+    <text x="298" y="11" font-size="10" fill="#6B7280">Verspilde stap</text>
+
+    <rect x="420" y="0" width="12" height="12" rx="3" fill="#3B82F6"/>
+    <text x="438" y="11" font-size="10" fill="#6B7280">AI-inspectie</text>
+
+    <rect x="560" y="0" width="12" height="12" rx="3" fill="#10B981"/>
+    <text x="578" y="11" font-size="10" fill="#6B7280">Bespaard</text>
+  </g>
+
+  <!-- Bronvermelding -->
+  <text x="450" y="510" text-anchor="middle" font-size="9" fill="#9CA3AF">AI-gestuurde kwaliteitscontrole | AIMM Curriculum | ko-smart-mfg-010</text>
+</svg>

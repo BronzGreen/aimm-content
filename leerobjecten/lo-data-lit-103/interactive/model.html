@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Datakwaliteit Checker - AIMM</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    const SCENARIOS = [
+      {
+        id: 1,
+        title: "Dashboard productielijn A",
+        data: [
+          { dag: "Maandag", stuks: "480", uitval: "12", tijd: "8 uur" },
+          { dag: "Dinsdag", stuks: "510", uitval: "8", tijd: "7,5 uur" },
+          { dag: "Woensdag", stuks: "—", uitval: "—", tijd: "—" },
+          { dag: "Donderdag", stuks: "495", uitval: "5", tijd: "26 uur" },
+          { dag: "Vrijdag", stuks: "470", uitval: "15", tijd: "8 uur" },
+        ],
+        answers: {
+          volledigheid: false,
+          consistentie: false,
+          actualiteit: true,
+        },
+        feedback: {
+          volledigheid: "Niet volledig: de data van woensdag ontbreekt helemaal.",
+          consistentie: "Niet consistent: donderdag toont 26 productie-uren. Een dag heeft maar 24 uur.",
+          actualiteit: "Actueel: de data is van deze week.",
+        },
+      },
+      {
+        id: 2,
+        title: "Temperatuurlog oven 3",
+        data: [
+          { dag: "08:00", stuks: "182 C", uitval: "OK", tijd: "Vandaag" },
+          { dag: "10:00", stuks: "185 C", uitval: "OK", tijd: "Vandaag" },
+          { dag: "12:00", stuks: "184 C", uitval: "OK", tijd: "Vandaag" },
+          { dag: "14:00", stuks: "183 C", uitval: "OK", tijd: "Vandaag" },
+          { dag: "16:00", stuks: "186 C", uitval: "OK", tijd: "Vandaag" },
+        ],
+        columnHeaders: ["Tijd", "Temperatuur", "Status", "Datum"],
+        answers: {
+          volledigheid: true,
+          consistentie: true,
+          actualiteit: true,
+        },
+        feedback: {
+          volledigheid: "Volledig: alle metingen van de dag zijn er.",
+          consistentie: "Consistent: alle waarden zijn in graden Celsius en logisch.",
+          actualiteit: "Actueel: alle metingen zijn van vandaag.",
+        },
+      },
+      {
+        id: 3,
+        title: "Kwaliteitsrapport verpakking",
+        data: [
+          { dag: "Week 10", stuks: "2.340", uitval: "45", tijd: "2 weken geleden" },
+          { dag: "Week 11", stuks: "2.510", uitval: "-12", tijd: "1 week geleden" },
+          { dag: "Week 12", stuks: "", uitval: "38", tijd: "Deze week" },
+          { dag: "Week 13", stuks: "2.480", uitval: "42", tijd: "Nog niet" },
+          { dag: "Week 14", stuks: "2.390", uitval: "35", tijd: "Nog niet" },
+        ],
+        columnHeaders: ["Week", "Productie", "Uitval", "Bijgewerkt"],
+        answers: {
+          volledigheid: false,
+          consistentie: false,
+          actualiteit: false,
+        },
+        feedback: {
+          volledigheid: "Niet volledig: productie van week 12 mist. Week 13 en 14 zijn toekomst.",
+          consistentie: "Niet consistent: uitval van week 11 is -12. Dat kan niet negatief zijn.",
+          actualiteit: "Niet actueel: data van week 13 en 14 bestaan nog niet, maar staan al in het rapport.",
+        },
+      },
+    ];
+
+    const CHECKS = [
+      { id: "volledigheid", label: "Volledigheid", question: "Is alle data er?", color: "#5DADE2", bgClass: "bg-blue-50", borderClass: "border-blue-400" },
+      { id: "consistentie", label: "Consistentie", question: "Kloppen de waarden?", color: "#3498DB", bgClass: "bg-sky-50", borderClass: "border-sky-400" },
+      { id: "actualiteit", label: "Actualiteit", question: "Is het recent genoeg?", color: "#1A5276", bgClass: "bg-indigo-50", borderClass: "border-indigo-400" },
+    ];
+
+    function DatakwaliteitChecker() {
+      const [currentScenario, setCurrentScenario] = useState(0);
+      const [answers, setAnswers] = useState({});
+      const [submitted, setSubmitted] = useState(false);
+      const [totalCorrect, setTotalCorrect] = useState(0);
+      const [scenariosDone, setScenariosDone] = useState(0);
+
+      const scenario = SCENARIOS[currentScenario];
+      const headers = scenario.columnHeaders || ["Dag", "Productie (stuks)", "Uitval (stuks)", "Productietijd"];
+
+      const handleAnswer = (checkId, value) => {
+        if (submitted) return;
+        setAnswers(prev => ({ ...prev, [checkId]: value }));
+      };
+
+      const allAnswered = CHECKS.every(c => answers[c.id] !== undefined);
+
+      const handleSubmit = () => {
+        if (!allAnswered) return;
+        setSubmitted(true);
+        const correct = CHECKS.filter(c => answers[c.id] === scenario.answers[c.id]).length;
+        setTotalCorrect(prev => prev + correct);
+        setScenariosDone(prev => prev + 1);
+      };
+
+      const handleNext = () => {
+        if (currentScenario < SCENARIOS.length - 1) {
+          setCurrentScenario(prev => prev + 1);
+          setAnswers({});
+          setSubmitted(false);
+        }
+      };
+
+      const handleReset = () => {
+        setCurrentScenario(0);
+        setAnswers({});
+        setSubmitted(false);
+        setTotalCorrect(0);
+        setScenariosDone(0);
+      };
+
+      const isLastScenario = currentScenario === SCENARIOS.length - 1;
+      const allDone = isLastScenario && submitted;
+
+      return (
+        <div className="min-h-screen bg-gray-50">
+          {/* Header */}
+          <div className="bg-white border-b px-6 py-4">
+            <h1 className="text-2xl font-bold text-gray-900">Datakwaliteit Checker</h1>
+            <p className="text-gray-500 mt-1">Bekijk de data en doe de drie checks: volledig, consistent, actueel.</p>
+          </div>
+
+          <div className="max-w-3xl mx-auto p-6">
+            {/* Voortgang */}
+            <div className="flex items-center gap-2 mb-6">
+              <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-blue-500 rounded-full transition-all duration-500"
+                  style={{ width: `${((currentScenario + (submitted ? 1 : 0)) / SCENARIOS.length) * 100}%` }}
+                />
+              </div>
+              <span className="text-sm text-gray-500 font-mono">
+                {currentScenario + 1}/{SCENARIOS.length}
+              </span>
+            </div>
+
+            {/* Scenario titel */}
+            <div className="bg-white rounded-xl shadow-sm border p-5 mb-6">
+              <h2 className="text-lg font-bold text-gray-800 mb-4">{scenario.title}</h2>
+
+              {/* Datatabel */}
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      {headers.map((h, i) => (
+                        <th key={i} className="px-4 py-2 text-left font-medium text-gray-600">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {scenario.data.map((row, i) => (
+                      <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                        <td className="px-4 py-2 font-medium">{row.dag}</td>
+                        <td className={`px-4 py-2 ${(!row.stuks || row.stuks === "—") ? "text-red-400 italic" : ""}`}>
+                          {row.stuks || "—"}
+                        </td>
+                        <td className={`px-4 py-2 ${(!row.uitval || row.uitval === "—" || row.uitval.startsWith("-")) ? "text-red-400 italic" : ""}`}>
+                          {row.uitval || "—"}
+                        </td>
+                        <td className="px-4 py-2 text-gray-500">{row.tijd}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Checks */}
+            <div className="space-y-4 mb-6">
+              {CHECKS.map(check => {
+                const isCorrect = submitted && answers[check.id] === scenario.answers[check.id];
+                const isWrong = submitted && answers[check.id] !== scenario.answers[check.id];
+
+                return (
+                  <div key={check.id}
+                    className={`rounded-xl border-l-4 p-5 transition-all ${
+                      submitted
+                        ? isCorrect
+                          ? "bg-green-50 border-green-500"
+                          : "bg-red-50 border-red-500"
+                        : `${check.bgClass} ${check.borderClass}`
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <div>
+                        <span className="font-bold text-gray-800">{check.label}</span>
+                        <span className="text-gray-500 text-sm ml-2">- {check.question}</span>
+                      </div>
+                      {submitted && (
+                        <span className={`text-sm font-bold ${isCorrect ? "text-green-600" : "text-red-600"}`}>
+                          {isCorrect ? "Goed!" : "Niet goed"}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="flex gap-3">
+                      <button
+                        onClick={() => handleAnswer(check.id, true)}
+                        className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all ${
+                          answers[check.id] === true
+                            ? "bg-green-500 text-white shadow-md"
+                            : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
+                        } ${submitted ? "cursor-default" : "cursor-pointer"}`}
+                      >
+                        Ja, dit klopt
+                      </button>
+                      <button
+                        onClick={() => handleAnswer(check.id, false)}
+                        className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all ${
+                          answers[check.id] === false
+                            ? "bg-red-500 text-white shadow-md"
+                            : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
+                        } ${submitted ? "cursor-default" : "cursor-pointer"}`}
+                      >
+                        Nee, dit klopt niet
+                      </button>
+                    </div>
+
+                    {submitted && (
+                      <div className={`mt-3 text-sm p-3 rounded-lg ${
+                        isCorrect ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+                      }`}>
+                        {scenario.feedback[check.id]}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Actieknoppen */}
+            <div className="flex gap-3">
+              {!submitted && (
+                <button
+                  onClick={handleSubmit}
+                  disabled={!allAnswered}
+                  className={`flex-1 py-3 rounded-lg font-medium transition-all ${
+                    allAnswered
+                      ? "bg-blue-500 text-white hover:bg-blue-600"
+                      : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                  }`}
+                >
+                  Controleer mijn antwoorden
+                </button>
+              )}
+
+              {submitted && !allDone && (
+                <button
+                  onClick={handleNext}
+                  className="flex-1 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all"
+                >
+                  Volgende scenario
+                </button>
+              )}
+
+              {allDone && (
+                <div className="flex-1">
+                  <div className="bg-white rounded-xl shadow-sm border p-6 text-center mb-4">
+                    <div className="text-4xl font-bold text-blue-600 mb-2">
+                      {totalCorrect} / {SCENARIOS.length * 3}
+                    </div>
+                    <div className="text-gray-600">
+                      {totalCorrect >= 7
+                        ? "Goed gedaan! Je herkent datakwaliteitsproblemen."
+                        : totalCorrect >= 4
+                        ? "Aardig begin! Oefen verder met de drie checks."
+                        : "Geen probleem. Met oefening leer je het."}
+                    </div>
+                    <div className="mt-4 text-sm text-gray-400">
+                      Onthoud: Volledig + Consistent + Actueel = Betrouwbaar
+                    </div>
+                  </div>
+                  <button
+                    onClick={handleReset}
+                    className="w-full py-2 text-gray-500 hover:text-gray-700 text-sm flex items-center justify-center gap-1"
+                  >
+                    Opnieuw beginnen
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Reset altijd zichtbaar */}
+            {!allDone && (
+              <button
+                onClick={handleReset}
+                className="mt-4 w-full py-2 text-gray-400 hover:text-gray-600 text-sm"
+              >
+                Opnieuw beginnen
+              </button>
+            )}
+          </div>
+
+          {/* Footer */}
+          <div className="text-center text-xs text-gray-400 py-4 border-t mt-8">
+            AIMM Data Literacy - Datakwaliteit | Module 1: Gebruik | v1.0
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<DatakwaliteitChecker />);
+  </script>
+</body>
+</html>

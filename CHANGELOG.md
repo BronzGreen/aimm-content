@@ -7,6 +7,79 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde3-lo-smart-mfg-010
+
+**Kontext:** Ronde 3: lo-smart-mfg-010 (showcase 9 → 13 LOs)
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-010/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-010.md`
+- `leerobjecten/lo-smart-mfg-010/trainer.md`
+- `leerobjecten/lo-smart-mfg-010/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-010/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-smart-mfg-010/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-smart-mfg-010/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-smart-mfg-010/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-smart-mfg-010/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-010/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-010/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-010/README.md`
+
+## 2026-05-19 — publish-ronde3-lo-oee-003
+
+**Kontext:** Ronde 3: lo-oee-003 (showcase 9 → 13 LOs)
+
+Toegevoegd:
+
+- `leerobjecten/lo-oee-003/trainee.md`
+- `kennisbank/oee/prestatie/ko-oee-003.md`
+- `leerobjecten/lo-oee-003/trainer.md`
+- `leerobjecten/lo-oee-003/draaiboek.md`
+- `leerobjecten/lo-oee-003/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-oee-003/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-oee-003/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-oee-003/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-oee-003/svg/diagram.svg`
+- `leerobjecten/lo-oee-003/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-oee-003/README.md`
+
+## 2026-05-19 — publish-ronde3-lo-data-lit-103
+
+**Kontext:** Ronde 3: lo-data-lit-103 (showcase 9 → 13 LOs)
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-103/trainee.md`
+- `kennisbank/data_literacy/data_kwaliteit/ko-data-lit-103.md`
+- `leerobjecten/lo-data-lit-103/trainer.md`
+- `leerobjecten/lo-data-lit-103/draaiboek.md`
+- `leerobjecten/lo-data-lit-103/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-data-lit-103/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-data-lit-103/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-data-lit-103/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-data-lit-103/svg/diagram.svg`
+- `leerobjecten/lo-data-lit-103/interactive/model.html`
+- `leerobjecten/lo-data-lit-103/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-data-lit-103/README.md`
+
+## 2026-05-19 — publish-ronde3-lo-spc-103
+
+**Kontext:** Ronde 3: lo-spc-103 (showcase 9 → 13 LOs)
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-103/trainee.md`
+- `kennisbank/spc/ai_integratie/ko-spc-103.md`
+- `leerobjecten/lo-spc-103/trainer.md`
+- `leerobjecten/lo-spc-103/draaiboek.md`
+- `leerobjecten/lo-spc-103/werkbladen/wb-01-vergelijk-papieren-en-digitaal.md`
+- `leerobjecten/lo-spc-103/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-103/werkbladen/wb-03-handout-klassiek-vs-industry40.md`
+- `leerobjecten/lo-spc-103/svg/diagram.svg`
+- `leerobjecten/lo-spc-103/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-103/README.md`
+
 ## 2026-05-19 — publish-ronde2-lo-smart-mfg-006
 
 **Kontext:** Ronde 2: lo-smart-mfg-006 (showcase 5 → 9 LOs over 6 domeinen)

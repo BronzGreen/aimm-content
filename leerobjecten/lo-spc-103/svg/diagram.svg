@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700"
+     role="img"
+     aria-labelledby="diagram-title diagram-desc">
+  <title id="diagram-title">Van papieren regelkaart naar digitaal dashboard — met het Shewhart-principe als brug</title>
+  <desc id="diagram-desc">Vergelijkend diagram in twee panelen. Links: een papieren X-bar-R-regelkaart met UCL-, gemiddelde- en LCL-lijn en met de hand getekende meetpunten. Rechts: een digitaal MES/SCADA-dashboard met een dichte tijdreeks, een alarm-indicator, kleurcodering en een AI-aanbeveling. In het midden een gele brug-band met de tekst "Shewhart-principe: is dit signaal of ruis?" die aangeeft dat onder beide dragers dezelfde vraag leeft. Onderin een vijf-rijen-tabel met de verschuivingen: meten, drager, detectie, reactietijd en datavolume. Boven de tabel een kopregel die klassiek (papier) versus Industry 4.0 (dashboard) aankondigt.</desc>
+
+  <defs>
+    <linearGradient id="bridgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="50%" stop-color="#fde68a"/>
+      <stop offset="100%" stop-color="#fef3c7"/>
+    </linearGradient>
+    <linearGradient id="paperGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fafaf9"/>
+      <stop offset="100%" stop-color="#e7e5e4"/>
+    </linearGradient>
+    <linearGradient id="dashGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="3" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.15"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect x="0" y="0" width="1200" height="700" fill="#ffffff"/>
+
+  <!-- Titel -->
+  <text x="600" y="42" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#0f172a">
+    Van papieren kaart naar dashboard
+  </text>
+  <text x="600" y="70" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#64748b">
+    Wat verandert — wat blijft hetzelfde
+  </text>
+
+  <!-- ── LINKS: Papieren kaart ── -->
+  <g transform="translate(60, 110)">
+    <rect x="0" y="0" width="420" height="300" rx="8" fill="url(#paperGrad)" stroke="#a8a29e" stroke-width="1.5" filter="url(#softShadow)"/>
+
+    <!-- Label -->
+    <rect x="12" y="12" width="140" height="28" rx="4" fill="#1e40af"/>
+    <text x="82" y="31" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#ffffff">
+      Klassiek — papier
+    </text>
+
+    <!-- Kaartnaam -->
+    <text x="210" y="32" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#44403c">
+      X-bar-R regelkaart · lijn 4 · 12-04-2010
+    </text>
+
+    <!-- Plot-gebied -->
+    <rect x="40" y="60" width="360" height="180" fill="#fdfcf7" stroke="#78716c" stroke-width="1"/>
+
+    <!-- Roostertekening (horizontale lijnen) -->
+    <g stroke="#d6d3d1" stroke-width="0.5">
+      <line x1="40" y1="90" x2="400" y2="90"/>
+      <line x1="40" y1="120" x2="400" y2="120"/>
+      <line x1="40" y1="150" x2="400" y2="150"/>
+      <line x1="40" y1="180" x2="400" y2="180"/>
+      <line x1="40" y1="210" x2="400" y2="210"/>
+    </g>
+
+    <!-- UCL lijn -->
+    <line x1="40" y1="90" x2="400" y2="90" stroke="#b91c1c" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <text x="410" y="94" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" fill="#b91c1c">UCL</text>
+
+    <!-- Gemiddelde -->
+    <line x1="40" y1="150" x2="400" y2="150" stroke="#166534" stroke-width="1.5"/>
+    <text x="410" y="154" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" fill="#166534">X̄</text>
+
+    <!-- LCL lijn -->
+    <line x1="40" y1="210" x2="400" y2="210" stroke="#b91c1c" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <text x="410" y="214" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" fill="#b91c1c">LCL</text>
+
+    <!-- Handgetekende punten (sparse, ~12 punten) -->
+    <g fill="#1c1917" stroke="#1c1917" stroke-width="1">
+      <circle cx="70" cy="145" r="3"/>
+      <circle cx="100" cy="152" r="3"/>
+      <circle cx="130" cy="148" r="3"/>
+      <circle cx="160" cy="155" r="3"/>
+      <circle cx="190" cy="142" r="3"/>
+      <circle cx="220" cy="150" r="3"/>
+      <circle cx="250" cy="147" r="3"/>
+      <circle cx="280" cy="158" r="3"/>
+      <circle cx="310" cy="145" r="3"/>
+      <circle cx="340" cy="152" r="3"/>
+      <circle cx="370" cy="148" r="3"/>
+      <circle cx="395" cy="155" r="3"/>
+    </g>
+    <!-- Handgetekende verbindingslijn -->
+    <polyline points="70,145 100,152 130,148 160,155 190,142 220,150 250,147 280,158 310,145 340,152 370,148 395,155"
+              fill="none" stroke="#1c1917" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+
+    <!-- Tijd-as -->
+    <text x="40" y="260" font-family="Inter, Arial, sans-serif" font-size="10" fill="#57534e">08:00</text>
+    <text x="395" y="260" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="10" fill="#57534e">16:00</text>
+    <text x="220" y="260" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#57534e">tijd (1 shift · ~12 meetpunten)</text>
+
+    <!-- Paraaf -->
+    <text x="40" y="285" font-family="'Brush Script MT', cursive" font-size="14" fill="#292524" font-style="italic">paraaf: J.B.</text>
+    <text x="400" y="285" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="10" fill="#57534e">fictief voorbeeld</text>
+  </g>
+
+  <!-- ── RECHTS: Dashboard ── -->
+  <g transform="translate(720, 110)">
+    <rect x="0" y="0" width="420" height="300" rx="8" fill="url(#dashGrad)" stroke="#475569" stroke-width="1.5" filter="url(#softShadow)"/>
+
+    <!-- Label -->
+    <rect x="12" y="12" width="170" height="28" rx="4" fill="#16a34a"/>
+    <text x="97" y="31" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#ffffff">
+      Industry 4.0 — dashboard
+    </text>
+
+    <!-- Status-bolletjes -->
+    <circle cx="300" cy="26" r="5" fill="#22c55e"/>
+    <circle cx="320" cy="26" r="5" fill="#eab308"/>
+    <circle cx="340" cy="26" r="5" fill="#ef4444"/>
+    <text x="360" y="30" font-family="Inter, Arial, sans-serif" font-size="10" fill="#cbd5e1">lijn 4 · live</text>
+
+    <!-- Plot-gebied -->
+    <rect x="20" y="60" width="260" height="180" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+
+    <!-- UCL/LCL zones -->
+    <rect x="20" y="60" width="260" height="30" fill="#7f1d1d" fill-opacity="0.25"/>
+    <rect x="20" y="210" width="260" height="30" fill="#7f1d1d" fill-opacity="0.25"/>
+    <rect x="20" y="90" width="260" height="30" fill="#78350f" fill-opacity="0.25"/>
+    <rect x="20" y="180" width="260" height="30" fill="#78350f" fill-opacity="0.25"/>
+    <rect x="20" y="120" width="260" height="60" fill="#14532d" fill-opacity="0.30"/>
+
+    <!-- Grid -->
+    <g stroke="#334155" stroke-width="0.5">
+      <line x1="20" y1="90" x2="280" y2="90"/>
+      <line x1="20" y1="120" x2="280" y2="120"/>
+      <line x1="20" y1="150" x2="280" y2="150"/>
+      <line x1="20" y1="180" x2="280" y2="180"/>
+      <line x1="20" y1="210" x2="280" y2="210"/>
+    </g>
+
+    <!-- UCL / gemiddelde / LCL -->
+    <line x1="20" y1="90" x2="280" y2="90" stroke="#fca5a5" stroke-width="1" stroke-dasharray="4,2"/>
+    <line x1="20" y1="150" x2="280" y2="150" stroke="#86efac" stroke-width="1"/>
+    <line x1="20" y1="210" x2="280" y2="210" stroke="#fca5a5" stroke-width="1" stroke-dasharray="4,2"/>
+
+    <!-- Dichte tijdreeks — veel punten, dicht opeen -->
+    <polyline fill="none" stroke="#38bdf8" stroke-width="1.2" stroke-linejoin="round"
+              points="25,150 30,148 35,152 40,149 45,151 50,147 55,153 60,150 65,148 70,152 75,149 80,151 85,146 90,154 95,150 100,148 105,152 110,149 115,151 120,147 125,153 130,150 135,148 140,152 145,149 150,151 155,146 160,154 165,150 170,148 175,152 180,149 185,151 190,147 195,153 200,150 205,145 210,140 215,135 220,128 225,115 230,100 235,92 240,88 245,95 250,105 255,118 260,130 265,142 270,150 275,152 280,150"/>
+
+    <!-- Alarm-punt -->
+    <circle cx="245" cy="95" r="6" fill="#ef4444" stroke="#fff" stroke-width="2">
+      <animate attributeName="r" values="6;9;6" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <text x="245" y="78" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" fill="#ef4444">⚠ alarm</text>
+
+    <!-- UCL/LCL-labels -->
+    <text x="285" y="93" font-family="Inter, Arial, sans-serif" font-size="9" fill="#fca5a5">UCL</text>
+    <text x="285" y="153" font-family="Inter, Arial, sans-serif" font-size="9" fill="#86efac">X̄</text>
+    <text x="285" y="213" font-family="Inter, Arial, sans-serif" font-size="9" fill="#fca5a5">LCL</text>
+
+    <!-- Tijd-as -->
+    <text x="20" y="258" font-family="Inter, Arial, sans-serif" font-size="9" fill="#94a3b8">14:00</text>
+    <text x="280" y="258" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="9" fill="#94a3b8">14:20</text>
+    <text x="150" y="258" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="9" fill="#94a3b8">tijd (20 min · ~1200 punten)</text>
+
+    <!-- Zij-paneel: AI-aanbeveling + KPI's -->
+    <g transform="translate(290, 60)">
+      <rect x="0" y="0" width="120" height="50" rx="4" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1"/>
+      <text x="8" y="15" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="600" fill="#93c5fd">AI-aanbeveling</text>
+      <text x="8" y="30" font-family="Inter, Arial, sans-serif" font-size="9" fill="#dbeafe">Check batch-wissel</text>
+      <text x="8" y="42" font-family="Inter, Arial, sans-serif" font-size="9" fill="#dbeafe">14:00 HDPE-B</text>
+
+      <rect x="0" y="60" width="120" height="40" rx="4" fill="#14532d" stroke="#22c55e" stroke-width="1"/>
+      <text x="8" y="75" font-family="Inter, Arial, sans-serif" font-size="9" fill="#bbf7d0">Cp</text>
+      <text x="60" y="75" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="600" fill="#86efac">1.42</text>
+      <text x="8" y="92" font-family="Inter, Arial, sans-serif" font-size="9" fill="#bbf7d0">Cpk</text>
+      <text x="60" y="92" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="600" fill="#86efac">1.28</text>
+
+      <rect x="0" y="110" width="120" height="30" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <text x="8" y="125" font-family="Inter, Arial, sans-serif" font-size="8" fill="#94a3b8">user: operator_04</text>
+      <text x="8" y="138" font-family="Inter, Arial, sans-serif" font-size="8" fill="#94a3b8">audit-log aan</text>
+    </g>
+
+    <text x="400" y="285" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="10" fill="#64748b">fictief voorbeeld</text>
+  </g>
+
+  <!-- ── BRUG: Shewhart-principe ── -->
+  <g transform="translate(480, 200)">
+    <rect x="0" y="0" width="240" height="120" rx="12" fill="url(#bridgeGrad)" stroke="#d97706" stroke-width="2" filter="url(#softShadow)"/>
+    <text x="120" y="28" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#92400e">
+      SHEWHART-PRINCIPE
+    </text>
+    <line x1="50" y1="38" x2="190" y2="38" stroke="#d97706" stroke-width="1"/>
+    <text x="120" y="60" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#451a03">
+      Is dit signaal
+    </text>
+    <text x="120" y="80" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#451a03">
+      of is dit ruis?
+    </text>
+    <text x="120" y="106" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" font-style="italic" fill="#78350f">
+      1931 · ISO 7870-2
+    </text>
+  </g>
+
+  <!-- Pijlen van brug naar beide panelen -->
+  <g fill="none" stroke="#d97706" stroke-width="2">
+    <path d="M 480 260 L 440 260" stroke-linecap="round"/>
+    <polygon points="440,260 450,255 450,265" fill="#d97706"/>
+    <path d="M 720 260 L 760 260" stroke-linecap="round"/>
+    <polygon points="760,260 750,255 750,265" fill="#d97706"/>
+  </g>
+
+  <!-- ── ONDER: Vergelijkingstabel ── -->
+  <g transform="translate(60, 450)">
+    <text x="540" y="0" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a">
+      De vijf verschuivingen
+    </text>
+
+    <!-- Tabelkop -->
+    <rect x="0" y="15" width="200" height="34" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <rect x="200" y="15" width="440" height="34" fill="#dbeafe" stroke="#cbd5e1"/>
+    <rect x="640" y="15" width="440" height="34" fill="#dcfce7" stroke="#cbd5e1"/>
+    <text x="100" y="36" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#0f172a">Aspect</text>
+    <text x="420" y="36" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#1e40af">Klassiek (papier)</text>
+    <text x="860" y="36" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#166534">Industry 4.0 (dashboard)</text>
+
+    <!-- Rijen -->
+    <g font-family="Inter, Arial, sans-serif" font-size="11" fill="#1e293b">
+      <!-- Meten -->
+      <rect x="0" y="49" width="200" height="28" fill="#ffffff" stroke="#e2e8f0"/>
+      <rect x="200" y="49" width="440" height="28" fill="#eff6ff" stroke="#e2e8f0"/>
+      <rect x="640" y="49" width="440" height="28" fill="#f0fdf4" stroke="#e2e8f0"/>
+      <text x="12" y="68" font-weight="600">Meten</text>
+      <text x="212" y="68">Handmatig · per uur</text>
+      <text x="652" y="68">Continu · via sensor</text>
+
+      <!-- Drager -->
+      <rect x="0" y="77" width="200" height="28" fill="#ffffff" stroke="#e2e8f0"/>
+      <rect x="200" y="77" width="440" height="28" fill="#eff6ff" stroke="#e2e8f0"/>
+      <rect x="640" y="77" width="440" height="28" fill="#f0fdf4" stroke="#e2e8f0"/>
+      <text x="12" y="96" font-weight="600">Drager</text>
+      <text x="212" y="96">Papier · spreadsheet</text>
+      <text x="652" y="96">Cloud · MES · SCADA</text>
+
+      <!-- Detectie -->
+      <rect x="0" y="105" width="200" height="28" fill="#ffffff" stroke="#e2e8f0"/>
+      <rect x="200" y="105" width="440" height="28" fill="#eff6ff" stroke="#e2e8f0"/>
+      <rect x="640" y="105" width="440" height="28" fill="#f0fdf4" stroke="#e2e8f0"/>
+      <text x="12" y="124" font-weight="600">Detectie</text>
+      <text x="212" y="124">Operator scant de kaart</text>
+      <text x="652" y="124">Alarmregel · soms AI</text>
+
+      <!-- Reactietijd -->
+      <rect x="0" y="133" width="200" height="28" fill="#ffffff" stroke="#e2e8f0"/>
+      <rect x="200" y="133" width="440" height="28" fill="#eff6ff" stroke="#e2e8f0"/>
+      <rect x="640" y="133" width="440" height="28" fill="#f0fdf4" stroke="#e2e8f0"/>
+      <text x="12" y="152" font-weight="600">Reactietijd</text>
+      <text x="212" y="152">Uren tot dagen</text>
+      <text x="652" y="152">Seconden tot minuten</text>
+
+      <!-- Datavolume -->
+      <rect x="0" y="161" width="200" height="28" fill="#ffffff" stroke="#e2e8f0"/>
+      <rect x="200" y="161" width="440" height="28" fill="#eff6ff" stroke="#e2e8f0"/>
+      <rect x="640" y="161" width="440" height="28" fill="#f0fdf4" stroke="#e2e8f0"/>
+      <text x="12" y="180" font-weight="600">Datavolume</text>
+      <text x="212" y="180">Tientallen punten / dag</text>
+      <text x="652" y="180">Miljoenen punten / dag</text>
+    </g>
+
+    <!-- Bron -->
+    <text x="540" y="215" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" font-style="italic" fill="#64748b">
+      Bronnen: Shewhart (1931) · ISO 7870-2 · recente literatuur Industry 4.0 SPC (zie ko-spc-103.yaml)
+    </text>
+  </g>
+</svg>

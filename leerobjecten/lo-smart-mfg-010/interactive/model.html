@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI-inspectie Simulator | AIMM</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    const STAPPEN = [
+      { id: 1, naam: "Snijden", icon: "1", defectKans: 0.02 },
+      { id: 2, naam: "Frezen", icon: "2", defectKans: 0.10 },
+      { id: 3, naam: "Boren", icon: "3", defectKans: 0.05 },
+      { id: 4, naam: "Schuren", icon: "4", defectKans: 0.03 },
+      { id: 5, naam: "Coaten", icon: "5", defectKans: 0.04 },
+      { id: 6, naam: "Eindcontrole", icon: "6", defectKans: 0 },
+    ];
+
+    function App() {
+      const [cameraNaStap, setCameraNaStap] = useState(null);
+      const [aantalProducten, setAantalProducten] = useState(100);
+      const [showResultaat, setShowResultaat] = useState(false);
+
+      const resultaat = useMemo(() => {
+        let traditioneelVerspild = 0;
+        let aiVerspild = 0;
+        let defectenTotaal = 0;
+        let defectenVroegGevonden = 0;
+
+        for (let p = 0; p < aantalProducten; p++) {
+          let defectBijStap = null;
+          for (let s = 0; s < STAPPEN.length; s++) {
+            if (Math.random() < STAPPEN[s].defectKans) {
+              defectBijStap = s;
+              break;
+            }
+          }
+
+          if (defectBijStap !== null) {
+            defectenTotaal++;
+            // Traditioneel: alle stappen doorlopen
+            traditioneelVerspild += (STAPPEN.length - 1 - defectBijStap);
+
+            // Met AI-camera
+            if (cameraNaStap !== null && defectBijStap < cameraNaStap) {
+              // Defect voor de camera: camera vangt het op
+              aiVerspild += (cameraNaStap - defectBijStap);
+              defectenVroegGevonden++;
+            } else if (cameraNaStap !== null && defectBijStap >= cameraNaStap) {
+              // Defect na de camera: niet gevangen
+              aiVerspild += (STAPPEN.length - 1 - defectBijStap);
+            } else {
+              // Geen camera
+              aiVerspild += (STAPPEN.length - 1 - defectBijStap);
+            }
+          }
+        }
+
+        const bespaard = traditioneelVerspild > 0
+          ? Math.round(((traditioneelVerspild - aiVerspild) / traditioneelVerspild) * 100)
+          : 0;
+
+        return {
+          traditioneelVerspild,
+          aiVerspild,
+          defectenTotaal,
+          defectenVroegGevonden,
+          bespaard,
+        };
+      }, [cameraNaStap, aantalProducten, showResultaat]);
+
+      const handleSimuleer = () => {
+        setShowResultaat(true);
+      };
+
+      const handleReset = () => {
+        setCameraNaStap(null);
+        setAantalProducten(100);
+        setShowResultaat(false);
+      };
+
+      return (
+        <div className="min-h-screen bg-gray-50">
+          {/* Header */}
+          <div className="bg-white border-b px-6 py-4">
+            <h1 className="text-xl md:text-2xl font-bold text-gray-900">
+              AI-inspectie Simulator
+            </h1>
+            <p className="text-gray-500 mt-1 text-sm">
+              Waar zou jij een AI-camera plaatsen? Klik op een stap en bekijk het resultaat.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto p-4 md:p-6 space-y-6">
+
+            {/* Info box */}
+            <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-xl text-sm text-blue-800">
+              <span className="text-lg flex-shrink-0">&#9432;</span>
+              <div>
+                <strong>Hoe werkt het?</strong> Klik op een stap in de productielijn.
+                Daar plaatst de simulator een AI-camera.
+                Druk dan op "Simuleer" om te zien hoeveel je bespaart.
+              </div>
+            </div>
+
+            {/* Productielijn */}
+            <div>
+              <h2 className="text-lg font-bold text-gray-800 mb-3">Jouw productielijn</h2>
+              <div className="flex flex-wrap gap-2 items-center">
+                {STAPPEN.map((stap, i) => (
+                  <React.Fragment key={stap.id}>
+                    <button
+                      onClick={() => {
+                        setCameraNaStap(i + 1);
+                        setShowResultaat(false);
+                      }}
+                      className={`
+                        relative px-4 py-3 rounded-xl border-2 text-sm font-medium
+                        transition-all duration-200 min-w-[90px] text-center
+                        ${cameraNaStap === i + 1
+                          ? "bg-blue-500 text-white border-blue-600 shadow-lg scale-105"
+                          : i === 5
+                            ? "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
+                            : "bg-white text-gray-700 border-gray-200 hover:border-blue-300 hover:shadow-md cursor-pointer"
+                        }
+                      `}
+                      disabled={i === 5}
+                    >
+                      <div className="font-bold">{stap.naam}</div>
+                      <div className="text-xs opacity-70 mt-0.5">Stap {stap.id}</div>
+                      {stap.defectKans > 0.05 && (
+                        <div className="absolute -top-2 -right-2 bg-amber-400 text-white text-xs px-1.5 py-0.5 rounded-full font-bold">
+                          !
+                        </div>
+                      )}
+                    </button>
+                    {i < STAPPEN.length - 1 && (
+                      <div className="text-gray-300 font-bold">
+                        {cameraNaStap === i + 1 ? (
+                          <span className="text-blue-500 text-lg">&#128247;</span>
+                        ) : (
+                          <span>&#8594;</span>
+                        )}
+                      </div>
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
+              {cameraNaStap && (
+                <p className="mt-3 text-sm text-blue-600 font-medium">
+                  &#128247; AI-camera geplaatst na stap {cameraNaStap}: {STAPPEN[cameraNaStap - 1].naam}
+                </p>
+              )}
+            </div>
+
+            {/* Slider: aantal producten */}
+            <div className="bg-white rounded-xl border p-4 space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className="font-medium text-gray-700">Aantal producten per dag</span>
+                <span className="font-bold text-blue-600">{aantalProducten}</span>
+              </div>
+              <input
+                type="range"
+                min="10"
+                max="500"
+                step="10"
+                value={aantalProducten}
+                onChange={(e) => {
+                  setAantalProducten(+e.target.value);
+                  setShowResultaat(false);
+                }}
+                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-500"
+              />
+              <div className="flex justify-between text-xs text-gray-400">
+                <span>10</span>
+                <span>500</span>
+              </div>
+            </div>
+
+            {/* Knoppen */}
+            <div className="flex gap-3">
+              <button
+                onClick={handleSimuleer}
+                disabled={!cameraNaStap}
+                className={`
+                  px-6 py-3 rounded-lg font-medium transition-colors
+                  ${cameraNaStap
+                    ? "bg-blue-500 text-white hover:bg-blue-600 active:bg-blue-700"
+                    : "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  }
+                `}
+              >
+                Simuleer
+              </button>
+              <button
+                onClick={handleReset}
+                className="px-4 py-3 text-gray-500 hover:text-gray-700 text-sm flex items-center gap-1"
+              >
+                &#8634; Opnieuw
+              </button>
+            </div>
+
+            {/* Resultaten */}
+            {showResultaat && (
+              <div className="space-y-4 animate-[fadeIn_0.4s_ease-out]">
+                <h2 className="text-lg font-bold text-gray-800">Resultaat</h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Traditioneel */}
+                  <div className="bg-red-50 rounded-xl border border-red-200 p-5">
+                    <div className="text-sm font-medium text-red-700 mb-1">Zonder AI-camera</div>
+                    <div className="text-3xl font-bold text-red-600">{resultaat.traditioneelVerspild}</div>
+                    <div className="text-sm text-red-500 mt-1">verspilde bewerkingen</div>
+                    <div className="text-xs text-gray-500 mt-2">
+                      {resultaat.defectenTotaal} defecten gevonden, maar pas aan het einde
+                    </div>
+                  </div>
+
+                  {/* Met AI */}
+                  <div className="bg-green-50 rounded-xl border border-green-200 p-5">
+                    <div className="text-sm font-medium text-green-700 mb-1">Met AI-camera na stap {cameraNaStap}</div>
+                    <div className="text-3xl font-bold text-green-600">{resultaat.aiVerspild}</div>
+                    <div className="text-sm text-green-500 mt-1">verspilde bewerkingen</div>
+                    <div className="text-xs text-gray-500 mt-2">
+                      {resultaat.defectenVroegGevonden} van {resultaat.defectenTotaal} defecten vroeg gevonden
+                    </div>
+                  </div>
+                </div>
+
+                {/* Besparing */}
+                <div className="bg-white rounded-xl border-2 border-green-300 p-5 text-center">
+                  <div className="text-sm text-gray-600 mb-1">Besparing door AI-inspectie</div>
+                  <div className="text-4xl font-bold text-green-600">
+                    {resultaat.bespaard}%
+                  </div>
+                  <div className="text-sm text-gray-500 mt-2">
+                    minder verspilde bewerkingen
+                  </div>
+                  {resultaat.bespaard > 40 && (
+                    <div className="mt-3 inline-flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">
+                      Grote besparing mogelijk
+                    </div>
+                  )}
+                </div>
+
+                {/* Tip */}
+                <div className="flex items-start gap-3 p-4 bg-amber-50 rounded-xl text-sm text-amber-800">
+                  <span className="text-lg flex-shrink-0">&#128161;</span>
+                  <div>
+                    <strong>Tip:</strong> Probeer de camera na een andere stap te plaatsen.
+                    Welke positie bespaart het meest?
+                    Het gele uitroepteken laat zien waar de meeste defecten ontstaan.
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Footer */}
+            <div className="text-center text-xs text-gray-400 pt-4 border-t">
+              AI-gestuurde kwaliteitscontrole | AIMM Curriculum | ko-smart-mfg-010 | v1.0
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</body>
+</html>
