@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde3-lo-spc-103
+
+**Kontext:** Ronde 3: lo-spc-103 (showcase 9 → 13 LOs)
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-103/trainee.md`
+- `kennisbank/spc/ai_integratie/ko-spc-103.md`
+- `leerobjecten/lo-spc-103/trainer.md`
+- `leerobjecten/lo-spc-103/draaiboek.md`
+- `leerobjecten/lo-spc-103/werkbladen/wb-01-vergelijk-papieren-en-digitaal.md`
+- `leerobjecten/lo-spc-103/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-103/werkbladen/wb-03-handout-klassiek-vs-industry40.md`
+- `leerobjecten/lo-spc-103/svg/diagram.svg`
+- `leerobjecten/lo-spc-103/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-103/README.md`
+
 ## 2026-05-19 — publish-ronde2-lo-smart-mfg-006
 
 **Kontext:** Ronde 2: lo-smart-mfg-006 (showcase 5 → 9 LOs over 6 domeinen)
