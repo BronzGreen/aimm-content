@@ -1,0 +1,157 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 520"
+     font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Meten is weten - drie stappen om te beginnen met data</title>
+  <desc id="desc">Een stappendiagram dat laat zien hoe je begint met data op de werkvloer. Stap 1: kies een machine. Stap 2: kies een meting. Stap 3: schrijf het op. Daaronder staan vijf databronnen die je al hebt: productietellers, storingslogs, temperatuurmetingen, kwaliteitsregistraties en ploegenoverdrachten.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="grad-step1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5DADE2"/>
+      <stop offset="100%" stop-color="#3498DB"/>
+    </linearGradient>
+    <linearGradient id="grad-step2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="grad-step3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2980B9"/>
+      <stop offset="100%" stop-color="#1A5276"/>
+    </linearGradient>
+    <linearGradient id="grad-data" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#27AE60"/>
+      <stop offset="100%" stop-color="#1E8449"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="800" height="520" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="400" y="38" text-anchor="middle" font-size="22"
+        font-weight="700" fill="#2C3E50" letter-spacing="1">Meten is weten</text>
+  <text x="400" y="60" text-anchor="middle" font-size="13"
+        fill="#7f8c8d" letter-spacing="0.5">Drie stappen om te beginnen met data</text>
+
+  <!-- Verticale pijl links -->
+  <line x1="55" y1="310" x2="55" y2="100" stroke="#BDC3C7"
+        stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="45" y="205" text-anchor="middle" font-size="11" font-weight="600"
+        fill="#7f8c8d" transform="rotate(-90,45,205)">Meer inzicht</text>
+
+  <!-- Stap 1: Kies een machine -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="240" width="200" height="75" rx="8" fill="url(#grad-step1)"/>
+    <text x="115" y="270" font-size="12" font-weight="700" fill="white">STAP 1</text>
+    <text x="115" y="290" font-size="14" font-weight="600" fill="white">Kies een machine</text>
+    <text x="115" y="306" font-size="10" fill="rgba(255,255,255,0.8)">Begin met de machine die</text>
+    <text x="115" y="318" font-size="10" fill="rgba(255,255,255,0.8)">het vaakst stilstaat</text>
+  </g>
+
+  <!-- Verbindingslijn 1-2 -->
+  <line x1="280" y1="278" x2="310" y2="208" stroke="#7f8c8d"
+        stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Stap 2: Kies een meting -->
+  <g filter="url(#shadow)">
+    <rect x="310" y="170" width="200" height="75" rx="8" fill="url(#grad-step2)"/>
+    <text x="345" y="200" font-size="12" font-weight="700" fill="white">STAP 2</text>
+    <text x="345" y="220" font-size="14" font-weight="600" fill="white">Kies een meting</text>
+    <text x="345" y="236" font-size="10" fill="rgba(255,255,255,0.8)">Welk getal wil je</text>
+    <text x="345" y="248" font-size="10" fill="rgba(255,255,255,0.8)">elke dag weten?</text>
+  </g>
+
+  <!-- Verbindingslijn 2-3 -->
+  <line x1="510" y1="208" x2="540" y2="138" stroke="#7f8c8d"
+        stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Stap 3: Schrijf het op -->
+  <g filter="url(#shadow)">
+    <rect x="540" y="100" width="200" height="75" rx="8" fill="url(#grad-step3)"/>
+    <text x="575" y="130" font-size="12" font-weight="700" fill="white">STAP 3</text>
+    <text x="575" y="150" font-size="14" font-weight="600" fill="white">Schrijf het op</text>
+    <text x="575" y="166" font-size="10" fill="rgba(255,255,255,0.8)">Een week lang, elke dag,</text>
+    <text x="575" y="178" font-size="10" fill="rgba(255,255,255,0.8)">hetzelfde getal</text>
+  </g>
+
+  <!-- Resultaat-label -->
+  <text x="640" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#1A5276">
+    Je ziet patronen!
+  </text>
+
+  <!-- Scheiding -->
+  <line x1="60" y1="350" x2="740" y2="350" stroke="#D1D5DB" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="400" y="375" text-anchor="middle" font-size="12" font-weight="600" fill="#2C3E50">
+    Wat heb je al? Vijf databronnen op je werkplek
+  </text>
+
+  <!-- Databron 1: Productietellers -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="395" width="130" height="55" rx="6" fill="url(#grad-data)"/>
+    <text x="105" y="418" text-anchor="middle" font-size="11"
+          font-weight="700" fill="white">Productie-</text>
+    <text x="105" y="434" text-anchor="middle" font-size="11"
+          font-weight="700" fill="white">tellers</text>
+    <text x="105" y="448" text-anchor="middle" font-size="9"
+          fill="rgba(255,255,255,0.8)">Hoeveel stuks?</text>
+  </g>
+
+  <!-- Databron 2: Storingslogs -->
+  <g filter="url(#shadow)">
+    <rect x="185" y="395" width="130" height="55" rx="6" fill="url(#grad-data)"/>
+    <text x="250" y="418" text-anchor="middle" font-size="11"
+          font-weight="700" fill="white">Storings-</text>
+    <text x="250" y="434" text-anchor="middle" font-size="11"
+          font-weight="700" fill="white">logs</text>
+    <text x="250" y="448" text-anchor="middle" font-size="9"
+          fill="rgba(255,255,255,0.8)">Wanneer stilstand?</text>
+  </g>
+
+  <!-- Databron 3: Temperatuur -->
+  <g filter="url(#shadow)">
+    <rect x="330" y="395" width="130" height="55" rx="6" fill="url(#grad-data)"/>
+    <text x="395" y="418" text-anchor="middle" font-size="11"
+          font-weight="700" fill="white">Temperatuur-</text>
+    <text x="395" y="434" text-anchor="middle" font-size="11"
+          font-weight="700" fill="white">metingen</text>
+    <text x="395" y="448" text-anchor="middle" font-size="9"
+          fill="rgba(255,255,255,0.8)">Hoe warm?</text>
+  </g>
+
+  <!-- Databron 4: Kwaliteit -->
+  <g filter="url(#shadow)">
+    <rect x="475" y="395" width="130" height="55" rx="6" fill="url(#grad-data)"/>
+    <text x="540" y="418" text-anchor="middle" font-size="11"
+          font-weight="700" fill="white">Kwaliteits-</text>
+    <text x="540" y="434" text-anchor="middle" font-size="11"
+          font-weight="700" fill="white">registraties</text>
+    <text x="540" y="448" text-anchor="middle" font-size="9"
+          fill="rgba(255,255,255,0.8)">Goed of afgekeurd?</text>
+  </g>
+
+  <!-- Databron 5: Ploegenoverdrachten -->
+  <g filter="url(#shadow)">
+    <rect x="620" y="395" width="130" height="55" rx="6" fill="url(#grad-data)"/>
+    <text x="685" y="418" text-anchor="middle" font-size="11"
+          font-weight="700" fill="white">Ploegen-</text>
+    <text x="685" y="434" text-anchor="middle" font-size="11"
+          font-weight="700" fill="white">overdrachten</text>
+    <text x="685" y="448" text-anchor="middle" font-size="9"
+          fill="rgba(255,255,255,0.8)">Notities vorige dienst</text>
+  </g>
+
+  <!-- Pijlen van databronnen naar stap 1 -->
+  <line x1="105" y1="395" x2="140" y2="320" stroke="#BDC3C7"
+        stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="250" y1="395" x2="200" y2="320" stroke="#BDC3C7"
+        stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Bronvermelding -->
+  <text x="400" y="500" text-anchor="middle"
+        font-size="10" fill="#999">AIMM Curriculum - Data Literacy | Module 1: Gebruik | v1.0</text>
+</svg>

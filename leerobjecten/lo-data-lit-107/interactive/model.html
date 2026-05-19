@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data-speurtocht - Meten is weten</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    const DATABRONNEN = [
+      { id: "productietellers", label: "Productietellers", vraag: "Hoeveel stuks maakt je machine per dag?", voorbeeld: "Teller op het scherm: 1.200 stuks vandaag", icon: "📊" },
+      { id: "storingslogs", label: "Storingslogs", vraag: "Wanneer stond je machine stil?", voorbeeld: "Storing om 14:30 - sensor gaf foutmelding", icon: "🔴" },
+      { id: "temperatuur", label: "Temperatuurmetingen", vraag: "Hoe warm wordt je machine?", voorbeeld: "Olietemperatuur: 62 graden", icon: "🌡️" },
+      { id: "kwaliteit", label: "Kwaliteitsregistraties", vraag: "Hoeveel stuks zijn goed of afgekeurd?", voorbeeld: "3 stuks afgekeurd op maat", icon: "✅" },
+      { id: "ploegen", label: "Ploegenoverdrachten", vraag: "Wat schreef de vorige dienst op?", voorbeeld: "Let op: machine trilt bij hoge snelheid", icon: "📝" },
+    ];
+
+    const STAPPEN = [
+      { titel: "Kies een machine", uitleg: "Neem de machine die het vaakst stilstaat." },
+      { titel: "Kies een meting", uitleg: "Welk getal wil je elke dag weten?" },
+      { titel: "Schrijf het op", uitleg: "Een week lang, elke dag, hetzelfde getal." },
+    ];
+
+    function App() {
+      const [gevonden, setGevonden] = useState({});
+      const [stap, setStap] = useState("speurtocht");
+      const [machine, setMachine] = useState("");
+      const [meting, setMeting] = useState("");
+      const [actief, setActief] = useState(null);
+
+      const aantalGevonden = Object.values(gevonden).filter(Boolean).length;
+      const totaal = DATABRONNEN.length;
+
+      const toggleBron = (id) => {
+        setGevonden(prev => ({ ...prev, [id]: !prev[id] }));
+      };
+
+      const reset = () => {
+        setGevonden({});
+        setStap("speurtocht");
+        setMachine("");
+        setMeting("");
+        setActief(null);
+      };
+
+      return (
+        <div className="min-h-screen bg-gray-50">
+          {/* Header */}
+          <div className="bg-white border-b px-6 py-4">
+            <h1 className="text-2xl font-bold text-gray-900">Meten is weten</h1>
+            <p className="text-gray-500 mt-1">Ontdek welke data je al hebt op je werkplek</p>
+          </div>
+
+          <div className="max-w-3xl mx-auto p-6">
+
+            {/* Tabs */}
+            <div className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-6">
+              {[
+                { id: "speurtocht", label: "Speurtocht" },
+                { id: "plan", label: "Mijn plan" },
+                { id: "resultaat", label: "Resultaat" }
+              ].map(tab => (
+                <button
+                  key={tab.id}
+                  className={`flex-1 px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                    stap === tab.id
+                      ? "bg-white shadow-sm text-gray-900"
+                      : "text-gray-500 hover:text-gray-700"
+                  }`}
+                  onClick={() => setStap(tab.id)}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Tab: Speurtocht */}
+            {stap === "speurtocht" && (
+              <div>
+                <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-xl text-sm text-blue-800 mb-6">
+                  <span className="text-lg">💡</span>
+                  <div>Klik op elke databron die je herkent van je eigen werkplek. Je hoeft ze niet allemaal te vinden!</div>
+                </div>
+
+                {/* Voortgang */}
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-green-500 rounded-full transition-all duration-500"
+                      style={{ width: `${(aantalGevonden / totaal) * 100}%` }}
+                    />
+                  </div>
+                  <span className="text-sm text-gray-500 font-mono">{aantalGevonden}/{totaal}</span>
+                </div>
+
+                {/* Databronnen */}
+                <div className="space-y-3">
+                  {DATABRONNEN.map(bron => (
+                    <div key={bron.id}>
+                      <div
+                        className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                          gevonden[bron.id]
+                            ? "bg-green-50 border-green-400 shadow-md"
+                            : "bg-white border-gray-200 hover:border-blue-300 hover:shadow-sm"
+                        }`}
+                        onClick={() => { toggleBron(bron.id); setActief(actief === bron.id ? null : bron.id); }}
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <span className="text-2xl">{bron.icon}</span>
+                            <div>
+                              <div className="font-bold text-gray-900">{bron.label}</div>
+                              <div className="text-sm text-gray-500">{bron.vraag}</div>
+                            </div>
+                          </div>
+                          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold transition-all ${
+                            gevonden[bron.id] ? "bg-green-500" : "bg-gray-200"
+                          }`}>
+                            {gevonden[bron.id] ? "✓" : ""}
+                          </div>
+                        </div>
+                      </div>
+                      {actief === bron.id && (
+                        <div className="ml-12 mt-2 p-3 bg-amber-50 rounded-lg text-sm text-amber-800 border border-amber-200">
+                          <span className="font-medium">Voorbeeld: </span>{bron.voorbeeld}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {aantalGevonden >= 3 && (
+                  <button
+                    className="mt-6 w-full py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
+                    onClick={() => setStap("plan")}
+                  >
+                    Ga door naar mijn plan →
+                  </button>
+                )}
+              </div>
+            )}
+
+            {/* Tab: Plan */}
+            {stap === "plan" && (
+              <div>
+                <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-xl text-sm text-blue-800 mb-6">
+                  <span className="text-lg">🎯</span>
+                  <div>Volg de drie stappen. Begin klein. Een machine, een meting, een week.</div>
+                </div>
+
+                <div className="space-y-4">
+                  {/* Stap 1 */}
+                  <div className="bg-white rounded-xl border p-5 space-y-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm">1</div>
+                      <div>
+                        <div className="font-bold">Kies een machine</div>
+                        <div className="text-sm text-gray-500">Neem de machine die het vaakst stilstaat</div>
+                      </div>
+                    </div>
+                    <input
+                      type="text"
+                      value={machine}
+                      onChange={e => setMachine(e.target.value)}
+                      placeholder="Typ hier de naam of het nummer van je machine..."
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-700"
+                    />
+                  </div>
+
+                  {/* Stap 2 */}
+                  <div className="bg-white rounded-xl border p-5 space-y-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm">2</div>
+                      <div>
+                        <div className="font-bold">Kies een meting</div>
+                        <div className="text-sm text-gray-500">Welk getal wil je elke dag weten?</div>
+                      </div>
+                    </div>
+                    <input
+                      type="text"
+                      value={meting}
+                      onChange={e => setMeting(e.target.value)}
+                      placeholder="Typ hier welk getal je gaat bijhouden..."
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-700"
+                    />
+                  </div>
+
+                  {/* Stap 3 */}
+                  <div className="bg-white rounded-xl border p-5">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-blue-800 text-white flex items-center justify-center font-bold text-sm">3</div>
+                      <div>
+                        <div className="font-bold">Schrijf het op</div>
+                        <div className="text-sm text-gray-500">Een week lang, elke dag, hetzelfde getal. Na een week zie je patronen.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {machine && meting && (
+                  <button
+                    className="mt-6 w-full py-3 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors"
+                    onClick={() => setStap("resultaat")}
+                  >
+                    Bekijk mijn samenvatting →
+                  </button>
+                )}
+              </div>
+            )}
+
+            {/* Tab: Resultaat */}
+            {stap === "resultaat" && (
+              <div>
+                <div className="bg-white rounded-xl border p-6 space-y-4">
+                  <h2 className="text-xl font-bold text-gray-900">Jouw plan</h2>
+
+                  <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+                    <div className="text-sm text-green-700 font-medium mb-1">Gevonden databronnen</div>
+                    <div className="flex flex-wrap gap-2">
+                      {DATABRONNEN.filter(b => gevonden[b.id]).map(b => (
+                        <span key={b.id} className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                          {b.icon} {b.label}
+                        </span>
+                      ))}
+                      {aantalGevonden === 0 && <span className="text-sm text-gray-500">Nog geen bronnen geselecteerd</span>}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                      <div className="text-sm text-blue-700 font-medium mb-1">Mijn machine</div>
+                      <div className="text-lg font-bold text-blue-900">{machine || "—"}</div>
+                    </div>
+                    <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                      <div className="text-sm text-blue-700 font-medium mb-1">Mijn meting</div>
+                      <div className="text-lg font-bold text-blue-900">{meting || "—"}</div>
+                    </div>
+                  </div>
+
+                  <div className="bg-amber-50 rounded-lg p-4 border border-amber-200">
+                    <div className="text-sm text-amber-700 font-medium mb-2">Volgende stap</div>
+                    <div className="text-sm text-amber-900">
+                      Schrijf een week lang elke dag je getal op. Bespreek daarna met je buddy wat je ziet. Zie je een patroon?
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  className="mt-6 mx-auto flex items-center gap-2 text-gray-500 hover:text-gray-700 text-sm"
+                  onClick={reset}
+                >
+                  ↻ Opnieuw beginnen
+                </button>
+              </div>
+            )}
+
+            {/* Footer */}
+            <div className="mt-8 text-center text-xs text-gray-400">
+              AIMM Curriculum - Data Literacy | Module 1: Gebruik | v1.0
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
