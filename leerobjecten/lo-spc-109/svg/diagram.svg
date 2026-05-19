@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">Subgroep-strategie voor Ford PPAP capabilitystudie</title>
+  <desc id="svg-desc">Schematische weergave van een subgroep-strategie die voldoet aan Ford PPAP: minimaal 25 subgroepen van minimaal 5 metingen per subgroep. Horizontale as toont 25 subgroepen (bijv. één per uur over 5 dagen). Elke subgroep bevat 5 individuele metingen (stippen). Binnen-subgroep-variatie illustreert natuurlijke proces-spreiding; tussen-subgroep-variatie illustreert eventuele drift of shift. Bron-note: Ford PPAP 4th edition.</desc>
+
+  <style>
+    .axis { stroke: #333; stroke-width: 2; fill: none; }
+    .label { font-family: Arial, sans-serif; font-size: 14px; fill: #222; }
+    .label-bold { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #1a1a1a; }
+    .dot { fill: #2a6fba; }
+    .dot-ring { fill: none; stroke: #d9480f; stroke-width: 2; stroke-dasharray: 4,3; }
+    .cl { stroke: #2a6fba; stroke-width: 2; stroke-dasharray: 6,4; fill: none; }
+    .spec { stroke: #d9480f; stroke-width: 1.5; stroke-dasharray: 3,3; fill: none; }
+    .source-note { font-family: Arial, sans-serif; font-size: 11px; fill: #666; font-style: italic; }
+    .fictive-note { font-family: Arial, sans-serif; font-size: 11px; fill: #8a4a00; font-weight: bold; }
+    .callout { font-family: Arial, sans-serif; font-size: 12px; fill: #1a1a1a; }
+    .ring-label { font-family: Arial, sans-serif; font-size: 11px; fill: #d9480f; font-style: italic; }
+  </style>
+
+  <!-- Title -->
+  <text x="400" y="30" class="label-bold" text-anchor="middle">Subgroep-strategie — Ford PPAP (minimaal 25 × 5)</text>
+  <text x="400" y="52" class="source-note" text-anchor="middle">Fictieve illustratie conform Ford PPAP 4th ed. vereiste</text>
+
+  <!-- Chart frame -->
+  <line x1="80" y1="100" x2="80" y2="450" class="axis"/>
+  <line x1="80" y1="450" x2="760" y2="450" class="axis"/>
+
+  <!-- Y-axis label -->
+  <text x="30" y="275" class="label" transform="rotate(-90, 30, 275)" text-anchor="middle">Meetwaarde</text>
+
+  <!-- X-axis label -->
+  <text x="420" y="495" class="label" text-anchor="middle">Subgroep-nummer (25 subgroepen, bijv. 1 per uur × 5 dagen)</text>
+
+  <!-- Central line + spec limits (illustratief) -->
+  <line x1="80" y1="275" x2="760" y2="275" class="cl"/>
+  <text x="770" y="280" class="callout">CL (gemiddelde)</text>
+  <line x1="80" y1="180" x2="760" y2="180" class="spec"/>
+  <text x="770" y="185" class="callout">USL</text>
+  <line x1="80" y1="370" x2="760" y2="370" class="spec"/>
+  <text x="770" y="375" class="callout">LSL</text>
+
+  <!-- 25 subgroups × 5 dots each (schematic) -->
+  <!-- Each subgroup occupies ~26px horizontally; dots cluster vertically around CL -->
+
+  <!-- Subgroups 1-25: for readability, we draw a subset but indicate "25" via brackets -->
+  <!-- Early subgroups -->
+  <g transform="translate(100, 0)">
+    <circle cx="0" cy="260" r="3" class="dot"/><circle cx="0" cy="285" r="3" class="dot"/><circle cx="0" cy="270" r="3" class="dot"/><circle cx="0" cy="280" r="3" class="dot"/><circle cx="0" cy="275" r="3" class="dot"/>
+    <ellipse cx="0" cy="274" rx="8" ry="18" class="dot-ring"/>
+  </g>
+  <text x="100" y="465" class="label" text-anchor="middle">1</text>
+
+  <g transform="translate(126, 0)">
+    <circle cx="0" cy="265" r="3" class="dot"/><circle cx="0" cy="278" r="3" class="dot"/><circle cx="0" cy="272" r="3" class="dot"/><circle cx="0" cy="268" r="3" class="dot"/><circle cx="0" cy="282" r="3" class="dot"/>
+  </g>
+
+  <g transform="translate(152, 0)">
+    <circle cx="0" cy="270" r="3" class="dot"/><circle cx="0" cy="280" r="3" class="dot"/><circle cx="0" cy="276" r="3" class="dot"/><circle cx="0" cy="273" r="3" class="dot"/><circle cx="0" cy="278" r="3" class="dot"/>
+  </g>
+
+  <!-- Pattern dots between subgroups (abbreviated) -->
+  <g opacity="0.7">
+    <g transform="translate(178, 0)"><circle cx="0" cy="275" r="2.5" class="dot"/><circle cx="0" cy="272" r="2.5" class="dot"/><circle cx="0" cy="278" r="2.5" class="dot"/><circle cx="0" cy="281" r="2.5" class="dot"/><circle cx="0" cy="269" r="2.5" class="dot"/></g>
+    <g transform="translate(204, 0)"><circle cx="0" cy="274" r="2.5" class="dot"/><circle cx="0" cy="280" r="2.5" class="dot"/><circle cx="0" cy="271" r="2.5" class="dot"/><circle cx="0" cy="276" r="2.5" class="dot"/><circle cx="0" cy="278" r="2.5" class="dot"/></g>
+    <g transform="translate(230, 0)"><circle cx="0" cy="272" r="2.5" class="dot"/><circle cx="0" cy="278" r="2.5" class="dot"/><circle cx="0" cy="283" r="2.5" class="dot"/><circle cx="0" cy="270" r="2.5" class="dot"/><circle cx="0" cy="275" r="2.5" class="dot"/></g>
+    <g transform="translate(256, 0)"><circle cx="0" cy="271" r="2.5" class="dot"/><circle cx="0" cy="280" r="2.5" class="dot"/><circle cx="0" cy="276" r="2.5" class="dot"/><circle cx="0" cy="273" r="2.5" class="dot"/><circle cx="0" cy="278" r="2.5" class="dot"/></g>
+  </g>
+
+  <!-- Middle ... indicator -->
+  <text x="370" y="275" class="label" text-anchor="middle">. . .</text>
+
+  <!-- Later subgroups -->
+  <g transform="translate(480, 0)"><circle cx="0" cy="270" r="2.5" class="dot"/><circle cx="0" cy="278" r="2.5" class="dot"/><circle cx="0" cy="283" r="2.5" class="dot"/><circle cx="0" cy="274" r="2.5" class="dot"/><circle cx="0" cy="276" r="2.5" class="dot"/></g>
+  <g transform="translate(506, 0)"><circle cx="0" cy="272" r="2.5" class="dot"/><circle cx="0" cy="280" r="2.5" class="dot"/><circle cx="0" cy="277" r="2.5" class="dot"/><circle cx="0" cy="273" r="2.5" class="dot"/><circle cx="0" cy="281" r="2.5" class="dot"/></g>
+  <g transform="translate(532, 0)"><circle cx="0" cy="275" r="2.5" class="dot"/><circle cx="0" cy="282" r="2.5" class="dot"/><circle cx="0" cy="271" r="2.5" class="dot"/><circle cx="0" cy="279" r="2.5" class="dot"/><circle cx="0" cy="274" r="2.5" class="dot"/></g>
+
+  <!-- Last few subgroups -->
+  <g transform="translate(610, 0)"><circle cx="0" cy="273" r="3" class="dot"/><circle cx="0" cy="279" r="3" class="dot"/><circle cx="0" cy="275" r="3" class="dot"/><circle cx="0" cy="282" r="3" class="dot"/><circle cx="0" cy="271" r="3" class="dot"/></g>
+  <g transform="translate(660, 0)"><circle cx="0" cy="275" r="3" class="dot"/><circle cx="0" cy="280" r="3" class="dot"/><circle cx="0" cy="277" r="3" class="dot"/><circle cx="0" cy="272" r="3" class="dot"/><circle cx="0" cy="278" r="3" class="dot"/></g>
+  <g transform="translate(710, 0)">
+    <circle cx="0" cy="274" r="3" class="dot"/><circle cx="0" cy="281" r="3" class="dot"/><circle cx="0" cy="276" r="3" class="dot"/><circle cx="0" cy="272" r="3" class="dot"/><circle cx="0" cy="279" r="3" class="dot"/>
+    <ellipse cx="0" cy="276" rx="8" ry="18" class="dot-ring"/>
+  </g>
+  <text x="710" y="465" class="label" text-anchor="middle">25</text>
+
+  <!-- Annotation: binnen-subgroep -->
+  <line x1="85" y1="510" x2="115" y2="510" class="spec" stroke="#2a6fba"/>
+  <text x="120" y="515" class="callout">Binnen-subgroep-variatie (5 stippen / 18 ry)</text>
+  <text x="120" y="530" class="ring-label">= natuurlijke proces-spreiding</text>
+
+  <line x1="420" y1="510" x2="450" y2="510" class="spec" stroke="#d9480f"/>
+  <text x="455" y="515" class="callout">Tussen-subgroep-variatie (25 subgroepen langs as)</text>
+  <text x="455" y="530" class="ring-label">= drift, shift, procesverandering</text>
+
+  <!-- Ford PPAP vereiste footnote -->
+  <text x="400" y="565" class="label-bold" text-anchor="middle">Ford PPAP 4th ed.: minimaal 25 subgroepen × minimaal 5 metingen per subgroep</text>
+  <text x="400" y="585" class="fictive-note" text-anchor="middle">Fictieve illustratie — cijfers ter demonstratie, niet afgeleid uit specifieke productiecase.</text>
+</svg>

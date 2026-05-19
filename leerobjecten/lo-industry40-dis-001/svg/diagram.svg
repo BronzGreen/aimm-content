@@ -1,0 +1,103 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1920 1080" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Digital Innovation System (DIS): zes velden van actoren rond een digitaliseringsproject</title>
+  <desc id="desc">Een zeshoekig actorendiagram met in het centrum een digitaliseringsproject van een teamleider. Daaromheen zes velden met actoren die het project beïnvloeden: leveranciers van technologie, kennispartners, regelgeving en certificering, vakbonden en medezeggenschap, klanten en afnemers, en interne organisatie. Elk veld toont voorbeelden uit de Nederlandse maakindustrie. Een ring eromheen visualiseert dat een DIS geen organogram is maar een netwerk waarin elke actor een eigen tempo, belang en veto heeft.</desc>
+
+  <!-- Achtergrond -->
+  <rect width="1920" height="1080" fill="#0A1628"/>
+
+  <!-- Titel -->
+  <text x="960" y="65" text-anchor="middle" font-size="42" fill="#FFFFFF" font-weight="600">Digital Innovation System (DIS)</text>
+  <text x="960" y="105" text-anchor="middle" font-size="20" fill="#8A9BAD">Zes velden van actoren rond jouw digitaliseringsproject</text>
+
+  <!-- Buitenring (DIS-systeem) -->
+  <circle cx="960" cy="570" r="450" fill="none" stroke="#1E9695" stroke-width="2" stroke-dasharray="6,6" role="presentation"/>
+  <text x="960" y="180" text-anchor="middle" font-size="14" fill="#1E9695" font-style="italic">— DIS = levend netwerk, geen organogram —</text>
+
+  <!-- Centrum: project -->
+  <circle cx="960" cy="570" r="100" fill="#FF6B35" role="presentation"/>
+  <text x="960" y="555" text-anchor="middle" font-size="20" fill="#FFFFFF" font-weight="700">Mijn</text>
+  <text x="960" y="585" text-anchor="middle" font-size="20" fill="#FFFFFF" font-weight="700">digitaliserings-</text>
+  <text x="960" y="615" text-anchor="middle" font-size="20" fill="#FFFFFF" font-weight="700">project</text>
+
+  <!-- VELD 1 — Leveranciers van technologie (boven, 12 uur) -->
+  <g>
+    <rect x="800" y="220" width="320" height="170" rx="12" fill="#132240" stroke="#2BC4C3" stroke-width="2"/>
+    <text x="960" y="255" text-anchor="middle" font-size="20" fill="#2BC4C3" font-weight="700">1. Leveranciers</text>
+    <text x="960" y="280" text-anchor="middle" font-size="14" fill="#8A9BAD" font-style="italic">Hardware, software, AI, sensoren</text>
+    <line x1="820" y1="295" x2="1100" y2="295" stroke="#2BC4C3" stroke-width="1" role="presentation"/>
+    <text x="820" y="320" font-size="13" fill="#FFFFFF">• MES/ERP (SAP, Siemens, AVEVA)</text>
+    <text x="820" y="340" font-size="13" fill="#FFFFFF">• AI-platforms (Microsoft, Aveva, Foundry)</text>
+    <text x="820" y="360" font-size="13" fill="#FFFFFF">• Sensoren-leveranciers</text>
+    <text x="820" y="380" font-size="13" fill="#FFFFFF">• Cloud-aanbieders (Azure, AWS)</text>
+    <line x1="960" y1="395" x2="960" y2="465" stroke="#2BC4C3" stroke-width="2" role="presentation"/>
+  </g>
+
+  <!-- VELD 2 — Kennispartners (rechtsboven, 2 uur) -->
+  <g>
+    <rect x="1410" y="320" width="320" height="170" rx="12" fill="#132240" stroke="#2ECC71" stroke-width="2"/>
+    <text x="1570" y="355" text-anchor="middle" font-size="20" fill="#2ECC71" font-weight="700">2. Kennispartners</text>
+    <text x="1570" y="380" text-anchor="middle" font-size="14" fill="#8A9BAD" font-style="italic">TU's, hogescholen, branche</text>
+    <line x1="1430" y1="395" x2="1710" y2="395" stroke="#2ECC71" stroke-width="1" role="presentation"/>
+    <text x="1430" y="420" font-size="13" fill="#FFFFFF">• TU Delft, TU/e, Wageningen UR</text>
+    <text x="1430" y="440" font-size="13" fill="#FFFFFF">• HBO-onderzoekslectoraten</text>
+    <text x="1430" y="460" font-size="13" fill="#FFFFFF">• TNO, brancheverenigingen</text>
+    <text x="1430" y="480" font-size="13" fill="#FFFFFF">• Consultancies (vakspecifiek)</text>
+    <line x1="1410" y1="430" x2="1060" y2="540" stroke="#2ECC71" stroke-width="2" role="presentation"/>
+  </g>
+
+  <!-- VELD 3 — Regelgeving + certificering (rechtsonder, 4 uur) -->
+  <g>
+    <rect x="1410" y="660" width="320" height="170" rx="12" fill="#132240" stroke="#FFC857" stroke-width="2"/>
+    <text x="1570" y="695" text-anchor="middle" font-size="20" fill="#FFC857" font-weight="700">3. Regelgeving</text>
+    <text x="1570" y="720" text-anchor="middle" font-size="14" fill="#8A9BAD" font-style="italic">Inspectie, certificering, compliance</text>
+    <line x1="1430" y1="735" x2="1710" y2="735" stroke="#FFC857" stroke-width="1" role="presentation"/>
+    <text x="1430" y="760" font-size="13" fill="#FFFFFF">• ISO, CE, ATEX, IEC</text>
+    <text x="1430" y="780" font-size="13" fill="#FFFFFF">• AVG / GDPR (data-deling)</text>
+    <text x="1430" y="800" font-size="13" fill="#FFFFFF">• ILT, NVWA</text>
+    <text x="1430" y="820" font-size="13" fill="#FFFFFF">• EU AI Act (vanaf 2026)</text>
+    <line x1="1410" y1="715" x2="1060" y2="600" stroke="#FFC857" stroke-width="2" role="presentation"/>
+  </g>
+
+  <!-- VELD 4 — Vakbonden + medezeggenschap (onder, 6 uur) -->
+  <g>
+    <rect x="800" y="850" width="320" height="170" rx="12" fill="#132240" stroke="#E63946" stroke-width="2"/>
+    <text x="960" y="885" text-anchor="middle" font-size="20" fill="#E63946" font-weight="700">4. Medezeggenschap</text>
+    <text x="960" y="910" text-anchor="middle" font-size="14" fill="#8A9BAD" font-style="italic">Vakbonden, OR, sectorafspraken</text>
+    <line x1="820" y1="925" x2="1100" y2="925" stroke="#E63946" stroke-width="1" role="presentation"/>
+    <text x="820" y="950" font-size="13" fill="#FFFFFF">• FNV, CNV (cao-impact AI)</text>
+    <text x="820" y="970" font-size="13" fill="#FFFFFF">• Ondernemingsraad — instemming nodig</text>
+    <text x="820" y="990" font-size="13" fill="#FFFFFF">• Cao-afspraken (functiehuis)</text>
+    <text x="820" y="1010" font-size="13" fill="#FFFFFF">• Arbo-organen</text>
+    <line x1="960" y1="850" x2="960" y2="675" stroke="#E63946" stroke-width="2" role="presentation"/>
+  </g>
+
+  <!-- VELD 5 — Klanten + afnemers (linksonder, 8 uur) -->
+  <g>
+    <rect x="190" y="660" width="320" height="170" rx="12" fill="#132240" stroke="#FF6B35" stroke-width="2"/>
+    <text x="350" y="695" text-anchor="middle" font-size="20" fill="#FF6B35" font-weight="700">5. Klanten / OEM's</text>
+    <text x="350" y="720" text-anchor="middle" font-size="14" fill="#8A9BAD" font-style="italic">Eindklant, ketenpartner, key account</text>
+    <line x1="210" y1="735" x2="490" y2="735" stroke="#FF6B35" stroke-width="1" role="presentation"/>
+    <text x="210" y="760" font-size="13" fill="#FFFFFF">• OEM's met data-eisen (track-trace)</text>
+    <text x="210" y="780" font-size="13" fill="#FFFFFF">• Branche-standaard (CO₂-rapportage)</text>
+    <text x="210" y="800" font-size="13" fill="#FFFFFF">• Klantenraad / consumenten</text>
+    <text x="210" y="820" font-size="13" fill="#FFFFFF">• Just-in-time-afnemers</text>
+    <line x1="510" y1="715" x2="860" y2="600" stroke="#FF6B35" stroke-width="2" role="presentation"/>
+  </g>
+
+  <!-- VELD 6 — Interne organisatie (linksboven, 10 uur) -->
+  <g>
+    <rect x="190" y="320" width="320" height="170" rx="12" fill="#132240" stroke="#FFC857" stroke-width="2"/>
+    <text x="350" y="355" text-anchor="middle" font-size="20" fill="#FFC857" font-weight="700">6. Eigen organisatie</text>
+    <text x="350" y="380" text-anchor="middle" font-size="14" fill="#8A9BAD" font-style="italic">IT, finance, HR, productie, MT</text>
+    <line x1="210" y1="395" x2="490" y2="395" stroke="#FFC857" stroke-width="1" role="presentation"/>
+    <text x="210" y="420" font-size="13" fill="#FFFFFF">• IT-afdeling (architectuur, security)</text>
+    <text x="210" y="440" font-size="13" fill="#FFFFFF">• Finance (CAPEX/OPEX, business case)</text>
+    <text x="210" y="460" font-size="13" fill="#FFFFFF">• HR (skills, opleiding)</text>
+    <text x="210" y="480" font-size="13" fill="#FFFFFF">• MT (strategische steun)</text>
+    <line x1="510" y1="430" x2="860" y2="540" stroke="#FFC857" stroke-width="2" role="presentation"/>
+  </g>
+
+  <!-- Bottom annotation -->
+  <text x="960" y="1055" text-anchor="middle" font-size="14" fill="#8A9BAD" font-style="italic">Elke actor heeft eigen tempo, eigen belang, eigen veto. Wie het netwerk in kaart heeft, ziet waar de rem zit.</text>
+</svg>

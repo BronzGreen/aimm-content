@@ -7,6 +7,77 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde10-lo-ai-fund-022
+
+**Kontext:** Ronde 10: lo-ai-fund-022
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-022/trainee.md`
+- `kennisbank/ai_fundamentals/neural_networks_conceptueel/ko-ai-fund-022.md`
+- `leerobjecten/lo-ai-fund-022/trainer.md`
+- `leerobjecten/lo-ai-fund-022/draaiboek.md`
+- `leerobjecten/lo-ai-fund-022/werkbladen/wb-01-buurman-reflectie.md`
+- `leerobjecten/lo-ai-fund-022/werkbladen/wb-01-camera-briefje.md`
+- `leerobjecten/lo-ai-fund-022/werkbladen/wb-02-buurman-reflectie.md`
+- `leerobjecten/lo-ai-fund-022/werkbladen/wb-02-handout-lagen.md`
+- `leerobjecten/lo-ai-fund-022/werkbladen/wb-03-eigen-lijn.md`
+- `leerobjecten/lo-ai-fund-022/werkbladen/wb-03-handout-lagen.md`
+- `leerobjecten/lo-ai-fund-022/werkbladen/wb-04-eigen-lijn.md`
+- `leerobjecten/lo-ai-fund-022/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-ai-fund-022/README.md`
+
+## 2026-05-19 — publish-ronde10-lo-industry40-dis-001
+
+**Kontext:** Ronde 10: lo-industry40-dis-001
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-dis-001/trainee.md`
+- `kennisbank/industry_4_0/smart_factory_concepten/ko-industry-4-0-dis-001.md`
+- `leerobjecten/lo-industry40-dis-001/trainer.md`
+- `leerobjecten/lo-industry40-dis-001/draaiboek.md`
+- `leerobjecten/lo-industry40-dis-001/werkbladen/wb-01-theoretiseren.md`
+- `leerobjecten/lo-industry40-dis-001/werkbladen/wb-02-ervaren.md`
+- `leerobjecten/lo-industry40-dis-001/werkbladen/wb-03-experimenteren.md`
+- `leerobjecten/lo-industry40-dis-001/werkbladen/wb-04-reflecteren.md`
+- `leerobjecten/lo-industry40-dis-001/svg/diagram.svg`
+- `leerobjecten/lo-industry40-dis-001/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-industry40-dis-001/README.md`
+
+## 2026-05-19 — publish-ronde10-lo-data-lit-203
+
+**Kontext:** Ronde 10: lo-data-lit-203
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-203/trainee.md`
+- `kennisbank/data_literacy/dashboarding/ko-data-lit-203.md`
+- `leerobjecten/lo-data-lit-203/trainer.md`
+- `leerobjecten/lo-data-lit-203/draaiboek.md`
+- `leerobjecten/lo-data-lit-203/werkbladen/wb-handout-vierstappenplan.md`
+- `leerobjecten/lo-data-lit-203/werkbladen/wb-kpi-keuzeopdracht.md`
+- `leerobjecten/lo-data-lit-203/werkbladen/wb-mini-analyse.md`
+- `leerobjecten/lo-data-lit-203/werkbladen/wb-transfer-dashboard-analyse.md`
+- `leerobjecten/lo-data-lit-203/README.md`
+
+## 2026-05-19 — publish-ronde10-lo-spc-109
+
+**Kontext:** Ronde 10: lo-spc-109
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-109/trainee.md`
+- `kennisbank/spc/regelkaarten/ko-spc-109.md`
+- `leerobjecten/lo-spc-109/trainer.md`
+- `leerobjecten/lo-spc-109/draaiboek.md`
+- `leerobjecten/lo-spc-109/werkbladen/wb-01-oefening.md`
+- `leerobjecten/lo-spc-109/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-109/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-109/svg/diagram.svg`
+- `leerobjecten/lo-spc-109/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-109/README.md`
+
 ## 2026-05-19 — publish-ronde9-lo-ai-fund-117
 
 **Kontext:** Ronde 9: lo-ai-fund-117
