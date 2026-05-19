@@ -7,6 +7,25 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde3-lo-data-lit-103
+
+**Kontext:** Ronde 3: lo-data-lit-103 (showcase 9 → 13 LOs)
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-103/trainee.md`
+- `kennisbank/data_literacy/data_kwaliteit/ko-data-lit-103.md`
+- `leerobjecten/lo-data-lit-103/trainer.md`
+- `leerobjecten/lo-data-lit-103/draaiboek.md`
+- `leerobjecten/lo-data-lit-103/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-data-lit-103/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-data-lit-103/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-data-lit-103/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-data-lit-103/svg/diagram.svg`
+- `leerobjecten/lo-data-lit-103/interactive/model.html`
+- `leerobjecten/lo-data-lit-103/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-data-lit-103/README.md`
+
 ## 2026-05-19 — publish-ronde3-lo-spc-103
 
 **Kontext:** Ronde 3: lo-spc-103 (showcase 9 → 13 LOs)
