@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img"
+     aria-labelledby="title desc" font-family="Inter, Arial, sans-serif">
+  <title id="title">Beslis-stroom voor regelkaart-keuze</title>
+  <desc id="desc">
+    Decision tree voor het kiezen van een regelkaart-type. Begin bij
+    de vraag "Wat meet je?". Bij een getal (continue meting) bepaalt
+    de subgroep-grootte de keuze: kleine subgroep 2 tot 8 geeft X-bar-R,
+    grotere subgroep X-bar-S, en een enkele meting per moment I-MR. Bij
+    tellingen van defecten bepalen twee vragen de keuze: percentage of
+    aantal, en vaste of wisselende steekproef of eenheid. Percentage met
+    vaste steekproef geeft np-kaart, met wisselende steekproef p-kaart.
+    Aantal defecten per gelijke eenheid geeft c-kaart, per wisselende
+    eenheid u-kaart.
+  </desc>
+
+  <defs>
+    <style>
+      .root { fill: #1e3a8a; }
+      .root-text { fill: #ffffff; font-size: 20px; font-weight: 700; }
+      .branch-cont { fill: #2563eb; }
+      .branch-tell { fill: #dc2626; }
+      .branch-text { fill: #ffffff; font-size: 16px; font-weight: 600; }
+      .q-box { fill: #f3f4f6; stroke: #6b7280; stroke-width: 1.5; }
+      .q-text { fill: #111827; font-size: 14px; font-weight: 500; }
+      .leaf-cont { fill: #dbeafe; stroke: #2563eb; stroke-width: 2; }
+      .leaf-tell { fill: #fee2e2; stroke: #dc2626; stroke-width: 2; }
+      .leaf-label { font-size: 18px; font-weight: 700; }
+      .leaf-label-cont { fill: #1e3a8a; }
+      .leaf-label-tell { fill: #991b1b; }
+      .leaf-sub { font-size: 11px; fill: #374151; }
+      .edge { stroke: #9ca3af; stroke-width: 2; fill: none; }
+      .edge-label { font-size: 12px; fill: #374151; font-weight: 600; }
+      .caption { fill: #6b7280; font-size: 13px; }
+      .title-text { fill: #111827; font-size: 22px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <!-- Titel -->
+  <text x="600" y="34" text-anchor="middle" class="title-text">
+    Welke regelkaart hoort bij welke meting?
+  </text>
+  <text x="600" y="56" text-anchor="middle" class="caption">
+    Twee hoofdvragen leiden je naar een van de zeven kaart-types.
+  </text>
+
+  <!-- Root -->
+  <rect x="475" y="80" width="250" height="60" rx="10" class="root"/>
+  <text x="600" y="108" text-anchor="middle" class="root-text">Wat meet je?</text>
+  <text x="600" y="128" text-anchor="middle" fill="#dbeafe" font-size="12">
+    Start hier
+  </text>
+
+  <!-- Edges from root -->
+  <path d="M 560 140 Q 320 170 260 200" class="edge"/>
+  <path d="M 640 140 Q 880 170 940 200" class="edge"/>
+  <text x="370" y="175" class="edge-label">Een getal</text>
+  <text x="830" y="175" class="edge-label">Een telling</text>
+
+  <!-- Branch: Continue -->
+  <rect x="140" y="200" width="240" height="52" rx="8" class="branch-cont"/>
+  <text x="260" y="224" text-anchor="middle" class="branch-text">Continue meting</text>
+  <text x="260" y="242" text-anchor="middle" fill="#dbeafe" font-size="12">
+    gewicht · diameter · temperatuur
+  </text>
+
+  <!-- Branch: Tellingen -->
+  <rect x="820" y="200" width="240" height="52" rx="8" class="branch-tell"/>
+  <text x="940" y="224" text-anchor="middle" class="branch-text">Telling van defecten</text>
+  <text x="940" y="242" text-anchor="middle" fill="#fee2e2" font-size="12">
+    stuks · fouten · percentage
+  </text>
+
+  <!-- CONTINUE: vraag 2 -->
+  <path d="M 260 252 L 260 300" class="edge"/>
+  <rect x="100" y="300" width="320" height="48" rx="8" class="q-box"/>
+  <text x="260" y="322" text-anchor="middle" class="q-text">
+    Kun je een subgroep nemen?
+  </text>
+  <text x="260" y="338" text-anchor="middle" fill="#6b7280" font-size="11">
+    Meerdere metingen kort na elkaar (n ≥ 2)
+  </text>
+
+  <!-- CONTINUE: ja/nee -->
+  <path d="M 200 348 Q 160 380 150 420" class="edge"/>
+  <path d="M 320 348 Q 360 380 370 420" class="edge"/>
+  <text x="130" y="392" class="edge-label">Ja</text>
+  <text x="365" y="392" class="edge-label">Nee</text>
+
+  <!-- CONTINUE: subgroep-grootte vraag -->
+  <rect x="30" y="420" width="240" height="48" rx="8" class="q-box"/>
+  <text x="150" y="442" text-anchor="middle" class="q-text">
+    Hoe groot is je subgroep?
+  </text>
+  <text x="150" y="458" text-anchor="middle" fill="#6b7280" font-size="11">
+    Klein 2–8 of groter?
+  </text>
+
+  <!-- CONTINUE: I-MR leaf -->
+  <rect x="300" y="420" width="140" height="70" rx="10" class="leaf-cont"/>
+  <text x="370" y="448" text-anchor="middle" class="leaf-label leaf-label-cont">I-MR</text>
+  <text x="370" y="466" text-anchor="middle" class="leaf-sub">
+    Eén meting per moment
+  </text>
+  <text x="370" y="481" text-anchor="middle" class="leaf-sub">
+    Batch · tank · lot
+  </text>
+
+  <!-- CONTINUE: subgroep splits -->
+  <path d="M 90 468 Q 60 500 50 540" class="edge"/>
+  <path d="M 210 468 Q 240 500 250 540" class="edge"/>
+  <text x="35" y="512" class="edge-label">Klein (2–8)</text>
+  <text x="215" y="512" class="edge-label">Groter</text>
+
+  <!-- Leaf X-bar-R -->
+  <rect x="0" y="540" width="140" height="70" rx="10" class="leaf-cont"/>
+  <text x="70" y="568" text-anchor="middle" class="leaf-label leaf-label-cont">X̄-R</text>
+  <text x="70" y="586" text-anchor="middle" class="leaf-sub">
+    Gemiddelde + range
+  </text>
+  <text x="70" y="601" text-anchor="middle" class="leaf-sub">
+    typisch n = 4 of 5
+  </text>
+
+  <!-- Leaf X-bar-S -->
+  <rect x="180" y="540" width="140" height="70" rx="10" class="leaf-cont"/>
+  <text x="250" y="568" text-anchor="middle" class="leaf-label leaf-label-cont">X̄-S</text>
+  <text x="250" y="586" text-anchor="middle" class="leaf-sub">
+    Gemiddelde + std.dev.
+  </text>
+  <text x="250" y="601" text-anchor="middle" class="leaf-sub">
+    bij grotere n
+  </text>
+
+  <!-- TELLINGEN: vraag 2 -->
+  <path d="M 940 252 L 940 300" class="edge"/>
+  <rect x="780" y="300" width="320" height="48" rx="8" class="q-box"/>
+  <text x="940" y="322" text-anchor="middle" class="q-text">
+    Wat tel je precies?
+  </text>
+  <text x="940" y="338" text-anchor="middle" fill="#6b7280" font-size="11">
+    Percentage defecten of aantal fouten per eenheid?
+  </text>
+
+  <!-- TELLINGEN: splits -->
+  <path d="M 860 348 Q 780 380 770 420" class="edge"/>
+  <path d="M 1020 348 Q 1100 380 1110 420" class="edge"/>
+  <text x="720" y="392" class="edge-label">Percentage</text>
+  <text x="1070" y="392" class="edge-label">Aantal per eenheid</text>
+
+  <!-- TELLINGEN: percentage vraag -->
+  <rect x="640" y="420" width="260" height="48" rx="8" class="q-box"/>
+  <text x="770" y="442" text-anchor="middle" class="q-text">
+    Is je steekproef vast of wisselend?
+  </text>
+  <text x="770" y="458" text-anchor="middle" fill="#6b7280" font-size="11">
+    Bijv. altijd 50 stuks, of soms 30 soms 80?
+  </text>
+
+  <!-- TELLINGEN: eenheid vraag -->
+  <rect x="980" y="420" width="260" height="48" rx="8" class="q-box"/>
+  <text x="1110" y="442" text-anchor="middle" class="q-text">
+    Gelijke of wisselende eenheid?
+  </text>
+  <text x="1110" y="458" text-anchor="middle" fill="#6b7280" font-size="11">
+    Zelfde plaat · zelfde stuk · of variabele lengte/oppervlak?
+  </text>
+
+  <!-- Percentage: splits -->
+  <path d="M 700 468 Q 660 500 650 540" class="edge"/>
+  <path d="M 840 468 Q 880 500 890 540" class="edge"/>
+  <text x="625" y="512" class="edge-label">Vaste n</text>
+  <text x="865" y="512" class="edge-label">Wisselende n</text>
+
+  <!-- Leaf np -->
+  <rect x="580" y="540" width="140" height="70" rx="10" class="leaf-tell"/>
+  <text x="650" y="568" text-anchor="middle" class="leaf-label leaf-label-tell">np-kaart</text>
+  <text x="650" y="586" text-anchor="middle" class="leaf-sub">
+    Aantal defecten
+  </text>
+  <text x="650" y="601" text-anchor="middle" class="leaf-sub">
+    bij vaste steekproef
+  </text>
+
+  <!-- Leaf p -->
+  <rect x="820" y="540" width="140" height="70" rx="10" class="leaf-tell"/>
+  <text x="890" y="568" text-anchor="middle" class="leaf-label leaf-label-tell">p-kaart</text>
+  <text x="890" y="586" text-anchor="middle" class="leaf-sub">
+    Percentage defecten
+  </text>
+  <text x="890" y="601" text-anchor="middle" class="leaf-sub">
+    bij wisselende steekproef
+  </text>
+
+  <!-- Eenheid: splits -->
+  <path d="M 1050 468 Q 1010 500 1000 540" class="edge"/>
+  <path d="M 1170 468 Q 1200 500 1200 540" class="edge"/>
+  <text x="995" y="512" class="edge-label">Gelijk</text>
+  <text x="1175" y="512" class="edge-label">Wisselend</text>
+
+  <!-- Leaf c -->
+  <rect x="940" y="540" width="130" height="70" rx="10" class="leaf-tell"/>
+  <text x="1005" y="568" text-anchor="middle" class="leaf-label leaf-label-tell">c-kaart</text>
+  <text x="1005" y="586" text-anchor="middle" class="leaf-sub">
+    Aantal defecten
+  </text>
+  <text x="1005" y="601" text-anchor="middle" class="leaf-sub">
+    per gelijke eenheid
+  </text>
+
+  <!-- Leaf u -->
+  <rect x="1100" y="540" width="130" height="70" rx="10" class="leaf-tell"/>
+  <text x="1165" y="568" text-anchor="middle" class="leaf-label leaf-label-tell">u-kaart</text>
+  <text x="1165" y="586" text-anchor="middle" class="leaf-sub">
+    Defecten per
+  </text>
+  <text x="1165" y="601" text-anchor="middle" class="leaf-sub">
+    wisselende eenheid
+  </text>
+
+  <!-- Vuistregels-box -->
+  <rect x="60" y="660" width="1080" height="120" rx="12" fill="#fefce8" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="80" y="690" fill="#713f12" font-size="15" font-weight="700">
+    Twee vuistregels
+  </text>
+  <text x="80" y="714" fill="#1f2937" font-size="13">
+    <tspan font-weight="700">1. R versus S —</tspan>
+    R-kaart bij kleine subgroepen (2–8). Bij grotere subgroepen wordt
+    de range te grof en is een S-kaart (std.dev.) nauwkeuriger (NIST/SEMATECH).
+  </text>
+  <text x="80" y="736" fill="#1f2937" font-size="13">
+    <tspan font-weight="700">2. I-MR alleen als laatste keuze —</tspan>
+    Kun je logische mini-steekproeven nemen (zelfs n = 2)?
+    Dan is X̄-R of X̄-S meestal informatiever dan I-MR.
+  </text>
+  <text x="80" y="760" fill="#6b7280" font-size="11">
+    Bron: NIST/SEMATECH Engineering Statistics Handbook · ISO 7870-1 en 7870-2 · ASQ · Minitab documentation
+  </text>
+
+  <!-- Legenda -->
+  <rect x="1000" y="85" width="180" height="80" rx="8" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="1010" y="104" font-size="12" font-weight="700" fill="#111827">Legenda</text>
+  <rect x="1010" y="112" width="14" height="14" rx="3" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="1032" y="123" font-size="11" fill="#374151">Continue-kaart</text>
+  <rect x="1010" y="132" width="14" height="14" rx="3" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="1032" y="143" font-size="11" fill="#374151">Tellingskaart</text>
+  <rect x="1010" y="152" width="14" height="14" rx="3" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="1032" y="163" font-size="11" fill="#374151">Keuzevraag</text>
+</svg>
