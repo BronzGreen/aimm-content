@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde9-lo-ai-fund-117
+
+**Kontext:** Ronde 9: lo-ai-fund-117
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-117/trainee.md`
+- `kennisbank/ai_fundamentals/machine_learning_basics/ko-ai-fund-117.md`
+- `leerobjecten/lo-ai-fund-117/trainer.md`
+- `leerobjecten/lo-ai-fund-117/draaiboek.md`
+- `leerobjecten/lo-ai-fund-117/werkbladen/wb-01-scenarios-drie-vormen.md`
+- `leerobjecten/lo-ai-fund-117/werkbladen/wb-02-reflectie-signaalwoorden.md`
+- `leerobjecten/lo-ai-fund-117/werkbladen/wb-03-handout-drie-vormen.md`
+- `leerobjecten/lo-ai-fund-117/werkbladen/wb-04-eigen-lijn-verkenning.md`
+- `leerobjecten/lo-ai-fund-117/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-ai-fund-117/README.md`
+
 ## 2026-05-19 — publish-ronde9-lo-data-lit-201
 
 **Kontext:** Ronde 9: lo-data-lit-201
