@@ -7,6 +7,25 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde2-lo-smart-mfg-006
+
+**Kontext:** Ronde 2: lo-smart-mfg-006 (showcase 5 → 9 LOs over 6 domeinen)
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-006/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-006.md`
+- `leerobjecten/lo-smart-mfg-006/trainer.md`
+- `leerobjecten/lo-smart-mfg-006/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-006/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-smart-mfg-006/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-smart-mfg-006/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-smart-mfg-006/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-smart-mfg-006/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-006/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-006/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-006/README.md`
+
 ## 2026-05-19 — publish-ronde2-lo-data-lit-102
 
 **Kontext:** Ronde 2: lo-data-lit-102 (showcase 5 → 9 LOs over 6 domeinen)
