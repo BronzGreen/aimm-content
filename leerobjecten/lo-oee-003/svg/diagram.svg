@@ -1,0 +1,132 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1920 1080" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Prestatie en de verborgen fabriek</title>
+  <desc id="desc">Een visualisatie van prestatieverlies op een productielijn. De bovenste balk toont de theoretisch mogelijke output van 100 stuks, de onderste balk de werkelijke output van 85 stuks. Het verschil van 15 stuks is de verborgen fabriek: capaciteit die er al is maar niet wordt benut. Het verlies wordt veroorzaakt door twee oorzaken: korte stops en snelheidsverlies. Een aparte rekenkolom rechts laat zien dat 30 korte stops van 20 seconden per dienst optellen tot 50 minuten verlies per week.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="3" dy="4" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+    <linearGradient id="g-orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E67E22"/>
+      <stop offset="100%" stop-color="#D35400"/>
+    </linearGradient>
+    <linearGradient id="g-light-orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAD7A0"/>
+      <stop offset="100%" stop-color="#F8C471"/>
+    </linearGradient>
+    <linearGradient id="g-grey" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D5DBDB"/>
+      <stop offset="100%" stop-color="#AEB6BF"/>
+    </linearGradient>
+    <pattern id="hidden-pattern" patternUnits="userSpaceOnUse" width="20" height="20">
+      <rect width="20" height="20" fill="#7f8c8d" opacity="0.15"/>
+      <line x1="0" y1="20" x2="20" y2="0" stroke="#7f8c8d" stroke-width="1.5" opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="1920" height="1080" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="960" y="80" text-anchor="middle" font-size="42" font-weight="700" fill="#2C3E50" letter-spacing="2">Prestatie: de verborgen fabriek</text>
+  <text x="960" y="120" text-anchor="middle" font-size="22" fill="#7f8c8d">Wat de machine zou kunnen — en wat hij in werkelijkheid maakt</text>
+
+  <!-- BALK 1: Theoretische output -->
+  <text x="120" y="200" font-size="22" font-weight="600" fill="#2C3E50">Theoretisch mogelijk — 100 stuks per uur</text>
+
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="120" y="220" width="1400" height="100" rx="10" fill="url(#g-light-orange)"/>
+  </g>
+
+  <!-- 100 stuks als bolletjes -->
+  <g fill="#D35400">
+    <!-- 10 rijen van 10 -->
+    <!-- Voor visuele eenvoud: blokjes per 10 -->
+  </g>
+  <text x="820" y="280" text-anchor="middle" font-size="38" font-weight="700" fill="#7E370F">100 stuks</text>
+  <text x="820" y="305" text-anchor="middle" font-size="14" fill="#7E370F">als de machine op volle snelheid draait</text>
+
+  <!-- BALK 2: Werkelijke output (kleiner) -->
+  <text x="120" y="380" font-size="22" font-weight="600" fill="#2C3E50">Werkelijke output — 85 stuks per uur</text>
+
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="120" y="400" width="1190" height="100" rx="10" fill="url(#g-orange)"/>
+    <!-- Verborgen fabriek deel: gestreept patroon -->
+    <rect role="presentation" x="1310" y="400" width="210" height="100" rx="10" fill="url(#hidden-pattern)" stroke="#7f8c8d" stroke-width="2" stroke-dasharray="6,4"/>
+  </g>
+  <text x="715" y="460" text-anchor="middle" font-size="38" font-weight="700" fill="white">85 stuks</text>
+  <text x="715" y="485" text-anchor="middle" font-size="14" fill="white">in werkelijkheid gemaakt</text>
+
+  <text x="1415" y="450" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50">15 stuks</text>
+  <text x="1415" y="475" text-anchor="middle" font-size="13" fill="#2C3E50" font-style="italic">"verdwenen"</text>
+
+  <!-- Verborgen-fabriek bracket -->
+  <line x1="1310" y1="540" x2="1310" y2="560" stroke="#7f8c8d" stroke-width="2"/>
+  <line x1="1310" y1="560" x2="1520" y2="560" stroke="#7f8c8d" stroke-width="2"/>
+  <line x1="1520" y1="540" x2="1520" y2="560" stroke="#7f8c8d" stroke-width="2"/>
+  <text x="1415" y="585" text-anchor="middle" font-size="18" font-weight="700" fill="#2C3E50">DE VERBORGEN FABRIEK</text>
+  <text x="1415" y="608" text-anchor="middle" font-size="14" fill="#7f8c8d">capaciteit die er is, maar niet benut</text>
+
+  <!-- Twee oorzaken -->
+  <text x="120" y="680" font-size="22" font-weight="600" fill="#2C3E50">Twee oorzaken van prestatieverlies</text>
+
+  <!-- Oorzaak 1: Korte stops -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="120" y="700" width="600" height="280" rx="20" fill="white"/>
+    <rect role="presentation" x="120" y="700" width="600" height="80" rx="20" fill="url(#g-orange)"/>
+    <rect role="presentation" x="120" y="755" width="600" height="25" fill="url(#g-orange)"/>
+  </g>
+  <text x="420" y="755" text-anchor="middle" font-size="28" font-weight="700" fill="white">KORTE STOPS</text>
+  <text x="150" y="820" font-size="18" font-weight="600" fill="#2C3E50">Machine stopt even, start weer op (&lt; 5 min)</text>
+  <text x="150" y="858" font-size="15" fill="#555">- Sensor flikkert, vals alarm</text>
+  <text x="150" y="885" font-size="15" fill="#555">- Materiaal klemt, operator tikt eraan</text>
+  <text x="150" y="912" font-size="15" fill="#555">- Product valt verkeerd op de band</text>
+  <text x="150" y="945" font-size="14" font-style="italic" fill="#7f8c8d">Worden zelden geregistreerd, want te kort</text>
+
+  <!-- Oorzaak 2: Snelheidsverlies -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="760" y="700" width="600" height="280" rx="20" fill="white"/>
+    <rect role="presentation" x="760" y="700" width="600" height="80" rx="20" fill="url(#g-orange)"/>
+    <rect role="presentation" x="760" y="755" width="600" height="25" fill="url(#g-orange)"/>
+  </g>
+  <text x="1060" y="755" text-anchor="middle" font-size="28" font-weight="700" fill="white">SNELHEIDSVERLIES</text>
+  <text x="790" y="820" font-size="18" font-weight="600" fill="#2C3E50">Machine draait, maar langzamer dan ideaal</text>
+  <text x="790" y="858" font-size="15" fill="#555">- Slijtage aan onderdelen</text>
+  <text x="790" y="885" font-size="15" fill="#555">- Slechte grondstof</text>
+  <text x="790" y="912" font-size="15" fill="#555">- Bewust teruggeschakeld vanwege trillingen</text>
+  <text x="790" y="945" font-size="14" font-style="italic" fill="#7f8c8d">Onzichtbaar — niemand staat stil</text>
+
+  <!-- Rekenvoorbeeld rechts -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1400" y="700" width="400" height="280" rx="20" fill="#2C3E50"/>
+  </g>
+  <text x="1600" y="745" text-anchor="middle" font-size="16" font-weight="600" fill="#B0BEC5" letter-spacing="2">REKENVOORBEELD</text>
+  <text x="1600" y="780" text-anchor="middle" font-size="15" fill="white">Pick-and-place machine</text>
+
+  <text x="1420" y="820" font-size="14" fill="white">Korte stop:</text>
+  <text x="1780" y="820" text-anchor="end" font-size="14" font-weight="600" fill="white">20 sec</text>
+
+  <text x="1420" y="848" font-size="14" fill="white">Per dienst:</text>
+  <text x="1780" y="848" text-anchor="end" font-size="14" font-weight="600" fill="white">x 30 stops</text>
+
+  <text x="1420" y="876" font-size="14" fill="white">Verlies per dienst:</text>
+  <text x="1780" y="876" text-anchor="end" font-size="14" font-weight="600" fill="white">10 minuten</text>
+
+  <text x="1420" y="904" font-size="14" fill="white">Verlies per week:</text>
+  <text x="1780" y="904" text-anchor="end" font-size="14" font-weight="600" fill="white">x 5 dagen</text>
+
+  <line x1="1420" y1="918" x2="1780" y2="918" stroke="white" stroke-width="1"/>
+
+  <text x="1420" y="950" font-size="16" font-weight="700" fill="#F39C12">= 50 minuten per week</text>
+  <text x="1420" y="970" font-size="13" font-style="italic" fill="#B0BEC5">bijna een uur productietijd</text>
+
+  <!-- Onderbalk -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="120" y="1010" width="1680" height="50" rx="10" fill="url(#g-orange)"/>
+  </g>
+  <text x="960" y="1042" text-anchor="middle" font-size="20" font-weight="600" fill="white">Prestatie = Werkelijke output / Theoretisch mogelijke output = 85 / 100 = 85%</text>
+
+  <!-- Bronvermelding -->
+  <text x="960" y="1075" text-anchor="middle" font-size="11" fill="#999">Prestatie — AIMM Curriculum | Module 1: Gebruik | v1.0</text>
+</svg>
