@@ -7,6 +7,26 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde10-lo-ai-fund-022
+
+**Kontext:** Ronde 10: lo-ai-fund-022
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-022/trainee.md`
+- `kennisbank/ai_fundamentals/neural_networks_conceptueel/ko-ai-fund-022.md`
+- `leerobjecten/lo-ai-fund-022/trainer.md`
+- `leerobjecten/lo-ai-fund-022/draaiboek.md`
+- `leerobjecten/lo-ai-fund-022/werkbladen/wb-01-buurman-reflectie.md`
+- `leerobjecten/lo-ai-fund-022/werkbladen/wb-01-camera-briefje.md`
+- `leerobjecten/lo-ai-fund-022/werkbladen/wb-02-buurman-reflectie.md`
+- `leerobjecten/lo-ai-fund-022/werkbladen/wb-02-handout-lagen.md`
+- `leerobjecten/lo-ai-fund-022/werkbladen/wb-03-eigen-lijn.md`
+- `leerobjecten/lo-ai-fund-022/werkbladen/wb-03-handout-lagen.md`
+- `leerobjecten/lo-ai-fund-022/werkbladen/wb-04-eigen-lijn.md`
+- `leerobjecten/lo-ai-fund-022/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-ai-fund-022/README.md`
+
 ## 2026-05-19 — publish-ronde10-lo-industry40-dis-001
 
 **Kontext:** Ronde 10: lo-industry40-dis-001
