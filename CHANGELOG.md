@@ -7,6 +7,24 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde8-lo-oee-006
+
+**Kontext:** Ronde 8: lo-oee-006
+
+Toegevoegd:
+
+- `leerobjecten/lo-oee-006/trainee.md`
+- `kennisbank/oee/verliesanalyse/ko-oee-006.md`
+- `leerobjecten/lo-oee-006/trainer.md`
+- `leerobjecten/lo-oee-006/draaiboek.md`
+- `leerobjecten/lo-oee-006/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-oee-006/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-oee-006/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-oee-006/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-oee-006/svg/diagram.svg`
+- `leerobjecten/lo-oee-006/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-oee-006/README.md`
+
 ## 2026-05-19 — publish-ronde8-lo-data-lit-106
 
 **Kontext:** Ronde 8: lo-data-lit-106
