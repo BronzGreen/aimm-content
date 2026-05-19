@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde5-lo-industry40-004
+
+**Kontext:** Ronde 5: lo-industry40-004 (showcase 17 -> 21)
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-004/trainee.md`
+- `kennisbank/industry_4_0/iot_in_productie/ko-industry40-004.md`
+- `leerobjecten/lo-industry40-004/trainer.md`
+- `leerobjecten/lo-industry40-004/draaiboek.md`
+- `leerobjecten/lo-industry40-004/werkbladen/wb-01-plattegrond-werkvloer.md`
+- `leerobjecten/lo-industry40-004/werkbladen/wb-02-patronen-bronnen.md`
+- `leerobjecten/lo-industry40-004/werkbladen/wb-03-vijf-databronnen-handout.md`
+- `leerobjecten/lo-industry40-004/werkbladen/wb-04-eigen-lijn-databronnen.md`
+- `leerobjecten/lo-industry40-004/README.md`
+
 ## 2026-05-19 — publish-ronde5-lo-ai-fund-102
 
 **Kontext:** Ronde 5: lo-ai-fund-102 (showcase 17 -> 21)
