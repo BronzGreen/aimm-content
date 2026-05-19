@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde5-lo-ai-fund-102
+
+**Kontext:** Ronde 5: lo-ai-fund-102 (showcase 17 -> 21)
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-102/trainee.md`
+- `kennisbank/ai_fundamentals/machine_learning_basics/ko-ai-fund-102.md`
+- `leerobjecten/lo-ai-fund-102/trainer.md`
+- `leerobjecten/lo-ai-fund-102/draaiboek.md`
+- `leerobjecten/lo-ai-fund-102/werkbladen/wb-01-casus-voorraad.md`
+- `leerobjecten/lo-ai-fund-102/werkbladen/wb-02-buurman-check.md`
+- `leerobjecten/lo-ai-fund-102/werkbladen/wb-03-handout-rationeel-handelen.md`
+- `leerobjecten/lo-ai-fund-102/werkbladen/wb-04-eigen-werkvloer.md`
+- `leerobjecten/lo-ai-fund-102/README.md`
+
 ## 2026-05-19 — publish-ronde5-lo-smart-mfg-094
 
 **Kontext:** Ronde 5: lo-smart-mfg-094 (showcase 17 -> 21)
