@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde10-lo-data-lit-203
+
+**Kontext:** Ronde 10: lo-data-lit-203
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-203/trainee.md`
+- `kennisbank/data_literacy/dashboarding/ko-data-lit-203.md`
+- `leerobjecten/lo-data-lit-203/trainer.md`
+- `leerobjecten/lo-data-lit-203/draaiboek.md`
+- `leerobjecten/lo-data-lit-203/werkbladen/wb-handout-vierstappenplan.md`
+- `leerobjecten/lo-data-lit-203/werkbladen/wb-kpi-keuzeopdracht.md`
+- `leerobjecten/lo-data-lit-203/werkbladen/wb-mini-analyse.md`
+- `leerobjecten/lo-data-lit-203/werkbladen/wb-transfer-dashboard-analyse.md`
+- `leerobjecten/lo-data-lit-203/README.md`
+
 ## 2026-05-19 — publish-ronde10-lo-spc-109
 
 **Kontext:** Ronde 10: lo-spc-109
