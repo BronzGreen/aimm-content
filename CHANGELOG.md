@@ -7,6 +7,21 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde8-lo-industry40-022
+
+**Kontext:** Ronde 8: lo-industry40-022
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-022/trainee.md`
+- `leerobjecten/lo-industry40-022/trainer.md`
+- `leerobjecten/lo-industry40-022/draaiboek.md`
+- `leerobjecten/lo-industry40-022/werkbladen/wb-01-vijf-casuskaartjes.md`
+- `leerobjecten/lo-industry40-022/werkbladen/wb-02-duo-categorieen.md`
+- `leerobjecten/lo-industry40-022/werkbladen/wb-03-vijf-toepassingen-handout.md`
+- `leerobjecten/lo-industry40-022/werkbladen/wb-04-mijn-twee-toepassingen.md`
+- `leerobjecten/lo-industry40-022/README.md`
+
 ## 2026-05-19 — publish-ronde8-lo-oee-006
 
 **Kontext:** Ronde 8: lo-oee-006
