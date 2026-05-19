@@ -7,6 +7,25 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde6-lo-smart-mfg-095
+
+**Kontext:** Ronde 6: lo-smart-mfg-095 (showcase 21 -> 25)
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-095/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-095.md`
+- `leerobjecten/lo-smart-mfg-095/trainer.md`
+- `leerobjecten/lo-smart-mfg-095/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-095/werkbladen/wb-actieplan.md`
+- `leerobjecten/lo-smart-mfg-095/werkbladen/wb-foto-inspectie.md`
+- `leerobjecten/lo-smart-mfg-095/werkbladen/wb-handout-theorie.md`
+- `leerobjecten/lo-smart-mfg-095/werkbladen/wb-reflectie.md`
+- `leerobjecten/lo-smart-mfg-095/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-095/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-095/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-095/README.md`
+
 ## 2026-05-19 — publish-ronde6-lo-oee-005
 
 **Kontext:** Ronde 6: lo-oee-005 (showcase 21 -> 25)

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foto-inspectie: Mens vs AI</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    const PRODUCTS = [
+      { id: 1, desc: "Metalen plaatdeel met een kras van 2mm over het oppervlak.", ai: "defect", reden: "Oppervlakteschade gedetecteerd: kras > 1mm." },
+      { id: 2, desc: "Gelast frame, alle lasnaden zijn gelijkmatig en glad.", ai: "goed", reden: "Geen afwijkingen in lasnaadpatroon gevonden." },
+      { id: 3, desc: "Kunststof behuizing met een kleine luchtbel in de hoek (0,5mm).", ai: "goed", reden: "Luchtbel < 1mm valt binnen tolerantie." },
+      { id: 4, desc: "Aluminium profiel met een zichtbare deuk aan de bovenzijde.", ai: "defect", reden: "Vormafwijking gedetecteerd: deuk buiten tolerantie." },
+      { id: 5, desc: "Printplaat met alle componenten correct geplaatst en gesoldeerd.", ai: "goed", reden: "Alle soldeerverbindingen voldoen aan IPC-standaard." },
+      { id: 6, desc: "Rubber afdichting met een scheur van 5mm aan de rand.", ai: "defect", reden: "Scheur gedetecteerd: integriteit afdichting niet gegarandeerd." },
+      { id: 7, desc: "Stalen as, glad gepolijst, geen zichtbare onregelmatigheden.", ai: "goed", reden: "Oppervlakteruwheid binnen specificatie." },
+      { id: 8, desc: "Spuitgietonderdeel met een vloeilijn zichtbaar op het oppervlak.", ai: "defect", reden: "Vloeilijn gedetecteerd: cosmetisch defect klasse B." },
+      { id: 9, desc: "Verpakkingsdoos met een correcte opdruk en barcode.", ai: "goed", reden: "Barcode leesbaar, opdruk compleet en correct." },
+      { id: 10, desc: "Glazen lens met een kleine chip aan de rand (1mm).", ai: "defect", reden: "Randschade gedetecteerd: chip > 0,5mm bij optisch component." }
+    ];
+
+    function App() {
+      const [answers, setAnswers] = useState({});
+      const [showResults, setShowResults] = useState(false);
+      const [currentIndex, setCurrentIndex] = useState(0);
+
+      const handleAnswer = (id, answer) => {
+        setAnswers(prev => ({ ...prev, [id]: answer }));
+        if (currentIndex < PRODUCTS.length - 1) {
+          setTimeout(() => setCurrentIndex(prev => prev + 1), 400);
+        }
+      };
+
+      const answeredCount = Object.keys(answers).length;
+      const allDone = answeredCount === PRODUCTS.length;
+
+      const results = useMemo(() => {
+        if (!allDone) return null;
+        let correct = 0;
+        let matches = 0;
+        PRODUCTS.forEach(p => {
+          if (answers[p.id] === p.ai) matches++;
+          correct++;
+        });
+        return { matches, total: correct, pct: Math.round((matches / correct) * 100) };
+      }, [answers, allDone]);
+
+      const handleReset = () => {
+        setAnswers({});
+        setShowResults(false);
+        setCurrentIndex(0);
+      };
+
+      const product = PRODUCTS[currentIndex];
+
+      if (showResults && results) {
+        return (
+          <div style={{ minHeight: "100vh", background: "#f9fafb", fontFamily: "system-ui, sans-serif" }}>
+            <div style={{ background: "white", borderBottom: "1px solid #e5e7eb", padding: "20px 24px" }}>
+              <h1 style={{ fontSize: "22px", fontWeight: "bold", color: "#111827", margin: 0 }}>Resultaten: Mens vs AI</h1>
+              <p style={{ color: "#6b7280", marginTop: "4px", fontSize: "14px" }}>Vergelijk jouw beoordelingen met die van het AI-systeem</p>
+            </div>
+            <div style={{ maxWidth: "700px", margin: "0 auto", padding: "24px" }}>
+              <div style={{ background: "white", borderRadius: "16px", border: "1px solid #e5e7eb", padding: "32px", textAlign: "center", marginBottom: "24px" }}>
+                <div style={{ fontSize: "48px", fontWeight: "bold", color: results.pct >= 80 ? "#10b981" : results.pct >= 60 ? "#f59e0b" : "#ef4444" }}>
+                  {results.pct}%
+                </div>
+                <div style={{ color: "#6b7280", marginTop: "8px" }}>
+                  Je was het {results.matches} van de {results.total} keer eens met de AI
+                </div>
+                <div style={{ marginTop: "12px", padding: "12px", background: "#f0fdf4", borderRadius: "8px", fontSize: "14px", color: "#166534" }}>
+                  {results.pct >= 80
+                    ? "Uitstekend! Je beoordeelt vrijwel hetzelfde als het AI-systeem."
+                    : results.pct >= 60
+                    ? "Goed gedaan! Er zijn een paar verschillen. Bekijk hieronder waar de AI anders denkt."
+                    : "Interessant! Je beoordeelt anders dan de AI. Dat is niet per se fout. Bekijk de redenen."}
+                </div>
+              </div>
+
+              {PRODUCTS.map((p, i) => {
+                const match = answers[p.id] === p.ai;
+                return (
+                  <div key={p.id} style={{
+                    background: "white", borderRadius: "12px", border: "1px solid #e5e7eb",
+                    padding: "16px", marginBottom: "12px",
+                    borderLeft: `4px solid ${match ? "#10b981" : "#ef4444"}`
+                  }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "12px" }}>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontWeight: "600", fontSize: "14px", color: "#374151", marginBottom: "4px" }}>
+                          Product {p.id}
+                        </div>
+                        <div style={{ fontSize: "13px", color: "#6b7280", marginBottom: "8px" }}>{p.desc}</div>
+                      </div>
+                      <div style={{
+                        padding: "4px 10px", borderRadius: "20px", fontSize: "12px", fontWeight: "600",
+                        background: match ? "#d1fae5" : "#fee2e2",
+                        color: match ? "#065f46" : "#991b1b"
+                      }}>
+                        {match ? "Eens" : "Verschil"}
+                      </div>
+                    </div>
+                    <div style={{ display: "flex", gap: "16px", fontSize: "13px", marginTop: "4px" }}>
+                      <div>
+                        <span style={{ color: "#9ca3af" }}>Jij: </span>
+                        <span style={{ fontWeight: "600", color: answers[p.id] === "goed" ? "#059669" : "#dc2626" }}>
+                          {answers[p.id] === "goed" ? "Goed" : "Defect"}
+                        </span>
+                      </div>
+                      <div>
+                        <span style={{ color: "#9ca3af" }}>AI: </span>
+                        <span style={{ fontWeight: "600", color: p.ai === "goed" ? "#059669" : "#dc2626" }}>
+                          {p.ai === "goed" ? "Goed" : "Defect"}
+                        </span>
+                      </div>
+                    </div>
+                    {!match && (
+                      <div style={{ marginTop: "8px", padding: "8px 12px", background: "#eff6ff", borderRadius: "8px", fontSize: "12px", color: "#1e40af" }}>
+                        AI-reden: {p.reden}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+
+              <button onClick={handleReset} style={{
+                display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+                margin: "24px auto 0", padding: "10px 24px", background: "white", border: "1px solid #d1d5db",
+                borderRadius: "8px", cursor: "pointer", fontSize: "14px", color: "#6b7280"
+              }}>
+                Opnieuw beginnen
+              </button>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div style={{ minHeight: "100vh", background: "#f9fafb", fontFamily: "system-ui, sans-serif" }}>
+          <div style={{ background: "white", borderBottom: "1px solid #e5e7eb", padding: "20px 24px" }}>
+            <h1 style={{ fontSize: "22px", fontWeight: "bold", color: "#111827", margin: 0 }}>Foto-inspectie: Mens vs AI</h1>
+            <p style={{ color: "#6b7280", marginTop: "4px", fontSize: "14px" }}>
+              Bekijk elk product. Is het goed of defect? Aan het eind vergelijk je met de AI.
+            </p>
+          </div>
+          <div style={{ maxWidth: "600px", margin: "0 auto", padding: "24px" }}>
+            {/* Voortgang */}
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
+              <div style={{ flex: 1, height: "8px", background: "#e5e7eb", borderRadius: "999px", overflow: "hidden" }}>
+                <div style={{
+                  height: "100%", background: "#3b82f6", borderRadius: "999px",
+                  width: `${(answeredCount / PRODUCTS.length) * 100}%`,
+                  transition: "width 0.5s ease"
+                }} />
+              </div>
+              <span style={{ fontSize: "13px", color: "#6b7280", fontFamily: "monospace" }}>
+                {answeredCount}/{PRODUCTS.length}
+              </span>
+            </div>
+
+            {/* Product kaart */}
+            <div style={{
+              background: "white", borderRadius: "16px", border: "1px solid #e5e7eb",
+              padding: "28px", marginBottom: "20px", boxShadow: "0 1px 3px rgba(0,0,0,0.05)"
+            }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+                <span style={{
+                  padding: "4px 12px", background: "#eff6ff", color: "#1d4ed8",
+                  borderRadius: "20px", fontSize: "13px", fontWeight: "600"
+                }}>
+                  Product {product.id}
+                </span>
+                <span style={{ fontSize: "12px", color: "#9ca3af" }}>
+                  {currentIndex + 1} van {PRODUCTS.length}
+                </span>
+              </div>
+
+              <div style={{
+                background: "#f3f4f6", borderRadius: "12px", padding: "20px",
+                marginBottom: "20px", fontSize: "15px", color: "#374151", lineHeight: "1.6"
+              }}>
+                {product.desc}
+              </div>
+
+              <div style={{ display: "flex", gap: "12px" }}>
+                <button onClick={() => handleAnswer(product.id, "goed")} style={{
+                  flex: 1, padding: "14px", borderRadius: "12px", border: "2px solid",
+                  fontSize: "15px", fontWeight: "600", cursor: "pointer",
+                  transition: "all 0.2s",
+                  borderColor: answers[product.id] === "goed" ? "#10b981" : "#d1d5db",
+                  background: answers[product.id] === "goed" ? "#d1fae5" : "white",
+                  color: answers[product.id] === "goed" ? "#065f46" : "#374151"
+                }}>
+                  Goed
+                </button>
+                <button onClick={() => handleAnswer(product.id, "defect")} style={{
+                  flex: 1, padding: "14px", borderRadius: "12px", border: "2px solid",
+                  fontSize: "15px", fontWeight: "600", cursor: "pointer",
+                  transition: "all 0.2s",
+                  borderColor: answers[product.id] === "defect" ? "#ef4444" : "#d1d5db",
+                  background: answers[product.id] === "defect" ? "#fee2e2" : "white",
+                  color: answers[product.id] === "defect" ? "#991b1b" : "#374151"
+                }}>
+                  Defect
+                </button>
+              </div>
+            </div>
+
+            {/* Navigatie bolletjes */}
+            <div style={{ display: "flex", justifyContent: "center", gap: "6px", marginBottom: "20px" }}>
+              {PRODUCTS.map((p, i) => (
+                <button key={p.id} onClick={() => setCurrentIndex(i)} style={{
+                  width: "12px", height: "12px", borderRadius: "50%", border: "none", cursor: "pointer",
+                  transition: "all 0.2s",
+                  background: i === currentIndex ? "#3b82f6"
+                    : answers[p.id] ? (answers[p.id] === "goed" ? "#86efac" : "#fca5a5")
+                    : "#d1d5db"
+                }} />
+              ))}
+            </div>
+
+            {allDone && (
+              <button onClick={() => setShowResults(true)} style={{
+                width: "100%", padding: "14px", borderRadius: "12px", border: "none",
+                background: "#3b82f6", color: "white", fontSize: "15px", fontWeight: "600",
+                cursor: "pointer", transition: "background 0.2s"
+              }}
+              onMouseOver={e => e.target.style.background = "#2563eb"}
+              onMouseOut={e => e.target.style.background = "#3b82f6"}>
+                Vergelijk met AI-resultaten
+              </button>
+            )}
+
+            <button onClick={handleReset} style={{
+              display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+              margin: "16px auto 0", padding: "8px 16px", background: "transparent", border: "none",
+              cursor: "pointer", fontSize: "13px", color: "#9ca3af"
+            }}>
+              Opnieuw beginnen
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
