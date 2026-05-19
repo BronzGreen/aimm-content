@@ -7,6 +7,74 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde9-lo-ai-fund-117
+
+**Kontext:** Ronde 9: lo-ai-fund-117
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-117/trainee.md`
+- `kennisbank/ai_fundamentals/machine_learning_basics/ko-ai-fund-117.md`
+- `leerobjecten/lo-ai-fund-117/trainer.md`
+- `leerobjecten/lo-ai-fund-117/draaiboek.md`
+- `leerobjecten/lo-ai-fund-117/werkbladen/wb-01-scenarios-drie-vormen.md`
+- `leerobjecten/lo-ai-fund-117/werkbladen/wb-02-reflectie-signaalwoorden.md`
+- `leerobjecten/lo-ai-fund-117/werkbladen/wb-03-handout-drie-vormen.md`
+- `leerobjecten/lo-ai-fund-117/werkbladen/wb-04-eigen-lijn-verkenning.md`
+- `leerobjecten/lo-ai-fund-117/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-ai-fund-117/README.md`
+
+## 2026-05-19 — publish-ronde9-lo-data-lit-201
+
+**Kontext:** Ronde 9: lo-data-lit-201
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-201/trainee.md`
+- `kennisbank/data_literacy/data_begrippen/ko-data-lit-201.md`
+- `leerobjecten/lo-data-lit-201/trainer.md`
+- `leerobjecten/lo-data-lit-201/draaiboek.md`
+- `leerobjecten/lo-data-lit-201/werkbladen/wb-handout-kwaliteitschecks.md`
+- `leerobjecten/lo-data-lit-201/werkbladen/wb-kwaliteitscheck-oefening.md`
+- `leerobjecten/lo-data-lit-201/werkbladen/wb-sorteerkaarten-datatypes.md`
+- `leerobjecten/lo-data-lit-201/werkbladen/wb-transfer-datatypes-kwaliteit.md`
+- `leerobjecten/lo-data-lit-201/README.md`
+
+## 2026-05-19 — publish-ronde9-lo-spc-108
+
+**Kontext:** Ronde 9: lo-spc-108
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-108/trainee.md`
+- `kennisbank/spc/regelkaarten/ko-spc-108.md`
+- `leerobjecten/lo-spc-108/trainer.md`
+- `leerobjecten/lo-spc-108/draaiboek.md`
+- `leerobjecten/lo-spc-108/werkbladen/wb-01-oefening.md`
+- `leerobjecten/lo-spc-108/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-108/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-108/svg/diagram.svg`
+- `leerobjecten/lo-spc-108/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-108/README.md`
+
+## 2026-05-19 — publish-ronde9-lo-industry40-digi-001
+
+**Kontext:** Ronde 9: lo-industry40-digi-001
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-digi-001/trainee.md`
+- `kennisbank/industry_4_0/smart_factory_concepten/ko-industry-4-0-digi-001.md`
+- `leerobjecten/lo-industry40-digi-001/trainer.md`
+- `leerobjecten/lo-industry40-digi-001/draaiboek.md`
+- `leerobjecten/lo-industry40-digi-001/werkbladen/wb-01-theoretiseren.md`
+- `leerobjecten/lo-industry40-digi-001/werkbladen/wb-02-ervaren.md`
+- `leerobjecten/lo-industry40-digi-001/werkbladen/wb-03-experimenteren.md`
+- `leerobjecten/lo-industry40-digi-001/werkbladen/wb-04-reflecteren.md`
+- `leerobjecten/lo-industry40-digi-001/svg/diagram.svg`
+- `leerobjecten/lo-industry40-digi-001/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-industry40-digi-001/README.md`
+
 ## 2026-05-19 — publish-ronde8-lo-industry40-022
 
 **Kontext:** Ronde 8: lo-industry40-022
