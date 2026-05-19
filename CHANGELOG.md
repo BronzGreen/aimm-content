@@ -7,6 +7,75 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde5-lo-industry40-004
+
+**Kontext:** Ronde 5: lo-industry40-004 (showcase 17 -> 21)
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-004/trainee.md`
+- `kennisbank/industry_4_0/iot_in_productie/ko-industry40-004.md`
+- `leerobjecten/lo-industry40-004/trainer.md`
+- `leerobjecten/lo-industry40-004/draaiboek.md`
+- `leerobjecten/lo-industry40-004/werkbladen/wb-01-plattegrond-werkvloer.md`
+- `leerobjecten/lo-industry40-004/werkbladen/wb-02-patronen-bronnen.md`
+- `leerobjecten/lo-industry40-004/werkbladen/wb-03-vijf-databronnen-handout.md`
+- `leerobjecten/lo-industry40-004/werkbladen/wb-04-eigen-lijn-databronnen.md`
+- `leerobjecten/lo-industry40-004/README.md`
+
+## 2026-05-19 — publish-ronde5-lo-ai-fund-102
+
+**Kontext:** Ronde 5: lo-ai-fund-102 (showcase 17 -> 21)
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-102/trainee.md`
+- `kennisbank/ai_fundamentals/machine_learning_basics/ko-ai-fund-102.md`
+- `leerobjecten/lo-ai-fund-102/trainer.md`
+- `leerobjecten/lo-ai-fund-102/draaiboek.md`
+- `leerobjecten/lo-ai-fund-102/werkbladen/wb-01-casus-voorraad.md`
+- `leerobjecten/lo-ai-fund-102/werkbladen/wb-02-buurman-check.md`
+- `leerobjecten/lo-ai-fund-102/werkbladen/wb-03-handout-rationeel-handelen.md`
+- `leerobjecten/lo-ai-fund-102/werkbladen/wb-04-eigen-werkvloer.md`
+- `leerobjecten/lo-ai-fund-102/README.md`
+
+## 2026-05-19 — publish-ronde5-lo-smart-mfg-094
+
+**Kontext:** Ronde 5: lo-smart-mfg-094 (showcase 17 -> 21)
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-094/trainee.md`
+- `kennisbank/smart_manufacturing/predictive_maintenance/ko-smart-mfg-094.md`
+- `leerobjecten/lo-smart-mfg-094/trainer.md`
+- `leerobjecten/lo-smart-mfg-094/werkbladen/wb-actieplan-meldingen-werkvloer.md`
+- `leerobjecten/lo-smart-mfg-094/werkbladen/wb-casuskaarten-8-meldingen.md`
+- `leerobjecten/lo-smart-mfg-094/werkbladen/wb-handout-beoordelingsprotocol.md`
+- `leerobjecten/lo-smart-mfg-094/werkbladen/wb-reflectie-patronen.md`
+- `leerobjecten/lo-smart-mfg-094/werkbladen/wb-scoringsformulier.md`
+- `leerobjecten/lo-smart-mfg-094/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-094/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-094/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-094/README.md`
+
+## 2026-05-19 — publish-ronde5-lo-oee-004
+
+**Kontext:** Ronde 5: lo-oee-004 (showcase 17 -> 21)
+
+Toegevoegd:
+
+- `leerobjecten/lo-oee-004/trainee.md`
+- `kennisbank/oee/kwaliteit/ko-oee-004.md`
+- `leerobjecten/lo-oee-004/trainer.md`
+- `leerobjecten/lo-oee-004/draaiboek.md`
+- `leerobjecten/lo-oee-004/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-oee-004/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-oee-004/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-oee-004/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-oee-004/svg/diagram.svg`
+- `leerobjecten/lo-oee-004/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-oee-004/README.md`
+
 ## 2026-05-19 — publish-ronde4-lo-industry40-003
 
 **Kontext:** Ronde 4: lo-industry40-003 (showcase 13 -> 17 LOs)
