@@ -7,6 +7,25 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde2-lo-data-lit-102
+
+**Kontext:** Ronde 2: lo-data-lit-102 (showcase 5 → 9 LOs over 6 domeinen)
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-102/trainee.md`
+- `kennisbank/data_literacy/data_begrippen/ko-data-lit-102.md`
+- `leerobjecten/lo-data-lit-102/trainer.md`
+- `leerobjecten/lo-data-lit-102/draaiboek.md`
+- `leerobjecten/lo-data-lit-102/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-data-lit-102/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-data-lit-102/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-data-lit-102/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-data-lit-102/svg/diagram.svg`
+- `leerobjecten/lo-data-lit-102/interactive/model.html`
+- `leerobjecten/lo-data-lit-102/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-data-lit-102/README.md`
+
 ## 2026-05-19 — publish-ronde2-lo-spc-102
 
 **Kontext:** Ronde 2: lo-spc-102 (showcase 5 → 9 LOs over 6 domeinen)

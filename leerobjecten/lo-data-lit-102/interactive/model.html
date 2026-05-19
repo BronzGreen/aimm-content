@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vier Soorten Data in de Fabriek</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    const DATA_TYPES = [
+      {
+        id: "getallen",
+        label: "Getallen",
+        subtitle: "Numerieke data",
+        icon: "123",
+        color: { bg: "bg-blue-50", border: "border-blue-400", text: "text-blue-800", accent: "bg-blue-500", light: "bg-blue-100" },
+        kracht: "Je kunt ermee rekenen: gemiddelden, trends, afwijkingen.",
+        voorbeelden: [
+          "Temperatuur: 182 graden",
+          "Gewicht: 3,45 kg",
+          "Productie: 847 stuks per uur",
+          "Druk: 6,2 bar"
+        ],
+        bron: "Machines en mensen die meten",
+        tip: "Als je een getal kunt invullen, is het numerieke data."
+      },
+      {
+        id: "tekst",
+        label: "Tekst",
+        subtitle: "Tekstuele data",
+        icon: "Aa",
+        color: { bg: "bg-emerald-50", border: "border-emerald-400", text: "text-emerald-800", accent: "bg-emerald-500", light: "bg-emerald-100" },
+        kracht: "Geeft context die getallen missen. Vertelt het verhaal achter de cijfers.",
+        voorbeelden: [
+          "Logboek: \"Pomp maakt raar geluid\"",
+          "Ploegenoverdracht",
+          "Storingsbeschrijving",
+          "Kwaliteitsrapport"
+        ],
+        bron: "Mensen die schrijven of typen",
+        tip: "Tekst legt uit WAAROM iets gebeurde."
+      },
+      {
+        id: "beelden",
+        label: "Beelden",
+        subtitle: "Visuele data",
+        icon: "\uD83D\uDDBC",
+        color: { bg: "bg-orange-50", border: "border-orange-400", text: "text-orange-800", accent: "bg-orange-500", light: "bg-orange-100" },
+        kracht: "AI kan patronen herkennen die het menselijk oog mist.",
+        voorbeelden: [
+          "Camerabeelden van producten",
+          "Foto's van fouten of krassen",
+          "Microscoopbeelden",
+          "Scans en controles"
+        ],
+        bron: "Camera's, scanners, microscopen",
+        tip: "Als je het kunt ZIEN op een scherm, is het visuele data."
+      },
+      {
+        id: "signalen",
+        label: "Signalen",
+        subtitle: "Sensordata",
+        icon: "\u223F",
+        color: { bg: "bg-purple-50", border: "border-purple-400", text: "text-purple-800", accent: "bg-purple-500", light: "bg-purple-100" },
+        kracht: "Veranderingen over tijd worden zichtbaar. Slijtage kun je zo vroeg opmerken.",
+        voorbeelden: [
+          "Trillingen van de spindel",
+          "Temperatuurverloop",
+          "Stroomverbruik over een week",
+          "Geluidspatronen"
+        ],
+        bron: "Sensoren die continu meten",
+        tip: "Signalen zijn getallen die CONTINU binnenkomen, als een stroom."
+      }
+    ];
+
+    const QUIZ_ITEMS = [
+      { text: "De temperatuur is 182 graden.", answer: "getallen" },
+      { text: "\"Machine stond stil door olielek.\"", answer: "tekst" },
+      { text: "Een foto van een kras op het product.", answer: "beelden" },
+      { text: "De trilling van de motor neemt toe.", answer: "signalen" },
+      { text: "Er zijn 847 stuks gemaakt vandaag.", answer: "getallen" },
+      { text: "De camera ziet een afwijkende kleur.", answer: "beelden" },
+      { text: "\"Ochtendploeg: pomp maakt geluid.\"", answer: "tekst" },
+      { text: "Het stroomverbruik stijgt al 3 dagen.", answer: "signalen" },
+    ];
+
+    function App() {
+      const [activeType, setActiveType] = useState(null);
+      const [tab, setTab] = useState("verkennen");
+      const [quizAnswers, setQuizAnswers] = useState({});
+      const [showQuizResults, setShowQuizResults] = useState(false);
+
+      const active = DATA_TYPES.find(t => t.id === activeType);
+
+      const quizScore = useMemo(() => {
+        let correct = 0;
+        QUIZ_ITEMS.forEach((item, i) => {
+          if (quizAnswers[i] === item.answer) correct++;
+        });
+        return correct;
+      }, [quizAnswers]);
+
+      const allAnswered = Object.keys(quizAnswers).length === QUIZ_ITEMS.length;
+
+      const handleReset = () => {
+        setActiveType(null);
+        setTab("verkennen");
+        setQuizAnswers({});
+        setShowQuizResults(false);
+      };
+
+      return (
+        <div className="min-h-screen bg-gray-50">
+          {/* Header */}
+          <div className="bg-white border-b px-6 py-4">
+            <h1 className="text-2xl font-bold text-gray-900">Vier Soorten Data in de Fabriek</h1>
+            <p className="text-gray-500 mt-1">Klik op een soort om te verkennen, of doe de quiz</p>
+          </div>
+
+          {/* Tabs */}
+          <div className="max-w-4xl mx-auto px-6 pt-4">
+            <div className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-6">
+              {[
+                { id: "verkennen", label: "Verkennen" },
+                { id: "quiz", label: "Quiz" }
+              ].map(t => (
+                <button
+                  key={t.id}
+                  className={`flex-1 px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                    tab === t.id
+                      ? "bg-white shadow-sm text-gray-900"
+                      : "text-gray-500 hover:text-gray-700"
+                  }`}
+                  onClick={() => setTab(t.id)}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="max-w-4xl mx-auto px-6 pb-8">
+            {/* ===== TAB: VERKENNEN ===== */}
+            {tab === "verkennen" && (
+              <div>
+                {/* 2x2 grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  {DATA_TYPES.map(type => (
+                    <button
+                      key={type.id}
+                      onClick={() => setActiveType(activeType === type.id ? null : type.id)}
+                      className={`p-5 rounded-xl border-2 text-left transition-all ${type.color.bg} ${type.color.border} ${
+                        activeType === type.id
+                          ? "shadow-lg scale-[1.02] border-opacity-100"
+                          : "border-opacity-40 hover:shadow-md hover:scale-[1.01]"
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className={`w-12 h-12 rounded-xl ${type.color.light} flex items-center justify-center`}>
+                          <span className={`text-xl font-bold ${type.color.text}`}>{type.icon}</span>
+                        </div>
+                        <div>
+                          <div className={`font-bold text-lg ${type.color.text}`}>{type.label}</div>
+                          <div className="text-sm text-gray-500">{type.subtitle}</div>
+                        </div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Detail paneel */}
+                <div className={`transition-all duration-300 ${active ? "opacity-100" : "opacity-50"}`}>
+                  {active ? (
+                    <div className={`p-6 rounded-xl border-2 ${active.color.bg} ${active.color.border}`}>
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className={`w-10 h-10 rounded-lg ${active.color.light} flex items-center justify-center`}>
+                          <span className={`text-lg font-bold ${active.color.text}`}>{active.icon}</span>
+                        </div>
+                        <div>
+                          <h2 className={`text-xl font-bold ${active.color.text}`}>{active.label}</h2>
+                          <p className="text-sm text-gray-600">{active.subtitle}</p>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <h3 className="font-semibold text-gray-700 mb-2">Voorbeelden</h3>
+                          <ul className="space-y-1.5">
+                            {active.voorbeelden.map((v, i) => (
+                              <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
+                                <span className={`mt-1.5 w-1.5 h-1.5 rounded-full ${active.color.accent} flex-shrink-0`}></span>
+                                {v}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="space-y-3">
+                          <div>
+                            <h3 className="font-semibold text-gray-700 mb-1">Kracht</h3>
+                            <p className="text-sm text-gray-700">{active.kracht}</p>
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-gray-700 mb-1">Waar komt het vandaan?</h3>
+                            <p className="text-sm text-gray-700">{active.bron}</p>
+                          </div>
+                          <div className={`p-3 rounded-lg ${active.color.light}`}>
+                            <p className={`text-sm font-medium ${active.color.text}`}>Tip: {active.tip}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="p-6 rounded-xl border-2 border-dashed border-gray-300 text-center text-gray-400">
+                      Klik op een soort data hierboven
+                    </div>
+                  )}
+                </div>
+
+                {/* Samenvatting */}
+                <div className="mt-6 p-5 bg-white rounded-xl border shadow-sm">
+                  <h3 className="font-bold text-gray-900 mb-2">Samen = compleet beeld</h3>
+                  <p className="text-sm text-gray-600">
+                    Op een metaalverwerkende lijn worden alle vier soorten tegelijk verzameld.
+                    De CNC-machine meet krachten en temperaturen (getallen).
+                    De operator schrijft een overdracht (tekst).
+                    Een camera fotografeert elk werkstuk (beeld).
+                    Sensoren volgen de spindel (signaal).
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* ===== TAB: QUIZ ===== */}
+            {tab === "quiz" && (
+              <div>
+                <div className="bg-white rounded-xl border p-5 mb-4">
+                  <h3 className="font-bold text-gray-900 mb-1">Herken de soort data</h3>
+                  <p className="text-sm text-gray-500">Kies bij elk voorbeeld welke soort data het is.</p>
+                </div>
+
+                <div className="space-y-3">
+                  {QUIZ_ITEMS.map((item, i) => {
+                    const answered = quizAnswers[i] !== undefined;
+                    const correct = quizAnswers[i] === item.answer;
+
+                    return (
+                      <div key={i} className={`bg-white rounded-xl border p-4 transition-all ${
+                        showQuizResults && answered
+                          ? correct ? "border-green-400 bg-green-50" : "border-red-300 bg-red-50"
+                          : ""
+                      }`}>
+                        <p className="font-medium text-gray-800 mb-3">{i + 1}. {item.text}</p>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                          {DATA_TYPES.map(type => (
+                            <button
+                              key={type.id}
+                              onClick={() => {
+                                if (!showQuizResults) {
+                                  setQuizAnswers(prev => ({ ...prev, [i]: type.id }));
+                                }
+                              }}
+                              className={`py-2 px-3 rounded-lg text-sm font-medium transition-all ${
+                                quizAnswers[i] === type.id
+                                  ? showQuizResults
+                                    ? type.id === item.answer
+                                      ? "bg-green-500 text-white shadow-md"
+                                      : "bg-red-400 text-white"
+                                    : "bg-blue-500 text-white shadow-md scale-105"
+                                  : showQuizResults && type.id === item.answer
+                                    ? "bg-green-100 text-green-800 border-2 border-green-400"
+                                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                              }`}
+                            >
+                              {type.label}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Resultaat */}
+                <div className="mt-6 flex gap-3">
+                  {!showQuizResults ? (
+                    <button
+                      onClick={() => { if (allAnswered) setShowQuizResults(true); }}
+                      className={`flex-1 py-3 rounded-lg font-medium transition-all ${
+                        allAnswered
+                          ? "bg-blue-500 text-white hover:bg-blue-600"
+                          : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                      }`}
+                      disabled={!allAnswered}
+                    >
+                      {allAnswered ? "Bekijk mijn score" : `Nog ${QUIZ_ITEMS.length - Object.keys(quizAnswers).length} vragen open`}
+                    </button>
+                  ) : (
+                    <div className="flex-1 p-5 bg-white rounded-xl border shadow-sm text-center">
+                      <div className="text-4xl font-bold text-gray-900 mb-1">{quizScore} / {QUIZ_ITEMS.length}</div>
+                      <p className="text-gray-500 text-sm">
+                        {quizScore === QUIZ_ITEMS.length
+                          ? "Alle goed! Je herkent de vier soorten."
+                          : quizScore >= 6
+                            ? "Goed gedaan! Kijk de fouten nog even na."
+                            : "Bekijk de handout nog eens. Oefening helpt!"}
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Reset */}
+                <div className="mt-4 text-center">
+                  <button
+                    onClick={handleReset}
+                    className="text-sm text-gray-400 hover:text-gray-600 inline-flex items-center gap-1"
+                  >
+                    Opnieuw beginnen
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Footer */}
+          <div className="text-center text-xs text-gray-400 py-4 border-t">
+            AIMM Data Literacy - ko-data-lit-102 | Module 1: Gebruik
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
