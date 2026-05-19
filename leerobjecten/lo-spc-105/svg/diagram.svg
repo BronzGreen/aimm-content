@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 780" role="img" aria-labelledby="title desc" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Demings funnel-experiment — vier strategieen en hun spreidingspatroon</title>
+  <desc id="desc">Een vergelijking van vier compensatie-strategieen uit Demings funnel-experiment, elk gevisualiseerd als een trefferpatroon rond een centraal doel. Strategie 1: niets doen, geeft het strakste patroon rond het doel en wint altijd. Strategie 2: compenseren naar het doel, verdubbelt de spreiding. Strategie 3: compenseren naar het laatste trefpunt, drijft exponentieel af van het doel. Strategie 4: compenseren naar de laatste meting, geeft een random walk zonder enige controle. De onderliggende boodschap: ingrijpen op common cause variatie maakt het proces slechter in plaats van beter. Bron: Deming 1986 Out of the Crisis, Deming Institute, Joiner 1994.</desc>
+
+  <defs>
+    <linearGradient id="bg-s1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ECFDF5"/>
+      <stop offset="100%" stop-color="#D1FAE5"/>
+    </linearGradient>
+    <linearGradient id="bg-s2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FEF3C7"/>
+      <stop offset="100%" stop-color="#FDE68A"/>
+    </linearGradient>
+    <linearGradient id="bg-s3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FED7AA"/>
+      <stop offset="100%" stop-color="#FDBA74"/>
+    </linearGradient>
+    <linearGradient id="bg-s4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FECACA"/>
+      <stop offset="100%" stop-color="#FCA5A5"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L8,5 L0,10 z" fill="#6B7280"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="960" height="780" fill="#F8F6F0"/>
+
+  <!-- Titel -->
+  <text x="480" y="44" text-anchor="middle" font-size="24" font-weight="700" fill="#111827">Demings funnel-experiment — vier strategieen</text>
+  <text x="480" y="70" text-anchor="middle" font-size="14" fill="#4B5563">Trechter boven tafel, kogel op doel. Vier manieren om te reageren op variatie.</text>
+
+  <!-- Raster 2x2 met vier paneeltjes -->
+
+  <!-- ======= STRATEGIE 1 (groen) — linksboven ======= -->
+  <g transform="translate(40,100)">
+    <rect width="420" height="300" rx="14" fill="url(#bg-s1)" stroke="#10B981" stroke-width="2" filter="url(#shadow)"/>
+    <text x="20" y="32" font-size="16" font-weight="700" fill="#065F46">1. Niets doen</text>
+    <text x="20" y="52" font-size="12" fill="#047857">Trechter staat stil · laat de schommeling lopen</text>
+
+    <!-- Mini-doel + trefpatroon: strak cluster rond middelpunt -->
+    <g transform="translate(120,90)">
+      <!-- Doelcirkels -->
+      <circle cx="90" cy="90" r="80" fill="#FFFFFF" stroke="#A7F3D0" stroke-width="1"/>
+      <circle cx="90" cy="90" r="55" fill="none" stroke="#A7F3D0" stroke-width="1"/>
+      <circle cx="90" cy="90" r="30" fill="none" stroke="#6EE7B7" stroke-width="1"/>
+      <!-- Centraal doel -->
+      <circle cx="90" cy="90" r="4" fill="#065F46"/>
+      <!-- Trefpunten — strak cluster -->
+      <circle cx="88" cy="86" r="3" fill="#047857"/>
+      <circle cx="93" cy="91" r="3" fill="#047857"/>
+      <circle cx="85" cy="93" r="3" fill="#047857"/>
+      <circle cx="92" cy="84" r="3" fill="#047857"/>
+      <circle cx="87" cy="95" r="3" fill="#047857"/>
+      <circle cx="94" cy="89" r="3" fill="#047857"/>
+      <circle cx="89" cy="82" r="3" fill="#047857"/>
+      <circle cx="84" cy="88" r="3" fill="#047857"/>
+    </g>
+
+    <!-- Resultaat-label -->
+    <rect x="20" y="250" width="380" height="36" rx="8" fill="#065F46"/>
+    <text x="210" y="273" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">Laagste spreiding — winnende strategie</text>
+  </g>
+
+  <!-- ======= STRATEGIE 2 (geel) — rechtsboven ======= -->
+  <g transform="translate(500,100)">
+    <rect width="420" height="300" rx="14" fill="url(#bg-s2)" stroke="#D97706" stroke-width="2" filter="url(#shadow)"/>
+    <text x="20" y="32" font-size="16" font-weight="700" fill="#78350F">2. Compenseren naar doel</text>
+    <text x="20" y="52" font-size="12" fill="#92400E">Na elke meting trechter verschuiven om afwijking goed te maken</text>
+
+    <g transform="translate(120,90)">
+      <circle cx="90" cy="90" r="80" fill="#FFFFFF" stroke="#FDE68A" stroke-width="1"/>
+      <circle cx="90" cy="90" r="55" fill="none" stroke="#FDE68A" stroke-width="1"/>
+      <circle cx="90" cy="90" r="30" fill="none" stroke="#FCD34D" stroke-width="1"/>
+      <circle cx="90" cy="90" r="4" fill="#78350F"/>
+      <!-- Trefpunten — spreiding verdubbeld, breder cluster -->
+      <circle cx="75" cy="70" r="3" fill="#B45309"/>
+      <circle cx="108" cy="78" r="3" fill="#B45309"/>
+      <circle cx="68" cy="98" r="3" fill="#B45309"/>
+      <circle cx="112" cy="110" r="3" fill="#B45309"/>
+      <circle cx="82" cy="115" r="3" fill="#B45309"/>
+      <circle cx="100" cy="66" r="3" fill="#B45309"/>
+      <circle cx="72" cy="82" r="3" fill="#B45309"/>
+      <circle cx="105" cy="96" r="3" fill="#B45309"/>
+    </g>
+
+    <rect x="20" y="250" width="380" height="36" rx="8" fill="#92400E"/>
+    <text x="210" y="273" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">Spreiding verdubbelt</text>
+  </g>
+
+  <!-- ======= STRATEGIE 3 (oranje) — linksonder ======= -->
+  <g transform="translate(40,420)">
+    <rect width="420" height="300" rx="14" fill="url(#bg-s3)" stroke="#EA580C" stroke-width="2" filter="url(#shadow)"/>
+    <text x="20" y="32" font-size="16" font-weight="700" fill="#7C2D12">3. Compenseren naar laatste punt</text>
+    <text x="20" y="52" font-size="12" fill="#9A3412">Trechter verplaatsen naar waar de kogel viel</text>
+
+    <g transform="translate(120,90)">
+      <circle cx="90" cy="90" r="80" fill="#FFFFFF" stroke="#FDBA74" stroke-width="1"/>
+      <circle cx="90" cy="90" r="55" fill="none" stroke="#FDBA74" stroke-width="1"/>
+      <circle cx="90" cy="90" r="30" fill="none" stroke="#FB923C" stroke-width="1"/>
+      <circle cx="90" cy="90" r="4" fill="#7C2D12"/>
+      <!-- Trefpunten — drijven af in een lijn -->
+      <circle cx="88" cy="88" r="3" fill="#9A3412"/>
+      <circle cx="80" cy="78" r="3" fill="#9A3412"/>
+      <circle cx="68" cy="64" r="3" fill="#9A3412"/>
+      <circle cx="52" cy="48" r="3" fill="#9A3412"/>
+      <circle cx="34" cy="30" r="3" fill="#9A3412"/>
+      <!-- Pijl die wegloopt -->
+      <path d="M90,90 L30,28" stroke="#9A3412" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow)" fill="none" opacity="0.7"/>
+    </g>
+
+    <rect x="20" y="250" width="380" height="36" rx="8" fill="#9A3412"/>
+    <text x="210" y="273" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">Exponentieel afdrijven van het doel</text>
+  </g>
+
+  <!-- ======= STRATEGIE 4 (rood) — rechtsonder ======= -->
+  <g transform="translate(500,420)">
+    <rect width="420" height="300" rx="14" fill="url(#bg-s4)" stroke="#DC2626" stroke-width="2" filter="url(#shadow)"/>
+    <text x="20" y="32" font-size="16" font-weight="700" fill="#7F1D1D">4. Compenseren naar laatste meting</text>
+    <text x="20" y="52" font-size="12" fill="#991B1B">Reageren op elke nieuwe waarde — random walk</text>
+
+    <g transform="translate(120,90)">
+      <circle cx="90" cy="90" r="80" fill="#FFFFFF" stroke="#FCA5A5" stroke-width="1"/>
+      <circle cx="90" cy="90" r="55" fill="none" stroke="#FCA5A5" stroke-width="1"/>
+      <circle cx="90" cy="90" r="30" fill="none" stroke="#F87171" stroke-width="1"/>
+      <circle cx="90" cy="90" r="4" fill="#7F1D1D"/>
+      <!-- Trefpunten — totaal verspreid, chaotisch pad -->
+      <polyline points="90,90 60,70 120,60 40,110 140,130 30,50 150,90 50,160"
+                fill="none" stroke="#991B1B" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+      <circle cx="60" cy="70" r="3" fill="#991B1B"/>
+      <circle cx="120" cy="60" r="3" fill="#991B1B"/>
+      <circle cx="40" cy="110" r="3" fill="#991B1B"/>
+      <circle cx="140" cy="130" r="3" fill="#991B1B"/>
+      <circle cx="30" cy="50" r="3" fill="#991B1B"/>
+      <circle cx="150" cy="90" r="3" fill="#991B1B"/>
+      <circle cx="50" cy="160" r="3" fill="#991B1B"/>
+      <circle cx="160" cy="40" r="3" fill="#991B1B"/>
+    </g>
+
+    <rect x="20" y="250" width="380" height="36" rx="8" fill="#991B1B"/>
+    <text x="210" y="273" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">Random walk — alle controle weg</text>
+  </g>
+
+  <!-- Kernregel onderaan -->
+  <g transform="translate(40,740)">
+    <rect width="880" height="1" fill="#D1D5DB"/>
+  </g>
+  <text x="480" y="764" text-anchor="middle" font-size="12" fill="#4B5563" font-style="italic">Zolang het proces stabiel is (alleen common cause), wint strategie 1 altijd. Elke andere strategie voegt zelf variatie toe. — Deming 1986 / Deming Institute / Joiner 1994</text>
+</svg>

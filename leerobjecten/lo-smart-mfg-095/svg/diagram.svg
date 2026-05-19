@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-labelledby="title desc" font-family="Segoe UI, Arial, sans-serif">
+  <title id="title">4 stappen van computer vision kwaliteitscontrole</title>
+  <desc id="desc">Stapsgewijs diagram dat laat zien hoe AI-visuele inspectie werkt in vier stappen: een camera maakt een foto van het product, het systeem zet de foto om naar pixels, het AI-model zoekt patronen in die pixels, en het systeem geeft een oordeel: goed of defect. Bij twijfel beslist de operator.</desc>
+
+  <defs>
+    <marker id="arrow-step" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1E40AF" role="presentation"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect width="600" height="400" fill="#F8FAFC" rx="8" role="presentation"/>
+
+  <!-- Titel -->
+  <text x="300" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#1E293B">AI-visuele inspectie in 4 stappen</text>
+  <text x="300" y="56" text-anchor="middle" font-size="12" fill="#64748B">Van foto tot oordeel: zo controleert een AI-systeem productkwaliteit</text>
+
+  <!-- Stap 1: Camera -->
+  <rect x="30" y="80" width="120" height="150" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5"/>
+  <circle cx="90" cy="115" r="24" fill="#DBEAFE" role="presentation"/>
+  <!-- Camera icoon -->
+  <rect x="74" y="106" width="32" height="22" rx="4" fill="#2563EB" role="presentation"/>
+  <circle cx="90" cy="117" r="6" fill="#DBEAFE" role="presentation"/>
+  <rect x="82" y="102" width="16" height="6" rx="2" fill="#2563EB" role="presentation"/>
+  <text x="90" y="160" text-anchor="middle" font-size="13" font-weight="bold" fill="#2563EB">Stap 1</text>
+  <text x="90" y="176" text-anchor="middle" font-size="13" font-weight="bold" fill="#1E293B">Camera</text>
+  <text x="90" y="195" text-anchor="middle" font-size="10" fill="#475569">Maakt een foto</text>
+  <text x="90" y="208" text-anchor="middle" font-size="10" fill="#475569">van het product</text>
+
+  <!-- Pijl 1 naar 2 -->
+  <line x1="152" y1="155" x2="178" y2="155" stroke="#1E40AF" stroke-width="2.5" marker-end="url(#arrow-step)"/>
+
+  <!-- Stap 2: Pixels -->
+  <rect x="180" y="80" width="120" height="150" rx="10" fill="#FEF3C7" stroke="#D97706" stroke-width="2.5"/>
+  <circle cx="240" cy="115" r="24" fill="#FDE68A" role="presentation"/>
+  <!-- Pixel grid icoon -->
+  <rect x="225" y="104" width="8" height="8" fill="#D97706" role="presentation"/>
+  <rect x="235" y="104" width="8" height="8" fill="#F59E0B" role="presentation"/>
+  <rect x="245" y="104" width="8" height="8" fill="#D97706" role="presentation"/>
+  <rect x="225" y="114" width="8" height="8" fill="#F59E0B" role="presentation"/>
+  <rect x="235" y="114" width="8" height="8" fill="#D97706" role="presentation"/>
+  <rect x="245" y="114" width="8" height="8" fill="#F59E0B" role="presentation"/>
+  <rect x="225" y="124" width="8" height="8" fill="#D97706" role="presentation"/>
+  <rect x="235" y="124" width="8" height="8" fill="#F59E0B" role="presentation"/>
+  <rect x="245" y="124" width="8" height="8" fill="#D97706" role="presentation"/>
+  <text x="240" y="160" text-anchor="middle" font-size="13" font-weight="bold" fill="#D97706">Stap 2</text>
+  <text x="240" y="176" text-anchor="middle" font-size="13" font-weight="bold" fill="#1E293B">Pixels</text>
+  <text x="240" y="195" text-anchor="middle" font-size="10" fill="#475569">Foto wordt</text>
+  <text x="240" y="208" text-anchor="middle" font-size="10" fill="#475569">cijfers en kleuren</text>
+
+  <!-- Pijl 2 naar 3 -->
+  <line x1="302" y1="155" x2="328" y2="155" stroke="#1E40AF" stroke-width="2.5" marker-end="url(#arrow-step)"/>
+
+  <!-- Stap 3: Patroon -->
+  <rect x="330" y="80" width="120" height="150" rx="10" fill="#F0FDF4" stroke="#059669" stroke-width="2.5"/>
+  <circle cx="390" cy="115" r="24" fill="#D1FAE5" role="presentation"/>
+  <!-- Zoek/patroon icoon -->
+  <circle cx="386" cy="113" r="10" fill="none" stroke="#059669" stroke-width="2.5" role="presentation"/>
+  <line x1="393" y1="120" x2="400" y2="127" stroke="#059669" stroke-width="2.5" role="presentation"/>
+  <text x="390" y="160" text-anchor="middle" font-size="13" font-weight="bold" fill="#059669">Stap 3</text>
+  <text x="390" y="176" text-anchor="middle" font-size="13" font-weight="bold" fill="#1E293B">Patroon</text>
+  <text x="390" y="195" text-anchor="middle" font-size="10" fill="#475569">AI zoekt bekende</text>
+  <text x="390" y="208" text-anchor="middle" font-size="10" fill="#475569">vormen en fouten</text>
+
+  <!-- Pijl 3 naar 4 -->
+  <line x1="452" y1="155" x2="478" y2="155" stroke="#1E40AF" stroke-width="2.5" marker-end="url(#arrow-step)"/>
+
+  <!-- Stap 4: Oordeel -->
+  <rect x="480" y="80" width="100" height="150" rx="10" fill="#FEF2F2" stroke="#DC2626" stroke-width="2.5"/>
+  <circle cx="530" cy="115" r="24" fill="#FEE2E2" role="presentation"/>
+  <!-- Vinkje/kruis icoon -->
+  <text x="530" y="122" text-anchor="middle" font-size="22" font-weight="bold" fill="#059669" role="presentation">&#x2713;</text>
+  <text x="530" y="160" text-anchor="middle" font-size="13" font-weight="bold" fill="#DC2626">Stap 4</text>
+  <text x="530" y="176" text-anchor="middle" font-size="13" font-weight="bold" fill="#1E293B">Oordeel</text>
+  <text x="530" y="195" text-anchor="middle" font-size="10" fill="#475569">Goed of defect?</text>
+  <text x="530" y="208" text-anchor="middle" font-size="10" fill="#475569">Twijfel: operator</text>
+
+  <!-- Uitleg onderaan -->
+  <rect x="30" y="260" width="540" height="55" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="300" y="282" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E40AF">Belangrijk: het AI-systeem vervangt je niet</text>
+  <text x="300" y="300" text-anchor="middle" font-size="11" fill="#1E3A5F">Bij twijfelgevallen beslist de operator. Jouw ervaring is onmisbaar.</text>
+
+  <!-- Scaffolding onderaan -->
+  <text x="300" y="340" text-anchor="middle" font-size="13" font-weight="bold" fill="#6D28D9">Oefenen: van voordoen naar zelf doen</text>
+
+  <rect x="30" y="352" width="160" height="30" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="110" y="372" text-anchor="middle" font-size="10" font-weight="bold" fill="#6D28D9">IK DOE</text>
+
+  <line x1="192" y1="367" x2="218" y2="367" stroke="#7C3AED" stroke-width="1.5" marker-end="url(#arrow-step)"/>
+
+  <rect x="220" y="352" width="160" height="30" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="300" y="372" text-anchor="middle" font-size="10" font-weight="bold" fill="#6D28D9">WIJ DOEN</text>
+
+  <line x1="382" y1="367" x2="408" y2="367" stroke="#7C3AED" stroke-width="1.5" marker-end="url(#arrow-step)"/>
+
+  <rect x="410" y="352" width="160" height="30" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="490" y="372" text-anchor="middle" font-size="10" font-weight="bold" fill="#6D28D9">JIJ DOET</text>
+
+  <!-- Bron -->
+  <text x="590" y="395" text-anchor="end" font-size="8" fill="#94A3B8">AIMM | ko-smart-mfg-095</text>
+</svg>

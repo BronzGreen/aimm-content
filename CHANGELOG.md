@@ -7,6 +7,79 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde6-lo-smart-mfg-095
+
+**Kontext:** Ronde 6: lo-smart-mfg-095 (showcase 21 -> 25)
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-095/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-095.md`
+- `leerobjecten/lo-smart-mfg-095/trainer.md`
+- `leerobjecten/lo-smart-mfg-095/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-095/werkbladen/wb-actieplan.md`
+- `leerobjecten/lo-smart-mfg-095/werkbladen/wb-foto-inspectie.md`
+- `leerobjecten/lo-smart-mfg-095/werkbladen/wb-handout-theorie.md`
+- `leerobjecten/lo-smart-mfg-095/werkbladen/wb-reflectie.md`
+- `leerobjecten/lo-smart-mfg-095/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-095/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-095/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-095/README.md`
+
+## 2026-05-19 — publish-ronde6-lo-oee-005
+
+**Kontext:** Ronde 6: lo-oee-005 (showcase 21 -> 25)
+
+Toegevoegd:
+
+- `leerobjecten/lo-oee-005/trainee.md`
+- `kennisbank/oee/oee_berekening/ko-oee-005.md`
+- `leerobjecten/lo-oee-005/trainer.md`
+- `leerobjecten/lo-oee-005/draaiboek.md`
+- `leerobjecten/lo-oee-005/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-oee-005/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-oee-005/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-oee-005/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-oee-005/svg/diagram.svg`
+- `leerobjecten/lo-oee-005/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-oee-005/README.md`
+
+## 2026-05-19 — publish-ronde6-lo-data-lit-107
+
+**Kontext:** Ronde 6: lo-data-lit-107 (showcase 21 -> 25)
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-107/trainee.md`
+- `kennisbank/data_literacy/data_begrippen/ko-data-lit-107.md`
+- `leerobjecten/lo-data-lit-107/trainer.md`
+- `leerobjecten/lo-data-lit-107/draaiboek.md`
+- `leerobjecten/lo-data-lit-107/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-data-lit-107/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-data-lit-107/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-data-lit-107/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-data-lit-107/svg/diagram.svg`
+- `leerobjecten/lo-data-lit-107/interactive/model.html`
+- `leerobjecten/lo-data-lit-107/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-data-lit-107/README.md`
+
+## 2026-05-19 — publish-ronde6-lo-spc-105
+
+**Kontext:** Ronde 6: lo-spc-105 (showcase 21 -> 25)
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-105/trainee.md`
+- `kennisbank/spc/variatie_analyse/ko-spc-105.md`
+- `leerobjecten/lo-spc-105/trainer.md`
+- `leerobjecten/lo-spc-105/draaiboek.md`
+- `leerobjecten/lo-spc-105/werkbladen/wb-01-meetcasus-vulgewicht.md`
+- `leerobjecten/lo-spc-105/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-105/werkbladen/wb-03-handout-signalen-vs-ruis.md`
+- `leerobjecten/lo-spc-105/svg/diagram.svg`
+- `leerobjecten/lo-spc-105/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-105/README.md`
+
 ## 2026-05-19 — publish-ronde5-lo-industry40-004
 
 **Kontext:** Ronde 5: lo-industry40-004 (showcase 17 -> 21)

@@ -1,0 +1,197 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1920 1080" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">OEE in vier stappen: het CNC-voorbeeld</title>
+  <desc id="desc">Een visualisatie van een complete OEE-berekening voor een CNC-freesmachine in vier stappen. Stap 1 berekent de beschikbaarheid op 90 procent. Stap 2 berekent de prestatie op 88,9 procent. Stap 3 berekent de kwaliteit op 95 procent. Stap 4 vermenigvuldigt de drie tot een OEE-totaal van 76 procent. Elke stap heeft een eigen blok met de berekening en het tussenresultaat. Onderaan een scenario-tabel die laat zien dat de zwakste component (prestatie) de grootste verbeterkans biedt.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="3" dy="4" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+    <linearGradient id="g-blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="g-orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E67E22"/>
+      <stop offset="100%" stop-color="#D35400"/>
+    </linearGradient>
+    <linearGradient id="g-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="g-total" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34495E"/>
+      <stop offset="100%" stop-color="#2C3E50"/>
+    </linearGradient>
+    <marker id="arrow-grey" markerWidth="12" markerHeight="9" refX="12" refY="4.5" orient="auto">
+      <polygon points="0 0, 12 4.5, 0 9" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="1920" height="1080" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="960" y="70" text-anchor="middle" font-size="40" font-weight="700" fill="#2C3E50" letter-spacing="2">OEE berekenen in vier stappen</text>
+  <text x="960" y="105" text-anchor="middle" font-size="20" fill="#7f8c8d">Voorbeeld: CNC-freesmachine, dienst van 480 minuten</text>
+
+  <!-- Stap 1: Beschikbaarheid -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="60" y="160" width="430" height="380" rx="20" fill="white"/>
+    <rect role="presentation" x="60" y="160" width="430" height="80" rx="20" fill="url(#g-blue)"/>
+    <rect role="presentation" x="60" y="220" width="430" height="20" fill="url(#g-blue)"/>
+  </g>
+  <text x="275" y="195" text-anchor="middle" font-size="14" font-weight="600" fill="white" letter-spacing="2">STAP 1</text>
+  <text x="275" y="225" text-anchor="middle" font-size="22" font-weight="700" fill="white">BESCHIKBAARHEID</text>
+
+  <text x="80" y="275" font-size="14" fill="#555">Geplande tijd: 480 - 30 pauze =</text>
+  <text x="470" y="275" text-anchor="end" font-size="14" font-weight="700" fill="#2C3E50">450 min</text>
+
+  <text x="80" y="305" font-size="14" fill="#555">Stilstand: 25 storing + 20 omstellen =</text>
+  <text x="470" y="305" text-anchor="end" font-size="14" font-weight="700" fill="#2C3E50">45 min</text>
+
+  <text x="80" y="335" font-size="14" fill="#555">Draaitijd: 450 - 45 =</text>
+  <text x="470" y="335" text-anchor="end" font-size="14" font-weight="700" fill="#2C3E50">405 min</text>
+
+  <line x1="80" y1="355" x2="470" y2="355" stroke="#BDC3C7" stroke-width="1"/>
+
+  <text x="275" y="395" text-anchor="middle" font-size="16" font-weight="600" fill="#2980B9">405</text>
+  <line x1="220" y1="408" x2="330" y2="408" stroke="#2980B9" stroke-width="2"/>
+  <text x="275" y="430" text-anchor="middle" font-size="16" font-weight="600" fill="#2980B9">450</text>
+
+  <rect role="presentation" x="135" y="460" width="280" height="60" rx="10" fill="url(#g-blue)"/>
+  <text x="275" y="502" text-anchor="middle" font-size="32" font-weight="700" fill="white">90,0%</text>
+
+  <!-- Pijl naar stap 2 -->
+  <line x1="500" y1="350" x2="565" y2="350" stroke="#7f8c8d" stroke-width="3" marker-end="url(#arrow-grey)"/>
+
+  <!-- Stap 2: Prestatie -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="585" y="160" width="430" height="380" rx="20" fill="white"/>
+    <rect role="presentation" x="585" y="160" width="430" height="80" rx="20" fill="url(#g-orange)"/>
+    <rect role="presentation" x="585" y="220" width="430" height="20" fill="url(#g-orange)"/>
+  </g>
+  <text x="800" y="195" text-anchor="middle" font-size="14" font-weight="600" fill="white" letter-spacing="2">STAP 2</text>
+  <text x="800" y="225" text-anchor="middle" font-size="22" font-weight="700" fill="white">PRESTATIE</text>
+
+  <text x="605" y="275" font-size="14" fill="#555">Cyclustijd: 2 min per stuk</text>
+  <text x="605" y="305" font-size="14" fill="#555">Theoretisch: 405 / 2 =</text>
+  <text x="995" y="305" text-anchor="end" font-size="14" font-weight="700" fill="#2C3E50">202,5 stuks</text>
+
+  <text x="605" y="335" font-size="14" fill="#555">Werkelijk geproduceerd:</text>
+  <text x="995" y="335" text-anchor="end" font-size="14" font-weight="700" fill="#2C3E50">180 stuks</text>
+
+  <line x1="605" y1="355" x2="995" y2="355" stroke="#BDC3C7" stroke-width="1"/>
+
+  <text x="800" y="395" text-anchor="middle" font-size="16" font-weight="600" fill="#D35400">180</text>
+  <line x1="745" y1="408" x2="855" y2="408" stroke="#D35400" stroke-width="2"/>
+  <text x="800" y="430" text-anchor="middle" font-size="16" font-weight="600" fill="#D35400">202,5</text>
+
+  <rect role="presentation" x="660" y="460" width="280" height="60" rx="10" fill="url(#g-orange)"/>
+  <text x="800" y="502" text-anchor="middle" font-size="32" font-weight="700" fill="white">88,9%</text>
+
+  <!-- Pijl naar stap 3 -->
+  <line x1="1025" y1="350" x2="1090" y2="350" stroke="#7f8c8d" stroke-width="3" marker-end="url(#arrow-grey)"/>
+
+  <!-- Stap 3: Kwaliteit -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1110" y="160" width="430" height="380" rx="20" fill="white"/>
+    <rect role="presentation" x="1110" y="160" width="430" height="80" rx="20" fill="url(#g-green)"/>
+    <rect role="presentation" x="1110" y="220" width="430" height="20" fill="url(#g-green)"/>
+  </g>
+  <text x="1325" y="195" text-anchor="middle" font-size="14" font-weight="600" fill="white" letter-spacing="2">STAP 3</text>
+  <text x="1325" y="225" text-anchor="middle" font-size="22" font-weight="700" fill="white">KWALITEIT</text>
+
+  <text x="1130" y="275" font-size="14" fill="#555">Geproduceerd:</text>
+  <text x="1520" y="275" text-anchor="end" font-size="14" font-weight="700" fill="#2C3E50">180 stuks</text>
+
+  <text x="1130" y="305" font-size="14" fill="#555">Min afkeur (5) en herbewerk (4):</text>
+  <text x="1520" y="305" text-anchor="end" font-size="14" font-weight="700" fill="#2C3E50">- 9 stuks</text>
+
+  <text x="1130" y="335" font-size="14" fill="#555">Goed in één keer:</text>
+  <text x="1520" y="335" text-anchor="end" font-size="14" font-weight="700" fill="#2C3E50">171 stuks</text>
+
+  <line x1="1130" y1="355" x2="1520" y2="355" stroke="#BDC3C7" stroke-width="1"/>
+
+  <text x="1325" y="395" text-anchor="middle" font-size="16" font-weight="600" fill="#27AE60">171</text>
+  <line x1="1270" y1="408" x2="1380" y2="408" stroke="#27AE60" stroke-width="2"/>
+  <text x="1325" y="430" text-anchor="middle" font-size="16" font-weight="600" fill="#27AE60">180</text>
+
+  <rect role="presentation" x="1185" y="460" width="280" height="60" rx="10" fill="url(#g-green)"/>
+  <text x="1325" y="502" text-anchor="middle" font-size="32" font-weight="700" fill="white">95,0%</text>
+
+  <!-- Pijl naar stap 4 -->
+  <line x1="1550" y1="350" x2="1615" y2="350" stroke="#7f8c8d" stroke-width="3" marker-end="url(#arrow-grey)"/>
+
+  <!-- Stap 4: OEE-totaal -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1635" y="160" width="225" height="380" rx="20" fill="url(#g-total)"/>
+  </g>
+  <text x="1747" y="195" text-anchor="middle" font-size="14" font-weight="600" fill="#B0BEC5" letter-spacing="2">STAP 4</text>
+  <text x="1747" y="225" text-anchor="middle" font-size="22" font-weight="700" fill="white">OEE</text>
+
+  <text x="1747" y="290" text-anchor="middle" font-size="14" fill="#B0BEC5">0,90</text>
+  <text x="1747" y="310" text-anchor="middle" font-size="14" fill="#B0BEC5">x 0,889</text>
+  <text x="1747" y="330" text-anchor="middle" font-size="14" fill="#B0BEC5">x 0,95</text>
+
+  <line x1="1680" y1="345" x2="1815" y2="345" stroke="white" stroke-width="1"/>
+
+  <text x="1747" y="430" text-anchor="middle" font-size="60" font-weight="700" fill="white">76%</text>
+  <text x="1747" y="490" text-anchor="middle" font-size="14" fill="#B0BEC5">Effectiviteit van</text>
+  <text x="1747" y="510" text-anchor="middle" font-size="14" fill="#B0BEC5">de geplande tijd</text>
+
+  <!-- SCENARIO-TABEL onderaan -->
+  <text x="60" y="600" font-size="22" font-weight="600" fill="#2C3E50">Scenario-tabel: waar verbeter je het snelst?</text>
+  <text x="60" y="625" font-size="14" font-style="italic" fill="#7f8c8d">Kijk naar het component met het laagste percentage (88,9% — prestatie). Daar zit de grootste winst.</text>
+
+  <!-- Tabel header -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="60" y="650" width="1800" height="60" rx="10" fill="#34495E"/>
+  </g>
+  <text x="240" y="688" text-anchor="middle" font-size="18" font-weight="700" fill="white">Scenario</text>
+  <text x="700" y="688" text-anchor="middle" font-size="18" font-weight="700" fill="white">Beschikbaarheid</text>
+  <text x="990" y="688" text-anchor="middle" font-size="18" font-weight="700" fill="white">Prestatie</text>
+  <text x="1280" y="688" text-anchor="middle" font-size="18" font-weight="700" fill="white">Kwaliteit</text>
+  <text x="1620" y="688" text-anchor="middle" font-size="18" font-weight="700" fill="white">OEE-totaal</text>
+
+  <!-- Rij 1: Huidige situatie -->
+  <rect role="presentation" x="60" y="720" width="1800" height="60" rx="0" fill="white" stroke="#BDC3C7"/>
+  <text x="80" y="757" font-size="16" fill="#2C3E50" font-weight="600">Huidige situatie</text>
+  <text x="700" y="757" text-anchor="middle" font-size="16" fill="#2C3E50">90,0%</text>
+  <text x="990" y="757" text-anchor="middle" font-size="16" font-weight="700" fill="#D35400">88,9%</text>
+  <text x="1280" y="757" text-anchor="middle" font-size="16" fill="#2C3E50">95,0%</text>
+  <text x="1620" y="757" text-anchor="middle" font-size="18" font-weight="700" fill="#2C3E50">76,0%</text>
+
+  <!-- Rij 2: Storing halveren -->
+  <rect role="presentation" x="60" y="780" width="1800" height="60" rx="0" fill="#FAFAF8" stroke="#BDC3C7"/>
+  <text x="80" y="817" font-size="16" fill="#2C3E50" font-weight="600">Storing halveren (B + 2,2%)</text>
+  <text x="700" y="817" text-anchor="middle" font-size="16" font-weight="700" fill="#27AE60">92,2%</text>
+  <text x="990" y="817" text-anchor="middle" font-size="16" fill="#2C3E50">88,9%</text>
+  <text x="1280" y="817" text-anchor="middle" font-size="16" fill="#2C3E50">95,0%</text>
+  <text x="1620" y="817" text-anchor="middle" font-size="18" font-weight="700" fill="#2C3E50">77,9%</text>
+
+  <!-- Rij 3: Prestatie omhoog -->
+  <rect role="presentation" x="60" y="840" width="1800" height="60" rx="0" fill="white" stroke="#BDC3C7"/>
+  <text x="80" y="877" font-size="16" fill="#2C3E50" font-weight="600">Prestatie naar 95% (zwakste aanpakken)</text>
+  <text x="700" y="877" text-anchor="middle" font-size="16" fill="#2C3E50">90,0%</text>
+  <text x="990" y="877" text-anchor="middle" font-size="16" font-weight="700" fill="#27AE60">95,0%</text>
+  <text x="1280" y="877" text-anchor="middle" font-size="16" fill="#2C3E50">95,0%</text>
+  <text x="1620" y="877" text-anchor="middle" font-size="18" font-weight="700" fill="#27AE60">81,2%</text>
+
+  <!-- Rij 4: Alles verbeteren -->
+  <rect role="presentation" x="60" y="900" width="1800" height="60" rx="0" fill="#FAFAF8" stroke="#BDC3C7"/>
+  <text x="80" y="937" font-size="16" fill="#2C3E50" font-weight="600">Alles iets verbeteren</text>
+  <text x="700" y="937" text-anchor="middle" font-size="16" font-weight="700" fill="#27AE60">92,2%</text>
+  <text x="990" y="937" text-anchor="middle" font-size="16" font-weight="700" fill="#27AE60">95,0%</text>
+  <text x="1280" y="937" text-anchor="middle" font-size="16" font-weight="700" fill="#27AE60">98,0%</text>
+  <text x="1620" y="937" text-anchor="middle" font-size="18" font-weight="700" fill="#27AE60">85,8%</text>
+
+  <!-- Onderbalk -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="60" y="1000" width="1800" height="50" rx="10" fill="#2C3E50"/>
+  </g>
+  <text x="960" y="1031" text-anchor="middle" font-size="18" fill="white">De zwakste schakel het eerste aanpakken levert vaak de grootste sprong op.</text>
+
+  <!-- Bronvermelding -->
+  <text x="960" y="1075" text-anchor="middle" font-size="11" fill="#999">OEE-berekening — AIMM Curriculum | Module 1: Gebruik | v1.0</text>
+</svg>
