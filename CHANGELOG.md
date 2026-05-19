@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde9-lo-data-lit-201
+
+**Kontext:** Ronde 9: lo-data-lit-201
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-201/trainee.md`
+- `kennisbank/data_literacy/data_begrippen/ko-data-lit-201.md`
+- `leerobjecten/lo-data-lit-201/trainer.md`
+- `leerobjecten/lo-data-lit-201/draaiboek.md`
+- `leerobjecten/lo-data-lit-201/werkbladen/wb-handout-kwaliteitschecks.md`
+- `leerobjecten/lo-data-lit-201/werkbladen/wb-kwaliteitscheck-oefening.md`
+- `leerobjecten/lo-data-lit-201/werkbladen/wb-sorteerkaarten-datatypes.md`
+- `leerobjecten/lo-data-lit-201/werkbladen/wb-transfer-datatypes-kwaliteit.md`
+- `leerobjecten/lo-data-lit-201/README.md`
+
 ## 2026-05-19 — publish-ronde9-lo-spc-108
 
 **Kontext:** Ronde 9: lo-spc-108
