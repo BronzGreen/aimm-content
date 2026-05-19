@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde4-lo-industry40-003
+
+**Kontext:** Ronde 4: lo-industry40-003 (showcase 13 -> 17 LOs)
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-003/trainee.md`
+- `kennisbank/industry_4_0/smart_factory_concepten/ko-industry40-003.md`
+- `leerobjecten/lo-industry40-003/trainer.md`
+- `leerobjecten/lo-industry40-003/draaiboek.md`
+- `leerobjecten/lo-industry40-003/werkbladen/wb-01-casus-automotive-afkeur.md`
+- `leerobjecten/lo-industry40-003/werkbladen/wb-02-duo-vergelijking.md`
+- `leerobjecten/lo-industry40-003/werkbladen/wb-03-zes-stappen-handout.md`
+- `leerobjecten/lo-industry40-003/werkbladen/wb-04-eigen-pipeline.md`
+- `leerobjecten/lo-industry40-003/README.md`
+
 ## 2026-05-19 — publish-ronde4-lo-ai-fund-101
 
 **Kontext:** Ronde 4: lo-ai-fund-101 (showcase 13 -> 17 LOs)
