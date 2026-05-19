@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde6-lo-spc-105
+
+**Kontext:** Ronde 6: lo-spc-105 (showcase 21 -> 25)
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-105/trainee.md`
+- `kennisbank/spc/variatie_analyse/ko-spc-105.md`
+- `leerobjecten/lo-spc-105/trainer.md`
+- `leerobjecten/lo-spc-105/draaiboek.md`
+- `leerobjecten/lo-spc-105/werkbladen/wb-01-meetcasus-vulgewicht.md`
+- `leerobjecten/lo-spc-105/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-105/werkbladen/wb-03-handout-signalen-vs-ruis.md`
+- `leerobjecten/lo-spc-105/svg/diagram.svg`
+- `leerobjecten/lo-spc-105/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-105/README.md`
+
 ## 2026-05-19 — publish-ronde5-lo-industry40-004
 
 **Kontext:** Ronde 5: lo-industry40-004 (showcase 17 -> 21)
