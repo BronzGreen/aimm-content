@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde2-lo-spc-102
+
+**Kontext:** Ronde 2: lo-spc-102 (showcase 5 → 9 LOs over 6 domeinen)
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-102/trainee.md`
+- `kennisbank/spc/fundament/ko-spc-102.md`
+- `leerobjecten/lo-spc-102/trainer.md`
+- `leerobjecten/lo-spc-102/draaiboek.md`
+- `leerobjecten/lo-spc-102/werkbladen/wb-01-oefening.md`
+- `leerobjecten/lo-spc-102/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-102/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-102/svg/diagram.svg`
+- `leerobjecten/lo-spc-102/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-102/README.md`
+
 ## 2026-05-18 — publish-ronde2-lo-oee-002
 
 **Kontext:** Ronde 2: lo-oee-002 (uitbreiding showcase 5 → 9 LOs)

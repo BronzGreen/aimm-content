@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" role="img" aria-labelledby="title-lo-spc-102 desc-lo-spc-102" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title-lo-spc-102">De drie SPC-gebruiksniveaus — operator, teamleider, kwaliteitsmanager</title>
+  <desc id="desc-lo-spc-102">Drie horizontale lagen boven elkaar die de drie gelaagde gebruiksniveaus van SPC tonen. Onderste laag: de operator, dagelijks tempo, actie lezen-en-reageren — meten, plotten, patroon herkennen volgens Western Electric en Nelson, actie kiezen uit het reactieplan. Middelste laag: de teamleider, periodiek tempo (shift, dag, week), actie vergelijken-en-escaleren — patronen over shifts, machines, matrijzen en ploegen. Bovenste laag: de kwaliteitsmanager, strategisch tempo (maand, kwartaal), actie ontwerpen-en-valideren — controlegrenzen valideren, capabiliteit beoordelen, control plans beheren, volgens AIAG SPC Reference Manual 2005. Pijlen aan de rechterkant laten zien dat signalen van onder naar boven escaleren en dat afspraken van boven naar beneden terugkomen. Onderaan een legenda: dezelfde regelkaart, drie verschillende vaardigheden.</desc>
+
+  <defs>
+    <linearGradient id="bg-operator" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ECFDF5"/>
+      <stop offset="100%" stop-color="#D1FAE5"/>
+    </linearGradient>
+    <linearGradient id="bg-teamleider" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFBEB"/>
+      <stop offset="100%" stop-color="#FEF3C7"/>
+    </linearGradient>
+    <linearGradient id="bg-qm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EEF2FF"/>
+      <stop offset="100%" stop-color="#C7D2FE"/>
+    </linearGradient>
+    <filter id="shadow-lo102" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.18"/>
+    </filter>
+    <marker id="arrow-up" markerWidth="10" markerHeight="10" refX="5" refY="2" orient="auto">
+      <path d="M0,10 L5,0 L10,10 Z" fill="#4338CA"/>
+    </marker>
+    <marker id="arrow-down" markerWidth="10" markerHeight="10" refX="5" refY="8" orient="auto">
+      <path d="M0,0 L5,10 L10,0 Z" fill="#047857"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="960" height="760" fill="#F8F6F0"/>
+
+  <!-- Titel -->
+  <text x="480" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50" letter-spacing="1">Drie SPC-gebruiksniveaus</text>
+  <text x="480" y="64" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic" letter-spacing="0.5">Dezelfde regelkaart, drie verschillende vaardigheden — operator leest, teamleider vergelijkt, kwaliteitsmanager valideert.</text>
+
+  <!-- ─────────── KWALITEITSMANAGER (BOVEN) ─────────── -->
+  <g>
+    <rect x="60" y="95" width="760" height="150" rx="12" fill="url(#bg-qm)" filter="url(#shadow-lo102)"/>
+
+    <!-- Icoon -->
+    <circle cx="125" cy="170" r="36" fill="#FFFFFF" stroke="#4338CA" stroke-width="2"/>
+    <text x="125" y="178" text-anchor="middle" font-size="28">📐</text>
+
+    <!-- Titel + frequentie -->
+    <text x="185" y="130" font-size="17" font-weight="700" fill="#3730A3">Kwaliteitsmanager</text>
+    <text x="185" y="150" font-size="12" fill="#4338CA" font-style="italic">strategisch — maand, kwartaal</text>
+
+    <!-- Actielabel -->
+    <rect x="185" y="162" width="160" height="26" rx="13" fill="#FFFFFF" stroke="#4338CA" stroke-width="1.5"/>
+    <text x="265" y="180" text-anchor="middle" font-size="12" font-weight="700" fill="#3730A3">ontwerpen + valideren</text>
+
+    <!-- Taken -->
+    <text x="365" y="140" font-size="11" fill="#1F2937">• Controlegrenzen valideren na procesverandering</text>
+    <text x="365" y="158" font-size="11" fill="#1F2937">• Capabiliteit beoordelen (Cp, Cpk)</text>
+    <text x="365" y="176" font-size="11" fill="#1F2937">• Meetsystemen borgen (MSA / Gage R&amp;R)</text>
+    <text x="365" y="194" font-size="11" fill="#1F2937">• Control plans en klantvereisten koppelen</text>
+    <text x="365" y="212" font-size="11" fill="#1F2937">• Structurele verbeterprojecten prioriteren</text>
+  </g>
+
+  <!-- ─────────── TEAMLEIDER (MIDDEN) ─────────── -->
+  <g>
+    <rect x="60" y="275" width="760" height="150" rx="12" fill="url(#bg-teamleider)" filter="url(#shadow-lo102)"/>
+
+    <!-- Icoon -->
+    <circle cx="125" cy="350" r="36" fill="#FFFFFF" stroke="#B45309" stroke-width="2"/>
+    <text x="125" y="358" text-anchor="middle" font-size="28">📊</text>
+
+    <!-- Titel + frequentie -->
+    <text x="185" y="310" font-size="17" font-weight="700" fill="#92400E">Teamleider</text>
+    <text x="185" y="330" font-size="12" fill="#B45309" font-style="italic">periodiek — shift, dag, week</text>
+
+    <!-- Actielabel -->
+    <rect x="185" y="342" width="170" height="26" rx="13" fill="#FFFFFF" stroke="#B45309" stroke-width="1.5"/>
+    <text x="270" y="360" text-anchor="middle" font-size="12" font-weight="700" fill="#92400E">vergelijken + escaleren</text>
+
+    <!-- Taken -->
+    <text x="375" y="320" font-size="11" fill="#1F2937">• Patronen over shifts en ploegen vergelijken</text>
+    <text x="375" y="338" font-size="11" fill="#1F2937">• Verschillen tussen machines of matrijzen zien</text>
+    <text x="375" y="356" font-size="11" fill="#1F2937">• Operator-signalen bundelen en duiden</text>
+    <text x="375" y="374" font-size="11" fill="#1F2937">• Escaleren richting engineering of kwaliteit</text>
+    <text x="375" y="392" font-size="11" fill="#1F2937">• Reactieplan onderhouden en bijsturen</text>
+  </g>
+
+  <!-- ─────────── OPERATOR (ONDER) ─────────── -->
+  <g>
+    <rect x="60" y="455" width="760" height="150" rx="12" fill="url(#bg-operator)" filter="url(#shadow-lo102)"/>
+
+    <!-- Icoon -->
+    <circle cx="125" cy="530" r="36" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <text x="125" y="538" text-anchor="middle" font-size="28">🛠️</text>
+
+    <!-- Titel + frequentie -->
+    <text x="185" y="490" font-size="17" font-weight="700" fill="#065F46">Operator</text>
+    <text x="185" y="510" font-size="12" fill="#047857" font-style="italic">dagelijks — per meting, per shift</text>
+
+    <!-- Actielabel -->
+    <rect x="185" y="522" width="150" height="26" rx="13" fill="#FFFFFF" stroke="#047857" stroke-width="1.5"/>
+    <text x="260" y="540" text-anchor="middle" font-size="12" font-weight="700" fill="#065F46">lezen + reageren</text>
+
+    <!-- Taken -->
+    <text x="355" y="500" font-size="11" fill="#1F2937">• Meten en plotten volgens procedure</text>
+    <text x="355" y="518" font-size="11" fill="#1F2937">• Klassieke patronen herkennen (Western Electric, Nelson)</text>
+    <text x="355" y="536" font-size="11" fill="#1F2937">• Onderscheid signaal vs ruis (common vs special cause)</text>
+    <text x="355" y="554" font-size="11" fill="#1F2937">• Eerste actie kiezen uit reactieplan</text>
+    <text x="355" y="572" font-size="11" fill="#1F2937">• Observatie vastleggen en communiceren</text>
+  </g>
+
+  <!-- ─────────── VERTICALE PIJLEN RECHTS ─────────── -->
+  <g>
+    <!-- Escalatie-pijl: onder naar boven -->
+    <line x1="855" y1="580" x2="855" y2="135" stroke="#4338CA" stroke-width="2.5" marker-end="url(#arrow-up)"/>
+    <text x="868" y="370" font-size="11" font-weight="700" fill="#4338CA" transform="rotate(90 868 370)">signalen escaleren</text>
+
+    <!-- Afspraken-pijl: boven naar onder -->
+    <line x1="895" y1="135" x2="895" y2="580" stroke="#047857" stroke-width="2.5" marker-end="url(#arrow-down)"/>
+    <text x="908" y="370" font-size="11" font-weight="700" fill="#047857" transform="rotate(90 908 370)">afspraken en limieten terug</text>
+  </g>
+
+  <!-- ─────────── LEGENDA ONDERAAN ─────────── -->
+  <g>
+    <rect x="60" y="640" width="760" height="90" rx="10" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.2"/>
+    <text x="80" y="665" font-size="13" font-weight="700" fill="#2C3E50">Centrale zin</text>
+    <text x="80" y="685" font-size="12" fill="#1F2937" font-style="italic">Dezelfde regelkaart, drie verschillende vaardigheden. De operator ziet wat nú gebeurt.</text>
+    <text x="80" y="702" font-size="12" fill="#1F2937" font-style="italic">De teamleider ziet patronen over shifts. De kwaliteitsmanager ziet patronen over maanden.</text>
+    <text x="80" y="722" font-size="10" fill="#6B7280">Bron: AIAG SPC Reference Manual, 2e ed. (2005); Shewhart (1931); Western Electric (1956); Nelson (1984); ko-spc-102.</text>
+  </g>
+</svg>
