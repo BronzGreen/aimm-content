@@ -7,6 +7,74 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde4-lo-industry40-003
+
+**Kontext:** Ronde 4: lo-industry40-003 (showcase 13 -> 17 LOs)
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-003/trainee.md`
+- `kennisbank/industry_4_0/smart_factory_concepten/ko-industry40-003.md`
+- `leerobjecten/lo-industry40-003/trainer.md`
+- `leerobjecten/lo-industry40-003/draaiboek.md`
+- `leerobjecten/lo-industry40-003/werkbladen/wb-01-casus-automotive-afkeur.md`
+- `leerobjecten/lo-industry40-003/werkbladen/wb-02-duo-vergelijking.md`
+- `leerobjecten/lo-industry40-003/werkbladen/wb-03-zes-stappen-handout.md`
+- `leerobjecten/lo-industry40-003/werkbladen/wb-04-eigen-pipeline.md`
+- `leerobjecten/lo-industry40-003/README.md`
+
+## 2026-05-19 — publish-ronde4-lo-ai-fund-101
+
+**Kontext:** Ronde 4: lo-ai-fund-101 (showcase 13 -> 17 LOs)
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-101/trainee.md`
+- `kennisbank/ai_fundamentals/machine_learning_basics/ko-ai-fund-101.md`
+- `leerobjecten/lo-ai-fund-101/trainer.md`
+- `leerobjecten/lo-ai-fund-101/draaiboek.md`
+- `leerobjecten/lo-ai-fund-101/werkbladen/wb-01-casus-verpakkingslijn.md`
+- `leerobjecten/lo-ai-fund-101/werkbladen/wb-02-buurman-check.md`
+- `leerobjecten/lo-ai-fund-101/werkbladen/wb-03-handout-twee-kenmerken.md`
+- `leerobjecten/lo-ai-fund-101/werkbladen/wb-04-eigen-werkvloer.md`
+- `leerobjecten/lo-ai-fund-101/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-ai-fund-101/README.md`
+
+## 2026-05-19 — publish-ronde4-lo-data-lit-104
+
+**Kontext:** Ronde 4: lo-data-lit-104 (showcase 13 -> 17 LOs)
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-104/trainee.md`
+- `kennisbank/data_literacy/dashboarding/ko-data-lit-104.md`
+- `leerobjecten/lo-data-lit-104/trainer.md`
+- `leerobjecten/lo-data-lit-104/draaiboek.md`
+- `leerobjecten/lo-data-lit-104/werkbladen/wb-dashboard-analyse.md`
+- `leerobjecten/lo-data-lit-104/werkbladen/wb-handout-kpis.md`
+- `leerobjecten/lo-data-lit-104/werkbladen/wb-meekijk-dashboard.md`
+- `leerobjecten/lo-data-lit-104/werkbladen/wb-reflectie-dashboardsituaties.md`
+- `leerobjecten/lo-data-lit-104/interactive/model.html`
+- `leerobjecten/lo-data-lit-104/README.md`
+
+## 2026-05-19 — publish-ronde4-lo-spc-104
+
+**Kontext:** Ronde 4: lo-spc-104 (showcase 13 -> 17 LOs)
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-104/trainee.md`
+- `kennisbank/spc/variatie_analyse/ko-spc-104.md`
+- `leerobjecten/lo-spc-104/trainer.md`
+- `leerobjecten/lo-spc-104/draaiboek.md`
+- `leerobjecten/lo-spc-104/werkbladen/wb-01-storingsquiz.md`
+- `leerobjecten/lo-spc-104/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-104/werkbladen/wb-03-handout-theorie.md`
+- `leerobjecten/lo-spc-104/werkbladen/wb-04-actieplan.md`
+- `leerobjecten/lo-spc-104/svg/diagram.svg`
+- `leerobjecten/lo-spc-104/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-104/README.md`
+
 ## 2026-05-19 — publish-ronde3-lo-smart-mfg-010
 
 **Kontext:** Ronde 3: lo-smart-mfg-010 (showcase 9 → 13 LOs)
