@@ -1,0 +1,198 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1920 1080" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">De zes grote verliezen, gegroepeerd in drie OEE-componenten</title>
+  <desc id="desc">Een overzichtsdiagram van de zes grote verliezen uit de TPM-methodiek, gegroepeerd in drie OEE-componenten. Beschikbaarheid omvat verliezen 1 storingen en 2 omstellen. Prestatie omvat verliezen 3 korte stops en 4 snelheidsverlies. Kwaliteit omvat verliezen 5 opstartverlies en 6 productieafkeur. Per verlies staat een korte beschrijving, een typisch aandeel en de zichtbaarheid op de werkvloer. Onderaan een Pareto-staafdiagram dat een voorbeeld toont van een verpakkingslijn waar omstellen het grootste verlies is.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="3" dy="4" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+    <linearGradient id="g-blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="g-orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E67E22"/>
+      <stop offset="100%" stop-color="#D35400"/>
+    </linearGradient>
+    <linearGradient id="g-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="1920" height="1080" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="960" y="70" text-anchor="middle" font-size="40" font-weight="700" fill="#2C3E50" letter-spacing="2">De zes grote verliezen</text>
+  <text x="960" y="105" text-anchor="middle" font-size="20" fill="#7f8c8d">Verdeeld over de drie OEE-componenten — gemeenschappelijke taal voor verbeteren</text>
+
+  <!-- KOLOM 1: BESCHIKBAARHEID -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="60" y="160" width="600" height="80" rx="20" fill="url(#g-blue)"/>
+  </g>
+  <text x="360" y="195" text-anchor="middle" font-size="20" font-weight="600" fill="white" letter-spacing="2">BESCHIKBAARHEID</text>
+  <text x="360" y="222" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.85)">Draait de machine?</text>
+
+  <!-- Verlies 1: Storingen -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="60" y="265" width="600" height="180" rx="15" fill="white" stroke="#3498DB" stroke-width="2"/>
+  </g>
+  <circle cx="105" cy="305" r="28" fill="url(#g-blue)"/>
+  <text x="105" y="313" text-anchor="middle" font-size="22" font-weight="700" fill="white">1</text>
+  <text x="155" y="298" font-size="22" font-weight="700" fill="#2C3E50">Storingen</text>
+  <text x="155" y="320" font-size="14" font-style="italic" fill="#7f8c8d">5-10% — iedereen ziet het</text>
+
+  <text x="80" y="355" font-size="14" fill="#555">- Motordefect, hydrauliekstoring</text>
+  <text x="80" y="378" font-size="14" fill="#555">- Elektronische storing</text>
+  <text x="80" y="401" font-size="14" fill="#555">- Gereedschapbreuk</text>
+  <text x="80" y="430" font-size="13" font-weight="600" fill="#2980B9">Aanpak: preventief onderhoud</text>
+
+  <!-- Verlies 2: Omstellen -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="60" y="465" width="600" height="180" rx="15" fill="white" stroke="#3498DB" stroke-width="2"/>
+  </g>
+  <circle cx="105" cy="505" r="28" fill="url(#g-blue)"/>
+  <text x="105" y="513" text-anchor="middle" font-size="22" font-weight="700" fill="white">2</text>
+  <text x="155" y="498" font-size="22" font-weight="700" fill="#2C3E50">Omstellen</text>
+  <text x="155" y="520" font-size="14" font-style="italic" fill="#7f8c8d">5-15% — iedereen ziet het</text>
+
+  <text x="80" y="555" font-size="14" fill="#555">- Matrijswissel, gereedschapwissel</text>
+  <text x="80" y="578" font-size="14" fill="#555">- Kleurwissel</text>
+  <text x="80" y="601" font-size="14" fill="#555">- Kalibratie na wissel</text>
+  <text x="80" y="630" font-size="13" font-weight="600" fill="#2980B9">Aanpak: SMED-methodiek</text>
+
+  <!-- KOLOM 2: PRESTATIE -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="680" y="160" width="600" height="80" rx="20" fill="url(#g-orange)"/>
+  </g>
+  <text x="980" y="195" text-anchor="middle" font-size="20" font-weight="600" fill="white" letter-spacing="2">PRESTATIE</text>
+  <text x="980" y="222" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.85)">Draait hij snel genoeg?</text>
+
+  <!-- Verlies 3: Korte stops -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="680" y="265" width="600" height="180" rx="15" fill="white" stroke="#E67E22" stroke-width="2"/>
+  </g>
+  <circle cx="725" cy="305" r="28" fill="url(#g-orange)"/>
+  <text x="725" y="313" text-anchor="middle" font-size="22" font-weight="700" fill="white">3</text>
+  <text x="775" y="298" font-size="22" font-weight="700" fill="#2C3E50">Korte stops</text>
+  <text x="775" y="320" font-size="14" font-style="italic" fill="#7f8c8d">5-10% — bijna onzichtbaar</text>
+
+  <text x="700" y="355" font-size="14" fill="#555">- Materiaal klemt, sensor flikkert</text>
+  <text x="700" y="378" font-size="14" fill="#555">- Vals alarm, product valt verkeerd</text>
+  <text x="700" y="401" font-size="14" fill="#555">- Operator drukt op reset</text>
+  <text x="700" y="430" font-size="13" font-weight="600" fill="#D35400">Aanpak: turflijst en Pareto</text>
+
+  <!-- Verlies 4: Snelheidsverlies -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="680" y="465" width="600" height="180" rx="15" fill="white" stroke="#E67E22" stroke-width="2"/>
+  </g>
+  <circle cx="725" cy="505" r="28" fill="url(#g-orange)"/>
+  <text x="725" y="513" text-anchor="middle" font-size="22" font-weight="700" fill="white">4</text>
+  <text x="775" y="498" font-size="22" font-weight="700" fill="#2C3E50">Snelheidsverlies</text>
+  <text x="775" y="520" font-size="14" font-style="italic" fill="#7f8c8d">5-10% — onzichtbaar</text>
+
+  <text x="700" y="555" font-size="14" fill="#555">- Slijtage onderdelen</text>
+  <text x="700" y="578" font-size="14" fill="#555">- Slechte grondstof</text>
+  <text x="700" y="601" font-size="14" fill="#555">- Bewust teruggeschakeld</text>
+  <text x="700" y="630" font-size="13" font-weight="600" fill="#D35400">Aanpak: ideale cyclustijd checken</text>
+
+  <!-- KOLOM 3: KWALITEIT -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1300" y="160" width="600" height="80" rx="20" fill="url(#g-green)"/>
+  </g>
+  <text x="1600" y="195" text-anchor="middle" font-size="20" font-weight="600" fill="white" letter-spacing="2">KWALITEIT</text>
+  <text x="1600" y="222" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.85)">Maakt hij goede producten?</text>
+
+  <!-- Verlies 5: Opstartverlies -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1300" y="265" width="600" height="180" rx="15" fill="white" stroke="#27AE60" stroke-width="2"/>
+  </g>
+  <circle cx="1345" cy="305" r="28" fill="url(#g-green)"/>
+  <text x="1345" y="313" text-anchor="middle" font-size="22" font-weight="700" fill="white">5</text>
+  <text x="1395" y="298" font-size="22" font-weight="700" fill="#2C3E50">Opstartverlies</text>
+  <text x="1395" y="320" font-size="14" font-style="italic" fill="#7f8c8d">1-3% — gemiddeld zichtbaar</text>
+
+  <text x="1320" y="355" font-size="14" fill="#555">- Eerste stuks na een wissel</text>
+  <text x="1320" y="378" font-size="14" fill="#555">- Producten tijdens opwarmen</text>
+  <text x="1320" y="401" font-size="14" fill="#555">- Instelproducten</text>
+  <text x="1320" y="430" font-size="13" font-weight="600" fill="#27AE60">Aanpak: voorverwarmen, vaste procedure</text>
+
+  <!-- Verlies 6: Productieafkeur -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1300" y="465" width="600" height="180" rx="15" fill="white" stroke="#27AE60" stroke-width="2"/>
+  </g>
+  <circle cx="1345" cy="505" r="28" fill="url(#g-green)"/>
+  <text x="1345" y="513" text-anchor="middle" font-size="22" font-weight="700" fill="white">6</text>
+  <text x="1395" y="498" font-size="22" font-weight="700" fill="#2C3E50">Productieafkeur</text>
+  <text x="1395" y="520" font-size="14" font-style="italic" fill="#7f8c8d">1-5% — iedereen ziet het</text>
+
+  <text x="1320" y="555" font-size="14" fill="#555">- Maatafwijkingen</text>
+  <text x="1320" y="578" font-size="14" fill="#555">- Oppervlaktefouten</text>
+  <text x="1320" y="601" font-size="14" fill="#555">- Assemblagefouten</text>
+  <text x="1320" y="630" font-size="13" font-weight="600" fill="#27AE60">Aanpak: SPC, vroegtijdig signaleren</text>
+
+  <!-- PARETO-VOORBEELD onderaan -->
+  <text x="60" y="710" font-size="22" font-weight="600" fill="#2C3E50">Voorbeeld Pareto: een verpakkingslijn over één maand</text>
+  <text x="60" y="735" font-size="14" font-style="italic" fill="#7f8c8d">Wie weet welk verlies het grootst is, weet ook waar de eerste verbeteractie het meeste oplevert.</text>
+
+  <!-- Pareto staafdiagram -->
+  <!-- as -->
+  <line x1="120" y1="990" x2="1880" y2="990" stroke="#7f8c8d" stroke-width="2"/>
+  <line x1="120" y1="765" x2="120" y2="990" stroke="#7f8c8d" stroke-width="2"/>
+
+  <!-- Hulp-lijnen 10/20/30/40% -->
+  <g stroke="#E0E0E0" stroke-width="1" stroke-dasharray="3,3">
+    <line x1="120" y1="945" x2="1880" y2="945"/>
+    <line x1="120" y1="900" x2="1880" y2="900"/>
+    <line x1="120" y1="855" x2="1880" y2="855"/>
+    <line x1="120" y1="810" x2="1880" y2="810"/>
+  </g>
+  <g font-size="12" fill="#7f8c8d" text-anchor="end">
+    <text x="115" y="993">0%</text>
+    <text x="115" y="948">10%</text>
+    <text x="115" y="903">20%</text>
+    <text x="115" y="858">30%</text>
+    <text x="115" y="813">40%</text>
+  </g>
+
+  <!-- Staaf 1: Omstellen 35% -->
+  <rect role="presentation" x="220" y="833" width="240" height="157" rx="6" fill="url(#g-blue)" filter="url(#shadow)"/>
+  <text x="340" y="820" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50">35%</text>
+  <text x="340" y="1015" text-anchor="middle" font-size="14" font-weight="600" fill="#2C3E50">Omstellen</text>
+  <text x="340" y="1035" text-anchor="middle" font-size="11" fill="#3498DB">Beschikbaarheid</text>
+
+  <!-- Staaf 2: Storingen 25% -->
+  <rect role="presentation" x="500" y="878" width="240" height="112" rx="6" fill="url(#g-blue)" filter="url(#shadow)"/>
+  <text x="620" y="865" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50">25%</text>
+  <text x="620" y="1015" text-anchor="middle" font-size="14" font-weight="600" fill="#2C3E50">Storingen</text>
+  <text x="620" y="1035" text-anchor="middle" font-size="11" fill="#3498DB">Beschikbaarheid</text>
+
+  <!-- Staaf 3: Korte stops 20% -->
+  <rect role="presentation" x="780" y="900" width="240" height="90" rx="6" fill="url(#g-orange)" filter="url(#shadow)"/>
+  <text x="900" y="887" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50">20%</text>
+  <text x="900" y="1015" text-anchor="middle" font-size="14" font-weight="600" fill="#2C3E50">Korte stops</text>
+  <text x="900" y="1035" text-anchor="middle" font-size="11" fill="#E67E22">Prestatie</text>
+
+  <!-- Staaf 4: Snelheid 10% -->
+  <rect role="presentation" x="1060" y="945" width="240" height="45" rx="6" fill="url(#g-orange)" filter="url(#shadow)"/>
+  <text x="1180" y="932" text-anchor="middle" font-size="20" font-weight="700" fill="#2C3E50">10%</text>
+  <text x="1180" y="1015" text-anchor="middle" font-size="14" font-weight="600" fill="#2C3E50">Snelheid</text>
+  <text x="1180" y="1035" text-anchor="middle" font-size="11" fill="#E67E22">Prestatie</text>
+
+  <!-- Staaf 5: Afkeur 7% -->
+  <rect role="presentation" x="1340" y="958" width="240" height="32" rx="6" fill="url(#g-green)" filter="url(#shadow)"/>
+  <text x="1460" y="945" text-anchor="middle" font-size="20" font-weight="700" fill="#2C3E50">7%</text>
+  <text x="1460" y="1015" text-anchor="middle" font-size="14" font-weight="600" fill="#2C3E50">Afkeur</text>
+  <text x="1460" y="1035" text-anchor="middle" font-size="11" fill="#27AE60">Kwaliteit</text>
+
+  <!-- Staaf 6: Opstart 3% -->
+  <rect role="presentation" x="1620" y="977" width="240" height="13" rx="6" fill="url(#g-green)" filter="url(#shadow)"/>
+  <text x="1740" y="964" text-anchor="middle" font-size="20" font-weight="700" fill="#2C3E50">3%</text>
+  <text x="1740" y="1015" text-anchor="middle" font-size="14" font-weight="600" fill="#2C3E50">Opstart</text>
+  <text x="1740" y="1035" text-anchor="middle" font-size="11" fill="#27AE60">Kwaliteit</text>
+
+  <!-- Bronvermelding -->
+  <text x="960" y="1075" text-anchor="middle" font-size="11" fill="#999">De zes grote verliezen — TPM | AIMM Curriculum | Module 1: Gebruik | v1.0</text>
+</svg>

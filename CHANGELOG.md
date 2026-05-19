@@ -7,6 +7,73 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde8-lo-industry40-022
+
+**Kontext:** Ronde 8: lo-industry40-022
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-022/trainee.md`
+- `leerobjecten/lo-industry40-022/trainer.md`
+- `leerobjecten/lo-industry40-022/draaiboek.md`
+- `leerobjecten/lo-industry40-022/werkbladen/wb-01-vijf-casuskaartjes.md`
+- `leerobjecten/lo-industry40-022/werkbladen/wb-02-duo-categorieen.md`
+- `leerobjecten/lo-industry40-022/werkbladen/wb-03-vijf-toepassingen-handout.md`
+- `leerobjecten/lo-industry40-022/werkbladen/wb-04-mijn-twee-toepassingen.md`
+- `leerobjecten/lo-industry40-022/README.md`
+
+## 2026-05-19 — publish-ronde8-lo-oee-006
+
+**Kontext:** Ronde 8: lo-oee-006
+
+Toegevoegd:
+
+- `leerobjecten/lo-oee-006/trainee.md`
+- `kennisbank/oee/verliesanalyse/ko-oee-006.md`
+- `leerobjecten/lo-oee-006/trainer.md`
+- `leerobjecten/lo-oee-006/draaiboek.md`
+- `leerobjecten/lo-oee-006/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-oee-006/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-oee-006/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-oee-006/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-oee-006/svg/diagram.svg`
+- `leerobjecten/lo-oee-006/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-oee-006/README.md`
+
+## 2026-05-19 — publish-ronde8-lo-data-lit-106
+
+**Kontext:** Ronde 8: lo-data-lit-106
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-106/trainee.md`
+- `kennisbank/data_literacy/data_driven_besluitvorming/ko-data-lit-106.md`
+- `leerobjecten/lo-data-lit-106/trainer.md`
+- `leerobjecten/lo-data-lit-106/draaiboek.md`
+- `leerobjecten/lo-data-lit-106/werkbladen/wb-casus-vier-stappen.md`
+- `leerobjecten/lo-data-lit-106/werkbladen/wb-handout-vier-stappen.md`
+- `leerobjecten/lo-data-lit-106/werkbladen/wb-meekijk-scenarios.md`
+- `leerobjecten/lo-data-lit-106/werkbladen/wb-reflectie-werkvloersituaties.md`
+- `leerobjecten/lo-data-lit-106/interactive/model.html`
+- `leerobjecten/lo-data-lit-106/README.md`
+
+## 2026-05-19 — publish-ronde8-lo-spc-107
+
+**Kontext:** Ronde 8: lo-spc-107
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-107/trainee.md`
+- `kennisbank/spc/regelkaarten/ko-spc-107.md`
+- `leerobjecten/lo-spc-107/trainer.md`
+- `leerobjecten/lo-spc-107/draaiboek.md`
+- `leerobjecten/lo-spc-107/werkbladen/wb-01-spot-the-fout.md`
+- `leerobjecten/lo-spc-107/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-107/werkbladen/wb-03-handout-verschil-control-vs-specs.md`
+- `leerobjecten/lo-spc-107/svg/diagram.svg`
+- `leerobjecten/lo-spc-107/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-107/README.md`
+
 ## 2026-05-19 — publish-ronde7-lo-spc-106
 
 **Kontext:** Ronde 7: lo-spc-106 (showcase 25 -> 29)
