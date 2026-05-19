@@ -7,6 +7,24 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde5-lo-oee-004
+
+**Kontext:** Ronde 5: lo-oee-004 (showcase 17 -> 21)
+
+Toegevoegd:
+
+- `leerobjecten/lo-oee-004/trainee.md`
+- `kennisbank/oee/kwaliteit/ko-oee-004.md`
+- `leerobjecten/lo-oee-004/trainer.md`
+- `leerobjecten/lo-oee-004/draaiboek.md`
+- `leerobjecten/lo-oee-004/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-oee-004/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-oee-004/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-oee-004/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-oee-004/svg/diagram.svg`
+- `leerobjecten/lo-oee-004/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-oee-004/README.md`
+
 ## 2026-05-19 — publish-ronde4-lo-industry40-003
 
 **Kontext:** Ronde 4: lo-industry40-003 (showcase 13 -> 17 LOs)

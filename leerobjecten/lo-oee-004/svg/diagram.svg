@@ -1,0 +1,143 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1920 1080" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Kwaliteit en First Pass Yield</title>
+  <desc id="desc">Een visualisatie van het verschil tussen eindstand goedkeur en First Pass Yield. Een productiedag van 1000 stuks wordt opgesplitst in goed in een keer (950 stuks, groen), herbewerkt (30 stuks, oranje) en afgekeurd (20 stuks, rood). Manier A telt herbewerkt mee als goed: 980 op 1000 is 98 procent. Manier B (FPY) telt herbewerkt als verlies: 950 op 1000 is 95 procent. Drie kostenposten van herbewerking worden uitgelegd. Onderaan de drie typen kwaliteitsverlies: afkeur, herbewerking en opstartverlies.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="3" dy="4" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+    <linearGradient id="g-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="g-orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F39C12"/>
+      <stop offset="100%" stop-color="#D68910"/>
+    </linearGradient>
+    <linearGradient id="g-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E74C3C"/>
+      <stop offset="100%" stop-color="#C0392B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="1920" height="1080" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="960" y="80" text-anchor="middle" font-size="42" font-weight="700" fill="#2C3E50" letter-spacing="2">Kwaliteit: First Pass Yield</text>
+  <text x="960" y="120" text-anchor="middle" font-size="22" fill="#7f8c8d">Goed in één keer is iets anders dan uiteindelijk goedgekeurd</text>
+
+  <!-- 1000 stuks balk verdeeld -->
+  <text x="120" y="200" font-size="22" font-weight="600" fill="#2C3E50">1.000 stuks geproduceerd op één dag</text>
+
+  <g filter="url(#shadow)">
+    <!-- 950 stuks goed (95%) -->
+    <rect role="presentation" x="120" y="220" width="1614" height="100" rx="0" fill="url(#g-green)"/>
+    <!-- 30 stuks herbewerkt (3%) -->
+    <rect role="presentation" x="1734" y="220" width="51" height="100" rx="0" fill="url(#g-orange)"/>
+    <!-- 20 stuks afkeur (2%) -->
+    <rect role="presentation" x="1785" y="220" width="35" height="100" rx="0" fill="url(#g-red)"/>
+    <!-- Border voor totale balk -->
+    <rect role="presentation" x="120" y="220" width="1700" height="100" rx="0" fill="none" stroke="#2C3E50" stroke-width="2"/>
+  </g>
+
+  <text x="927" y="260" text-anchor="middle" font-size="32" font-weight="700" fill="white">950 stuks</text>
+  <text x="927" y="290" text-anchor="middle" font-size="16" fill="white">goed in één keer</text>
+  <text x="927" y="312" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.85)">95%</text>
+
+  <!-- Labels onder de balk voor herbewerk en afkeur -->
+  <line x1="1759" y1="320" x2="1759" y2="345" stroke="#D68910" stroke-width="2"/>
+  <text x="1759" y="365" text-anchor="middle" font-size="14" font-weight="600" fill="#D68910">30 herbewerkt</text>
+  <text x="1759" y="383" text-anchor="middle" font-size="12" fill="#D68910">3%</text>
+
+  <line x1="1802" y1="320" x2="1802" y2="345" stroke="#C0392B" stroke-width="2"/>
+  <text x="1860" y="365" text-anchor="end" font-size="14" font-weight="600" fill="#C0392B">20 afkeur</text>
+  <text x="1860" y="383" text-anchor="end" font-size="12" fill="#C0392B">2%</text>
+
+  <!-- Twee manieren naast elkaar -->
+  <text x="120" y="445" font-size="22" font-weight="600" fill="#2C3E50">Twee manieren om de kwaliteit uit te rekenen</text>
+
+  <!-- Manier A -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="120" y="465" width="820" height="220" rx="20" fill="white"/>
+    <rect role="presentation" x="120" y="465" width="820" height="60" rx="20" fill="#7f8c8d"/>
+    <rect role="presentation" x="120" y="510" width="820" height="15" fill="#7f8c8d"/>
+  </g>
+  <text x="530" y="505" text-anchor="middle" font-size="22" font-weight="700" fill="white">MANIER A — Eindstand goedkeur</text>
+
+  <text x="160" y="555" font-size="16" fill="#555">Wat uiteindelijk goed is, is goed.</text>
+  <text x="160" y="580" font-size="16" fill="#555">Herbewerkt telt mee als goed.</text>
+
+  <text x="160" y="625" font-size="20" font-weight="600" fill="#2C3E50">980 / 1.000 =</text>
+  <rect role="presentation" x="500" y="600" width="200" height="50" rx="8" fill="url(#g-green)"/>
+  <text x="600" y="635" text-anchor="middle" font-size="28" font-weight="700" fill="white">98%</text>
+  <text x="160" y="660" font-size="13" font-style="italic" fill="#7f8c8d">Klinkt mooi, maar verzwijgt de herbewerking</text>
+
+  <!-- Manier B -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="980" y="465" width="820" height="220" rx="20" fill="white"/>
+    <rect role="presentation" x="980" y="465" width="820" height="60" rx="20" fill="url(#g-green)"/>
+    <rect role="presentation" x="980" y="510" width="820" height="15" fill="url(#g-green)"/>
+  </g>
+  <text x="1390" y="505" text-anchor="middle" font-size="22" font-weight="700" fill="white">MANIER B — First Pass Yield (FPY)</text>
+
+  <text x="1020" y="555" font-size="16" fill="#555">Alleen wat in één keer goed was telt.</text>
+  <text x="1020" y="580" font-size="16" fill="#555">Herbewerkt telt als verlies.</text>
+
+  <text x="1020" y="625" font-size="20" font-weight="600" fill="#2C3E50">950 / 1.000 =</text>
+  <rect role="presentation" x="1360" y="600" width="200" height="50" rx="8" fill="url(#g-green)"/>
+  <text x="1460" y="635" text-anchor="middle" font-size="28" font-weight="700" fill="white">95%</text>
+  <text x="1020" y="660" font-size="13" font-style="italic" fill="#27AE60">In OEE gebruiken we deze (eerlijker)</text>
+
+  <!-- Drie verliestypen -->
+  <text x="120" y="755" font-size="22" font-weight="600" fill="#2C3E50">Drie typen kwaliteitsverlies</text>
+
+  <!-- Type 1: Afkeur -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="120" y="775" width="540" height="200" rx="20" fill="white"/>
+    <rect role="presentation" x="120" y="775" width="540" height="50" rx="20" fill="url(#g-red)"/>
+    <rect role="presentation" x="120" y="810" width="540" height="15" fill="url(#g-red)"/>
+  </g>
+  <text x="390" y="810" text-anchor="middle" font-size="20" font-weight="700" fill="white">AFKEUR</text>
+  <text x="150" y="855" font-size="16" font-weight="600" fill="#2C3E50">Niet meer te redden</text>
+  <text x="150" y="885" font-size="14" fill="#555">- Verkeerde maat, scheur, breuk</text>
+  <text x="150" y="910" font-size="14" fill="#555">- Oppervlaktefouten</text>
+  <text x="150" y="935" font-size="14" fill="#555">- Materiaal-fout (krassen, vlekken)</text>
+  <text x="150" y="960" font-size="13" font-style="italic" fill="#C0392B">Direct verlies — gaat in de afvalbak</text>
+
+  <!-- Type 2: Herbewerking -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="690" y="775" width="540" height="200" rx="20" fill="white"/>
+    <rect role="presentation" x="690" y="775" width="540" height="50" rx="20" fill="url(#g-orange)"/>
+    <rect role="presentation" x="690" y="810" width="540" height="15" fill="url(#g-orange)"/>
+  </g>
+  <text x="960" y="810" text-anchor="middle" font-size="20" font-weight="700" fill="white">HERBEWERKING</text>
+  <text x="720" y="855" font-size="16" font-weight="600" fill="#2C3E50">Wel te redden, maar kost...</text>
+  <text x="720" y="885" font-size="14" fill="#555">- Extra machinetijd</text>
+  <text x="720" y="910" font-size="14" fill="#555">- Extra arbeid en controle</text>
+  <text x="720" y="935" font-size="14" fill="#555">- Soms extra materiaal</text>
+  <text x="720" y="960" font-size="13" font-style="italic" fill="#D68910">Verborgen verlies — uiteindelijk goed</text>
+
+  <!-- Type 3: Opstartverlies -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1260" y="775" width="540" height="200" rx="20" fill="white"/>
+    <rect role="presentation" x="1260" y="775" width="540" height="50" rx="20" fill="#9B59B6"/>
+    <rect role="presentation" x="1260" y="810" width="540" height="15" fill="#9B59B6"/>
+  </g>
+  <text x="1530" y="810" text-anchor="middle" font-size="20" font-weight="700" fill="white">OPSTARTVERLIES</text>
+  <text x="1290" y="855" font-size="16" font-weight="600" fill="#2C3E50">Eerste stuks na opstart</text>
+  <text x="1290" y="885" font-size="14" fill="#555">- Spuitgieten: matrijs niet warm</text>
+  <text x="1290" y="910" font-size="14" fill="#555">- CNC: eerste instelproducten</text>
+  <text x="1290" y="935" font-size="14" fill="#555">- Verpakking: eerste maten</text>
+  <text x="1290" y="960" font-size="13" font-style="italic" fill="#7D3C98">Komt elke ochtend terug</text>
+
+  <!-- Onderbalk -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="120" y="1005" width="1680" height="50" rx="10" fill="url(#g-green)"/>
+  </g>
+  <text x="960" y="1037" text-anchor="middle" font-size="20" font-weight="600" fill="white">Kwaliteit (FPY) = Goed in één keer / Totaal geproduceerd = 950 / 1.000 = 95%</text>
+
+  <!-- Bronvermelding -->
+  <text x="960" y="1075" text-anchor="middle" font-size="11" fill="#999">Kwaliteit — AIMM Curriculum | Module 1: Gebruik | v1.0</text>
+</svg>
