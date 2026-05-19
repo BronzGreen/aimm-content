@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde4-lo-data-lit-104
+
+**Kontext:** Ronde 4: lo-data-lit-104 (showcase 13 -> 17 LOs)
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-104/trainee.md`
+- `kennisbank/data_literacy/dashboarding/ko-data-lit-104.md`
+- `leerobjecten/lo-data-lit-104/trainer.md`
+- `leerobjecten/lo-data-lit-104/draaiboek.md`
+- `leerobjecten/lo-data-lit-104/werkbladen/wb-dashboard-analyse.md`
+- `leerobjecten/lo-data-lit-104/werkbladen/wb-handout-kpis.md`
+- `leerobjecten/lo-data-lit-104/werkbladen/wb-meekijk-dashboard.md`
+- `leerobjecten/lo-data-lit-104/werkbladen/wb-reflectie-dashboardsituaties.md`
+- `leerobjecten/lo-data-lit-104/interactive/model.html`
+- `leerobjecten/lo-data-lit-104/README.md`
+
 ## 2026-05-19 — publish-ronde4-lo-spc-104
 
 **Kontext:** Ronde 4: lo-spc-104 (showcase 13 -> 17 LOs)

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OEE Dashboard</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    const MACHINES = [
+      {
+        id: "lijn-1", name: "Productielijn 1", type: "Spuitgietmachine",
+        beschikbaarheid: 92, prestatie: 85, kwaliteit: 97,
+        details: {
+          draaitijd: "7,4 uur van 8 uur",
+          stilstand: "36 min (wisselstoring + materiaalwachttijd)",
+          snelheid: "85 stuks/uur (norm: 100 stuks/uur)",
+          uitval: "29 afgekeurd van 680 geproduceerd",
+          opmerking: "Snelheid is lager door een versleten matrijs. Gepland voor vervanging volgende week."
+        },
+        vragen: [
+          { vraag: "Wat is het grootste verbeterpunt voor deze machine?", antwoord: "De prestatie (85%) is het laagst. De machine draait langzamer dan de norm door een versleten matrijs." },
+          { vraag: "Is de stilstand acceptabel?", antwoord: "36 minuten op 8 uur (8%) is redelijk, maar de wisselstoring is onverwacht. Materiaalwachttijd kan beter gepland worden." },
+          { vraag: "Wat kun je doen om de OEE te verhogen?", antwoord: "Matrijs vervangen (prestatie omhoog), materiaallevering beter plannen (beschikbaarheid omhoog)." }
+        ]
+      },
+      {
+        id: "lijn-2", name: "Productielijn 2", type: "CNC-freesmachine",
+        beschikbaarheid: 78, prestatie: 91, kwaliteit: 94,
+        details: {
+          draaitijd: "6,2 uur van 8 uur",
+          stilstand: "1 uur 48 min (ongeplande storing + omsteltijd)",
+          snelheid: "46 stuks/uur (norm: 50 stuks/uur)",
+          uitval: "17 afgekeurd van 285 geproduceerd",
+          opmerking: "Ongeplande storing door koelvloeistoflekkage. Omsteltijd was langer dan normaal door nieuw producttype."
+        },
+        vragen: [
+          { vraag: "Waarom is de beschikbaarheid zo laag?", antwoord: "De machine stond bijna 2 uur stil. De koelvloeistoflekkage was ongepland. Preventief onderhoud had dit kunnen voorkomen." },
+          { vraag: "Is de kwaliteit een probleem?", antwoord: "94% kwaliteit betekent 6% uitval. Bij CNC-frezen is dat hoog. Check de gereedschapsslijtage en de programmering." },
+          { vraag: "Wat heeft de meeste impact op de OEE?", antwoord: "Beschikbaarheid (78%) is de bottleneck. Los eerst de storingsoorzaak op, dan stijgt de OEE het meest." }
+        ]
+      },
+      {
+        id: "lijn-3", name: "Productielijn 3", type: "Verpakkingslijn",
+        beschikbaarheid: 95, prestatie: 98, kwaliteit: 99,
+        details: {
+          draaitijd: "7,6 uur van 8 uur",
+          stilstand: "24 min (geplande pauze + rolwissel)",
+          snelheid: "196 stuks/uur (norm: 200 stuks/uur)",
+          uitval: "15 afgekeurd van 1490 geproduceerd",
+          opmerking: "Uitstekende prestatie. Kleine afwijking in snelheid door sensor-kalibratie. Uitval door etiketfouten."
+        },
+        vragen: [
+          { vraag: "Is deze machine goed bezig?", antwoord: "Ja, een OEE van 92% is wereldklasse (>85% wordt als uitstekend beschouwd). Alle drie de factoren scoren hoog." },
+          { vraag: "Waar zit nog ruimte voor verbetering?", antwoord: "De etiketfouten (1% uitval) zijn het makkelijkst aan te pakken. Check de etiketteermachine en de sensorafstelling." },
+          { vraag: "Moet je hier veel aandacht aan besteden?", antwoord: "Nee, richt je aandacht op de machines met lagere OEE. Hier is de winst klein." }
+        ]
+      }
+    ];
+
+    function App() {
+      const [selectedMachine, setSelectedMachine] = useState(null);
+      const [expandedQuestion, setExpandedQuestion] = useState(null);
+
+      const machine = MACHINES.find(m => m.id === selectedMachine);
+
+      const getOee = (m) => Math.round((m.beschikbaarheid * m.prestatie * m.kwaliteit) / 10000);
+      const getColor = (val) => val >= 90 ? "#10b981" : val >= 75 ? "#f59e0b" : "#ef4444";
+      const getOeeColor = (oee) => oee >= 85 ? "#10b981" : oee >= 65 ? "#f59e0b" : "#ef4444";
+
+      const handleReset = () => {
+        setSelectedMachine(null);
+        setExpandedQuestion(null);
+      };
+
+      const ProgressRing = ({ percent, size, color, label }) => {
+        const radius = (size - 8) / 2;
+        const circumference = radius * 2 * Math.PI;
+        const offset = circumference - (percent / 100) * circumference;
+        return (
+          <div style={{ textAlign: "center" }}>
+            <svg width={size} height={size}>
+              <circle cx={size/2} cy={size/2} r={radius} fill="none" stroke="#e5e7eb" strokeWidth="8" />
+              <circle cx={size/2} cy={size/2} r={radius} fill="none" stroke={color} strokeWidth="8"
+                strokeLinecap="round" strokeDasharray={circumference} strokeDashoffset={offset}
+                transform={`rotate(-90 ${size/2} ${size/2})`}
+                style={{ transition: "stroke-dashoffset 0.8s ease-in-out" }} />
+              <text x="50%" y="50%" textAnchor="middle" dominantBaseline="central"
+                style={{ fontSize: "18px", fontWeight: "bold" }} fill="#1f2937">
+                {percent}%
+              </text>
+            </svg>
+            <div style={{ fontSize: "12px", color: "#6b7280", marginTop: "4px" }}>{label}</div>
+          </div>
+        );
+      };
+
+      return (
+        <div style={{ minHeight: "100vh", background: "#f9fafb", fontFamily: "system-ui, sans-serif" }}>
+          <div style={{ background: "white", borderBottom: "1px solid #e5e7eb", padding: "20px 24px" }}>
+            <h1 style={{ fontSize: "22px", fontWeight: "bold", color: "#111827", margin: 0 }}>
+              OEE Dashboard
+            </h1>
+            <p style={{ color: "#6b7280", marginTop: "4px", fontSize: "14px" }}>
+              Klik op een machine om de details te zien. Beantwoord de vragen over de productiedata.
+            </p>
+          </div>
+
+          <div style={{ maxWidth: "900px", margin: "0 auto", padding: "24px" }}>
+            {/* Uitleg */}
+            <div style={{
+              background: "#eff6ff", borderRadius: "12px", padding: "16px",
+              fontSize: "13px", color: "#1e40af", marginBottom: "24px"
+            }}>
+              <strong>Wat is OEE?</strong> Overall Equipment Effectiveness meet hoe goed een machine wordt benut.
+              OEE = Beschikbaarheid x Prestatie x Kwaliteit. Een score boven 85% is wereldklasse.
+            </div>
+
+            {/* Machine kaarten */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "16px", marginBottom: "24px" }}>
+              {MACHINES.map(m => {
+                const oee = getOee(m);
+                const isSelected = selectedMachine === m.id;
+                return (
+                  <button key={m.id} onClick={() => { setSelectedMachine(m.id); setExpandedQuestion(null); }}
+                    style={{
+                      background: "white", borderRadius: "16px",
+                      border: isSelected ? "2px solid #3b82f6" : "1px solid #e5e7eb",
+                      padding: "20px", cursor: "pointer", textAlign: "center",
+                      boxShadow: isSelected ? "0 4px 12px rgba(59,130,246,0.15)" : "0 1px 3px rgba(0,0,0,0.05)",
+                      transition: "all 0.3s", transform: isSelected ? "scale(1.02)" : "scale(1)"
+                    }}>
+                    <div style={{ fontWeight: "600", color: "#374151", fontSize: "15px", marginBottom: "4px" }}>
+                      {m.name}
+                    </div>
+                    <div style={{ fontSize: "12px", color: "#9ca3af", marginBottom: "16px" }}>{m.type}</div>
+
+                    {/* OEE cirkel */}
+                    <div style={{ display: "flex", justifyContent: "center", marginBottom: "12px" }}>
+                      <ProgressRing percent={oee} size={80} color={getOeeColor(oee)} label="OEE" />
+                    </div>
+
+                    {/* Mini balken */}
+                    {[
+                      { label: "B", val: m.beschikbaarheid },
+                      { label: "P", val: m.prestatie },
+                      { label: "K", val: m.kwaliteit }
+                    ].map(item => (
+                      <div key={item.label} style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "4px" }}>
+                        <span style={{ fontSize: "11px", color: "#9ca3af", width: "14px" }}>{item.label}</span>
+                        <div style={{ flex: 1, height: "6px", background: "#f3f4f6", borderRadius: "3px", overflow: "hidden" }}>
+                          <div style={{
+                            height: "100%", borderRadius: "3px", background: getColor(item.val),
+                            width: `${item.val}%`, transition: "width 0.5s"
+                          }} />
+                        </div>
+                        <span style={{ fontSize: "11px", fontWeight: "600", color: "#374151", width: "30px", textAlign: "right" }}>
+                          {item.val}%
+                        </span>
+                      </div>
+                    ))}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Detail paneel */}
+            {machine && (
+              <div style={{
+                background: "white", borderRadius: "16px", border: "1px solid #e5e7eb",
+                overflow: "hidden", marginBottom: "24px",
+                transition: "all 0.3s"
+              }}>
+                <div style={{
+                  background: "#f8fafc", padding: "20px 24px",
+                  borderBottom: "1px solid #e5e7eb"
+                }}>
+                  <h2 style={{ fontSize: "18px", fontWeight: "bold", color: "#111827", margin: 0 }}>
+                    {machine.name} — Details
+                  </h2>
+                  <span style={{ fontSize: "13px", color: "#6b7280" }}>{machine.type}</span>
+                </div>
+
+                <div style={{ padding: "24px" }}>
+                  {/* OEE componenten */}
+                  <div style={{ display: "flex", justifyContent: "center", gap: "32px", marginBottom: "24px" }}>
+                    <ProgressRing percent={machine.beschikbaarheid} size={100} color={getColor(machine.beschikbaarheid)} label="Beschikbaarheid" />
+                    <div style={{ display: "flex", alignItems: "center", fontSize: "24px", color: "#9ca3af" }}>x</div>
+                    <ProgressRing percent={machine.prestatie} size={100} color={getColor(machine.prestatie)} label="Prestatie" />
+                    <div style={{ display: "flex", alignItems: "center", fontSize: "24px", color: "#9ca3af" }}>x</div>
+                    <ProgressRing percent={machine.kwaliteit} size={100} color={getColor(machine.kwaliteit)} label="Kwaliteit" />
+                    <div style={{ display: "flex", alignItems: "center", fontSize: "24px", color: "#9ca3af" }}>=</div>
+                    <ProgressRing percent={getOee(machine)} size={100} color={getOeeColor(getOee(machine))} label="OEE" />
+                  </div>
+
+                  {/* Productiedata */}
+                  <div style={{
+                    display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px",
+                    marginBottom: "24px"
+                  }}>
+                    {[
+                      { label: "Draaitijd", val: machine.details.draaitijd },
+                      { label: "Stilstand", val: machine.details.stilstand },
+                      { label: "Snelheid", val: machine.details.snelheid },
+                      { label: "Uitval", val: machine.details.uitval },
+                    ].map(item => (
+                      <div key={item.label} style={{
+                        background: "#f9fafb", borderRadius: "10px", padding: "12px"
+                      }}>
+                        <div style={{ fontSize: "12px", color: "#6b7280", marginBottom: "2px" }}>{item.label}</div>
+                        <div style={{ fontSize: "14px", color: "#374151", fontWeight: "500" }}>{item.val}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Opmerking */}
+                  <div style={{
+                    background: "#fffbeb", borderRadius: "10px", padding: "12px",
+                    border: "1px solid #fde68a", marginBottom: "24px",
+                    fontSize: "13px", color: "#92400e"
+                  }}>
+                    <strong>Opmerking:</strong> {machine.details.opmerking}
+                  </div>
+
+                  {/* Vragen */}
+                  <div style={{ fontWeight: "600", color: "#374151", marginBottom: "12px", fontSize: "15px" }}>
+                    Vragen bij deze machine
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                    {machine.vragen.map((v, i) => (
+                      <div key={i} style={{
+                        background: "#f9fafb", borderRadius: "12px", border: "1px solid #e5e7eb",
+                        overflow: "hidden"
+                      }}>
+                        <button onClick={() => setExpandedQuestion(expandedQuestion === `${machine.id}-${i}` ? null : `${machine.id}-${i}`)}
+                          style={{
+                            width: "100%", padding: "14px 16px", background: "transparent",
+                            border: "none", cursor: "pointer", textAlign: "left",
+                            display: "flex", justifyContent: "space-between", alignItems: "center"
+                          }}>
+                          <span style={{ fontSize: "14px", fontWeight: "500", color: "#374151" }}>{v.vraag}</span>
+                          <span style={{
+                            fontSize: "18px", color: "#9ca3af",
+                            transform: expandedQuestion === `${machine.id}-${i}` ? "rotate(180deg)" : "rotate(0)",
+                            transition: "transform 0.2s", display: "inline-block"
+                          }}>
+                            &#9660;
+                          </span>
+                        </button>
+                        {expandedQuestion === `${machine.id}-${i}` && (
+                          <div style={{
+                            padding: "0 16px 14px", fontSize: "14px", color: "#374151",
+                            borderTop: "1px solid #e5e7eb", paddingTop: "12px",
+                            background: "#f0fdf4"
+                          }}>
+                            {v.antwoord}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {!machine && (
+              <div style={{
+                background: "white", borderRadius: "16px", border: "2px dashed #d1d5db",
+                padding: "48px", textAlign: "center", color: "#9ca3af", marginBottom: "24px"
+              }}>
+                Klik op een machine hierboven om de details te bekijken
+              </div>
+            )}
+
+            <button onClick={handleReset} style={{
+              display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+              margin: "0 auto", padding: "10px 24px", background: "white", border: "1px solid #d1d5db",
+              borderRadius: "8px", cursor: "pointer", fontSize: "14px", color: "#6b7280"
+            }}>
+              Opnieuw beginnen
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
