@@ -1,0 +1,195 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 680"
+     font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">AI Kwaliteitscontrole in drie stappen</title>
+  <desc id="desc">Een flowchart die laat zien hoe visuele inspectie met AI werkt: een camera maakt een foto van het product, een AI-model analyseert het beeld, en er volgt een beslissing of het product goed is, terug moet, of eruit gaat.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#27AE60"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E67E22"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E74C3C"/>
+    </marker>
+    <linearGradient id="grad-step1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="grad-step2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9B59B6"/>
+      <stop offset="100%" stop-color="#8E44AD"/>
+    </linearGradient>
+    <linearGradient id="grad-step2b" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8E44AD"/>
+      <stop offset="100%" stop-color="#7D3C98"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="800" height="680" fill="#FAFAF8" rx="8"/>
+
+  <!-- Titel -->
+  <text x="400" y="40" text-anchor="middle" font-size="22"
+        font-weight="700" fill="#2C3E50" letter-spacing="1">AI Kwaliteitscontrole</text>
+  <text x="400" y="62" text-anchor="middle" font-size="13"
+        fill="#7f8c8d" letter-spacing="0.5">Visuele inspectie met deep learning in drie stappen</text>
+
+  <!-- ============ STAP 1: Camera-opname ============ -->
+  <!-- Product op de lijn (start) -->
+  <g filter="url(#shadow)">
+    <rect x="300" y="90" width="200" height="45" rx="22" fill="#BDC3C7"/>
+    <text x="400" y="117" text-anchor="middle" font-size="13"
+          font-weight="600" fill="#2C3E50">Product op de lijn</text>
+  </g>
+
+  <!-- Pijl -->
+  <line x1="400" y1="135" x2="400" y2="165" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Stap 1 blok -->
+  <g filter="url(#shadow)">
+    <rect x="280" y="170" width="240" height="60" rx="10" fill="url(#grad-step1)"/>
+    <text x="400" y="195" text-anchor="middle" font-size="11"
+          font-weight="700" fill="white" letter-spacing="1">STAP 1</text>
+    <text x="400" y="215" text-anchor="middle" font-size="14"
+          font-weight="600" fill="rgba(255,255,255,0.9)">Camera maakt foto</text>
+  </g>
+
+  <!-- Icoon camera (simpel) -->
+  <g transform="translate(255, 185)">
+    <rect x="0" y="5" width="18" height="14" rx="2" fill="none" stroke="white" stroke-width="1.5"/>
+    <circle cx="9" cy="12" r="4" fill="none" stroke="white" stroke-width="1.5"/>
+    <rect x="6" y="2" width="6" height="4" rx="1" fill="none" stroke="white" stroke-width="1"/>
+  </g>
+
+  <!-- Pijl -->
+  <line x1="400" y1="230" x2="400" y2="265" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ============ STAP 2: AI-analyse ============ -->
+  <g filter="url(#shadow)">
+    <rect x="280" y="270" width="240" height="60" rx="10" fill="url(#grad-step2)"/>
+    <text x="400" y="295" text-anchor="middle" font-size="11"
+          font-weight="700" fill="white" letter-spacing="1">STAP 2</text>
+    <text x="400" y="315" text-anchor="middle" font-size="14"
+          font-weight="600" fill="rgba(255,255,255,0.9)">AI analyseert het beeld</text>
+  </g>
+
+  <!-- Twee sub-opties van stap 2 -->
+  <!-- Pijl naar links (classificatie) -->
+  <path d="M340,330 L340,355 L220,355 L220,375"
+        fill="none" stroke="#8E44AD" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- Pijl naar rechts (segmentatie) -->
+  <path d="M460,330 L460,355 L580,355 L580,375"
+        fill="none" stroke="#8E44AD" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Classificatie blok -->
+  <g filter="url(#shadow)">
+    <rect x="120" y="378" width="200" height="50" rx="8" fill="#D2B4DE"/>
+    <text x="220" y="400" text-anchor="middle" font-size="12"
+          font-weight="600" fill="#4A235A">Classificatie</text>
+    <text x="220" y="418" text-anchor="middle" font-size="10"
+          fill="#6C3483">Zegt alleen "goed" of "fout"</text>
+  </g>
+
+  <!-- Segmentatie blok (voorkeur) -->
+  <g filter="url(#shadow)">
+    <rect x="480" y="378" width="200" height="50" rx="8" fill="url(#grad-step2b)"/>
+    <text x="580" y="400" text-anchor="middle" font-size="12"
+          font-weight="700" fill="white">Segmentatie</text>
+    <text x="580" y="418" text-anchor="middle" font-size="10"
+          fill="rgba(255,255,255,0.85)">Laat zien waar het defect zit</text>
+  </g>
+  <!-- Voorkeur-label -->
+  <rect x="640" y="368" width="60" height="18" rx="9" fill="#27AE60"/>
+  <text x="670" y="381" text-anchor="middle" font-size="9"
+        font-weight="600" fill="white">Voorkeur</text>
+
+  <!-- Pijlen terug naar midden -->
+  <path d="M220,428 L220,455 L400,455"
+        fill="none" stroke="#555" stroke-width="1.5"/>
+  <path d="M580,428 L580,455 L400,455"
+        fill="none" stroke="#555" stroke-width="1.5"/>
+  <line x1="400" y1="455" x2="400" y2="478" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ============ STAP 3: Beslissing (ruit) ============ -->
+  <g filter="url(#shadow)">
+    <rect x="355" y="483" width="90" height="90" rx="6"
+          fill="#E67E22" transform="rotate(45,400,528)"/>
+    <text x="400" y="520" text-anchor="middle" font-size="10"
+          font-weight="700" fill="white">STAP 3</text>
+    <text x="400" y="537" text-anchor="middle" font-size="12"
+          font-weight="600" fill="white">Beslissing</text>
+  </g>
+
+  <!-- Drie uitkomsten -->
+  <!-- Links: Goedgekeurd -->
+  <path d="M355,528 L200,528 L200,575"
+        fill="none" stroke="#27AE60" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="270" y="520" text-anchor="middle" font-size="11"
+        font-weight="600" fill="#27AE60">Goed</text>
+
+  <g filter="url(#shadow)">
+    <rect x="120" y="580" width="160" height="50" rx="10" fill="#27AE60"/>
+    <text x="200" y="602" text-anchor="middle" font-size="13"
+          font-weight="600" fill="white">Goedgekeurd</text>
+    <text x="200" y="620" text-anchor="middle" font-size="10"
+          fill="rgba(255,255,255,0.85)">Door naar klant</text>
+  </g>
+
+  <!-- Midden: Herbewerking -->
+  <line x1="400" y1="573" x2="400" y2="580"
+        stroke="#E67E22" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <g filter="url(#shadow)">
+    <rect x="320" y="585" width="160" height="50" rx="10" fill="#E67E22"/>
+    <text x="400" y="607" text-anchor="middle" font-size="13"
+          font-weight="600" fill="white">Herbewerking</text>
+    <text x="400" y="625" text-anchor="middle" font-size="10"
+          fill="rgba(255,255,255,0.85)">Terug in de lijn</text>
+  </g>
+  <text x="410" y="572" font-size="11"
+        font-weight="600" fill="#E67E22">Klein</text>
+
+  <!-- Rechts: Afgekeurd -->
+  <path d="M445,528 L600,528 L600,575"
+        fill="none" stroke="#E74C3C" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <text x="530" y="520" text-anchor="middle" font-size="11"
+        font-weight="600" fill="#E74C3C">Fout</text>
+
+  <g filter="url(#shadow)">
+    <rect x="520" y="580" width="160" height="50" rx="10" fill="#E74C3C"/>
+    <text x="600" y="602" text-anchor="middle" font-size="13"
+          font-weight="600" fill="white">Afgekeurd</text>
+    <text x="600" y="620" text-anchor="middle" font-size="10"
+          fill="rgba(255,255,255,0.85)">Uit de lijn</text>
+  </g>
+
+  <!-- Legenda -->
+  <g transform="translate(50,650)">
+    <rect x="0" y="0" width="14" height="14" rx="3" fill="#3498DB"/>
+    <text x="20" y="12" font-size="10" fill="#555">Camera</text>
+
+    <rect x="100" y="0" width="14" height="14" rx="3" fill="#9B59B6"/>
+    <text x="120" y="12" font-size="10" fill="#555">AI-analyse</text>
+
+    <rect x="220" y="0" width="14" height="14" rx="3" fill="#E67E22"/>
+    <text x="240" y="12" font-size="10" fill="#555">Beslissing</text>
+
+    <rect x="340" y="0" width="14" height="14" rx="3" fill="#27AE60"/>
+    <text x="360" y="12" font-size="10" fill="#555">Goedgekeurd</text>
+
+    <rect x="460" y="0" width="14" height="14" rx="3" fill="#E74C3C"/>
+    <text x="480" y="12" font-size="10" fill="#555">Afgekeurd</text>
+  </g>
+
+  <!-- Bronvermelding -->
+  <text x="750" y="670" text-anchor="end"
+        font-size="9" fill="#999">AIMM - AI Kwaliteitscontrole | Module 1: Gebruik</text>
+</svg>

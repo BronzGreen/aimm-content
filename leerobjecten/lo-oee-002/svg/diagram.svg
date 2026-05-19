@@ -1,0 +1,127 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1920 1080" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Beschikbaarheid: tijd op de werkdag verdeeld</title>
+  <desc id="desc">Een visualisatie van de beschikbaarheidsformule. Een tijdbalk laat zien hoe een dienst van 480 minuten wordt opgesplitst in pauzes (niet meegerekend), draaitijd (groen) en stilstand (rood). Stilstand wordt onderverdeeld in vier typen: storingen, omstellen, wachten en opstarten. Onder de balk staat de formule Draaitijd gedeeld door Geplande productietijd, met als uitkomst 90 procent voor het uitgewerkte voorbeeld.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="3" dy="4" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+    <linearGradient id="g-blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="g-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="g-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E74C3C"/>
+      <stop offset="100%" stop-color="#C0392B"/>
+    </linearGradient>
+    <linearGradient id="g-grey" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#BDC3C7"/>
+      <stop offset="100%" stop-color="#95A5A6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="1920" height="1080" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="960" y="80" text-anchor="middle" font-size="42" font-weight="700" fill="#2C3E50" letter-spacing="2">Beschikbaarheid: hoeveel draait de machine in de geplande tijd?</text>
+  <text x="960" y="120" text-anchor="middle" font-size="22" fill="#7f8c8d">Voorbeeld: ponsmachine, dienst van 480 minuten</text>
+
+  <!-- TIJDBALK LAAG 1: hele dienst -->
+  <text x="160" y="200" font-size="20" font-weight="600" fill="#2C3E50">1. De hele dienst — 480 minuten</text>
+
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="160" y="220" width="1600" height="80" rx="8" fill="url(#g-grey)"/>
+  </g>
+  <text x="960" y="270" text-anchor="middle" font-size="22" font-weight="700" fill="white">480 MINUTEN — TOTALE DIENST</text>
+
+  <!-- Tijd-tickjes -->
+  <g font-size="13" fill="#7f8c8d">
+    <text x="160" y="320" text-anchor="middle">0 min</text>
+    <text x="560" y="320" text-anchor="middle">120 min</text>
+    <text x="960" y="320" text-anchor="middle">240 min</text>
+    <text x="1360" y="320" text-anchor="middle">360 min</text>
+    <text x="1760" y="320" text-anchor="middle">480 min</text>
+  </g>
+
+  <!-- TIJDBALK LAAG 2: pauzes vs geplande productietijd -->
+  <text x="160" y="380" font-size="20" font-weight="600" fill="#2C3E50">2. Pauze (telt niet mee) en geplande productietijd</text>
+
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="160" y="400" width="100" height="80" rx="8" fill="url(#g-grey)" opacity="0.5"/>
+    <rect role="presentation" x="260" y="400" width="1500" height="80" rx="8" fill="url(#g-blue)"/>
+  </g>
+  <text x="210" y="445" text-anchor="middle" font-size="13" font-weight="600" fill="#2C3E50">PAUZE</text>
+  <text x="210" y="465" text-anchor="middle" font-size="14" font-weight="700" fill="#2C3E50">30 min</text>
+  <text x="1010" y="445" text-anchor="middle" font-size="20" font-weight="700" fill="white">GEPLANDE PRODUCTIETIJD</text>
+  <text x="1010" y="468" text-anchor="middle" font-size="18" font-weight="700" fill="white">450 minuten</text>
+
+  <!-- Pijl naar pauze label -->
+  <line x1="210" y1="495" x2="210" y2="525" stroke="#7f8c8d" stroke-width="1.5"/>
+  <text x="210" y="545" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic">telt niet mee</text>
+  <text x="210" y="563" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic">in OEE</text>
+
+  <!-- TIJDBALK LAAG 3: stilstand vs draaitijd -->
+  <text x="160" y="620" font-size="20" font-weight="600" fill="#2C3E50">3. Binnen de geplande tijd: stilstand (rood) en draaitijd (groen)</text>
+
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="160" y="640" width="100" height="80" rx="8" fill="url(#g-grey)" opacity="0.5"/>
+    <rect role="presentation" x="260" y="640" width="150" height="80" rx="0" fill="url(#g-red)"/>
+    <rect role="presentation" x="410" y="640" width="1350" height="80" rx="0" fill="url(#g-green)"/>
+    <rect role="presentation" x="1750" y="640" width="10" height="80" rx="0" fill="url(#g-green)"/>
+  </g>
+  <text x="210" y="685" text-anchor="middle" font-size="13" font-weight="600" fill="#2C3E50">PAUZE</text>
+  <text x="210" y="705" text-anchor="middle" font-size="14" font-weight="700" fill="#2C3E50">30</text>
+
+  <text x="335" y="680" text-anchor="middle" font-size="14" font-weight="700" fill="white">STILSTAND</text>
+  <text x="335" y="702" text-anchor="middle" font-size="20" font-weight="700" fill="white">45 min</text>
+
+  <text x="1085" y="680" text-anchor="middle" font-size="22" font-weight="700" fill="white">DRAAITIJD</text>
+  <text x="1085" y="708" text-anchor="middle" font-size="22" font-weight="700" fill="white">405 minuten</text>
+
+  <!-- Stilstand uitvergroot in vier types -->
+  <text x="160" y="800" font-size="20" font-weight="600" fill="#2C3E50">4. De stilstand bestaat uit vier types</text>
+
+  <!-- Stilstand-uitvergroting met types -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="160" y="820" width="280" height="80" rx="8" fill="#E74C3C"/>
+    <rect role="presentation" x="450" y="820" width="280" height="80" rx="8" fill="#EC7063"/>
+    <rect role="presentation" x="740" y="820" width="280" height="80" rx="8" fill="#F1948A"/>
+    <rect role="presentation" x="1030" y="820" width="280" height="80" rx="8" fill="#F5B7B1"/>
+  </g>
+  <text x="300" y="855" text-anchor="middle" font-size="16" font-weight="700" fill="white">STORINGEN</text>
+  <text x="300" y="880" text-anchor="middle" font-size="13" fill="white">defect, lek, breuk</text>
+
+  <text x="590" y="855" text-anchor="middle" font-size="16" font-weight="700" fill="white">OMSTELLEN</text>
+  <text x="590" y="880" text-anchor="middle" font-size="13" fill="white">matrijswissel, gereedschap</text>
+
+  <text x="880" y="855" text-anchor="middle" font-size="16" font-weight="700" fill="#7B241C">WACHTEN</text>
+  <text x="880" y="880" text-anchor="middle" font-size="13" fill="#7B241C">materiaal, kraan, operator</text>
+
+  <text x="1170" y="855" text-anchor="middle" font-size="16" font-weight="700" fill="#7B241C">OPSTARTEN</text>
+  <text x="1170" y="880" text-anchor="middle" font-size="13" fill="#7B241C">opwarmtijd, kalibratie</text>
+
+  <!-- Formule en uitkomst rechts -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1380" y="820" width="380" height="160" rx="20" fill="#2C3E50"/>
+  </g>
+  <text x="1570" y="858" text-anchor="middle" font-size="16" font-weight="600" fill="#B0BEC5" letter-spacing="2">FORMULE</text>
+  <text x="1570" y="893" text-anchor="middle" font-size="20" font-weight="600" fill="white">Draaitijd</text>
+  <line x1="1450" y1="906" x2="1690" y2="906" stroke="white" stroke-width="2"/>
+  <text x="1570" y="928" text-anchor="middle" font-size="20" font-weight="600" fill="white">Geplande tijd</text>
+  <text x="1570" y="965" text-anchor="middle" font-size="14" fill="#B0BEC5">405 / 450 = 90%</text>
+
+  <!-- Onderbalk eindresultaat -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="500" y="990" width="920" height="60" rx="10" fill="url(#g-green)"/>
+  </g>
+  <text x="960" y="1030" text-anchor="middle" font-size="26" font-weight="700" fill="white">Beschikbaarheid = 90%</text>
+
+  <!-- Bronvermelding -->
+  <text x="960" y="1070" text-anchor="middle" font-size="13" fill="#999">Beschikbaarheid — AIMM Curriculum | Module 1: Gebruik | v1.0</text>
+</svg>

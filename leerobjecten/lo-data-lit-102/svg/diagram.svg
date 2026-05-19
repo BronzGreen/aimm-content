@@ -1,0 +1,153 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 620"
+     font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Vier soorten data in de fabriek</title>
+  <desc id="desc">Een overzicht van de vier soorten data die je in een fabriek tegenkomt: getallen uit metingen, tekst uit logboeken, beelden uit camera's en signalen uit sensoren. Elk type wordt getoond met een icoon, voorbeelden en de bijbehorende kracht.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="grad-blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="grad-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="grad-orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E67E22"/>
+      <stop offset="100%" stop-color="#D35400"/>
+    </linearGradient>
+    <linearGradient id="grad-purple" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9B59B6"/>
+      <stop offset="100%" stop-color="#8E44AD"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="800" height="620" fill="#FAFAF8" rx="12"/>
+
+  <!-- Titel -->
+  <text x="400" y="42" text-anchor="middle" font-size="22"
+        font-weight="700" fill="#2C3E50" letter-spacing="1">Vier Soorten Data in de Fabriek</text>
+  <text x="400" y="66" text-anchor="middle" font-size="13"
+        fill="#7f8c8d" letter-spacing="0.5">Elke soort heeft een eigen kracht</text>
+
+  <!-- ============ KAART 1: GETALLEN (linksboven) ============ -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="95" width="350" height="210" rx="14" fill="white"/>
+    <rect x="40" y="95" width="350" height="6" rx="3" fill="url(#grad-blue)"/>
+  </g>
+  <!-- Icoon: tally/meter -->
+  <circle cx="80" cy="140" r="22" fill="#3498DB" opacity="0.12"/>
+  <text x="80" y="148" text-anchor="middle" font-size="22" fill="#3498DB">123</text>
+  <!-- Titel -->
+  <text x="112" y="136" font-size="17" font-weight="700" fill="#2C3E50">Getallen</text>
+  <text x="112" y="155" font-size="11" fill="#7f8c8d">Numerieke data</text>
+  <!-- Voorbeelden -->
+  <text x="60" y="185" font-size="12" fill="#555">
+    <tspan x="60" dy="0">Temperatuur: 182 graden</tspan>
+    <tspan x="60" dy="20">Gewicht: 3,45 kg</tspan>
+    <tspan x="60" dy="20">Productie: 847 stuks</tspan>
+    <tspan x="60" dy="20">Druk: 6,2 bar</tspan>
+  </text>
+  <!-- Kracht -->
+  <rect x="55" y="270" width="320" height="26" rx="6" fill="#EBF5FB"/>
+  <text x="215" y="288" text-anchor="middle" font-size="11" font-weight="600" fill="#2980B9">Kracht: je kunt ermee rekenen</text>
+
+  <!-- ============ KAART 2: TEKST (rechtsboven) ============ -->
+  <g filter="url(#shadow)">
+    <rect x="410" y="95" width="350" height="210" rx="14" fill="white"/>
+    <rect x="410" y="95" width="350" height="6" rx="3" fill="url(#grad-green)"/>
+  </g>
+  <!-- Icoon: document -->
+  <circle cx="450" cy="140" r="22" fill="#2ECC71" opacity="0.12"/>
+  <text x="450" y="146" text-anchor="middle" font-size="18" fill="#27AE60">Aa</text>
+  <!-- Titel -->
+  <text x="482" y="136" font-size="17" font-weight="700" fill="#2C3E50">Tekst</text>
+  <text x="482" y="155" font-size="11" fill="#7f8c8d">Tekstuele data</text>
+  <!-- Voorbeelden -->
+  <text x="430" y="185" font-size="12" fill="#555">
+    <tspan x="430" dy="0">Logboeken</tspan>
+    <tspan x="430" dy="20">Ploegenoverdrachten</tspan>
+    <tspan x="430" dy="20">Storingsbeschrijvingen</tspan>
+    <tspan x="430" dy="20">Kwaliteitsrapporten</tspan>
+  </text>
+  <!-- Kracht -->
+  <rect x="425" y="270" width="320" height="26" rx="6" fill="#EAFAF1"/>
+  <text x="585" y="288" text-anchor="middle" font-size="11" font-weight="600" fill="#27AE60">Kracht: geeft context die getallen missen</text>
+
+  <!-- ============ KAART 3: BEELDEN (linksonder) ============ -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="325" width="350" height="210" rx="14" fill="white"/>
+    <rect x="40" y="325" width="350" height="6" rx="3" fill="url(#grad-orange)"/>
+  </g>
+  <!-- Icoon: camera -->
+  <circle cx="80" cy="370" r="22" fill="#E67E22" opacity="0.12"/>
+  <rect x="66" y="362" width="28" height="18" rx="4" fill="none" stroke="#D35400" stroke-width="2"/>
+  <circle cx="80" cy="371" r="5" fill="none" stroke="#D35400" stroke-width="1.5"/>
+  <!-- Titel -->
+  <text x="112" y="366" font-size="17" font-weight="700" fill="#2C3E50">Beelden</text>
+  <text x="112" y="385" font-size="11" fill="#7f8c8d">Visuele data</text>
+  <!-- Voorbeelden -->
+  <text x="60" y="415" font-size="12" fill="#555">
+    <tspan x="60" dy="0">Camerabeelden</tspan>
+    <tspan x="60" dy="20">Foto's van producten</tspan>
+    <tspan x="60" dy="20">Microscoopbeelden</tspan>
+    <tspan x="60" dy="20">Scans en controles</tspan>
+  </text>
+  <!-- Kracht -->
+  <rect x="55" y="500" width="320" height="26" rx="6" fill="#FEF5E7"/>
+  <text x="215" y="518" text-anchor="middle" font-size="11" font-weight="600" fill="#D35400">Kracht: AI herkent wat je oog mist</text>
+
+  <!-- ============ KAART 4: SIGNALEN (rechtsonder) ============ -->
+  <g filter="url(#shadow)">
+    <rect x="410" y="325" width="350" height="210" rx="14" fill="white"/>
+    <rect x="410" y="325" width="350" height="6" rx="3" fill="url(#grad-purple)"/>
+  </g>
+  <!-- Icoon: wave/signal -->
+  <circle cx="450" cy="370" r="22" fill="#9B59B6" opacity="0.12"/>
+  <path d="M436,371 Q441,358 446,371 Q451,384 456,371 Q461,358 466,371"
+        fill="none" stroke="#8E44AD" stroke-width="2" stroke-linecap="round"/>
+  <!-- Titel -->
+  <text x="482" y="366" font-size="17" font-weight="700" fill="#2C3E50">Signalen</text>
+  <text x="482" y="385" font-size="11" fill="#7f8c8d">Sensordata</text>
+  <!-- Voorbeelden -->
+  <text x="430" y="415" font-size="12" fill="#555">
+    <tspan x="430" dy="0">Trillingen</tspan>
+    <tspan x="430" dy="20">Temperatuurverloop</tspan>
+    <tspan x="430" dy="20">Stroomverbruik</tspan>
+    <tspan x="430" dy="20">Geluidspatronen</tspan>
+  </text>
+  <!-- Kracht -->
+  <rect x="425" y="500" width="320" height="26" rx="6" fill="#F5EEF8"/>
+  <text x="585" y="518" text-anchor="middle" font-size="11" font-weight="600" fill="#8E44AD">Kracht: veranderingen over tijd zichtbaar</text>
+
+  <!-- ============ VERBINDENDE TEKST MIDDEN ============ -->
+  <circle cx="400" cy="318" r="28" fill="#2C3E50" opacity="0.08"/>
+  <text x="400" y="323" text-anchor="middle" font-size="11"
+        font-weight="700" fill="#2C3E50">Samen</text>
+  <text x="400" y="337" text-anchor="middle" font-size="9"
+        fill="#7f8c8d">= compleet beeld</text>
+
+  <!-- Legenda -->
+  <g transform="translate(120,560)">
+    <rect role="presentation" width="14" height="14" rx="3" fill="#3498DB"/>
+    <text x="20" y="12" font-size="11" fill="#555">Mensen meten</text>
+
+    <rect role="presentation" x="140" width="14" height="14" rx="3" fill="#2ECC71"/>
+    <text x="160" y="12" font-size="11" fill="#555">Mensen schrijven</text>
+
+    <rect role="presentation" x="300" width="14" height="14" rx="3" fill="#E67E22"/>
+    <text x="320" y="12" font-size="11" fill="#555">Camera's kijken</text>
+
+    <rect role="presentation" x="450" width="14" height="14" rx="3" fill="#9B59B6"/>
+    <text x="470" y="12" font-size="11" fill="#555">Sensoren meten</text>
+  </g>
+
+  <!-- Bronvermelding -->
+  <text x="400" y="600" text-anchor="middle"
+        font-size="10" fill="#999">AIMM Data Literacy - ko-data-lit-102 | Module 1: Gebruik</text>
+</svg>
