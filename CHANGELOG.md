@@ -7,6 +7,21 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde7-lo-industry40-021
+
+**Kontext:** Ronde 7: lo-industry40-021 (showcase 25 -> 29)
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-021/trainee.md`
+- `leerobjecten/lo-industry40-021/trainer.md`
+- `leerobjecten/lo-industry40-021/draaiboek.md`
+- `leerobjecten/lo-industry40-021/werkbladen/wb-01-casus-fietsfabriek.md`
+- `leerobjecten/lo-industry40-021/werkbladen/wb-02-buurman-check.md`
+- `leerobjecten/lo-industry40-021/werkbladen/wb-03-digital-twin-handout.md`
+- `leerobjecten/lo-industry40-021/werkbladen/wb-04-eigen-lijn-digital-twin.md`
+- `leerobjecten/lo-industry40-021/README.md`
+
 ## 2026-05-19 — publish-ronde7-lo-ai-fund-103
 
 **Kontext:** Ronde 7: lo-ai-fund-103 (showcase 25 -> 29)
