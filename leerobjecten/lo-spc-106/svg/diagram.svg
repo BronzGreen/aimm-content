@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" role="img" aria-labelledby="title desc" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Operator-regel versus teamleider-regel — twee lagen van SPC-denken</title>
+  <desc id="desc">Educatief diagram in twee panelen. Boven: de operator-regel — op één regelkaart (één shift, één machine) herken je een signaal (patroon dat statistisch onwaarschijnlijk is) versus ruis (normale schommeling). Bij een signaal: stop, onderzoek, documenteer. Bij ruis: niets doen; aan de knop draaien maakt de variatie juist groter (tampering). Onder: de teamleider-regel — door data te stratificeren naar shift, caviteit, matrijs, gereedschap en receptuur worden patronen zichtbaar die boven het individuele kaart-niveau uitstijgen. Het fictieve Karim en Sophie-voorbeeld illustreert dat shift A systematisch 0,3 mm hoger meet dan shift C, terwijl geen enkele losse meting out-of-control is. Bron: ko-spc-106, AIAG SPC Reference Manual en ASQ.</desc>
+
+  <defs>
+    <linearGradient id="bg-op" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </linearGradient>
+    <linearGradient id="bg-tl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF7ED"/>
+      <stop offset="100%" stop-color="#FED7AA"/>
+    </linearGradient>
+    <linearGradient id="sig-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EF4444" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#EF4444" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow-op" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#1D4ED8"/>
+    </marker>
+    <marker id="arrow-tl" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#9A3412"/>
+    </marker>
+  </defs>
+
+  <rect role="presentation" width="960" height="760" fill="#F8F6F0"/>
+
+  <!-- Titel -->
+  <text x="480" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50" letter-spacing="1">Twee regels, twee lagen van SPC-denken</text>
+  <text x="480" y="60" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic" letter-spacing="0.3">De operator leest één kaart. De teamleider ziet patronen over meerdere kaarten heen.</text>
+
+  <!-- ========== BOVEN: OPERATOR-REGEL ========== -->
+  <g>
+    <rect x="30" y="80" width="900" height="300" rx="12" fill="url(#bg-op)" filter="url(#shadow)"/>
+
+    <text x="55" y="112" font-size="16" font-weight="700" fill="#1E3A8A">OPERATOR-REGEL · één kaart, één shift, één machine</text>
+    <text x="55" y="132" font-size="13" fill="#1E40AF" font-style="italic">Reageer op signalen, niet op ruis.</text>
+
+    <!-- Regelkaart-box (signaal) -->
+    <g>
+      <rect x="55" y="150" width="400" height="200" rx="8" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1.5"/>
+      <text x="255" y="175" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A8A">Regelkaart met een SIGNAAL</text>
+
+      <!-- Grenzen -->
+      <line x1="80" y1="200" x2="430" y2="200" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="440" y="204" font-size="9" fill="#DC2626">UCL</text>
+      <line x1="80" y1="270" x2="430" y2="270" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="3,3"/>
+      <text x="440" y="274" font-size="9" fill="#6B7280">CL</text>
+      <line x1="80" y1="340" x2="430" y2="340" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="440" y="344" font-size="9" fill="#DC2626">LCL</text>
+
+      <!-- Datapunten: meeste ruis, laatste punt boven UCL -->
+      <polyline points="95,275 115,265 135,278 155,270 175,263 195,275 215,268 235,280 255,265 275,278 295,272 315,266 335,275 355,268 375,270 395,185"
+                fill="none" stroke="#1E40AF" stroke-width="1.8"/>
+      <circle cx="95" cy="275" r="3" fill="#1E40AF"/>
+      <circle cx="115" cy="265" r="3" fill="#1E40AF"/>
+      <circle cx="135" cy="278" r="3" fill="#1E40AF"/>
+      <circle cx="155" cy="270" r="3" fill="#1E40AF"/>
+      <circle cx="175" cy="263" r="3" fill="#1E40AF"/>
+      <circle cx="195" cy="275" r="3" fill="#1E40AF"/>
+      <circle cx="215" cy="268" r="3" fill="#1E40AF"/>
+      <circle cx="235" cy="280" r="3" fill="#1E40AF"/>
+      <circle cx="255" cy="265" r="3" fill="#1E40AF"/>
+      <circle cx="275" cy="278" r="3" fill="#1E40AF"/>
+      <circle cx="295" cy="272" r="3" fill="#1E40AF"/>
+      <circle cx="315" cy="266" r="3" fill="#1E40AF"/>
+      <circle cx="335" cy="275" r="3" fill="#1E40AF"/>
+      <circle cx="355" cy="268" r="3" fill="#1E40AF"/>
+      <circle cx="375" cy="270" r="3" fill="#1E40AF"/>
+      <circle cx="395" cy="185" r="5" fill="#DC2626" stroke="#7F1D1D" stroke-width="1.5"/>
+
+      <!-- Pijl naar uitschieter -->
+      <path d="M 395,215 L 395,195" fill="none" stroke="#7F1D1D" stroke-width="1.5" marker-end="url(#arrow-tl)"/>
+      <text x="395" y="228" text-anchor="middle" font-size="9" fill="#7F1D1D" font-weight="600">uitschieter boven UCL</text>
+
+      <!-- Actiebox -->
+      <rect x="80" y="305" width="350" height="30" rx="5" fill="#DC2626"/>
+      <text x="255" y="325" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">SIGNAAL &#8594; stop, onderzoek, documenteer</text>
+    </g>
+
+    <!-- Regelkaart-box (ruis) -->
+    <g>
+      <rect x="495" y="150" width="400" height="200" rx="8" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1.5"/>
+      <text x="695" y="175" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A8A">Regelkaart met alleen RUIS</text>
+
+      <!-- Grenzen -->
+      <line x1="520" y1="200" x2="870" y2="200" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="880" y="204" font-size="9" fill="#DC2626">UCL</text>
+      <line x1="520" y1="270" x2="870" y2="270" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="3,3"/>
+      <text x="880" y="274" font-size="9" fill="#6B7280">CL</text>
+      <line x1="520" y1="340" x2="870" y2="340" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="880" y="344" font-size="9" fill="#DC2626">LCL</text>
+
+      <!-- Datapunten: alles binnen grenzen, schommelt rond midden -->
+      <polyline points="535,275 555,262 575,278 595,265 615,272 635,258 655,280 675,264 695,275 715,260 735,282 755,266 775,272 795,258 815,278 835,268"
+                fill="none" stroke="#1E40AF" stroke-width="1.8"/>
+      <circle cx="535" cy="275" r="3" fill="#1E40AF"/>
+      <circle cx="555" cy="262" r="3" fill="#1E40AF"/>
+      <circle cx="575" cy="278" r="3" fill="#1E40AF"/>
+      <circle cx="595" cy="265" r="3" fill="#1E40AF"/>
+      <circle cx="615" cy="272" r="3" fill="#1E40AF"/>
+      <circle cx="635" cy="258" r="3" fill="#1E40AF"/>
+      <circle cx="655" cy="280" r="3" fill="#1E40AF"/>
+      <circle cx="675" cy="264" r="3" fill="#1E40AF"/>
+      <circle cx="695" cy="275" r="3" fill="#1E40AF"/>
+      <circle cx="715" cy="260" r="3" fill="#1E40AF"/>
+      <circle cx="735" cy="282" r="3" fill="#1E40AF"/>
+      <circle cx="755" cy="266" r="3" fill="#1E40AF"/>
+      <circle cx="775" cy="272" r="3" fill="#1E40AF"/>
+      <circle cx="795" cy="258" r="3" fill="#1E40AF"/>
+      <circle cx="815" cy="278" r="3" fill="#1E40AF"/>
+      <circle cx="835" cy="268" r="3" fill="#1E40AF"/>
+
+      <!-- Actiebox -->
+      <rect x="520" y="305" width="350" height="30" rx="5" fill="#059669"/>
+      <text x="695" y="325" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">RUIS &#8594; niets doen; bijstellen = tampering (ko-spc-105)</text>
+    </g>
+  </g>
+
+  <!-- Scheiding -->
+  <line x1="30" y1="400" x2="930" y2="400" stroke="#D1D5DB" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- ========== ONDER: TEAMLEIDER-REGEL ========== -->
+  <g>
+    <rect x="30" y="420" width="900" height="300" rx="12" fill="url(#bg-tl)" filter="url(#shadow)"/>
+
+    <text x="55" y="452" font-size="16" font-weight="700" fill="#7C2D12">TEAMLEIDER-REGEL &#183; data uitsplitsen (stratified analysis)</text>
+    <text x="55" y="472" font-size="13" fill="#9A3412" font-style="italic">Patronen die op &#233;&#233;n kaart niet zichtbaar zijn, verschijnen pas als je groepeert per factor.</text>
+
+    <!-- Stratificatie-factoren -->
+    <g>
+      <rect x="55" y="492" width="170" height="54" rx="6" fill="#FFFFFF" stroke="#C2410C" stroke-width="1"/>
+      <text x="140" y="512" text-anchor="middle" font-size="11" font-weight="700" fill="#7C2D12">Shifts</text>
+      <text x="140" y="528" text-anchor="middle" font-size="10" fill="#6B7280">ploeg A / B / C</text>
+      <text x="140" y="541" text-anchor="middle" font-size="10" fill="#6B7280">systematisch verschil?</text>
+
+      <rect x="235" y="492" width="170" height="54" rx="6" fill="#FFFFFF" stroke="#C2410C" stroke-width="1"/>
+      <text x="320" y="512" text-anchor="middle" font-size="11" font-weight="700" fill="#7C2D12">Cavit&#233;iten</text>
+      <text x="320" y="528" text-anchor="middle" font-size="10" fill="#6B7280">cav 1, 2, 3, 4</text>
+      <text x="320" y="541" text-anchor="middle" font-size="10" fill="#6B7280">een hoger dan de rest?</text>
+
+      <rect x="415" y="492" width="170" height="54" rx="6" fill="#FFFFFF" stroke="#C2410C" stroke-width="1"/>
+      <text x="500" y="512" text-anchor="middle" font-size="11" font-weight="700" fill="#7C2D12">Matrijzen</text>
+      <text x="500" y="528" text-anchor="middle" font-size="10" fill="#6B7280">M1 / M2</text>
+      <text x="500" y="541" text-anchor="middle" font-size="10" fill="#6B7280">meer variatie op &#233;&#233;n?</text>
+
+      <rect x="595" y="492" width="140" height="54" rx="6" fill="#FFFFFF" stroke="#C2410C" stroke-width="1"/>
+      <text x="665" y="512" text-anchor="middle" font-size="11" font-weight="700" fill="#7C2D12">Gereedschap</text>
+      <text x="665" y="528" text-anchor="middle" font-size="10" fill="#6B7280">faalt na X stuks?</text>
+      <text x="665" y="541" text-anchor="middle" font-size="10" fill="#6B7280">slijtagepatroon?</text>
+
+      <rect x="745" y="492" width="150" height="54" rx="6" fill="#FFFFFF" stroke="#C2410C" stroke-width="1"/>
+      <text x="820" y="512" text-anchor="middle" font-size="11" font-weight="700" fill="#7C2D12">Recepturen</text>
+      <text x="820" y="528" text-anchor="middle" font-size="10" fill="#6B7280">variant X / Y / Z</text>
+      <text x="820" y="541" text-anchor="middle" font-size="10" fill="#6B7280">hogere afkeur op &#233;&#233;n?</text>
+    </g>
+
+    <!-- Karim & Sophie-voorbeeld -->
+    <g>
+      <rect x="55" y="560" width="840" height="142" rx="8" fill="#FFFFFF" stroke="#C2410C" stroke-width="1.2"/>
+      <text x="70" y="582" font-size="12" font-weight="700" fill="#7C2D12">Fictief voorbeeld uit het kennisobject &#8212; Karim &amp; Sophie</text>
+
+      <!-- Mini-barchart: shift A, B, C gemiddelden -->
+      <g transform="translate(70,595)">
+        <text x="0" y="12" font-size="10" fill="#374151" font-weight="600">Shift-gemiddelden (mm) &#8212; alles binnen klantspec 9,80&#8211;10,30</text>
+        <!-- As -->
+        <line x1="0" y1="85" x2="260" y2="85" stroke="#9CA3AF" stroke-width="1"/>
+        <!-- Balken -->
+        <rect x="20" y="28" width="50" height="57" fill="#F59E0B"/>
+        <text x="45" y="98" text-anchor="middle" font-size="10" font-weight="700" fill="#7C2D12">A</text>
+        <text x="45" y="23" text-anchor="middle" font-size="9" fill="#7C2D12">10,25</text>
+
+        <rect x="100" y="45" width="50" height="40" fill="#FDBA74"/>
+        <text x="125" y="98" text-anchor="middle" font-size="10" font-weight="700" fill="#7C2D12">B</text>
+        <text x="125" y="40" text-anchor="middle" font-size="9" fill="#7C2D12">10,10</text>
+
+        <rect x="180" y="62" width="50" height="23" fill="#FED7AA"/>
+        <text x="205" y="98" text-anchor="middle" font-size="10" font-weight="700" fill="#7C2D12">C</text>
+        <text x="205" y="57" text-anchor="middle" font-size="9" fill="#7C2D12">9,95</text>
+      </g>
+
+      <!-- Tekst naast grafiek -->
+      <g transform="translate(370,595)">
+        <text x="0" y="14" font-size="11" fill="#374151"><tspan font-weight="700">Karim</tspan> (operator, shift A): kaart is stabiel. Geen signaal.</text>
+        <text x="0" y="30" font-size="11" fill="#374151">Niets doen &#8212; terecht. Operator-regel gevolgd.</text>
+        <text x="0" y="54" font-size="11" fill="#374151"><tspan font-weight="700">Sophie</tspan> (teamleider): ziet shift A ~0,3 mm hoger dan C.</text>
+        <text x="0" y="70" font-size="11" fill="#374151">Geen losse meting out-of-control, patroon wel betekenisvol.</text>
+        <text x="0" y="94" font-size="11" font-weight="700" fill="#7C2D12">&#8594; Escalatie naar engineering: calibratie-check shift A.</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bronvermelding -->
+  <text x="480" y="745" text-anchor="middle" font-size="9" fill="#999">Bron: ko-spc-106 &#183; AIAG SPC Reference Manual &#183; ASQ &#183; AIMM SPC Module 2 (Train) &#183; namen en waarden fictief/illustratief</text>
+</svg>

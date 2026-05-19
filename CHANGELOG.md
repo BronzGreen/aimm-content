@@ -7,6 +7,72 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde7-lo-spc-106
+
+**Kontext:** Ronde 7: lo-spc-106 (showcase 25 -> 29)
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-106/trainee.md`
+- `kennisbank/spc/variatie_analyse/ko-spc-106.md`
+- `leerobjecten/lo-spc-106/trainer.md`
+- `leerobjecten/lo-spc-106/draaiboek.md`
+- `leerobjecten/lo-spc-106/werkbladen/wb-01-oefening.md`
+- `leerobjecten/lo-spc-106/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-106/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-106/svg/diagram.svg`
+- `leerobjecten/lo-spc-106/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-106/README.md`
+
+## 2026-05-19 — publish-ronde7-lo-smart-mfg-601
+
+**Kontext:** Ronde 7: lo-smart-mfg-601 (showcase 25 -> 29)
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-601/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-601.md`
+- `leerobjecten/lo-smart-mfg-601/trainer.md`
+- `leerobjecten/lo-smart-mfg-601/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-601/werkbladen/wb-01-storingsquiz.md`
+- `leerobjecten/lo-smart-mfg-601/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-smart-mfg-601/werkbladen/wb-03-theorie-handout.md`
+- `leerobjecten/lo-smart-mfg-601/werkbladen/wb-04-actieplan.md`
+- `leerobjecten/lo-smart-mfg-601/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-601/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-601/README.md`
+
+## 2026-05-19 — publish-ronde7-lo-industry40-021
+
+**Kontext:** Ronde 7: lo-industry40-021 (showcase 25 -> 29)
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-021/trainee.md`
+- `leerobjecten/lo-industry40-021/trainer.md`
+- `leerobjecten/lo-industry40-021/draaiboek.md`
+- `leerobjecten/lo-industry40-021/werkbladen/wb-01-casus-fietsfabriek.md`
+- `leerobjecten/lo-industry40-021/werkbladen/wb-02-buurman-check.md`
+- `leerobjecten/lo-industry40-021/werkbladen/wb-03-digital-twin-handout.md`
+- `leerobjecten/lo-industry40-021/werkbladen/wb-04-eigen-lijn-digital-twin.md`
+- `leerobjecten/lo-industry40-021/README.md`
+
+## 2026-05-19 — publish-ronde7-lo-ai-fund-103
+
+**Kontext:** Ronde 7: lo-ai-fund-103 (showcase 25 -> 29)
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-103/trainee.md`
+- `kennisbank/ai_fundamentals/machine_learning_basics/ko-ai-fund-103.md`
+- `leerobjecten/lo-ai-fund-103/trainer.md`
+- `leerobjecten/lo-ai-fund-103/draaiboek.md`
+- `leerobjecten/lo-ai-fund-103/werkbladen/wb-01-drie-producten.md`
+- `leerobjecten/lo-ai-fund-103/werkbladen/wb-02-buurman-grenzen.md`
+- `leerobjecten/lo-ai-fund-103/werkbladen/wb-03-handout-drempelgebieden.md`
+- `leerobjecten/lo-ai-fund-103/werkbladen/wb-04-eigen-drempel.md`
+- `leerobjecten/lo-ai-fund-103/README.md`
+
 ## 2026-05-19 — publish-ronde6-lo-smart-mfg-095
 
 **Kontext:** Ronde 6: lo-smart-mfg-095 (showcase 21 -> 25)
