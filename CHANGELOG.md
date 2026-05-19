@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde7-lo-ai-fund-103
+
+**Kontext:** Ronde 7: lo-ai-fund-103 (showcase 25 -> 29)
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-103/trainee.md`
+- `kennisbank/ai_fundamentals/machine_learning_basics/ko-ai-fund-103.md`
+- `leerobjecten/lo-ai-fund-103/trainer.md`
+- `leerobjecten/lo-ai-fund-103/draaiboek.md`
+- `leerobjecten/lo-ai-fund-103/werkbladen/wb-01-drie-producten.md`
+- `leerobjecten/lo-ai-fund-103/werkbladen/wb-02-buurman-grenzen.md`
+- `leerobjecten/lo-ai-fund-103/werkbladen/wb-03-handout-drempelgebieden.md`
+- `leerobjecten/lo-ai-fund-103/werkbladen/wb-04-eigen-drempel.md`
+- `leerobjecten/lo-ai-fund-103/README.md`
+
 ## 2026-05-19 — publish-ronde6-lo-smart-mfg-095
 
 **Kontext:** Ronde 6: lo-smart-mfg-095 (showcase 21 -> 25)
