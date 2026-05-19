@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde4-lo-ai-fund-101
+
+**Kontext:** Ronde 4: lo-ai-fund-101 (showcase 13 -> 17 LOs)
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-101/trainee.md`
+- `kennisbank/ai_fundamentals/machine_learning_basics/ko-ai-fund-101.md`
+- `leerobjecten/lo-ai-fund-101/trainer.md`
+- `leerobjecten/lo-ai-fund-101/draaiboek.md`
+- `leerobjecten/lo-ai-fund-101/werkbladen/wb-01-casus-verpakkingslijn.md`
+- `leerobjecten/lo-ai-fund-101/werkbladen/wb-02-buurman-check.md`
+- `leerobjecten/lo-ai-fund-101/werkbladen/wb-03-handout-twee-kenmerken.md`
+- `leerobjecten/lo-ai-fund-101/werkbladen/wb-04-eigen-werkvloer.md`
+- `leerobjecten/lo-ai-fund-101/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-ai-fund-101/README.md`
+
 ## 2026-05-19 — publish-ronde4-lo-data-lit-104
 
 **Kontext:** Ronde 4: lo-data-lit-104 (showcase 13 -> 17 LOs)
