@@ -1,0 +1,103 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1920 1080" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Vier modes van digitalisering: Zuboff-kwadrantenkaart met automating, informating, representing en mediating</title>
+  <desc id="desc">Een 2x2 kwadrantenkaart waarin de horizontale as het primaire doel van de digitalisering toont (van machines links, naar mensen rechts). De verticale as toont wat de digitalisering doet (vervangen of handelen bovenaan, zichtbaar maken of documenteren onderaan). De vier kwadranten tonen de vier modes: linksboven Automating (machine vervangt taak), rechtsboven Mediating (mensen coordineren via IT), linksonder Representing (machine documenteert wat gebeurt), rechtsonder Informating (data zichtbaar voor menselijke besluitvorming). Per kwadrant staat een definitie en een industrieel voorbeeld. Onderaan een conclusie dat de meeste organisaties alleen automating doen en daarmee de transformatie missen.</desc>
+
+  <!-- Achtergrond -->
+  <rect width="1920" height="1080" fill="#0A1628"/>
+
+  <!-- Titel -->
+  <text x="960" y="70" text-anchor="middle" font-size="42" fill="#FFFFFF" font-weight="600">Vier modes van digitalisering</text>
+  <text x="960" y="115" text-anchor="middle" font-size="20" fill="#8A9BAD">Zuboff (1985) + Hydle et al. (2021) — kwadrantenkaart per mode</text>
+
+  <!-- As-labels -->
+  <!-- Y-as label boven (Wat) -->
+  <text x="120" y="350" text-anchor="middle" font-size="18" fill="#FFC857" font-weight="600">VERVANGEN /</text>
+  <text x="120" y="375" text-anchor="middle" font-size="18" fill="#FFC857" font-weight="600">HANDELEN</text>
+  <text x="120" y="700" text-anchor="middle" font-size="18" fill="#FFC857" font-weight="600">ZICHTBAAR /</text>
+  <text x="120" y="725" text-anchor="middle" font-size="18" fill="#FFC857" font-weight="600">VASTLEGGEN</text>
+  <text x="120" y="500" text-anchor="middle" font-size="14" fill="#8A9BAD">↑</text>
+  <text x="120" y="535" text-anchor="middle" font-size="14" fill="#8A9BAD">↓</text>
+  <text x="60" y="525" text-anchor="middle" font-size="14" fill="#8A9BAD" transform="rotate(-90 60 525)">WAT DOET HET</text>
+
+  <!-- X-as label onder (Doel) -->
+  <text x="555" y="950" text-anchor="middle" font-size="18" fill="#FFC857" font-weight="600">DOEL: MACHINES</text>
+  <text x="1365" y="950" text-anchor="middle" font-size="18" fill="#FFC857" font-weight="600">DOEL: MENSEN</text>
+  <text x="960" y="990" text-anchor="middle" font-size="14" fill="#8A9BAD">PRIMAIR DOELWIT VAN DE DIGITALISERING →</text>
+
+  <!-- Kwadrant-grenzen -->
+  <line x1="960" y1="160" x2="960" y2="900" stroke="#1E9695" stroke-width="2" role="presentation"/>
+  <line x1="220" y1="530" x2="1700" y2="530" stroke="#1E9695" stroke-width="2" role="presentation"/>
+
+  <!-- KWADRANT LINKSBOVEN: Automating -->
+  <g>
+    <rect x="240" y="180" width="700" height="320" rx="12" fill="#132240" stroke="#FF6B35" stroke-width="2"/>
+    <text x="290" y="225" font-size="28" fill="#FF6B35" font-weight="700">AUTOMATING</text>
+    <text x="290" y="260" font-size="18" fill="#FFFFFF" font-style="italic">Machine vervangt menselijke taak</text>
+    <text x="290" y="300" font-size="16" fill="#FFFFFF">IT vervangt routinetaken of beslissingen.</text>
+    <text x="290" y="325" font-size="16" fill="#FFFFFF">Output blijft hetzelfde, met minder mens.</text>
+
+    <line x1="290" y1="360" x2="900" y2="360" stroke="#FF6B35" stroke-width="1" role="presentation"/>
+
+    <text x="290" y="395" font-size="15" fill="#8A9BAD" font-weight="600">VOORBEELD</text>
+    <text x="290" y="425" font-size="15" fill="#FFFFFF">Pomp regelt zelf toerental op druk-input.</text>
+    <text x="290" y="450" font-size="15" fill="#FFFFFF">Robot vervangt handarbeid bij assemblage.</text>
+    <text x="290" y="475" font-size="15" fill="#FFFFFF">Klep sluit automatisch bij overdruk.</text>
+  </g>
+
+  <!-- KWADRANT RECHTSBOVEN: Mediating -->
+  <g>
+    <rect x="980" y="180" width="700" height="320" rx="12" fill="#132240" stroke="#2BC4C3" stroke-width="2"/>
+    <text x="1030" y="225" font-size="28" fill="#2BC4C3" font-weight="700">MEDIATING</text>
+    <text x="1030" y="260" font-size="18" fill="#FFFFFF" font-style="italic">IT coördineert tussen mensen</text>
+    <text x="1030" y="300" font-size="16" fill="#FFFFFF">IT als verbinding tussen rollen, teams,</text>
+    <text x="1030" y="325" font-size="16" fill="#FFFFFF">afdelingen. Werkprocessen lopen gladder.</text>
+
+    <line x1="1030" y1="360" x2="1640" y2="360" stroke="#2BC4C3" stroke-width="1" role="presentation"/>
+
+    <text x="1030" y="395" font-size="15" fill="#8A9BAD" font-weight="600">VOORBEELD</text>
+    <text x="1030" y="425" font-size="15" fill="#FFFFFF">Operator + onderhoud + planning werken op</text>
+    <text x="1030" y="450" font-size="15" fill="#FFFFFF">dezelfde data-laag — geen e-mail-keten.</text>
+    <text x="1030" y="475" font-size="15" fill="#FFFFFF">Werkorders verschuiven automatisch.</text>
+  </g>
+
+  <!-- KWADRANT LINKSONDER: Representing -->
+  <g>
+    <rect x="240" y="555" width="700" height="320" rx="12" fill="#132240" stroke="#8A9BAD" stroke-width="2"/>
+    <text x="290" y="600" font-size="28" fill="#8A9BAD" font-weight="700">REPRESENTING</text>
+    <text x="290" y="635" font-size="18" fill="#FFFFFF" font-style="italic">Machine documenteert wat gebeurt</text>
+    <text x="290" y="675" font-size="16" fill="#FFFFFF">IT legt vast in welke context, met welke</text>
+    <text x="290" y="700" font-size="16" fill="#FFFFFF">parameters. Maakt verleden navolgbaar.</text>
+
+    <line x1="290" y1="735" x2="900" y2="735" stroke="#8A9BAD" stroke-width="1" role="presentation"/>
+
+    <text x="290" y="770" font-size="15" fill="#8A9BAD" font-weight="600">VOORBEELD</text>
+    <text x="290" y="800" font-size="15" fill="#FFFFFF">Elke batch krijgt digitale geboorteakte.</text>
+    <text x="290" y="825" font-size="15" fill="#FFFFFF">Bij klacht: traceerbaar in seconden.</text>
+    <text x="290" y="850" font-size="15" fill="#FFFFFF">Audit-trail bij compliance-incidenten.</text>
+  </g>
+
+  <!-- KWADRANT RECHTSONDER: Informating -->
+  <g>
+    <rect x="980" y="555" width="700" height="320" rx="12" fill="#132240" stroke="#2ECC71" stroke-width="2"/>
+    <text x="1030" y="600" font-size="28" fill="#2ECC71" font-weight="700">INFORMATING</text>
+    <text x="1030" y="635" font-size="18" fill="#FFFFFF" font-style="italic">Data zichtbaar voor mens</text>
+    <text x="1030" y="675" font-size="16" fill="#FFFFFF">IT maakt verborgen werkelijkheid zichtbaar</text>
+    <text x="1030" y="700" font-size="16" fill="#FFFFFF">zodat mens beter beslist. Mens blijft beslisser.</text>
+
+    <line x1="1030" y1="735" x2="1640" y2="735" stroke="#2ECC71" stroke-width="1" role="presentation"/>
+
+    <text x="1030" y="770" font-size="15" fill="#8A9BAD" font-weight="600">VOORBEELD</text>
+    <text x="1030" y="800" font-size="15" fill="#FFFFFF">Operator-dashboard met real-time energie.</text>
+    <text x="1030" y="825" font-size="15" fill="#FFFFFF">KPI-portal met procesefficiency-trends.</text>
+    <text x="1030" y="850" font-size="15" fill="#FFFFFF">Anomalie-melding voor menselijk besluit.</text>
+  </g>
+
+  <!-- Conclusie-balk -->
+  <g>
+    <rect x="240" y="990" width="1440" height="60" rx="8" fill="#132240" stroke="#FF6B35" stroke-width="2" role="presentation"/>
+    <text x="960" y="1030" text-anchor="middle" font-size="18" fill="#FFFFFF" font-weight="600">
+      De meeste organisaties doen alleen automating — daar zit efficiency-winst, niet de transformatie. Informating + mediating veranderen hoe mensen werken.
+    </text>
+  </g>
+</svg>
