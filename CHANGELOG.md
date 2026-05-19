@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde8-lo-data-lit-106
+
+**Kontext:** Ronde 8: lo-data-lit-106
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-106/trainee.md`
+- `kennisbank/data_literacy/data_driven_besluitvorming/ko-data-lit-106.md`
+- `leerobjecten/lo-data-lit-106/trainer.md`
+- `leerobjecten/lo-data-lit-106/draaiboek.md`
+- `leerobjecten/lo-data-lit-106/werkbladen/wb-casus-vier-stappen.md`
+- `leerobjecten/lo-data-lit-106/werkbladen/wb-handout-vier-stappen.md`
+- `leerobjecten/lo-data-lit-106/werkbladen/wb-meekijk-scenarios.md`
+- `leerobjecten/lo-data-lit-106/werkbladen/wb-reflectie-werkvloersituaties.md`
+- `leerobjecten/lo-data-lit-106/interactive/model.html`
+- `leerobjecten/lo-data-lit-106/README.md`
+
 ## 2026-05-19 — publish-ronde8-lo-spc-107
 
 **Kontext:** Ronde 8: lo-spc-107

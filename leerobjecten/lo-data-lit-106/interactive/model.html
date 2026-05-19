@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scenario-simulator: Gevoel vs Data</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
+
+    const SCENARIOS = [
+      {
+        id: 1,
+        title: "De trage machine",
+        context: "Machine 4 lijkt de laatste weken trager te draaien. Operator Jan zegt: \"Hij doet het niet goed, ik voel het gewoon.\" De teamleider moet beslissen: stoppen voor onderhoud, of doordraaien?",
+        keuzes: [
+          {
+            id: "gevoel",
+            label: "Op gevoel: machine stoppen voor onderhoud",
+            icon: "\uD83E\uDDE0",
+            resultaat: "De monteur onderzoekt de machine en vindt niets bijzonders. De machine stond 4 uur stil voor niets. Productie loopt 4 uur achter. Kosten: 2.400 euro aan verloren productietijd.",
+            les: "Jan had gelijk dat er iets was, maar het gevoel was niet precies genoeg. Zonder data wist niemand wat er precies aan de hand was."
+          },
+          {
+            id: "data",
+            label: "Op data: eerst de productiecijfers bekijken",
+            icon: "\uD83D\uDCCA",
+            resultaat: "De data laat zien: de snelheid is 8% gedaald in 2 weken, maar alleen bij product-type B. De oorzaak: een slijtend gereedschap dat alleen bij type B wordt gebruikt. De monteur wisselt het gereedschap in 20 minuten. Geen onnodige stilstand.",
+            les: "De data bevestigde Jans gevoel, maar gaf ook de exacte oorzaak. Gerichte actie in plaats van een blinde zoektocht."
+          }
+        ],
+        dataInzicht: "Het dashboard liet zien: gemiddelde cyclustijd steeg van 45s naar 49s, maar alleen voor product-type B. Dat patroon zie je niet op gevoel."
+      },
+      {
+        id: 2,
+        title: "De kwaliteitsdip",
+        context: "De kwaliteitsmanager zegt: \"We hebben meer klachten deze maand. Ik denk dat het aan de nieuwe grondstof ligt.\" De productiemanager moet beslissen: grondstof terug naar de oude leverancier, of verder onderzoeken?",
+        keuzes: [
+          {
+            id: "gevoel",
+            label: "Op gevoel: terug naar de oude leverancier",
+            icon: "\uD83E\uDDE0",
+            resultaat: "De oude leverancier wordt weer ingeschakeld. Kosten: 12% hogere grondstofprijs. Na 2 weken blijken de klachten niet te verminderen. De oorzaak lag niet bij de grondstof, maar bij een verkeerd afgestelde machine in de nachtploeg.",
+            les: "Het gevoel wees naar de meest voor de hand liggende oorzaak, maar dat was niet de echte oorzaak. Nu betaal je meer voor grondstoffen en het probleem is niet opgelost."
+          },
+          {
+            id: "data",
+            label: "Op data: klachten analyseren per productielijn en ploeg",
+            icon: "\uD83D\uDCCA",
+            resultaat: "De data laat zien: 80% van de klachten komt van producten die in de nachtploeg zijn gemaakt, ongeacht de grondstof. Onderzoek wijst uit: een machine-instelling was verschoven na het laatste onderhoud. Correctie duurt 10 minuten.",
+            les: "De data ontmaskerde de echte oorzaak: niet de grondstof, maar een machine-instelling. De kwaliteitsmanager had het mis, maar dat is niet erg. Data helpt om eerlijk naar de feiten te kijken."
+          }
+        ],
+        dataInzicht: "Een simpele kruistabel (klachten per ploeg x per grondstof) had het patroon direct zichtbaar gemaakt. De nachtploeg scoorde 4x slechter, ongeacht de leverancier."
+      }
+    ];
+
+    function App() {
+      const [currentScenario, setCurrentScenario] = useState(0);
+      const [choices, setChoices] = useState({});
+      const [showResult, setShowResult] = useState({});
+      const [showSummary, setShowSummary] = useState(false);
+
+      const scenario = SCENARIOS[currentScenario];
+      const myChoice = choices[scenario.id];
+      const isResultVisible = showResult[scenario.id];
+      const allDone = Object.keys(choices).length === SCENARIOS.length && Object.keys(showResult).length === SCENARIOS.length;
+
+      const handleChoice = (choiceId) => {
+        setChoices(prev => ({ ...prev, [scenario.id]: choiceId }));
+      };
+
+      const handleShowResult = () => {
+        setShowResult(prev => ({ ...prev, [scenario.id]: true }));
+      };
+
+      const handleReset = () => {
+        setCurrentScenario(0);
+        setChoices({});
+        setShowResult({});
+        setShowSummary(false);
+      };
+
+      if (showSummary) {
+        const gevoelCount = Object.values(choices).filter(c => c === "gevoel").length;
+        const dataCount = Object.values(choices).filter(c => c === "data").length;
+
+        return (
+          <div style={{ minHeight: "100vh", background: "#f9fafb", fontFamily: "system-ui, sans-serif" }}>
+            <div style={{ background: "white", borderBottom: "1px solid #e5e7eb", padding: "20px 24px" }}>
+              <h1 style={{ fontSize: "22px", fontWeight: "bold", color: "#111827", margin: 0 }}>
+                Jouw resultaat
+              </h1>
+              <p style={{ color: "#6b7280", marginTop: "4px", fontSize: "14px" }}>
+                Wat zegt jouw keuzepatroon?
+              </p>
+            </div>
+            <div style={{ maxWidth: "700px", margin: "0 auto", padding: "24px" }}>
+              {/* Score */}
+              <div style={{
+                background: "white", borderRadius: "16px", border: "1px solid #e5e7eb",
+                padding: "32px", textAlign: "center", marginBottom: "24px"
+              }}>
+                <div style={{ display: "flex", justifyContent: "center", gap: "48px", marginBottom: "24px" }}>
+                  <div>
+                    <div style={{ fontSize: "48px", marginBottom: "4px" }}>{"\uD83E\uDDE0"}</div>
+                    <div style={{ fontSize: "32px", fontWeight: "bold", color: "#f59e0b" }}>{gevoelCount}x</div>
+                    <div style={{ fontSize: "14px", color: "#6b7280" }}>Op gevoel</div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "48px", marginBottom: "4px" }}>{"\uD83D\uDCCA"}</div>
+                    <div style={{ fontSize: "32px", fontWeight: "bold", color: "#3b82f6" }}>{dataCount}x</div>
+                    <div style={{ fontSize: "14px", color: "#6b7280" }}>Op data</div>
+                  </div>
+                </div>
+                <div style={{
+                  padding: "16px", borderRadius: "12px",
+                  background: dataCount > gevoelCount ? "#eff6ff" : dataCount === gevoelCount ? "#f9fafb" : "#fffbeb",
+                  fontSize: "15px", color: "#374151", lineHeight: "1.6"
+                }}>
+                  {dataCount > gevoelCount
+                    ? "Je kiest voor data. Goed! Data helpt om betere beslissingen te nemen. Maar vergeet niet: het gevoel van een ervaren operator is ook waardevol. Het beste is de combinatie."
+                    : dataCount === gevoelCount
+                    ? "Je hebt een mix gekozen. Dat is realistisch! In de praktijk gebruik je vaak een combinatie van gevoel en data. De sleutel is: gebruik data om je gevoel te controleren."
+                    : "Je vertrouwt op ervaring en gevoel. Dat is begrijpelijk, maar data kan je helpen om gerichter te handelen. Gevoel zegt dat er iets is, data zegt wat en waar."}
+                </div>
+              </div>
+
+              {/* Scenarios terugkijken */}
+              {SCENARIOS.map(s => {
+                const choice = s.keuzes.find(k => k.id === choices[s.id]);
+                const dataChoice = s.keuzes.find(k => k.id === "data");
+                return (
+                  <div key={s.id} style={{
+                    background: "white", borderRadius: "12px", border: "1px solid #e5e7eb",
+                    padding: "20px", marginBottom: "12px"
+                  }}>
+                    <div style={{ fontWeight: "600", color: "#374151", marginBottom: "8px" }}>{s.title}</div>
+                    <div style={{ fontSize: "13px", color: "#6b7280", marginBottom: "8px" }}>
+                      Jouw keuze: <span style={{ fontWeight: "600", color: choices[s.id] === "data" ? "#3b82f6" : "#f59e0b" }}>
+                        {choice?.label}
+                      </span>
+                    </div>
+                    <div style={{
+                      padding: "12px", background: "#f0fdf4", borderRadius: "8px",
+                      fontSize: "13px", color: "#166534"
+                    }}>
+                      <strong>Wat de data liet zien:</strong> {s.dataInzicht}
+                    </div>
+                  </div>
+                );
+              })}
+
+              {/* Kernboodschap */}
+              <div style={{
+                background: "#eff6ff", borderRadius: "12px", padding: "16px",
+                fontSize: "14px", color: "#1e40af", marginBottom: "24px", lineHeight: "1.6"
+              }}>
+                <strong>De kernles:</strong> Gevoel is niet fout. Ervaren operators voelen vaak als eerste dat er iets mis is.
+                Maar data maakt het verschil tussen een vage zorg en een gerichte actie.
+                <strong> Gevoel zegt dat er iets is. Data zegt wat, waar en wanneer.</strong>
+              </div>
+
+              <button onClick={handleReset} style={{
+                display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+                margin: "0 auto", padding: "10px 24px", background: "white", border: "1px solid #d1d5db",
+                borderRadius: "8px", cursor: "pointer", fontSize: "14px", color: "#6b7280"
+              }}>
+                Opnieuw beginnen
+              </button>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div style={{ minHeight: "100vh", background: "#f9fafb", fontFamily: "system-ui, sans-serif" }}>
+          <div style={{ background: "white", borderBottom: "1px solid #e5e7eb", padding: "20px 24px" }}>
+            <h1 style={{ fontSize: "22px", fontWeight: "bold", color: "#111827", margin: 0 }}>
+              Scenario-simulator: Gevoel vs Data
+            </h1>
+            <p style={{ color: "#6b7280", marginTop: "4px", fontSize: "14px" }}>
+              Twee situaties uit de fabriek. Kies hoe je beslist. Zie wat er gebeurt.
+            </p>
+          </div>
+
+          <div style={{ maxWidth: "700px", margin: "0 auto", padding: "24px" }}>
+            {/* Voortgang */}
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
+              {SCENARIOS.map((s, i) => (
+                <button key={s.id} onClick={() => setCurrentScenario(i)} style={{
+                  flex: 1, padding: "10px", borderRadius: "10px", border: "2px solid",
+                  cursor: "pointer", textAlign: "center", fontSize: "14px", fontWeight: "600",
+                  transition: "all 0.2s",
+                  borderColor: i === currentScenario ? "#3b82f6" : choices[s.id] ? "#10b981" : "#d1d5db",
+                  background: i === currentScenario ? "#eff6ff" : choices[s.id] ? "#f0fdf4" : "white",
+                  color: i === currentScenario ? "#1d4ed8" : choices[s.id] ? "#065f46" : "#6b7280"
+                }}>
+                  Scenario {i + 1}
+                  {choices[s.id] && " \u2713"}
+                </button>
+              ))}
+            </div>
+
+            {/* Scenario */}
+            <div style={{
+              background: "white", borderRadius: "16px", border: "1px solid #e5e7eb",
+              padding: "28px", marginBottom: "24px", boxShadow: "0 1px 3px rgba(0,0,0,0.05)"
+            }}>
+              <h2 style={{ fontSize: "18px", fontWeight: "bold", color: "#111827", marginTop: 0, marginBottom: "4px" }}>
+                {scenario.title}
+              </h2>
+              <div style={{
+                background: "#f3f4f6", borderRadius: "12px", padding: "20px",
+                marginBottom: "24px", fontSize: "15px", color: "#374151", lineHeight: "1.7"
+              }}>
+                {scenario.context}
+              </div>
+
+              {/* Keuzes */}
+              <div style={{ fontWeight: "600", color: "#374151", marginBottom: "12px", fontSize: "14px" }}>
+                Wat doe je?
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                {scenario.keuzes.map(k => (
+                  <button key={k.id} onClick={() => handleChoice(k.id)} style={{
+                    padding: "16px", borderRadius: "12px", border: "2px solid",
+                    cursor: "pointer", textAlign: "left", fontSize: "15px",
+                    transition: "all 0.2s",
+                    borderColor: myChoice === k.id ? (k.id === "data" ? "#3b82f6" : "#f59e0b") : "#d1d5db",
+                    background: myChoice === k.id ? (k.id === "data" ? "#eff6ff" : "#fffbeb") : "white",
+                    color: "#374151"
+                  }}>
+                    <span style={{ marginRight: "8px", fontSize: "20px" }}>{k.icon}</span>
+                    {k.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Resultaat tonen */}
+              {myChoice && !isResultVisible && (
+                <button onClick={handleShowResult} style={{
+                  width: "100%", padding: "14px", borderRadius: "12px", border: "none",
+                  background: "#3b82f6", color: "white", fontSize: "15px", fontWeight: "600",
+                  cursor: "pointer", marginTop: "16px"
+                }}>
+                  Bekijk het resultaat
+                </button>
+              )}
+
+              {isResultVisible && myChoice && (() => {
+                const choice = scenario.keuzes.find(k => k.id === myChoice);
+                return (
+                  <div style={{ marginTop: "20px" }}>
+                    <div style={{
+                      padding: "20px", borderRadius: "12px",
+                      background: myChoice === "data" ? "#eff6ff" : "#fffbeb",
+                      border: `1px solid ${myChoice === "data" ? "#bfdbfe" : "#fde68a"}`,
+                      marginBottom: "12px"
+                    }}>
+                      <div style={{ fontWeight: "600", color: "#374151", marginBottom: "8px" }}>
+                        Wat er gebeurde:
+                      </div>
+                      <div style={{ fontSize: "14px", color: "#374151", lineHeight: "1.6" }}>
+                        {choice.resultaat}
+                      </div>
+                    </div>
+                    <div style={{
+                      padding: "16px", borderRadius: "12px",
+                      background: "#f0fdf4", border: "1px solid #bbf7d0"
+                    }}>
+                      <div style={{ fontWeight: "600", color: "#065f46", marginBottom: "4px", fontSize: "14px" }}>
+                        De les:
+                      </div>
+                      <div style={{ fontSize: "14px", color: "#166534", lineHeight: "1.6" }}>
+                        {choice.les}
+                      </div>
+                    </div>
+
+                    {/* Data inzicht */}
+                    <div style={{
+                      padding: "16px", borderRadius: "12px", marginTop: "12px",
+                      background: "#faf5ff", border: "1px solid #e9d5ff"
+                    }}>
+                      <div style={{ fontWeight: "600", color: "#6b21a8", marginBottom: "4px", fontSize: "14px" }}>
+                        Wat de data liet zien:
+                      </div>
+                      <div style={{ fontSize: "14px", color: "#7c3aed", lineHeight: "1.6" }}>
+                        {scenario.dataInzicht}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })()}
+            </div>
+
+            {/* Navigatie */}
+            <div style={{ display: "flex", gap: "12px", marginBottom: "24px" }}>
+              {currentScenario > 0 && (
+                <button onClick={() => setCurrentScenario(prev => prev - 1)} style={{
+                  flex: 1, padding: "12px", borderRadius: "10px", border: "1px solid #d1d5db",
+                  background: "white", cursor: "pointer", fontSize: "14px", color: "#374151", fontWeight: "500"
+                }}>
+                  Vorig scenario
+                </button>
+              )}
+              {currentScenario < SCENARIOS.length - 1 && isResultVisible && (
+                <button onClick={() => setCurrentScenario(prev => prev + 1)} style={{
+                  flex: 1, padding: "12px", borderRadius: "10px", border: "none",
+                  background: "#3b82f6", color: "white", cursor: "pointer", fontSize: "14px", fontWeight: "600"
+                }}>
+                  Volgend scenario
+                </button>
+              )}
+              {allDone && (
+                <button onClick={() => setShowSummary(true)} style={{
+                  flex: 1, padding: "12px", borderRadius: "10px", border: "none",
+                  background: "#10b981", color: "white", cursor: "pointer", fontSize: "14px", fontWeight: "600"
+                }}>
+                  Bekijk je samenvatting
+                </button>
+              )}
+            </div>
+
+            <button onClick={handleReset} style={{
+              display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+              margin: "0 auto", padding: "8px 16px", background: "transparent", border: "none",
+              cursor: "pointer", fontSize: "13px", color: "#9ca3af"
+            }}>
+              Opnieuw beginnen
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
