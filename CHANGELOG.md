@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde8-lo-spc-107
+
+**Kontext:** Ronde 8: lo-spc-107
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-107/trainee.md`
+- `kennisbank/spc/regelkaarten/ko-spc-107.md`
+- `leerobjecten/lo-spc-107/trainer.md`
+- `leerobjecten/lo-spc-107/draaiboek.md`
+- `leerobjecten/lo-spc-107/werkbladen/wb-01-spot-the-fout.md`
+- `leerobjecten/lo-spc-107/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-107/werkbladen/wb-03-handout-verschil-control-vs-specs.md`
+- `leerobjecten/lo-spc-107/svg/diagram.svg`
+- `leerobjecten/lo-spc-107/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-107/README.md`
+
 ## 2026-05-19 — publish-ronde7-lo-spc-106
 
 **Kontext:** Ronde 7: lo-spc-106 (showcase 25 -> 29)

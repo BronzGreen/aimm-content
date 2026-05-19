@@ -1,0 +1,287 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Control limits versus specificatiegrenzen — regelkaart en vier scenario's</title>
+  <desc id="desc">Links: een regelkaart van onderdeelgewicht voor een spuitgietlijn. Op de kaart staan vier horizontale lijnen. Binnenste twee lijnen zijn de control limits UCL op 100 komma 26 gram en LCL op 99 komma 54 gram, berekend uit gemiddelde plus of min drie sigma van procesdata. Buitenste twee lijnen zijn de specificatiegrenzen USL op 101 gram en LSL op 99 gram, afkomstig van de klant. De datapunten slingeren netjes rond het gemiddelde van 99 komma 9 gram. Kernboodschap links: control limits vertellen of het proces stabiel is, specs vertellen of het product aan de klant-eisen voldoet. Rechts: een vier-scenario-matrix op twee assen. Horizontale as, stabiliteit van het proces, stabiel of onstabiel. Verticale as, bekwaamheid, bekwaam of onbekwaam. Vier kwadranten. Linksboven stabiel en bekwaam: laat lopen, dit is wat je wilt. Linksonder stabiel en onbekwaam: capability verbeteren, minder spreiding nodig. Rechtsboven onstabiel maar toevallig binnen specs: ingrijpen, hier bewijst SPC zijn waarde. Rechtsonder onstabiel en buiten specs: centreren, proces draait op verkeerde instelling. Kernboodschap onder de matrix: binnen specs is niet hetzelfde als onder controle.</desc>
+
+  <defs>
+    <linearGradient id="bg-main" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAFAF7"/>
+      <stop offset="100%" stop-color="#F5F2EA"/>
+    </linearGradient>
+    <linearGradient id="bg-chart" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F8FAFC"/>
+    </linearGradient>
+    <linearGradient id="bg-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ECFDF5"/>
+      <stop offset="100%" stop-color="#D1FAE5"/>
+    </linearGradient>
+    <linearGradient id="bg-yellow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FEF9C3"/>
+      <stop offset="100%" stop-color="#FEF08A"/>
+    </linearGradient>
+    <linearGradient id="bg-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FEE2E2"/>
+      <stop offset="100%" stop-color="#FECACA"/>
+    </linearGradient>
+    <linearGradient id="bg-orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFEDD5"/>
+      <stop offset="100%" stop-color="#FED7AA"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L8,5 L0,10 z" fill="#64748B"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="1200" height="780" fill="url(#bg-main)"/>
+
+  <!-- Hoofdtitel -->
+  <text x="600" y="40" text-anchor="middle" font-size="24" font-weight="700" fill="#1E293B" letter-spacing="0.3">Control limits versus specificatiegrenzen</text>
+  <text x="600" y="65" text-anchor="middle" font-size="14" fill="#64748B">Twee verschillende grenzen, twee verschillende vragen</text>
+
+  <!-- ═════════════════════════════════════════════════════════════ -->
+  <!-- LINKER KOLOM: REGELKAART MET UCL/LCL EN USL/LSL                -->
+  <!-- ═════════════════════════════════════════════════════════════ -->
+  <g>
+    <!-- Sectie-titel links -->
+    <rect x="40" y="90" width="520" height="36" rx="6" fill="#1E40AF" filter="url(#shadow)"/>
+    <text x="300" y="114" text-anchor="middle" font-size="15" font-weight="700" fill="white" letter-spacing="0.3">Zo hoort de kaart eruit te zien</text>
+
+    <!-- Kaart-achtergrond -->
+    <rect x="40" y="140" width="520" height="300" rx="8" fill="url(#bg-chart)" stroke="#CBD5E1" stroke-width="1.5" filter="url(#shadow)"/>
+
+    <!-- Y-as label -->
+    <text x="58" y="160" font-size="11" font-weight="600" fill="#475569">gewicht (g)</text>
+
+    <!-- X-as label -->
+    <text x="300" y="430" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">monsters in volgorde van productie</text>
+
+    <!-- Gridlijnen (licht) -->
+    <g stroke="#E2E8F0" stroke-width="0.5">
+      <line x1="90" y1="175" x2="540" y2="175"/>
+      <line x1="90" y1="225" x2="540" y2="225"/>
+      <line x1="90" y1="275" x2="540" y2="275"/>
+      <line x1="90" y1="325" x2="540" y2="325"/>
+      <line x1="90" y1="375" x2="540" y2="375"/>
+    </g>
+
+    <!-- SPECIFICATIEGRENZEN (buitenste, oranje-rood, gestippeld) -->
+    <!-- USL op y=175 (gewicht 101) -->
+    <line x1="90" y1="175" x2="540" y2="175" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="8,4"/>
+    <rect x="10" y="167" width="75" height="18" rx="3" fill="#DC2626"/>
+    <text x="47" y="180" text-anchor="middle" font-size="10" font-weight="700" fill="white">USL 101 g</text>
+    <text x="544" y="172" font-size="9" font-weight="600" fill="#DC2626">spec klant</text>
+
+    <!-- LSL op y=375 (gewicht 99) -->
+    <line x1="90" y1="375" x2="540" y2="375" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="8,4"/>
+    <rect x="10" y="367" width="75" height="18" rx="3" fill="#DC2626"/>
+    <text x="47" y="380" text-anchor="middle" font-size="10" font-weight="700" fill="white">LSL 99 g</text>
+    <text x="544" y="380" font-size="9" font-weight="600" fill="#DC2626">spec klant</text>
+
+    <!-- CONTROL LIMITS (binnenste, blauw, doorlopend) -->
+    <!-- UCL op y=210 (gewicht 100,26) -->
+    <line x1="90" y1="210" x2="540" y2="210" stroke="#1E40AF" stroke-width="2.5"/>
+    <rect x="10" y="202" width="75" height="18" rx="3" fill="#1E40AF"/>
+    <text x="47" y="215" text-anchor="middle" font-size="10" font-weight="700" fill="white">UCL 100,26</text>
+    <text x="544" y="207" font-size="9" font-weight="600" fill="#1E40AF">uit 3σ</text>
+
+    <!-- Gemiddelde op y=285 (gewicht 99,9) -->
+    <line x1="90" y1="285" x2="540" y2="285" stroke="#64748B" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <text x="544" y="289" font-size="9" font-weight="600" fill="#64748B">X̄ = 99,9</text>
+
+    <!-- LCL op y=340 (gewicht 99,54) -->
+    <line x1="90" y1="340" x2="540" y2="340" stroke="#1E40AF" stroke-width="2.5"/>
+    <rect x="10" y="332" width="75" height="18" rx="3" fill="#1E40AF"/>
+    <text x="47" y="345" text-anchor="middle" font-size="10" font-weight="700" fill="white">LCL 99,54</text>
+    <text x="544" y="345" font-size="9" font-weight="600" fill="#1E40AF">uit 3σ</text>
+
+    <!-- Datapunten (binnen UCL/LCL, slingerend) -->
+    <g fill="#0F172A">
+      <circle cx="115" cy="275" r="3.5"/>
+      <circle cx="140" cy="290" r="3.5"/>
+      <circle cx="165" cy="280" r="3.5"/>
+      <circle cx="190" cy="295" r="3.5"/>
+      <circle cx="215" cy="270" r="3.5"/>
+      <circle cx="240" cy="288" r="3.5"/>
+      <circle cx="265" cy="283" r="3.5"/>
+      <circle cx="290" cy="278" r="3.5"/>
+      <circle cx="315" cy="295" r="3.5"/>
+      <circle cx="340" cy="283" r="3.5"/>
+      <circle cx="365" cy="272" r="3.5"/>
+      <circle cx="390" cy="290" r="3.5"/>
+      <circle cx="415" cy="282" r="3.5"/>
+      <circle cx="440" cy="288" r="3.5"/>
+      <circle cx="465" cy="276" r="3.5"/>
+      <circle cx="490" cy="290" r="3.5"/>
+      <circle cx="515" cy="285" r="3.5"/>
+    </g>
+
+    <!-- Verbindingslijn datapunten -->
+    <polyline points="115,275 140,290 165,280 190,295 215,270 240,288 265,283 290,278 315,295 340,283 365,272 390,290 415,282 440,288 465,276 490,290 515,285" fill="none" stroke="#334155" stroke-width="1" opacity="0.5"/>
+
+    <!-- Y-as met schaal -->
+    <line x1="90" y1="160" x2="90" y2="410" stroke="#94A3B8" stroke-width="1.5"/>
+    <g font-size="10" fill="#64748B" text-anchor="end">
+      <text x="85" y="178">101</text>
+      <text x="85" y="213">100,26</text>
+      <text x="85" y="289">99,9</text>
+      <text x="85" y="343">99,54</text>
+      <text x="85" y="379">99</text>
+    </g>
+
+    <!-- X-as -->
+    <line x1="90" y1="410" x2="540" y2="410" stroke="#94A3B8" stroke-width="1.5"/>
+
+    <!-- Kernboodschap onder kaart -->
+    <g>
+      <rect x="40" y="460" width="250" height="92" rx="8" fill="url(#bg-green)" stroke="#86EFAC" stroke-width="1"/>
+      <text x="55" y="482" font-size="12" font-weight="700" fill="#166534">Control limits (UCL/LCL)</text>
+      <text x="55" y="501" font-size="11" fill="#166534">uit procesdata: X̄ ± 3σ</text>
+      <text x="55" y="518" font-size="11" fill="#166534">vraag: is het PROCES stabiel?</text>
+      <text x="55" y="535" font-size="11" font-style="italic" fill="#15803D">"grijp ik in op het proces?"</text>
+
+      <rect x="310" y="460" width="250" height="92" rx="8" fill="url(#bg-red)" stroke="#FCA5A5" stroke-width="1"/>
+      <text x="325" y="482" font-size="12" font-weight="700" fill="#991B1B">Specificatiegrenzen (USL/LSL)</text>
+      <text x="325" y="501" font-size="11" fill="#991B1B">van klant of ontwerp</text>
+      <text x="325" y="518" font-size="11" fill="#991B1B">vraag: voldoet het PRODUCT?</text>
+      <text x="325" y="535" font-size="11" font-style="italic" fill="#B91C1C">"mag dit naar de klant?"</text>
+    </g>
+
+    <!-- De fout-waarschuwing -->
+    <g>
+      <rect x="40" y="572" width="520" height="62" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+      <text x="55" y="595" font-size="12" font-weight="700" fill="#92400E">De kritieke fout</text>
+      <text x="55" y="614" font-size="11" fill="#92400E">Nooit UCL/LCL gelijk zetten aan USL/LSL — dan verbergt de kaart signalen</text>
+      <text x="55" y="628" font-size="11" fill="#92400E">die wél binnen specs blijven maar wijzen op procesverandering.</text>
+    </g>
+
+    <!-- De 3σ-formule -->
+    <g>
+      <rect x="40" y="652" width="520" height="84" rx="8" fill="#EFF6FF" stroke="#60A5FA" stroke-width="1"/>
+      <text x="55" y="676" font-size="12" font-weight="700" fill="#1E40AF">Shewhart (1931) — de 3σ-formule</text>
+      <text x="55" y="700" font-size="12" font-family="'Fira Code', 'Courier New', monospace" fill="#1E40AF">UCL = gemiddelde + 3σ    LCL = gemiddelde − 3σ</text>
+      <text x="55" y="722" font-size="10" fill="#3B82F6">Bij kaart hierboven: 99,9 + 3 × 0,12 = 100,26 · 99,9 − 3 × 0,12 = 99,54</text>
+    </g>
+  </g>
+
+  <!-- ═════════════════════════════════════════════════════════════ -->
+  <!-- RECHTER KOLOM: 4-SCENARIO-MATRIX                                -->
+  <!-- ═════════════════════════════════════════════════════════════ -->
+  <g>
+    <!-- Sectie-titel rechts -->
+    <rect x="620" y="90" width="540" height="36" rx="6" fill="#7C3AED" filter="url(#shadow)"/>
+    <text x="890" y="114" text-anchor="middle" font-size="15" font-weight="700" fill="white" letter-spacing="0.3">Vier scenario's — wat doe je?</text>
+
+    <!-- Matrix-achtergrond -->
+    <rect x="620" y="140" width="540" height="450" rx="8" fill="url(#bg-chart)" stroke="#CBD5E1" stroke-width="1.5" filter="url(#shadow)"/>
+
+    <!-- As-labels -->
+    <text x="890" y="168" text-anchor="middle" font-size="12" font-weight="700" fill="#475569">Is het proces STABIEL? (binnen UCL/LCL?)</text>
+
+    <text x="640" y="380" text-anchor="middle" font-size="12" font-weight="700" fill="#475569" transform="rotate(-90 640 380)">Is het proces BEKWAAM? (passen UCL/LCL binnen USL/LSL?)</text>
+
+    <!-- Kolom-headers -->
+    <g>
+      <rect x="700" y="180" width="220" height="32" rx="4" fill="#DCFCE7"/>
+      <text x="810" y="200" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">Stabiel ✓</text>
+      <text x="810" y="213" text-anchor="middle" font-size="10" fill="#15803D">(binnen UCL/LCL)</text>
+
+      <rect x="930" y="180" width="220" height="32" rx="4" fill="#FEE2E2"/>
+      <text x="1040" y="200" text-anchor="middle" font-size="13" font-weight="700" fill="#991B1B">Onstabiel ✗</text>
+      <text x="1040" y="213" text-anchor="middle" font-size="10" fill="#B91C1C">(buiten UCL/LCL)</text>
+    </g>
+
+    <!-- Rij-headers -->
+    <g>
+      <rect x="668" y="225" width="28" height="165" rx="4" fill="#DCFCE7"/>
+      <text x="682" y="310" text-anchor="middle" font-size="13" font-weight="700" fill="#166534" transform="rotate(-90 682 310)">Bekwaam ✓</text>
+
+      <rect x="668" y="400" width="28" height="170" rx="4" fill="#FFEDD5"/>
+      <text x="682" y="485" text-anchor="middle" font-size="13" font-weight="700" fill="#9A3412" transform="rotate(-90 682 485)">Onbekwaam ✗</text>
+    </g>
+
+    <!-- KWADRANT 1: Stabiel + bekwaam (linksboven) -->
+    <g>
+      <rect x="700" y="225" width="220" height="165" rx="6" fill="url(#bg-green)" stroke="#22C55E" stroke-width="1.5"/>
+      <text x="715" y="252" font-size="12" font-weight="700" fill="#166534">Stabiel + bekwaam</text>
+      <text x="715" y="268" font-size="10" fill="#166534" font-style="italic">binnen UCL/LCL én binnen USL/LSL</text>
+
+      <rect x="715" y="285" width="190" height="30" rx="4" fill="#16A34A"/>
+      <text x="810" y="305" text-anchor="middle" font-size="13" font-weight="700" fill="white">LAAT LOPEN</text>
+
+      <text x="715" y="334" font-size="10" fill="#166534">Dit is wat je wilt.</text>
+      <text x="715" y="350" font-size="10" fill="#166534">Proces is stabiel, producten</text>
+      <text x="715" y="364" font-size="10" fill="#166534">voldoen aan de klant-eisen.</text>
+      <text x="715" y="378" font-size="10" font-weight="600" fill="#15803D">Monitoren, niet ingrijpen.</text>
+    </g>
+
+    <!-- KWADRANT 2: Onstabiel + bekwaam (rechtsboven) — het SPC-WAARDE scenario -->
+    <g>
+      <rect x="930" y="225" width="220" height="165" rx="6" fill="url(#bg-red)" stroke="#EF4444" stroke-width="2"/>
+      <text x="945" y="252" font-size="12" font-weight="700" fill="#991B1B">Onstabiel + bekwaam</text>
+      <text x="945" y="268" font-size="10" fill="#991B1B" font-style="italic">buiten UCL/LCL, toevallig binnen USL/LSL</text>
+
+      <rect x="945" y="285" width="190" height="30" rx="4" fill="#DC2626"/>
+      <text x="1040" y="305" text-anchor="middle" font-size="13" font-weight="700" fill="white">INGRIJPEN — NU</text>
+
+      <text x="945" y="334" font-size="10" fill="#991B1B">Producten nog toevallig oké,</text>
+      <text x="945" y="350" font-size="10" fill="#991B1B">proces al aan het afwijken.</text>
+      <text x="945" y="364" font-size="10" font-weight="600" fill="#B91C1C">Hier bewijst SPC zijn waarde:</text>
+      <text x="945" y="378" font-size="10" font-weight="600" fill="#B91C1C">vroeg signaal, goedkoopste</text>
+      <text x="945" y="392" font-size="10" font-weight="600" fill="#B91C1C">moment om in te grijpen.</text>
+    </g>
+
+    <!-- KWADRANT 3: Stabiel + onbekwaam (linksonder) -->
+    <g>
+      <rect x="700" y="400" width="220" height="170" rx="6" fill="url(#bg-yellow)" stroke="#EAB308" stroke-width="1.5"/>
+      <text x="715" y="427" font-size="12" font-weight="700" fill="#854D0E">Stabiel + onbekwaam</text>
+      <text x="715" y="443" font-size="10" fill="#854D0E" font-style="italic">stabiel, maar UCL/LCL vlak tegen USL/LSL</text>
+
+      <rect x="715" y="460" width="190" height="30" rx="4" fill="#CA8A04"/>
+      <text x="810" y="480" text-anchor="middle" font-size="13" font-weight="700" fill="white">CAPABILITY VERBETEREN</text>
+
+      <text x="715" y="509" font-size="10" fill="#854D0E">Proces loopt voorspelbaar,</text>
+      <text x="715" y="523" font-size="10" fill="#854D0E">maar speling is te krap.</text>
+      <text x="715" y="537" font-size="10" fill="#854D0E">Kleine afwijking = afkeur.</text>
+      <text x="715" y="555" font-size="10" font-weight="600" fill="#713F12">Reduceer de spreiding (σ).</text>
+    </g>
+
+    <!-- KWADRANT 4: Onstabiel + onbekwaam (rechtsonder) -->
+    <g>
+      <rect x="930" y="400" width="220" height="170" rx="6" fill="url(#bg-orange)" stroke="#F97316" stroke-width="1.5"/>
+      <text x="945" y="427" font-size="12" font-weight="700" fill="#7C2D12">Onstabiel + onbekwaam</text>
+      <text x="945" y="443" font-size="10" fill="#7C2D12" font-style="italic">onstabiel én producten buiten USL/LSL</text>
+
+      <rect x="945" y="460" width="190" height="30" rx="4" fill="#EA580C"/>
+      <text x="1040" y="480" text-anchor="middle" font-size="13" font-weight="700" fill="white">CENTREREN + STABILISEREN</text>
+
+      <text x="945" y="509" font-size="10" fill="#7C2D12">Proces onstabiel én verkeerd</text>
+      <text x="945" y="523" font-size="10" fill="#7C2D12">afgesteld. Afkeur zichtbaar.</text>
+      <text x="945" y="537" font-size="10" fill="#7C2D12">Eerst oorzaak wegnemen,</text>
+      <text x="945" y="555" font-size="10" font-weight="600" fill="#9A3412">dan instelling terugzetten.</text>
+    </g>
+
+    <!-- NIST-waarschuwing onder matrix -->
+    <g>
+      <rect x="620" y="606" width="540" height="62" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+      <text x="635" y="628" font-size="12" font-weight="700" fill="#92400E">NIST/SEMATECH waarschuwt</text>
+      <text x="635" y="646" font-size="11" fill="#92400E">Een proces kan stabiel zijn en toch te dicht bij de spec zitten. En:</text>
+      <text x="635" y="660" font-size="11" fill="#92400E">een proces kan incidenteel binnen specs produceren terwijl het al uit controle is.</text>
+    </g>
+
+    <!-- Kernconclusie -->
+    <g>
+      <rect x="620" y="686" width="540" height="50" rx="8" fill="#1E293B" filter="url(#shadow)"/>
+      <text x="890" y="717" text-anchor="middle" font-size="15" font-weight="700" fill="white" letter-spacing="0.3">Binnen specs ≠ onder controle</text>
+    </g>
+  </g>
+
+  <!-- Voettekst -->
+  <g>
+    <text x="40" y="762" font-size="10" fill="#64748B">Bronnen: NIST/SEMATECH e-Handbook of Statistical Methods · Shewhart, W.A. (1931) Economic Control · ISO 7870-2</text>
+    <text x="1160" y="762" text-anchor="end" font-size="10" font-weight="600" fill="#64748B">AIMM · ko-spc-107</text>
+  </g>
+</svg>
