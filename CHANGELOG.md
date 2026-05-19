@@ -7,6 +7,24 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-19 — publish-ronde6-lo-oee-005
+
+**Kontext:** Ronde 6: lo-oee-005 (showcase 21 -> 25)
+
+Toegevoegd:
+
+- `leerobjecten/lo-oee-005/trainee.md`
+- `kennisbank/oee/oee_berekening/ko-oee-005.md`
+- `leerobjecten/lo-oee-005/trainer.md`
+- `leerobjecten/lo-oee-005/draaiboek.md`
+- `leerobjecten/lo-oee-005/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-oee-005/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-oee-005/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-oee-005/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-oee-005/svg/diagram.svg`
+- `leerobjecten/lo-oee-005/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-oee-005/README.md`
+
 ## 2026-05-19 — publish-ronde6-lo-data-lit-107
 
 **Kontext:** Ronde 6: lo-data-lit-107 (showcase 21 -> 25)
