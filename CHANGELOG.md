@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde26-lo-spc-601
+
+**Kontext:** Ronde 26: lo-spc-601
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-601/trainee.md`
+- `kennisbank/spc/ai_integratie/ko-spc-601.md`
+- `leerobjecten/lo-spc-601/trainer.md`
+- `leerobjecten/lo-spc-601/draaiboek.md`
+- `leerobjecten/lo-spc-601/werkbladen/wb-01-synthese-opdracht.md`
+- `leerobjecten/lo-spc-601/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-601/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-601/svg/diagram.svg`
+- `leerobjecten/lo-spc-601/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-601/README.md`
+
 ## 2026-05-20 — publish-ronde26-lo-spc-502
 
 **Kontext:** Ronde 26: lo-spc-502

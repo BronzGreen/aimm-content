@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title desc" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Drie lagen, drie tijdperken — meten, signaal-detectie en beslissen, van klassiek naar digitaal naar AI</title>
+  <desc id="desc">Een drie bij drie matrix-diagram met drie rijen en drie kolommen. De rijen zijn de lagen van procesbeheersing, van boven naar beneden: laag 1 Meten (hoe komt de data bij je?), laag 2 Signaal-detectie (hoe zie je dat er iets afwijkt?), en laag 3 Beslissen (wie bepaalt de actie?). De kolommen zijn de tijdperken, van links naar rechts: Klassiek (vroeger — papieren kaart en handmeting), Digitaal (nu — IoT-sensor en dashboard) en AI-aanvulling (wanneer zinvol — model dat combinatie-patronen herkent). In de cel Meten-Klassiek staat handmatige monsterneming elke twee uur. In Meten-Digitaal continu via IoT-sensor. In Meten-AI kan AI ontbrekende data schatten of meetfouten herkennen. In Signaal-Klassiek scant de operator zelf de kaart en past Nelson-regels toe. In Signaal-Digitaal geeft het dashboard automatisch alarm op Nelson-regels. In Signaal-AI herkent AI combinatie-patronen van meerdere variabelen die Nelson-regels niet zien. In Beslissen-Klassiek beslist de operator volgens reactieplan. In Beslissen-Digitaal beslist de operator, het alarm helpt. In Beslissen-AI geeft AI hoogstens een aanbeveling, de operator beslist. Boven de matrix staat de centrale boodschap: het Shewhart-principe van signaal versus ruis blijft het fundament, alleen de uitvoering verschuift. Onder de matrix een groene baan met de blijvende verantwoordelijkheid van de operator: meting betrouwbaar houden, reactieplan kennen, rationele subgroepering begrijpen en uitleg geven aan collega, klant en auditor. Aan de rechterkant van de Beslissen-rij een accent dat benadrukt dat de beslis-laag altijd bij de mens blijft.</desc>
+
+  <defs>
+    <linearGradient id="grad-klassiek" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#94A3B8"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+    <linearGradient id="grad-digitaal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="grad-ai" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#6D28D9"/>
+    </linearGradient>
+    <linearGradient id="grad-meten" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0EA5E9"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="grad-signaal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="grad-beslissen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#7E22CE"/>
+    </linearGradient>
+    <linearGradient id="grad-verantwoordelijkheid" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22C55E"/>
+      <stop offset="100%" stop-color="#15803D"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="960" height="720" fill="#F8FAFC"/>
+
+  <!-- Titel -->
+  <text x="480" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#1E293B" letter-spacing="0.5">AI en SPC — drie lagen, drie tijdperken</text>
+  <text x="480" y="62" text-anchor="middle" font-size="13" fill="#64748B" font-style="italic">Shewhart-principe blijft — uitvoering verschuift van kaart naar dashboard naar AI</text>
+
+  <!-- Centrale boodschap-banner -->
+  <rect x="120" y="82" width="720" height="36" rx="6" fill="#1E293B" filter="url(#shadow)"/>
+  <text x="480" y="105" text-anchor="middle" font-size="13" fill="#F1F5F9" font-weight="600">&quot;Is dit signaal of ruis?&quot; — die vraag blijft, of je nu een kaart hebt, een dashboard of een AI-model</text>
+
+  <!-- Kolomkoppen (tijdperken) -->
+  <g filter="url(#shadow)">
+    <rect x="220" y="140" width="220" height="44" rx="6" fill="url(#grad-klassiek)"/>
+  </g>
+  <text x="330" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="white">KLASSIEK</text>
+  <text x="330" y="182" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)" font-style="italic">vroeger — papier, handmeting</text>
+
+  <g filter="url(#shadow)">
+    <rect x="460" y="140" width="220" height="44" rx="6" fill="url(#grad-digitaal)"/>
+  </g>
+  <text x="570" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="white">DIGITAAL</text>
+  <text x="570" y="182" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)" font-style="italic">nu — IoT, dashboard</text>
+
+  <g filter="url(#shadow)">
+    <rect x="700" y="140" width="220" height="44" rx="6" fill="url(#grad-ai)"/>
+  </g>
+  <text x="810" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="white">AI-AANVULLING</text>
+  <text x="810" y="182" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)" font-style="italic">wanneer zinvol — geen must</text>
+
+  <!-- ─────────── RIJ 1: METEN ─────────── -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="200" width="160" height="120" rx="6" fill="url(#grad-meten)"/>
+  </g>
+  <text x="120" y="240" text-anchor="middle" font-size="16" font-weight="700" fill="white" letter-spacing="1">LAAG 1</text>
+  <text x="120" y="264" text-anchor="middle" font-size="17" font-weight="700" fill="white">METEN</text>
+  <text x="120" y="288" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)" font-style="italic">Hoe komt de data</text>
+  <text x="120" y="302" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)" font-style="italic">tot bij jou?</text>
+
+  <!-- Cel Meten — Klassiek -->
+  <rect x="220" y="200" width="220" height="120" rx="6" fill="white" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="240" y="226" font-size="18">📋</text>
+  <text x="264" y="229" font-size="11" font-weight="600" fill="#475569">Handmeting</text>
+  <text x="240" y="256" font-size="11" fill="#334155">Elke 2 uur 5 stuks wegen,</text>
+  <text x="240" y="272" font-size="11" fill="#334155">uitkomst op papieren</text>
+  <text x="240" y="288" font-size="11" fill="#334155">X-R-kaart tekenen.</text>
+  <text x="240" y="310" font-size="10" fill="#64748B" font-style="italic">~12 metingen per dag</text>
+
+  <!-- Cel Meten — Digitaal -->
+  <rect x="460" y="200" width="220" height="120" rx="6" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5"/>
+  <text x="480" y="226" font-size="18">📡</text>
+  <text x="504" y="229" font-size="11" font-weight="600" fill="#1D4ED8">IoT-sensor continu</text>
+  <text x="480" y="256" font-size="11" fill="#1E3A8A">Inline-weegcel meet</text>
+  <text x="480" y="272" font-size="11" fill="#1E3A8A">elke seconde, data gaat</text>
+  <text x="480" y="288" font-size="11" fill="#1E3A8A">naar MES / dashboard.</text>
+  <text x="480" y="310" font-size="10" fill="#1D4ED8" font-style="italic">~miljoenen punten per dag</text>
+
+  <!-- Cel Meten — AI -->
+  <rect x="700" y="200" width="220" height="120" rx="6" fill="#F5F3FF" stroke="#C4B5FD" stroke-width="1.5"/>
+  <text x="720" y="226" font-size="18">🧠</text>
+  <text x="744" y="229" font-size="11" font-weight="600" fill="#6D28D9">Meet-assistent</text>
+  <text x="720" y="256" font-size="11" fill="#4C1D95">AI schat ontbrekende</text>
+  <text x="720" y="272" font-size="11" fill="#4C1D95">waarden of markeert</text>
+  <text x="720" y="288" font-size="11" fill="#4C1D95">verdachte metingen.</text>
+  <text x="720" y="310" font-size="10" fill="#6D28D9" font-style="italic">alleen nuttig als meetsysteem klopt</text>
+
+  <!-- ─────────── RIJ 2: SIGNAAL-DETECTIE ─────────── -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="340" width="160" height="120" rx="6" fill="url(#grad-signaal)"/>
+  </g>
+  <text x="120" y="380" text-anchor="middle" font-size="16" font-weight="700" fill="white" letter-spacing="1">LAAG 2</text>
+  <text x="120" y="404" text-anchor="middle" font-size="16" font-weight="700" fill="white">SIGNAAL</text>
+  <text x="120" y="422" text-anchor="middle" font-size="13" font-weight="600" fill="white">DETECTIE</text>
+  <text x="120" y="442" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)" font-style="italic">Hoe zie je dat er</text>
+  <text x="120" y="456" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)" font-style="italic">iets afwijkt?</text>
+
+  <!-- Cel Signaal — Klassiek -->
+  <rect x="220" y="340" width="220" height="120" rx="6" fill="white" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="240" y="366" font-size="18">👀</text>
+  <text x="264" y="369" font-size="11" font-weight="600" fill="#475569">Operator scant kaart</text>
+  <text x="240" y="396" font-size="11" fill="#334155">Past zelf Nelson-regels</text>
+  <text x="240" y="412" font-size="11" fill="#334155">toe: punt buiten grens,</text>
+  <text x="240" y="428" font-size="11" fill="#334155">7-in-rij, 6 stijgend.</text>
+  <text x="240" y="450" font-size="10" fill="#64748B" font-style="italic">één variabele tegelijk</text>
+
+  <!-- Cel Signaal — Digitaal -->
+  <rect x="460" y="340" width="220" height="120" rx="6" fill="#FFFBEB" stroke="#FCD34D" stroke-width="1.5"/>
+  <text x="480" y="366" font-size="18">🔔</text>
+  <text x="504" y="369" font-size="11" font-weight="600" fill="#B45309">Auto-alarm</text>
+  <text x="480" y="396" font-size="11" fill="#78350F">Dashboard controleert</text>
+  <text x="480" y="412" font-size="11" fill="#78350F">Nelson-regels in realtime,</text>
+  <text x="480" y="428" font-size="11" fill="#78350F">piept binnen 30 sec.</text>
+  <text x="480" y="450" font-size="10" fill="#B45309" font-style="italic">nog steeds mono-variabel</text>
+
+  <!-- Cel Signaal — AI -->
+  <rect x="700" y="340" width="220" height="120" rx="6" fill="#F5F3FF" stroke="#C4B5FD" stroke-width="1.5"/>
+  <text x="720" y="366" font-size="18">🎯</text>
+  <text x="744" y="369" font-size="11" font-weight="600" fill="#6D28D9">Combinatie-patroon</text>
+  <text x="720" y="396" font-size="11" fill="#4C1D95">Model ziet dat druk +</text>
+  <text x="720" y="412" font-size="11" fill="#4C1D95">temp + debiet samen</text>
+  <text x="720" y="428" font-size="11" fill="#4C1D95">afwijken — eerder.</text>
+  <text x="720" y="450" font-size="10" fill="#6D28D9" font-style="italic">multivariate meerwaarde</text>
+
+  <!-- ─────────── RIJ 3: BESLISSEN ─────────── -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="480" width="160" height="120" rx="6" fill="url(#grad-beslissen)"/>
+  </g>
+  <text x="120" y="520" text-anchor="middle" font-size="16" font-weight="700" fill="white" letter-spacing="1">LAAG 3</text>
+  <text x="120" y="544" text-anchor="middle" font-size="17" font-weight="700" fill="white">BESLISSEN</text>
+  <text x="120" y="568" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)" font-style="italic">Wie bepaalt de actie</text>
+  <text x="120" y="582" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)" font-style="italic">als er iets is?</text>
+
+  <!-- Cel Beslissen — Klassiek -->
+  <rect x="220" y="480" width="220" height="120" rx="6" fill="white" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="240" y="506" font-size="18">👷</text>
+  <text x="264" y="509" font-size="11" font-weight="600" fill="#475569">Operator beslist</text>
+  <text x="240" y="536" font-size="11" fill="#334155">Volgt reactieplan,</text>
+  <text x="240" y="552" font-size="11" fill="#334155">belt teamleider of</text>
+  <text x="240" y="568" font-size="11" fill="#334155">kwaliteitsdienst.</text>
+  <text x="240" y="590" font-size="10" fill="#64748B" font-style="italic">mens in de lead</text>
+
+  <!-- Cel Beslissen — Digitaal -->
+  <rect x="460" y="480" width="220" height="120" rx="6" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5"/>
+  <text x="480" y="506" font-size="18">👷</text>
+  <text x="504" y="509" font-size="11" font-weight="600" fill="#1D4ED8">Operator beslist</text>
+  <text x="480" y="536" font-size="11" fill="#1E3A8A">Alarm helpt duiden,</text>
+  <text x="480" y="552" font-size="11" fill="#1E3A8A">beslissing blijft bij de</text>
+  <text x="480" y="568" font-size="11" fill="#1E3A8A">werkvloer.</text>
+  <text x="480" y="590" font-size="10" fill="#1D4ED8" font-style="italic">mens in de lead</text>
+
+  <!-- Cel Beslissen — AI (mens-blijft-beslisser-accent) -->
+  <rect x="700" y="480" width="220" height="120" rx="6" fill="#F5F3FF" stroke="#7E22CE" stroke-width="2.5"/>
+  <text x="720" y="506" font-size="18">💡</text>
+  <text x="744" y="509" font-size="11" font-weight="600" fill="#6D28D9">AI adviseert, mens beslist</text>
+  <text x="720" y="536" font-size="11" fill="#4C1D95">Model geeft een</text>
+  <text x="720" y="552" font-size="11" fill="#4C1D95">aanbeveling; operator</text>
+  <text x="720" y="568" font-size="11" fill="#4C1D95">weegt af en beslist.</text>
+  <text x="720" y="590" font-size="10" font-weight="700" fill="#7E22CE">ontwerpkeuze — altijd zo</text>
+
+  <!-- Groene verantwoordelijkheidsbaan -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="620" width="880" height="64" rx="6" fill="url(#grad-verantwoordelijkheid)"/>
+  </g>
+  <text x="60" y="650" font-size="12" font-weight="700" fill="white">ALTIJD VAN JOU, IN ELK TIJDPERK:</text>
+  <text x="60" y="672" font-size="11" fill="rgba(255,255,255,0.95)">📏 meting betrouwbaar houden  ·  📋 reactieplan kennen  ·  👥 rationele subgroepering  ·  🗣 uitleg aan collega, klant &amp; auditor</text>
+
+  <!-- Voetnoot -->
+  <text x="480" y="705" text-anchor="middle" font-size="10" fill="#64748B" font-style="italic">ko-spc-601 · Shewhart (1924) · Nelson-regels (ISO 7870-2) · Technometrics review 2024 — Industry 4.0 SPC</text>
+</svg>
