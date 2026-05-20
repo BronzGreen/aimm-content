@@ -7,6 +7,25 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde27-lo-spc-602
+
+**Kontext:** Ronde 27: lo-spc-602
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-602/trainee.md`
+- `kennisbank/spc/ai_integratie/ko-spc-602.md`
+- `leerobjecten/lo-spc-602/trainer.md`
+- `leerobjecten/lo-spc-602/draaiboek.md`
+- `leerobjecten/lo-spc-602/werkbladen/wb-01-klassiek-vs-ai-tabel.md`
+- `leerobjecten/lo-spc-602/werkbladen/wb-01-klassiek-vs-ai.md`
+- `leerobjecten/lo-spc-602/werkbladen/wb-02-eigen-lijn-screen.md`
+- `leerobjecten/lo-spc-602/werkbladen/wb-03-reflectie.md`
+- `leerobjecten/lo-spc-602/werkbladen/wb-03-xai-handout.md`
+- `leerobjecten/lo-spc-602/svg/diagram.svg`
+- `leerobjecten/lo-spc-602/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-602/README.md`
+
 ## 2026-05-20 — publish-ronde26-lo-smart-mfg-701
 
 **Kontext:** Ronde 26: lo-smart-mfg-701

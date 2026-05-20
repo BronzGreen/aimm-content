@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 780" role="img" aria-labelledby="title desc" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Klassieke SPC versus AI — voor welke vraag past welke analyse?</title>
+  <desc id="desc">Twee tijdreeks-grafieken naast elkaar binnen hetzelfde tijdvenster. Links: een klassieke Shewhart-control-chart van één enkele variabele (temperatuur reactor) met UCL en LCL op plus en min drie sigma. De meetlijn beweegt rustig tussen de grenzen — geen Nelson-regel triggert. Rechts: drie variabelen samen (temperatuur, druk, debiet) ieder binnen de eigen plus en min drie sigma grenzen. Een AI-laag detecteert echter dat de combinatie temperatuur licht hoog, druk licht hoog en debiet licht laag een patroon vormt dat historisch vooraf ging aan een katalysator-degradatie. Een paarse markering toont waar het AI-patroon-alarm afgaat, zonder dat een enkele lijn buiten de grenzen valt. Onderaan staat een tabel met drie typische lijn-vragen — momentane afwijking, voorspellende combinatie, ploegen-verschil — en welke aanpak (klassieke SPC, AI, of klassieke SPC met stratificatie) bij elk past.</desc>
+
+  <defs>
+    <linearGradient id="bg-classic" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </linearGradient>
+    <linearGradient id="bg-ai" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F3FF"/>
+      <stop offset="100%" stop-color="#DDD6FE"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#6B21A8"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="960" height="780" fill="#F8F6F0"/>
+
+  <!-- Titel -->
+  <text x="480" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50" letter-spacing="1">Klassieke SPC of AI? — twee soorten vragen</text>
+  <text x="480" y="62" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic" letter-spacing="0.5">Klassiek vraagt: is het NU anders dan normaal? AI vraagt: welk PATROON leidt naar verstoring?</text>
+
+  <!-- ─────────── LINKS: KLASSIEKE SPC (univariaat) ─────────── -->
+  <g>
+    <rect x="30" y="90" width="450" height="380" rx="10" fill="url(#bg-classic)" filter="url(#shadow)"/>
+
+    <!-- Paneel-titel -->
+    <text x="255" y="118" text-anchor="middle" font-size="16" font-weight="700" fill="#1E3A8A">KLASSIEKE SPC — UNIVARIAAT</text>
+    <text x="255" y="138" text-anchor="middle" font-size="12" fill="#1D4ED8" font-style="italic">één variabele, vaste grenzen, momentane vraag</text>
+
+    <!-- Y-as label -->
+    <text x="50" y="175" font-size="10" font-weight="600" fill="#374151">Temperatuur reactor (°C)</text>
+
+    <!-- Plot-vak -->
+    <rect x="60" y="185" width="400" height="160" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+
+    <!-- UCL-lijn (boven) -->
+    <line x1="60" y1="200" x2="460" y2="200" stroke="#DC2626" stroke-width="2" stroke-dasharray="6,3"/>
+    <text x="465" y="204" font-size="10" font-weight="700" fill="#DC2626">UCL +3σ</text>
+
+    <!-- Centerline (gemiddelde) -->
+    <line x1="60" y1="265" x2="460" y2="265" stroke="#6B7280" stroke-width="1.2" stroke-dasharray="3,2"/>
+    <text x="465" y="269" font-size="10" font-weight="600" fill="#6B7280">μ</text>
+
+    <!-- LCL-lijn (onder) -->
+    <line x1="60" y1="330" x2="460" y2="330" stroke="#DC2626" stroke-width="2" stroke-dasharray="6,3"/>
+    <text x="465" y="334" font-size="10" font-weight="700" fill="#DC2626">LCL −3σ</text>
+
+    <!-- Tijdreeks (binnen grenzen, rustig schommelend) -->
+    <polyline fill="none" stroke="#1D4ED8" stroke-width="2.2"
+              points="70,275 95,260 120,272 145,255 170,268 195,250 220,272 245,258 270,278 295,262 320,255 345,272 370,260 395,268 420,253 445,270"/>
+    <!-- Datapunten -->
+    <g fill="#1D4ED8">
+      <circle cx="70" cy="275" r="3"/>
+      <circle cx="95" cy="260" r="3"/>
+      <circle cx="120" cy="272" r="3"/>
+      <circle cx="145" cy="255" r="3"/>
+      <circle cx="170" cy="268" r="3"/>
+      <circle cx="195" cy="250" r="3"/>
+      <circle cx="220" cy="272" r="3"/>
+      <circle cx="245" cy="258" r="3"/>
+      <circle cx="270" cy="278" r="3"/>
+      <circle cx="295" cy="262" r="3"/>
+      <circle cx="320" cy="255" r="3"/>
+      <circle cx="345" cy="272" r="3"/>
+      <circle cx="370" cy="260" r="3"/>
+      <circle cx="395" cy="268" r="3"/>
+      <circle cx="420" cy="253" r="3"/>
+      <circle cx="445" cy="270" r="3"/>
+    </g>
+
+    <!-- X-as label -->
+    <text x="255" y="365" text-anchor="middle" font-size="10" fill="#6B7280">tijd →</text>
+
+    <!-- Conclusie-box -->
+    <rect x="50" y="385" width="410" height="70" rx="6" fill="#FFFFFF" stroke="#1E3A8A" stroke-width="1.2"/>
+    <text x="60" y="405" font-size="11" font-weight="700" fill="#1E3A8A">Conclusie Shewhart / Nelson:</text>
+    <text x="60" y="423" font-size="11" fill="#374151">Alle metingen binnen UCL/LCL — geen Nelson-regel triggert.</text>
+    <text x="60" y="439" font-size="11" font-weight="600" fill="#1E3A8A">→ "Het proces is NU niet anders dan normaal."</text>
+    <text x="60" y="453" font-size="10" fill="#6B7280" font-style="italic">Kostenefficiënt voor univariate vragen — vanaf dag één bruikbaar.</text>
+  </g>
+
+  <!-- ─────────── RECHTS: AI MULTIVARIAAT ─────────── -->
+  <g>
+    <rect x="490" y="90" width="450" height="380" rx="10" fill="url(#bg-ai)" filter="url(#shadow)"/>
+
+    <!-- Paneel-titel -->
+    <text x="715" y="118" text-anchor="middle" font-size="16" font-weight="700" fill="#5B21B6">AI — MULTIVARIAAT</text>
+    <text x="715" y="138" text-anchor="middle" font-size="12" fill="#6B21A8" font-style="italic">meerdere variabelen samen, patroon, voorspellende vraag</text>
+
+    <!-- Y-as label -->
+    <text x="510" y="175" font-size="10" font-weight="600" fill="#374151">Temperatuur · Druk · Debiet (gestandaardiseerd)</text>
+
+    <!-- Plot-vak -->
+    <rect x="520" y="185" width="400" height="160" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+
+    <!-- ±3σ band -->
+    <line x1="520" y1="200" x2="920" y2="200" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="925" y="204" font-size="9" font-weight="600" fill="#DC2626">+3σ</text>
+    <line x1="520" y1="265" x2="920" y2="265" stroke="#6B7280" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="925" y="269" font-size="9" fill="#6B7280">μ</text>
+    <line x1="520" y1="330" x2="920" y2="330" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="925" y="334" font-size="9" font-weight="600" fill="#DC2626">−3σ</text>
+
+    <!-- AI-patroonzone gemarkeerd (lichte paarse arcering) -->
+    <rect x="700" y="190" width="120" height="150" fill="#A78BFA" fill-opacity="0.18" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="4,2"/>
+    <text x="760" y="180" text-anchor="middle" font-size="10" font-weight="700" fill="#5B21B6">AI-patroon</text>
+
+    <!-- Lijn 1: Temperatuur (rood-oranje) — licht hoog in patroonzone -->
+    <polyline fill="none" stroke="#F97316" stroke-width="2"
+              points="530,265 555,260 580,267 605,262 630,268 655,260 680,265 705,250 730,240 755,235 780,238 805,232 830,238 855,250 880,258 905,262"/>
+    <text x="535" y="258" font-size="9" font-weight="700" fill="#F97316">T</text>
+
+    <!-- Lijn 2: Druk (blauw) — licht hoog in patroonzone -->
+    <polyline fill="none" stroke="#0EA5E9" stroke-width="2"
+              points="530,272 555,275 580,268 605,272 630,265 655,278 680,270 705,255 730,248 755,242 780,245 805,240 830,248 855,260 880,268 905,272"/>
+    <text x="535" y="280" font-size="9" font-weight="700" fill="#0EA5E9">P</text>
+
+    <!-- Lijn 3: Debiet (groen) — licht laag in patroonzone -->
+    <polyline fill="none" stroke="#10B981" stroke-width="2"
+              points="530,258 555,265 580,260 605,268 630,262 655,255 680,265 705,278 730,290 755,295 780,292 805,298 830,290 855,278 880,268 905,265"/>
+    <text x="535" y="252" font-size="9" font-weight="700" fill="#10B981">Q</text>
+
+    <!-- Pijl van AI-patroon naar conclusie -->
+    <path d="M 760,345 L 760,365" fill="none" stroke="#6B21A8" stroke-width="1.8" marker-end="url(#arrow-purple)"/>
+
+    <!-- X-as label -->
+    <text x="715" y="365" text-anchor="middle" font-size="10" fill="#6B7280">tijd →</text>
+
+    <!-- Conclusie-box met SHAP-uitleg -->
+    <rect x="510" y="385" width="410" height="70" rx="6" fill="#FFFFFF" stroke="#5B21B6" stroke-width="1.2"/>
+    <text x="520" y="405" font-size="11" font-weight="700" fill="#5B21B6">Conclusie AI + XAI (SHAP):</text>
+    <text x="520" y="423" font-size="11" fill="#374151">Geen lijn alleen out-of-control — combinatie wijst op verstoring binnen 4 uur.</text>
+    <text x="520" y="439" font-size="11" font-weight="600" fill="#5B21B6">→ Druk 45% · Temperatuur 30% · Debiet 25%</text>
+    <text x="520" y="453" font-size="10" fill="#6B7280" font-style="italic">Vraagt historische data + XAI — anders géén operator-vertrouwen.</text>
+  </g>
+
+  <!-- ─────────── ONDERAAN: 3 VRAGEN — WELKE AANPAK PAST? ─────────── -->
+  <g>
+    <text x="480" y="500" text-anchor="middle" font-size="15" font-weight="700" fill="#2C3E50">Voor welke vraag past welke analyse?</text>
+
+    <!-- Tabel kolomheaders -->
+    <rect x="50" y="515" width="430" height="32" fill="#1F2937"/>
+    <rect x="480" y="515" width="430" height="32" fill="#1F2937"/>
+    <text x="265" y="536" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">Vraag op de lijn</text>
+    <text x="695" y="536" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">Welke aanpak past?</text>
+
+    <!-- Rij 1: momentane vraag → KLASSIEK -->
+    <rect x="50" y="547" width="430" height="56" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="0.5"/>
+    <rect x="480" y="547" width="430" height="56" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+    <text x="60" y="568" font-size="11" font-weight="700" fill="#1E3A8A">Vraag 1 — momentane afwijking</text>
+    <text x="60" y="585" font-size="11" fill="#374151">"Is sensor X NU buiten ±3σ?"</text>
+    <text x="60" y="599" font-size="10" fill="#6B7280" font-style="italic">univariaat, momentaan</text>
+    <rect x="490" y="558" width="14" height="34" fill="#1D4ED8" rx="3"/>
+    <text x="514" y="575" font-size="11" font-weight="700" fill="#1E3A8A">KLASSIEKE SPC</text>
+    <text x="514" y="592" font-size="10" fill="#374151">Shewhart + Nelson-rules</text>
+
+    <!-- Rij 2: voorspellende combinatie → AI -->
+    <rect x="50" y="603" width="430" height="56" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="0.5"/>
+    <rect x="480" y="603" width="430" height="56" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="0.5"/>
+    <text x="60" y="624" font-size="11" font-weight="700" fill="#5B21B6">Vraag 2 — voorspellende combinatie</text>
+    <text x="60" y="641" font-size="11" fill="#374151">"Welke combi A+B+C voorspelt uitval over 4 uur?"</text>
+    <text x="60" y="655" font-size="10" fill="#6B7280" font-style="italic">multivariaat, voorspellend</text>
+    <rect x="490" y="614" width="14" height="34" fill="#7C3AED" rx="3"/>
+    <text x="514" y="631" font-size="11" font-weight="700" fill="#5B21B6">AI + XAI</text>
+    <text x="514" y="648" font-size="10" fill="#374151">multivariate monitoring + SHAP</text>
+
+    <!-- Rij 3: stratificatie-vraag → KLASSIEK + STRATIFICATIE -->
+    <rect x="50" y="659" width="430" height="56" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="0.5"/>
+    <rect x="480" y="659" width="430" height="56" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+    <text x="60" y="680" font-size="11" font-weight="700" fill="#065F46">Vraag 3 — verschil tussen ploegen</text>
+    <text x="60" y="697" font-size="11" fill="#374151">"Is shift A anders dan shift C op dezelfde lijn?"</text>
+    <text x="60" y="711" font-size="10" fill="#6B7280" font-style="italic">univariaat, vergelijkend</text>
+    <rect x="490" y="670" width="14" height="34" fill="#10B981" rx="3"/>
+    <text x="514" y="687" font-size="11" font-weight="700" fill="#065F46">KLASSIEKE SPC + STRATIFICATIE</text>
+    <text x="514" y="704" font-size="10" fill="#374151">aparte regelkaart per shift</text>
+  </g>
+
+  <!-- Onderaan: kernregel -->
+  <rect x="50" y="725" width="860" height="32" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="480" y="746" text-anchor="middle" font-size="12" font-weight="600" fill="#92400E">Nelson-rules zijn NIET verouderd — vul aan waar klassiek tekortschiet, vervang niet.</text>
+
+  <!-- Bronvermelding -->
+  <text x="480" y="772" text-anchor="middle" font-size="9" fill="#999">Bron: ko-spc-602 · recente literatuur AI in process monitoring (2023–2024) · Lundberg &amp; Lee (SHAP, 2017) · AIMM SPC Module 3</text>
+</svg>
