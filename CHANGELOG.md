@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde14-lo-ai-fund-181
+
+**Kontext:** Ronde 14: lo-ai-fund-181
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-181/trainee.md`
+- `kennisbank/ai_fundamentals/ai_ethics_en_bias/ko-ai-fund-181.md`
+- `leerobjecten/lo-ai-fund-181/trainer.md`
+- `leerobjecten/lo-ai-fund-181/draaiboek.md`
+- `leerobjecten/lo-ai-fund-181/werkbladen/wb-01-twee-operators.md`
+- `leerobjecten/lo-ai-fund-181/werkbladen/wb-02-buurman-bouwstenen.md`
+- `leerobjecten/lo-ai-fund-181/werkbladen/wb-03-handout-vier-bouwstenen.md`
+- `leerobjecten/lo-ai-fund-181/werkbladen/wb-04-eigen-zelfcheck.md`
+- `leerobjecten/lo-ai-fund-181/README.md`
+
 ## 2026-05-20 — publish-ronde14-lo-spc-201
 
 **Kontext:** Ronde 14: lo-spc-201
