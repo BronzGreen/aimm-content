@@ -7,6 +7,78 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde20-lo-ai-fund-cnn-001
+
+**Kontext:** Ronde 20: lo-ai-fund-cnn-001
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-cnn-001/trainee.md`
+- `kennisbank/ai_fundamentals/neural_networks_conceptueel/ko-ai-fundamentals-cnn-001.md`
+- `leerobjecten/lo-ai-fund-cnn-001/trainer.md`
+- `leerobjecten/lo-ai-fund-cnn-001/draaiboek.md`
+- `leerobjecten/lo-ai-fund-cnn-001/werkbladen/wb-01-architectuur-invullen.md`
+- `leerobjecten/lo-ai-fund-cnn-001/werkbladen/wb-02-data-voorbeelden.md`
+- `leerobjecten/lo-ai-fund-cnn-001/werkbladen/wb-03-reflectie.md`
+- `leerobjecten/lo-ai-fund-cnn-001/werkbladen/wb-04-actieplan.md`
+- `leerobjecten/lo-ai-fund-cnn-001/svg/diagram.svg`
+- `leerobjecten/lo-ai-fund-cnn-001/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-ai-fund-cnn-001/README.md`
+
+## 2026-05-20 — publish-ronde20-lo-ai-fund-212
+
+**Kontext:** Ronde 20: lo-ai-fund-212
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-212/trainee.md`
+- `leerobjecten/lo-ai-fund-212/trainer.md`
+- `leerobjecten/lo-ai-fund-212/draaiboek.md`
+- `leerobjecten/lo-ai-fund-212/werkbladen/wb-01-twee-confusion-matrices-vleesverwerker.md`
+- `leerobjecten/lo-ai-fund-212/werkbladen/wb-01-twee-matrices-lezen.md`
+- `leerobjecten/lo-ai-fund-212/werkbladen/wb-02-precision-recall-formules.md`
+- `leerobjecten/lo-ai-fund-212/werkbladen/wb-02-vals-positief-vals-negatief-in-duo.md`
+- `leerobjecten/lo-ai-fund-212/werkbladen/wb-03-precision-recall-handout.md`
+- `leerobjecten/lo-ai-fund-212/werkbladen/wb-03-werkvloer-keuze-precision-of-recall.md`
+- `leerobjecten/lo-ai-fund-212/werkbladen/wb-04-eigen-werkvloer-ai-doorlichten.md`
+- `leerobjecten/lo-ai-fund-212/README.md`
+
+## 2026-05-20 — publish-ronde20-lo-smart-mfg-108
+
+**Kontext:** Ronde 20: lo-smart-mfg-108
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-108/trainee.md`
+- `kennisbank/smart_manufacturing/predictive_maintenance/ko-smart-mfg-108.md`
+- `leerobjecten/lo-smart-mfg-108/trainer.md`
+- `leerobjecten/lo-smart-mfg-108/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-108/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-smart-mfg-108/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-smart-mfg-108/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-smart-mfg-108/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-smart-mfg-108/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-108/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-108/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-108/README.md`
+
+## 2026-05-20 — publish-ronde20-lo-spc-303
+
+**Kontext:** Ronde 20: lo-spc-303
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-303/trainee.md`
+- `kennisbank/spc/procesbekwaamheid/ko-spc-303.md`
+- `leerobjecten/lo-spc-303/trainer.md`
+- `leerobjecten/lo-spc-303/draaiboek.md`
+- `leerobjecten/lo-spc-303/werkbladen/wb-01-eigen-analyse.md`
+- `leerobjecten/lo-spc-303/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-303/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-303/svg/diagram.svg`
+- `leerobjecten/lo-spc-303/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-303/README.md`
+
 ## 2026-05-20 — publish-ronde19-lo-ai-fund-211
 
 **Kontext:** Ronde 19: lo-ai-fund-211

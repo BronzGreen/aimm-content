@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SHAP Explorer - Welke sensor draagt bij?</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    const SCENARIOS = [
+      {
+        id: "cnc",
+        title: "CNC-machine: hydraulisch probleem",
+        machine: "Heller 400 CNC",
+        melding: "De machine trilt meer dan normaal. Het AI-systeem geeft een anomaliemelding.",
+        sensors: [
+          { name: "Hydraulische druk", system: "Hydrauliek", value: 0.82, detail: "De druk in het hydraulische systeem is veel lager dan normaal. Dit is de grootste afwijking." },
+          { name: "Hydraulische temp.", system: "Hydrauliek", value: 0.65, detail: "De temperatuur van de hydraulische olie is te hoog. Dit kan komen door een lek of een verstopte filter." },
+          { name: "Pomp debiet", system: "Hydrauliek", value: 0.41, detail: "De pomp verplaatst minder vloeistof dan normaal. Dit hangt samen met de drukdaling." },
+          { name: "Spindel snelheid", system: "Spindel", value: 0.17, detail: "De spindel draait iets langzamer. Dit is een gevolg, niet de oorzaak." },
+          { name: "Koelmiddel druk", system: "Koeling", value: 0.09, detail: "De koelmiddeldruk is normaal. Deze sensor draagt weinig bij." },
+          { name: "Omgevingstemp.", system: "Omgeving", value: 0.04, detail: "De temperatuur in de hal is normaal. Geen relatie met het probleem." },
+        ],
+        conclusion: "De top 3 sensoren horen bij het hydraulische systeem. Controleer het hydraulische systeem als eerste.",
+        timeSaved: "Van 45 minuten zoeken naar 12 minuten."
+      },
+      {
+        id: "verpakking",
+        title: "Verpakkingslijn: aandrijfprobleem",
+        machine: "Verpakkingslijn 3",
+        melding: "De lijn stopt drie keer per uur. Het AI-systeem detecteert een patroon.",
+        sensors: [
+          { name: "Bandsnelheid", system: "Aandrijving", value: 0.76, detail: "De band gaat steeds langzamer. Dit is de grootste afwijking en wijst op een aandrijfprobleem." },
+          { name: "Motorstroom", system: "Aandrijving", value: 0.58, detail: "De motor verbruikt meer stroom dan normaal. Hij moet harder werken." },
+          { name: "Lagertemperatuur", system: "Aandrijving", value: 0.43, detail: "De lagers worden warmer. Dit komt door extra wrijving in de aandrijving." },
+          { name: "Productgewicht", system: "Product", value: 0.12, detail: "Het productgewicht is normaal. Geen relatie met het probleem." },
+          { name: "Luchtvochtigheid", system: "Omgeving", value: 0.05, detail: "De luchtvochtigheid is normaal. Geen bijdrage aan de storing." },
+        ],
+        conclusion: "De top 3 sensoren horen bij de aandrijving. Controleer de riem, lagers en motor.",
+        timeSaved: "Van 30 minuten zoeken naar 8 minuten."
+      },
+      {
+        id: "lasrobot",
+        title: "Lasrobot: gasprobleem",
+        machine: "Lasrobot cel 7",
+        melding: "De laskwaliteit gaat achteruit. Het AI-systeem detecteert afwijkingen.",
+        sensors: [
+          { name: "Gasdebiet", system: "Gastoevoer", value: 0.71, detail: "Er stroomt minder beschermgas dan normaal. Dit is de grootste afwijking. Zonder genoeg gas ontstaan slechte lassen." },
+          { name: "Draadsnelheid", system: "Draadtoevoer", value: 0.54, detail: "De lasdraad gaat iets te snel. De verhouding gas-draad klopt niet meer." },
+          { name: "Spanning", system: "Elektrisch", value: 0.38, detail: "De spanning is iets lager dan normaal. Dit kan samenhangen met het gasprobleem." },
+          { name: "Stroomsterkte", system: "Elektrisch", value: 0.19, detail: "De stroomsterkte is bijna normaal. Kleine afwijking." },
+          { name: "Contacttip temp.", system: "Gereedschap", value: 0.08, detail: "De contacttip is iets warmer. Dit is een gevolg, niet de oorzaak." },
+        ],
+        conclusion: "Het gasdebiet is het grootste probleem. Controleer de gasfles, slang en regelaar.",
+        timeSaved: "Van 25 minuten zoeken naar 10 minuten."
+      }
+    ];
+
+    function ShapExplorer() {
+      const [activeScenario, setActiveScenario] = useState(0);
+      const [selectedSensor, setSelectedSensor] = useState(null);
+      const [showConclusion, setShowConclusion] = useState(false);
+      const [answeredScenarios, setAnsweredScenarios] = useState({});
+
+      const scenario = SCENARIOS[activeScenario];
+      const maxValue = Math.max(...scenario.sensors.map(s => s.value));
+
+      const getBarColor = (value) => {
+        if (value >= 0.5) return { bg: "bg-red-500", text: "Hoog", color: "#EF4444" };
+        if (value >= 0.3) return { bg: "bg-orange-500", text: "Gemiddeld", color: "#F97316" };
+        return { bg: "bg-blue-500", text: "Laag", color: "#3B82F6" };
+      };
+
+      const handleSelectScenario = (index) => {
+        setActiveScenario(index);
+        setSelectedSensor(null);
+        setShowConclusion(false);
+      };
+
+      const handleShowConclusion = () => {
+        setShowConclusion(true);
+        setAnsweredScenarios(prev => ({ ...prev, [activeScenario]: true }));
+      };
+
+      const handleReset = () => {
+        setActiveScenario(0);
+        setSelectedSensor(null);
+        setShowConclusion(false);
+        setAnsweredScenarios({});
+      };
+
+      const completedCount = Object.keys(answeredScenarios).length;
+
+      return (
+        <div className="min-h-screen bg-gray-50">
+          {/* Header */}
+          <div className="bg-white border-b px-6 py-4">
+            <div className="max-w-5xl mx-auto flex justify-between items-start">
+              <div>
+                <h1 className="text-2xl font-bold text-gray-900">SHAP Explorer</h1>
+                <p className="text-gray-500 mt-1">Klik op sensoren om te ontdekken welke bijdraagt aan de anomalie</p>
+              </div>
+              <button
+                onClick={handleReset}
+                className="px-4 py-2 text-gray-500 hover:text-gray-700 text-sm flex items-center gap-1"
+              >
+                Opnieuw
+              </button>
+            </div>
+          </div>
+
+          <div className="max-w-5xl mx-auto p-6">
+            {/* Progress */}
+            <div className="mb-6">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-blue-500 rounded-full transition-all duration-500"
+                    style={{ width: `${(completedCount / SCENARIOS.length) * 100}%` }}
+                  />
+                </div>
+                <span className="text-sm text-gray-500 font-mono">{completedCount}/{SCENARIOS.length}</span>
+              </div>
+            </div>
+
+            {/* Scenario tabs */}
+            <div className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-6">
+              {SCENARIOS.map((s, i) => (
+                <button
+                  key={s.id}
+                  className={`flex-1 px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                    activeScenario === i
+                      ? "bg-white shadow-sm text-gray-900"
+                      : "text-gray-500 hover:text-gray-700"
+                  }`}
+                  onClick={() => handleSelectScenario(i)}
+                >
+                  {answeredScenarios[i] ? "\u2713 " : ""}{s.machine}
+                </button>
+              ))}
+            </div>
+
+            {/* Scenario description */}
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-6">
+              <div className="font-bold text-blue-900 text-lg mb-1">{scenario.title}</div>
+              <div className="text-blue-800">{scenario.melding}</div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-6">
+              {/* Bar chart */}
+              <div className="bg-white rounded-xl shadow-sm border p-6">
+                <div className="text-sm font-medium text-gray-500 mb-4">
+                  Klik op een sensor om meer te weten
+                </div>
+                <div className="space-y-3">
+                  {scenario.sensors.map((sensor, i) => {
+                    const barInfo = getBarColor(sensor.value);
+                    const isSelected = selectedSensor === i;
+                    const isTop3 = i < 3;
+                    return (
+                      <button
+                        key={sensor.name}
+                        onClick={() => setSelectedSensor(isSelected ? null : i)}
+                        className={`w-full text-left transition-all rounded-lg p-3 ${
+                          isSelected
+                            ? "bg-gray-50 ring-2 ring-blue-400 shadow-md"
+                            : "hover:bg-gray-50"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between mb-1">
+                          <div className="flex items-center gap-2">
+                            {isTop3 && (
+                              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-red-100 text-red-600 text-xs font-bold">
+                                {i + 1}
+                              </span>
+                            )}
+                            <span className={`font-medium ${isTop3 ? "text-gray-900" : "text-gray-500"}`}>
+                              {sensor.name}
+                            </span>
+                          </div>
+                          <span className={`text-sm font-mono font-bold ${isTop3 ? "text-gray-900" : "text-gray-400"}`}>
+                            {sensor.value.toFixed(2)}
+                          </span>
+                        </div>
+                        <div className="w-full h-4 bg-gray-100 rounded-full overflow-hidden">
+                          <div
+                            className={`h-full rounded-full transition-all duration-500 ${barInfo.bg}`}
+                            style={{ width: `${(sensor.value / maxValue) * 100}%` }}
+                          />
+                        </div>
+                        <div className="flex justify-between mt-1">
+                          <span className="text-xs text-gray-400">{sensor.system}</span>
+                          <span className="text-xs text-gray-400">{barInfo.text}</span>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Legend */}
+                <div className="flex gap-4 mt-4 pt-4 border-t">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                    <span className="text-xs text-gray-500">Hoge bijdrage</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-orange-500"></div>
+                    <span className="text-xs text-gray-500">Gemiddeld</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                    <span className="text-xs text-gray-500">Laag</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Detail panel */}
+              <div>
+                {selectedSensor !== null ? (
+                  <div className={`rounded-xl border-2 p-5 transition-all ${
+                    scenario.sensors[selectedSensor].value >= 0.5
+                      ? "bg-red-50 border-red-300"
+                      : scenario.sensors[selectedSensor].value >= 0.3
+                        ? "bg-orange-50 border-orange-300"
+                        : "bg-blue-50 border-blue-300"
+                  }`}>
+                    <div className="font-bold text-lg mb-1">
+                      {scenario.sensors[selectedSensor].name}
+                    </div>
+                    <div className="text-sm mb-3">
+                      <span className="font-medium">Systeem:</span> {scenario.sensors[selectedSensor].system}
+                    </div>
+                    <div className="text-sm mb-3">
+                      <span className="font-medium">SHAP-waarde:</span>{" "}
+                      <span className="font-mono font-bold text-lg">
+                        {scenario.sensors[selectedSensor].value.toFixed(2)}
+                      </span>
+                    </div>
+                    <div className="text-sm leading-relaxed">
+                      {scenario.sensors[selectedSensor].detail}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="rounded-xl border-2 border-dashed border-gray-300 p-5 text-center text-gray-400">
+                    <div className="text-4xl mb-2">&#x1F50D;</div>
+                    <div>Klik op een sensor om details te zien</div>
+                  </div>
+                )}
+
+                {/* Conclusion button */}
+                {!showConclusion ? (
+                  <button
+                    onClick={handleShowConclusion}
+                    className="w-full mt-4 px-6 py-3 bg-emerald-500 text-white rounded-lg font-medium hover:bg-emerald-600 transition-colors"
+                  >
+                    Toon conclusie
+                  </button>
+                ) : (
+                  <div className="mt-4 rounded-xl bg-emerald-50 border-2 border-emerald-300 p-5">
+                    <div className="font-bold text-emerald-800 mb-2">Conclusie</div>
+                    <div className="text-sm text-emerald-700 mb-3">{scenario.conclusion}</div>
+                    <div className="text-xs text-emerald-600 font-medium">
+                      Tijdwinst: {scenario.timeSaved}
+                    </div>
+                  </div>
+                )}
+
+                {/* Info box */}
+                <div className="mt-4 rounded-xl bg-gray-50 border p-4 text-sm text-gray-600">
+                  <div className="font-medium text-gray-700 mb-1">Wat is SHAP?</div>
+                  <div>SHAP berekent per sensor de bijdrage aan een anomalie. Grote balk = grote bijdrage. Kijk naar de top 3 voor het antwoord.</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Source */}
+            <div className="mt-8 text-center text-xs text-gray-400">
+              SHAP (SHapley Additive exPlanations) &mdash; Lundberg &amp; Lee (2017) | AIMM Predictive Maintenance
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<ShapExplorer />);
+  </script>
+</body>
+</html>

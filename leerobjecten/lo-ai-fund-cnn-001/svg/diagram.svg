@@ -1,0 +1,238 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1920 1080" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">CNN-architectuur: input naar convolutielagen, pooling, fully connected en output</title>
+  <desc id="desc">Een schematische weergave van een Convolutional Neural Network. Van links naar rechts: een input-beeld (oppervlaktefoto), een convolutielaag die met kleine kernels feature-maps produceert die lokale patronen tonen, een pooling-laag die de feature-maps comprimeert door downsampling, een fully connected laag die alle features integreert, en een output-laag met twee klassen — defect en oké. Onderaan staan de twee kernconcepten benoemd: lokale connectiviteit en gedeelde gewichten.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.18"/>
+    </filter>
+    <linearGradient id="g-input" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="g-conv" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E67E22"/>
+      <stop offset="100%" stop-color="#D35400"/>
+    </linearGradient>
+    <linearGradient id="g-pool" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9B59B6"/>
+      <stop offset="100%" stop-color="#8E44AD"/>
+    </linearGradient>
+    <linearGradient id="g-fc" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="g-out" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34495E"/>
+      <stop offset="100%" stop-color="#2C3E50"/>
+    </linearGradient>
+    <marker id="cnn-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="1920" height="1080" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="960" y="70" text-anchor="middle" font-size="40" font-weight="700" fill="#2C3E50">CNN-architectuur — vier lagen die samen patronen leren herkennen</text>
+  <text x="960" y="108" text-anchor="middle" font-size="20" fill="#7f8c8d">Input → Convolutielaag → Pooling → Fully Connected → Output</text>
+
+  <!-- ── 1. INPUT ── -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="80" y="280" width="240" height="240" rx="12" fill="white" stroke="#3498DB" stroke-width="2"/>
+  </g>
+  <text x="200" y="240" text-anchor="middle" font-size="14" letter-spacing="3" font-weight="700" fill="#2980B9">LAAG 1</text>
+  <text x="200" y="265" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50">Input</text>
+
+  <!-- Input-beeld als raster -->
+  <g>
+    <rect role="presentation" x="100" y="300" width="200" height="200" fill="#EBF5FB"/>
+    <!-- Pixelraster -->
+    <g stroke="#85C1E9" stroke-width="1" opacity="0.6">
+      <line x1="120" y1="300" x2="120" y2="500"/>
+      <line x1="140" y1="300" x2="140" y2="500"/>
+      <line x1="160" y1="300" x2="160" y2="500"/>
+      <line x1="180" y1="300" x2="180" y2="500"/>
+      <line x1="200" y1="300" x2="200" y2="500"/>
+      <line x1="220" y1="300" x2="220" y2="500"/>
+      <line x1="240" y1="300" x2="240" y2="500"/>
+      <line x1="260" y1="300" x2="260" y2="500"/>
+      <line x1="280" y1="300" x2="280" y2="500"/>
+      <line x1="100" y1="320" x2="300" y2="320"/>
+      <line x1="100" y1="340" x2="300" y2="340"/>
+      <line x1="100" y1="360" x2="300" y2="360"/>
+      <line x1="100" y1="380" x2="300" y2="380"/>
+      <line x1="100" y1="400" x2="300" y2="400"/>
+      <line x1="100" y1="420" x2="300" y2="420"/>
+      <line x1="100" y1="440" x2="300" y2="440"/>
+      <line x1="100" y1="460" x2="300" y2="460"/>
+      <line x1="100" y1="480" x2="300" y2="480"/>
+    </g>
+    <!-- Kras simulatie -->
+    <line x1="140" y1="380" x2="240" y2="420" stroke="#1A2733" stroke-width="3" opacity="0.7"/>
+    <!-- Kernel-vakje -->
+    <rect role="presentation" x="180" y="380" width="40" height="40" fill="none" stroke="#E67E22" stroke-width="3" stroke-dasharray="3,2"/>
+  </g>
+  <text x="200" y="555" text-anchor="middle" font-size="15" fill="#2C3E50" font-weight="600">Oppervlakte-foto</text>
+  <text x="200" y="578" text-anchor="middle" font-size="13" fill="#7f8c8d">(of 1D-tijdreeks)</text>
+
+  <!-- Pijl 1 -->
+  <line x1="335" y1="400" x2="395" y2="400" stroke="#7f8c8d" stroke-width="3" marker-end="url(#cnn-arrow)"/>
+
+  <!-- ── 2. CONVOLUTIELAAG ── -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="410" y="260" width="280" height="280" rx="12" fill="white" stroke="#E67E22" stroke-width="2"/>
+  </g>
+  <text x="550" y="240" text-anchor="middle" font-size="14" letter-spacing="3" font-weight="700" fill="#D35400">LAAG 2</text>
+  <text x="550" y="265" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50">Convolutielaag</text>
+
+  <!-- Drie feature-maps gestapeld -->
+  <g>
+    <rect role="presentation" x="430" y="290" width="120" height="120" fill="#FDF2E9" stroke="#D35400" stroke-width="1.5"/>
+    <line x1="450" y1="330" x2="510" y2="365" stroke="#D35400" stroke-width="2" opacity="0.7"/>
+    <text x="490" y="395" text-anchor="middle" font-size="11" fill="#D35400">feature 1: rand</text>
+
+    <rect role="presentation" x="475" y="335" width="120" height="120" fill="#FDF2E9" stroke="#D35400" stroke-width="1.5"/>
+    <circle cx="535" cy="395" r="8" fill="#D35400" opacity="0.6"/>
+    <circle cx="555" cy="380" r="6" fill="#D35400" opacity="0.6"/>
+    <text x="535" y="445" text-anchor="middle" font-size="11" fill="#D35400">feature 2: textuur</text>
+
+    <rect role="presentation" x="520" y="380" width="120" height="120" fill="#FDF2E9" stroke="#D35400" stroke-width="1.5"/>
+    <line x1="540" y1="430" x2="600" y2="430" stroke="#D35400" stroke-width="2" opacity="0.7"/>
+    <line x1="540" y1="450" x2="600" y2="450" stroke="#D35400" stroke-width="2" opacity="0.7"/>
+    <text x="580" y="490" text-anchor="middle" font-size="11" fill="#D35400">feature 3: kleur</text>
+  </g>
+  <text x="550" y="565" text-anchor="middle" font-size="14" fill="#2C3E50" font-weight="600">Feature-maps</text>
+  <text x="550" y="585" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic">"vergrootglas" zoekt</text>
+  <text x="550" y="603" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic">lokale patronen</text>
+
+  <!-- Pijl 2 -->
+  <line x1="705" y1="400" x2="765" y2="400" stroke="#7f8c8d" stroke-width="3" marker-end="url(#cnn-arrow)"/>
+
+  <!-- ── 3. POOLING ── -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="780" y="280" width="240" height="240" rx="12" fill="white" stroke="#9B59B6" stroke-width="2"/>
+  </g>
+  <text x="900" y="240" text-anchor="middle" font-size="14" letter-spacing="3" font-weight="700" fill="#8E44AD">LAAG 3</text>
+  <text x="900" y="265" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50">Pooling</text>
+
+  <!-- Pooling — kleinere maps -->
+  <g>
+    <rect role="presentation" x="820" y="320" width="60" height="60" fill="#F4ECF7" stroke="#8E44AD" stroke-width="1.5"/>
+    <rect role="presentation" x="845" y="345" width="60" height="60" fill="#F4ECF7" stroke="#8E44AD" stroke-width="1.5"/>
+    <rect role="presentation" x="870" y="370" width="60" height="60" fill="#F4ECF7" stroke="#8E44AD" stroke-width="1.5"/>
+  </g>
+  <!-- Compressie-pijlen -->
+  <text x="900" y="475" text-anchor="middle" font-size="22" fill="#8E44AD" font-weight="700">↓ ↓ ↓</text>
+  <text x="900" y="500" text-anchor="middle" font-size="13" fill="#8E44AD">downsamplen</text>
+  <text x="900" y="555" text-anchor="middle" font-size="14" fill="#2C3E50" font-weight="600">Comprimeren</text>
+  <text x="900" y="578" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic">robuust voor verschuiving</text>
+
+  <!-- Pijl 3 -->
+  <line x1="1035" y1="400" x2="1095" y2="400" stroke="#7f8c8d" stroke-width="3" marker-end="url(#cnn-arrow)"/>
+
+  <!-- ── 4. FULLY CONNECTED ── -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1110" y="280" width="280" height="240" rx="12" fill="white" stroke="#27AE60" stroke-width="2"/>
+  </g>
+  <text x="1250" y="240" text-anchor="middle" font-size="14" letter-spacing="3" font-weight="700" fill="#27AE60">LAAG 4</text>
+  <text x="1250" y="265" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50">Fully Connected</text>
+
+  <!-- FC — neurons en lijnen -->
+  <g>
+    <!-- Linker kolom -->
+    <circle cx="1150" cy="320" r="9" fill="#2ECC71"/>
+    <circle cx="1150" cy="360" r="9" fill="#2ECC71"/>
+    <circle cx="1150" cy="400" r="9" fill="#2ECC71"/>
+    <circle cx="1150" cy="440" r="9" fill="#2ECC71"/>
+    <circle cx="1150" cy="480" r="9" fill="#2ECC71"/>
+    <!-- Midden kolom -->
+    <circle cx="1250" cy="350" r="9" fill="#27AE60"/>
+    <circle cx="1250" cy="400" r="9" fill="#27AE60"/>
+    <circle cx="1250" cy="450" r="9" fill="#27AE60"/>
+    <!-- Rechter kolom -->
+    <circle cx="1350" cy="380" r="9" fill="#1E8449"/>
+    <circle cx="1350" cy="420" r="9" fill="#1E8449"/>
+    <!-- Verbindingen -->
+    <g stroke="#7DCEA0" stroke-width="0.8" opacity="0.5">
+      <line x1="1150" y1="320" x2="1250" y2="350"/>
+      <line x1="1150" y1="320" x2="1250" y2="400"/>
+      <line x1="1150" y1="320" x2="1250" y2="450"/>
+      <line x1="1150" y1="360" x2="1250" y2="350"/>
+      <line x1="1150" y1="360" x2="1250" y2="400"/>
+      <line x1="1150" y1="360" x2="1250" y2="450"/>
+      <line x1="1150" y1="400" x2="1250" y2="350"/>
+      <line x1="1150" y1="400" x2="1250" y2="400"/>
+      <line x1="1150" y1="400" x2="1250" y2="450"/>
+      <line x1="1150" y1="440" x2="1250" y2="350"/>
+      <line x1="1150" y1="440" x2="1250" y2="400"/>
+      <line x1="1150" y1="440" x2="1250" y2="450"/>
+      <line x1="1150" y1="480" x2="1250" y2="350"/>
+      <line x1="1150" y1="480" x2="1250" y2="400"/>
+      <line x1="1150" y1="480" x2="1250" y2="450"/>
+      <line x1="1250" y1="350" x2="1350" y2="380"/>
+      <line x1="1250" y1="350" x2="1350" y2="420"/>
+      <line x1="1250" y1="400" x2="1350" y2="380"/>
+      <line x1="1250" y1="400" x2="1350" y2="420"/>
+      <line x1="1250" y1="450" x2="1350" y2="380"/>
+      <line x1="1250" y1="450" x2="1350" y2="420"/>
+    </g>
+  </g>
+  <text x="1250" y="555" text-anchor="middle" font-size="14" fill="#2C3E50" font-weight="600">Integreren tot één antwoord</text>
+  <text x="1250" y="578" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic">elke neuron ziet alle features</text>
+
+  <!-- Pijl 4 -->
+  <line x1="1405" y1="400" x2="1465" y2="400" stroke="#7f8c8d" stroke-width="3" marker-end="url(#cnn-arrow)"/>
+
+  <!-- ── 5. OUTPUT ── -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1480" y="280" width="360" height="240" rx="12" fill="url(#g-out)"/>
+  </g>
+  <text x="1660" y="240" text-anchor="middle" font-size="14" letter-spacing="3" font-weight="700" fill="#2C3E50">LAAG 5</text>
+  <text x="1660" y="265" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50">Output</text>
+
+  <!-- Output-balken -->
+  <rect role="presentation" x="1520" y="320" width="280" height="60" rx="6" fill="#E74C3C"/>
+  <text x="1540" y="358" font-size="20" font-weight="700" fill="white">DEFECT</text>
+  <text x="1780" y="358" text-anchor="end" font-size="20" font-weight="700" fill="white">87%</text>
+
+  <rect role="presentation" x="1520" y="395" width="280" height="60" rx="6" fill="#27AE60"/>
+  <text x="1540" y="433" font-size="20" font-weight="700" fill="white">OKÉ</text>
+  <text x="1780" y="433" text-anchor="end" font-size="20" font-weight="700" fill="white">13%</text>
+
+  <text x="1660" y="490" text-anchor="middle" font-size="14" fill="#B0BEC5">Klasse-kansen (softmax)</text>
+
+  <text x="1660" y="555" text-anchor="middle" font-size="14" fill="#2C3E50" font-weight="600">Eindoordeel</text>
+  <text x="1660" y="578" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic">defect / oké</text>
+
+  <!-- ── KERNCONCEPTEN ONDERAAN ── -->
+  <text x="960" y="710" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50">Twee sleutelwoorden — die het verschil maken met een gewoon netwerk</text>
+
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="280" y="750" width="640" height="180" rx="14" fill="white" stroke="#E67E22" stroke-width="2"/>
+  </g>
+  <rect role="presentation" x="280" y="750" width="640" height="50" rx="14" fill="url(#g-conv)"/>
+  <rect role="presentation" x="280" y="780" width="640" height="20" fill="url(#g-conv)"/>
+  <text x="600" y="785" text-anchor="middle" font-size="22" font-weight="700" fill="white">Lokale connectiviteit</text>
+  <text x="600" y="838" text-anchor="middle" font-size="16" fill="#2C3E50">De kernel kijkt door een klein venster.</text>
+  <text x="600" y="862" text-anchor="middle" font-size="16" fill="#2C3E50">Hij ziet alleen wat eronder ligt — niet het hele beeld in één keer.</text>
+  <text x="600" y="900" text-anchor="middle" font-size="14" fill="#7f8c8d" font-style="italic">Daarom is een CNN goed in lokale patronen: krassen, frequentie-banden, randen.</text>
+
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1000" y="750" width="640" height="180" rx="14" fill="white" stroke="#9B59B6" stroke-width="2"/>
+  </g>
+  <rect role="presentation" x="1000" y="750" width="640" height="50" rx="14" fill="url(#g-pool)"/>
+  <rect role="presentation" x="1000" y="780" width="640" height="20" fill="url(#g-pool)"/>
+  <text x="1320" y="785" text-anchor="middle" font-size="22" font-weight="700" fill="white">Shared weights (gedeelde gewichten)</text>
+  <text x="1320" y="838" text-anchor="middle" font-size="16" fill="#2C3E50">Hetzelfde "vergrootglas" wordt overal gebruikt.</text>
+  <text x="1320" y="862" text-anchor="middle" font-size="16" fill="#2C3E50">Veel minder parameters dan een fully-connected netwerk — sneller te trainen.</text>
+  <text x="1320" y="900" text-anchor="middle" font-size="14" fill="#7f8c8d" font-style="italic">Daarom is een CNN efficiënt voor data met ruimtelijke of volgordelijke structuur.</text>
+
+  <!-- Wanneer past CNN? -->
+  <text x="960" y="980" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">Past bij: beelden (defectdetectie, OCR), 1D-tijdreeksen (vibration, akoestiek). Niet bij: ERP-tabellen zonder ruimtelijke ordening.</text>
+
+  <!-- Bronvermelding -->
+  <text x="960" y="1050" text-anchor="middle" font-size="13" fill="#999">CNN-architectuur — AIMM Curriculum | Module 2: Train | v1.0</text>
+</svg>

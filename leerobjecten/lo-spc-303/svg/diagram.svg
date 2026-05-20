@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" role="img" aria-labelledby="title desc" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Capability-valkuilen — drie voorwaarden en de Gage R&amp;R %GRR-drempels (AIAG MSA)</title>
+  <desc id="desc">Een visuele checklist in twee delen. Deel 1 toont de drie voorwaarden-check als een stoplicht-poortje: voorwaarde 1 meetsysteem geschikt via Gage R en R / MSA, voorwaarde 2 proces stabiel via SPC-regelkaart zonder out-of-control signalen, voorwaarde 3 rationele subgroepering met één bron per subgroep. Alleen als alle drie ja zijn mag een capability-getal Cp Cpk Pp Ppk een beslissing sturen. Bij onbekend of nee eerst uitzoeken. Deel 2 toont de AIAG MSA vierde editie drempelwaarden voor percentage GRR: onder 10 procent is het meetsysteem geschikt met groen vinkje, tussen 10 en 30 procent is marginaal met amber en conditioneel acceptabel, boven 30 procent is niet geschikt met rood en niet bruikbaar voor capability. Onderaan staat het Ford PPAP-voorschrift: geen capability-studie zonder voorafgaande MSA. Bronvermelding: ko-spc-303, NIST SEMATECH Handbook, AIAG MSA Reference Manual vierde editie, Ford PPAP vierde editie.</desc>
+
+  <defs>
+    <linearGradient id="grad-meet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="grad-stab" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E67E22"/>
+      <stop offset="100%" stop-color="#D35400"/>
+    </linearGradient>
+    <linearGradient id="grad-sub" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9B59B6"/>
+      <stop offset="100%" stop-color="#8E44AD"/>
+    </linearGradient>
+    <linearGradient id="grad-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="grad-amber" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F1C40F"/>
+      <stop offset="100%" stop-color="#D4AC0D"/>
+    </linearGradient>
+    <linearGradient id="grad-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E74C3C"/>
+      <stop offset="100%" stop-color="#C0392B"/>
+    </linearGradient>
+    <linearGradient id="grad-dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34495E"/>
+      <stop offset="100%" stop-color="#2C3E50"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.18"/>
+    </filter>
+    <marker id="arrow-flow" markerWidth="12" markerHeight="9" refX="11" refY="4.5" orient="auto">
+      <polygon points="0 0, 12 4.5, 0 9" fill="#2C3E50"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="960" height="760" fill="#F8F6F0"/>
+
+  <!-- Titel -->
+  <text x="480" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50" letter-spacing="0.5">Capability — drie voorwaarden vóór het getal telt</text>
+  <text x="480" y="66" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic">Eén voorwaarde geschonden of onbekend = Cp, Cpk, Pp, Ppk sturen géén beslissing</text>
+
+  <!-- ═══════════ DEEL 1 — DE DRIE VOORWAARDEN ═══════════ -->
+  <text x="60" y="110" font-size="14" font-weight="700" fill="#2C3E50" letter-spacing="0.5">Deel 1 — De drie voorwaarden-check</text>
+  <line x1="60" y1="118" x2="900" y2="118" stroke="#CBD5E1" stroke-width="1"/>
+
+  <!-- Voorwaarde 1: Meetsysteem -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="60" y="140" width="260" height="150" rx="14" fill="url(#grad-meet)"/>
+  </g>
+  <circle cx="90" cy="170" r="16" fill="#FFFFFF"/>
+  <text x="90" y="175" text-anchor="middle" font-size="14" font-weight="700" fill="#2980B9">1</text>
+  <text x="120" y="175" font-size="16" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">MEETSYSTEEM</text>
+  <text x="75" y="200" font-size="12" fill="#FFFFFF" font-weight="600">Geschikt via Gage R&amp;R / MSA?</text>
+  <text x="75" y="220" font-size="11" fill="rgba(255,255,255,0.9)">• Rapport aanwezig?</text>
+  <text x="75" y="236" font-size="11" fill="rgba(255,255,255,0.9)">• %GRR bekend en &lt; 30 %?</text>
+  <text x="75" y="252" font-size="11" fill="rgba(255,255,255,0.9)">• Methode = AIAG MSA 4e?</text>
+  <text x="75" y="276" font-size="10" fill="rgba(255,255,255,0.8)" font-style="italic">Bron: AIAG MSA · Ford PPAP 4e</text>
+
+  <!-- Voorwaarde 2: Stabiliteit -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="350" y="140" width="260" height="150" rx="14" fill="url(#grad-stab)"/>
+  </g>
+  <circle cx="380" cy="170" r="16" fill="#FFFFFF"/>
+  <text x="380" y="175" text-anchor="middle" font-size="14" font-weight="700" fill="#D35400">2</text>
+  <text x="410" y="175" font-size="16" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">STABILITEIT</text>
+  <text x="365" y="200" font-size="12" fill="#FFFFFF" font-weight="600">Proces stabiel tijdens meting?</text>
+  <text x="365" y="220" font-size="11" fill="rgba(255,255,255,0.9)">• SPC-regelkaart over periode?</text>
+  <text x="365" y="236" font-size="11" fill="rgba(255,255,255,0.9)">• Geen out-of-control signalen?</text>
+  <text x="365" y="252" font-size="11" fill="rgba(255,255,255,0.9)">• Geen runs of trends (Nelson)?</text>
+  <text x="365" y="276" font-size="10" fill="rgba(255,255,255,0.8)" font-style="italic">Bron: NIST/SEMATECH Handbook</text>
+
+  <!-- Voorwaarde 3: Subgroepering -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="640" y="140" width="260" height="150" rx="14" fill="url(#grad-sub)"/>
+  </g>
+  <circle cx="670" cy="170" r="16" fill="#FFFFFF"/>
+  <text x="670" y="175" text-anchor="middle" font-size="14" font-weight="700" fill="#8E44AD">3</text>
+  <text x="700" y="175" font-size="16" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">SUBGROEPEN</text>
+  <text x="655" y="200" font-size="12" fill="#FFFFFF" font-weight="600">Rationeel samengesteld?</text>
+  <text x="655" y="220" font-size="11" fill="rgba(255,255,255,0.9)">• Eén bron (machine/caviteit)?</text>
+  <text x="655" y="236" font-size="11" fill="rgba(255,255,255,0.9)">• Dicht in tijd, één shift?</text>
+  <text x="655" y="252" font-size="11" fill="rgba(255,255,255,0.9)">• Definitie gedocumenteerd?</text>
+  <text x="655" y="276" font-size="10" fill="rgba(255,255,255,0.8)" font-style="italic">Bron: AIAG · ko-spc-109</text>
+
+  <!-- Samenloop-pijlen naar beneden -->
+  <path d="M 190,295 L 190,330 L 475,330 L 475,355" fill="none" stroke="#2C3E50" stroke-width="2" marker-end="url(#arrow-flow)"/>
+  <path d="M 480,295 L 480,355" fill="none" stroke="#2C3E50" stroke-width="2" marker-end="url(#arrow-flow)"/>
+  <path d="M 770,295 L 770,330 L 485,330 L 485,355" fill="none" stroke="#2C3E50" stroke-width="2" marker-end="url(#arrow-flow)"/>
+
+  <!-- Gate: drie keer ja met bron -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="280" y="360" width="400" height="60" rx="30" fill="url(#grad-dark)"/>
+  </g>
+  <text x="480" y="385" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">Drie keer "ja met bron" = getal bruikbaar</text>
+  <text x="480" y="405" text-anchor="middle" font-size="11" fill="#FFD700" font-style="italic">Eén "onbekend" = eerst uitzoeken · Eén "nee" = herrekenen na correctie</text>
+
+  <!-- ═══════════ DEEL 2 — %GRR DREMPELWAARDEN ═══════════ -->
+  <text x="60" y="460" font-size="14" font-weight="700" fill="#2C3E50" letter-spacing="0.5">Deel 2 — %GRR drempelwaarden (AIAG MSA 4e editie)</text>
+  <line x1="60" y1="468" x2="900" y2="468" stroke="#CBD5E1" stroke-width="1"/>
+
+  <!-- Drempel 1: Groen < 10% -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="60" y="490" width="260" height="130" rx="14" fill="url(#grad-green)"/>
+  </g>
+  <text x="190" y="525" text-anchor="middle" font-size="32" font-weight="700" fill="#FFFFFF">&lt; 10 %</text>
+  <text x="190" y="555" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">GESCHIKT</text>
+  <text x="190" y="578" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.95)">Meetsysteem bewezen</text>
+  <text x="190" y="594" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.95)">geschikt voor capability</text>
+  <text x="190" y="612" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)" font-style="italic">AIAG-norm</text>
+  <!-- Groen vinkje -->
+  <circle cx="85" cy="515" r="14" fill="#FFFFFF"/>
+  <path d="M 78,515 L 83,521 L 92,508" fill="none" stroke="#27AE60" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Drempel 2: Amber 10-30% -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="350" y="490" width="260" height="130" rx="14" fill="url(#grad-amber)"/>
+  </g>
+  <text x="480" y="525" text-anchor="middle" font-size="30" font-weight="700" fill="#FFFFFF">10 – 30 %</text>
+  <text x="480" y="555" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">MARGINAAL</text>
+  <text x="480" y="578" text-anchor="middle" font-size="11" fill="#FFFFFF">Conditioneel acceptabel —</text>
+  <text x="480" y="594" text-anchor="middle" font-size="11" fill="#FFFFFF">verbetering overwegen</text>
+  <text x="480" y="612" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)" font-style="italic">AIAG-norm</text>
+  <!-- Uitroepteken -->
+  <circle cx="375" cy="515" r="14" fill="#FFFFFF"/>
+  <text x="375" y="521" text-anchor="middle" font-size="18" font-weight="700" fill="#D4AC0D">!</text>
+
+  <!-- Drempel 3: Rood > 30% -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="640" y="490" width="260" height="130" rx="14" fill="url(#grad-red)"/>
+  </g>
+  <text x="770" y="525" text-anchor="middle" font-size="32" font-weight="700" fill="#FFFFFF">&gt; 30 %</text>
+  <text x="770" y="555" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">NIET GESCHIKT</text>
+  <text x="770" y="578" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.95)">Niet bruikbaar voor</text>
+  <text x="770" y="594" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.95)">capability-studie</text>
+  <text x="770" y="612" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)" font-style="italic">AIAG-norm</text>
+  <!-- Kruis -->
+  <circle cx="665" cy="515" r="14" fill="#FFFFFF"/>
+  <path d="M 659,509 L 671,521 M 671,509 L 659,521" stroke="#C0392B" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Ford PPAP-voorschrift onderbalk -->
+  <g>
+    <rect role="presentation" x="60" y="650" width="840" height="56" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="80" y="672" font-size="12" font-weight="700" fill="#2C3E50">Ford PPAP-voorschrift (4e editie):</text>
+    <text x="80" y="692" font-size="12" fill="#374151">Geen capability-studie zonder voorafgaande MSA. Gage R&amp;R-rapport is vrijgave-voorwaarde.</text>
+  </g>
+
+  <!-- Bronvermelding -->
+  <text x="480" y="738" text-anchor="middle" font-size="9" fill="#999">Bron: ko-spc-303 · NIST/SEMATECH e-Handbook of Statistical Methods · AIAG MSA Reference Manual 4e · Ford PPAP 4th edition · AIMM SPC Module 3 Op Maat</text>
+</svg>

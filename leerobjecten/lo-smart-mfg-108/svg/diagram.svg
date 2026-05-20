@@ -1,0 +1,106 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 620"
+     font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">SHAP-grafiek: sensorbijdragen aan een anomalie</title>
+  <desc id="desc">Een horizontaal balkdiagram dat toont hoe zes sensoren bijdragen aan een anomaliemelding op een CNC-machine. De sensoren zijn gesorteerd van grootste naar kleinste bijdrage. Hydraulische druk heeft de grootste bijdrage, omgevingstemperatuur de kleinste.</desc>
+
+  <defs>
+    <linearGradient id="bar-high" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#E74C3C"/>
+      <stop offset="100%" stop-color="#C0392B"/>
+    </linearGradient>
+    <linearGradient id="bar-medium" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#E67E22"/>
+      <stop offset="100%" stop-color="#D35400"/>
+    </linearGradient>
+    <linearGradient id="bar-low" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect role="presentation" width="800" height="620" fill="#FAFAF8"/>
+
+  <!-- Title -->
+  <text x="400" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50" letter-spacing="1">SHAP-grafiek: welke sensor draagt bij?</text>
+  <text x="400" y="66" text-anchor="middle" font-size="13" fill="#7f8c8d" letter-spacing="0.5">Voorbeeld: anomaliemelding op een CNC-machine</text>
+
+  <!-- Instruction box -->
+  <rect role="presentation" x="80" y="85" width="640" height="44" rx="8" fill="#EFF6FF" stroke="#3498DB" stroke-width="1"/>
+  <text x="400" y="107" text-anchor="middle" font-size="12" fill="#2C3E50" font-weight="600">Hoe lees je dit diagram?</text>
+  <text x="400" y="122" text-anchor="middle" font-size="11" fill="#555">Langste balk = grootste bijdrage. Kijk naar de top 3 sensoren. Die vertellen het verhaal.</text>
+
+  <!-- Y-axis labels area -->
+  <!-- Sensor labels (left side) -->
+  <text x="195" y="175" text-anchor="end" font-size="13" font-weight="600" fill="#2C3E50">Hydraulische druk</text>
+  <text x="195" y="235" text-anchor="end" font-size="13" font-weight="600" fill="#2C3E50">Hydraulische temp.</text>
+  <text x="195" y="295" text-anchor="end" font-size="13" font-weight="600" fill="#2C3E50">Pomp debiet</text>
+  <text x="195" y="355" text-anchor="end" font-size="13" font-weight="600" fill="#7f8c8d">Spindel snelheid</text>
+  <text x="195" y="415" text-anchor="end" font-size="13" font-weight="600" fill="#7f8c8d">Koelmiddel druk</text>
+  <text x="195" y="475" text-anchor="end" font-size="13" font-weight="600" fill="#7f8c8d">Omgevingstemp.</text>
+
+  <!-- Horizontal gridlines -->
+  <line role="presentation" x1="210" y1="145" x2="710" y2="145" stroke="#E5E7EB" stroke-width="1"/>
+  <line role="presentation" x1="210" y1="205" x2="710" y2="205" stroke="#E5E7EB" stroke-width="1"/>
+  <line role="presentation" x1="210" y1="265" x2="710" y2="265" stroke="#E5E7EB" stroke-width="1"/>
+  <line role="presentation" x1="210" y1="325" x2="710" y2="325" stroke="#E5E7EB" stroke-width="1"/>
+  <line role="presentation" x1="210" y1="385" x2="710" y2="385" stroke="#E5E7EB" stroke-width="1"/>
+  <line role="presentation" x1="210" y1="445" x2="710" y2="445" stroke="#E5E7EB" stroke-width="1"/>
+  <line role="presentation" x1="210" y1="505" x2="710" y2="505" stroke="#E5E7EB" stroke-width="1"/>
+
+  <!-- Vertical axis line -->
+  <line role="presentation" x1="210" y1="145" x2="210" y2="505" stroke="#BDC3C7" stroke-width="2"/>
+
+  <!-- Bar 1: Hydraulische druk — HOOG -->
+  <rect x="210" y="158" width="480" height="34" rx="4" fill="url(#bar-high)" filter="url(#shadow)"/>
+  <text x="700" y="180" text-anchor="end" font-size="12" font-weight="600" fill="white">0.82</text>
+
+  <!-- Bar 2: Hydraulische temperatuur — HOOG -->
+  <rect x="210" y="218" width="380" height="34" rx="4" fill="url(#bar-high)" filter="url(#shadow)"/>
+  <text x="598" y="240" text-anchor="end" font-size="12" font-weight="600" fill="white">0.65</text>
+
+  <!-- Bar 3: Pomp debiet — GEMIDDELD -->
+  <rect x="210" y="278" width="240" height="34" rx="4" fill="url(#bar-medium)" filter="url(#shadow)"/>
+  <text x="458" y="300" text-anchor="end" font-size="12" font-weight="600" fill="white">0.41</text>
+
+  <!-- Bar 4: Spindel snelheid — LAAG -->
+  <rect x="210" y="338" width="100" height="34" rx="4" fill="url(#bar-low)" filter="url(#shadow)"/>
+  <text x="318" y="360" text-anchor="end" font-size="12" font-weight="600" fill="white">0.17</text>
+
+  <!-- Bar 5: Koelmiddel druk — LAAG -->
+  <rect x="210" y="398" width="55" height="34" rx="4" fill="url(#bar-low)" filter="url(#shadow)"/>
+  <text x="275" y="420" text-anchor="start" font-size="12" font-weight="600" fill="#2980B9">0.09</text>
+
+  <!-- Bar 6: Omgevingstemperatuur — ZEER LAAG -->
+  <rect x="210" y="458" width="25" height="34" rx="4" fill="url(#bar-low)" filter="url(#shadow)"/>
+  <text x="245" y="480" text-anchor="start" font-size="12" font-weight="600" fill="#2980B9">0.04</text>
+
+  <!-- X-axis label -->
+  <text x="460" y="530" text-anchor="middle" font-size="12" font-weight="600" fill="#7f8c8d">Bijdrage aan de anomalie (SHAP-waarde)</text>
+
+  <!-- Bracket: Top 3 (right side) -->
+  <line role="presentation" x1="720" y1="158" x2="720" y2="312" stroke="#E74C3C" stroke-width="3" stroke-linecap="round"/>
+  <line role="presentation" x1="715" y1="158" x2="720" y2="158" stroke="#E74C3C" stroke-width="3" stroke-linecap="round"/>
+  <line role="presentation" x1="715" y1="312" x2="720" y2="312" stroke="#E74C3C" stroke-width="3" stroke-linecap="round"/>
+  <text x="740" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="#E74C3C" transform="rotate(90,740,225)">TOP 3</text>
+
+  <!-- Annotation box: conclusion -->
+  <rect role="presentation" x="80" y="545" width="640" height="48" rx="8" fill="#ECFDF5" stroke="#10B981" stroke-width="1"/>
+  <text x="400" y="566" text-anchor="middle" font-size="12" font-weight="600" fill="#065F46">Conclusie: alle top-3 sensoren horen bij het hydraulische systeem.</text>
+  <text x="400" y="582" text-anchor="middle" font-size="11" fill="#065F46">Actie: controleer het hydraulische systeem als eerste.</text>
+
+  <!-- Legend -->
+  <rect role="presentation" x="210" y="508" width="14" height="14" rx="3" fill="#E74C3C"/>
+  <text x="230" y="519" font-size="11" fill="#555">Hoge bijdrage</text>
+  <rect role="presentation" x="340" y="508" width="14" height="14" rx="3" fill="#E67E22"/>
+  <text x="360" y="519" font-size="11" fill="#555">Gemiddelde bijdrage</text>
+  <rect role="presentation" x="510" y="508" width="14" height="14" rx="3" fill="#3498DB"/>
+  <text x="530" y="519" font-size="11" fill="#555">Lage bijdrage</text>
+
+  <!-- Footer -->
+  <text x="400" y="608" text-anchor="middle" font-size="10" fill="#999">SHAP (SHapley Additive exPlanations) - Lundberg &amp; Lee (2017) | AIMM Predictive Maintenance</text>
+</svg>
