@@ -7,6 +7,24 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde11-lo-industry40-twin-001
+
+**Kontext:** Ronde 11: lo-industry40-twin-001
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-twin-001/trainee.md`
+- `kennisbank/industry_4_0/smart_factory_concepten/ko-industry-4-0-twin-001.md`
+- `leerobjecten/lo-industry40-twin-001/trainer.md`
+- `leerobjecten/lo-industry40-twin-001/draaiboek.md`
+- `leerobjecten/lo-industry40-twin-001/werkbladen/wb-01-reflecteren.md`
+- `leerobjecten/lo-industry40-twin-001/werkbladen/wb-02-theoretiseren.md`
+- `leerobjecten/lo-industry40-twin-001/werkbladen/wb-03-ervaren.md`
+- `leerobjecten/lo-industry40-twin-001/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-industry40-twin-001/svg/diagram.svg`
+- `leerobjecten/lo-industry40-twin-001/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-industry40-twin-001/README.md`
+
 ## 2026-05-19 — publish-ronde10-lo-ai-fund-022
 
 **Kontext:** Ronde 10: lo-ai-fund-022

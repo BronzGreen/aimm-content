@@ -1,0 +1,140 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1920 1080" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Twin Transitions: digitalisering en duurzaamheid als 2-assige ruimte met vier kwadranten</title>
+  <desc id="desc">Een 2-assig kwadrantendiagram waarin digitalisering (smarter) op de horizontale as en duurzaamheid (greener) op de verticale as staat. De vier kwadranten tonen de relatie tussen beide transities: rechtsboven is versterking (smarter en greener gaan samen), linksboven is greener zonder digitalisering, rechtsonder is spanning (smarter zonder greener) en linksonder is stilstand. Per kwadrant staan twee voorbeelden uit de Nederlandse procesindustrie en een korte typering. In het midden een sturingspijl die laat zien dat bewuste keuze projecten van rechtsonder naar rechtsboven kan verschuiven.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="3" dy="4" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+    <linearGradient id="g-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="g-orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F39C12"/>
+      <stop offset="100%" stop-color="#E67E22"/>
+    </linearGradient>
+    <linearGradient id="g-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E74C3C"/>
+      <stop offset="100%" stop-color="#C0392B"/>
+    </linearGradient>
+    <linearGradient id="g-grey" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#95A5A6"/>
+      <stop offset="100%" stop-color="#7F8C8D"/>
+    </linearGradient>
+    <marker id="arrow-blue" markerWidth="14" markerHeight="10" refX="14" refY="5" orient="auto">
+      <polygon points="0 0, 14 5, 0 10" fill="#2980B9"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="1920" height="1080" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="960" y="70" text-anchor="middle" font-size="40" font-weight="700" fill="#2C3E50" letter-spacing="2">Twin Transitions: digitalisering x duurzaamheid</text>
+  <text x="960" y="108" text-anchor="middle" font-size="20" fill="#7f8c8d">Vier kwadranten — wanneer versterken ze elkaar, wanneer trekken ze tegen elkaar in?</text>
+
+  <!-- Kwadrant-achtergronden (lichte vlakken) -->
+  <!-- Rechtsboven: Versterking -->
+  <rect role="presentation" x="965" y="160" width="730" height="380" rx="12" fill="#27AE60" opacity="0.10"/>
+  <!-- Linksboven: Greener zonder digi -->
+  <rect role="presentation" x="225" y="160" width="730" height="380" rx="12" fill="#F39C12" opacity="0.10"/>
+  <!-- Rechtsonder: Spanning -->
+  <rect role="presentation" x="965" y="550" width="730" height="380" rx="12" fill="#E74C3C" opacity="0.10"/>
+  <!-- Linksonder: Stilstand -->
+  <rect role="presentation" x="225" y="550" width="730" height="380" rx="12" fill="#95A5A6" opacity="0.10"/>
+
+  <!-- Assen -->
+  <line x1="225" y1="540" x2="1695" y2="540" stroke="#34495E" stroke-width="3"/>
+  <line x1="960" y1="160" x2="960" y2="930" stroke="#34495E" stroke-width="3"/>
+
+  <!-- As-labels -->
+  <text x="960" y="135" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50">↑ MEER GREENER (duurzamer)</text>
+  <text x="960" y="970" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50">↓ MINDER GREENER</text>
+  <text x="200" y="545" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50" transform="rotate(-90,200,545)">← MINDER SMARTER (digitaler)</text>
+  <text x="1720" y="545" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50" transform="rotate(90,1720,545)">MEER SMARTER →</text>
+
+  <!-- Kwadrant titels -->
+  <!-- Rechtsboven -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1010" y="190" width="640" height="56" rx="10" fill="url(#g-green)"/>
+  </g>
+  <text x="1330" y="227" text-anchor="middle" font-size="24" font-weight="700" fill="white">VERSTERKING — smarter EN greener</text>
+
+  <!-- Linksboven -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="270" y="190" width="640" height="56" rx="10" fill="url(#g-orange)"/>
+  </g>
+  <text x="590" y="227" text-anchor="middle" font-size="24" font-weight="700" fill="white">GREENER zonder digitalisering</text>
+
+  <!-- Rechtsonder -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1010" y="580" width="640" height="56" rx="10" fill="url(#g-red)"/>
+  </g>
+  <text x="1330" y="617" text-anchor="middle" font-size="24" font-weight="700" fill="white">SPANNING — smarter zonder greener</text>
+
+  <!-- Linksonder -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="270" y="580" width="640" height="56" rx="10" fill="url(#g-grey)"/>
+  </g>
+  <text x="590" y="617" text-anchor="middle" font-size="24" font-weight="700" fill="white">STILSTAND — geen van beide</text>
+
+  <!-- Voorbeelden Rechtsboven (versterking) -->
+  <text x="1030" y="285" font-size="18" font-weight="600" fill="#1E8449">Voorbeelden uit de procesindustrie:</text>
+  <circle cx="1050" cy="320" r="6" fill="#27AE60"/>
+  <text x="1070" y="326" font-size="17" fill="#2C3E50">AI optimaliseert stoom- en energieverbruik op chemiepark — 8% minder verbruik</text>
+  <circle cx="1050" cy="365" r="6" fill="#27AE60"/>
+  <text x="1070" y="371" font-size="17" fill="#2C3E50">Predictive maintenance verlengt levensduur, vermindert onderdelen-vervanging</text>
+  <circle cx="1050" cy="410" r="6" fill="#27AE60"/>
+  <text x="1070" y="416" font-size="17" fill="#2C3E50">Real-time emissie-dashboard maakt scope-2-rapportage continu meetbaar</text>
+  <text x="1030" y="475" font-size="17" font-weight="600" fill="#1E8449" font-style="italic">Patroon: data verlaagt direct verbruik of verspilling.</text>
+  <text x="1030" y="500" font-size="17" font-weight="600" fill="#1E8449" font-style="italic">Sturing: lopend project versnellen, opschalen.</text>
+
+  <!-- Voorbeelden Linksboven (greener zonder digi) -->
+  <text x="290" y="285" font-size="18" font-weight="600" fill="#B9770E">Voorbeelden uit de procesindustrie:</text>
+  <circle cx="310" cy="320" r="6" fill="#E67E22"/>
+  <text x="330" y="326" font-size="17" fill="#2C3E50">Overstap naar groene waterstof als procesbrandstof</text>
+  <circle cx="310" cy="365" r="6" fill="#E67E22"/>
+  <text x="330" y="371" font-size="17" fill="#2C3E50">Restwarmte-koppeling tussen productielocaties</text>
+  <circle cx="310" cy="410" r="6" fill="#E67E22"/>
+  <text x="330" y="416" font-size="17" fill="#2C3E50">Materialenkeuze: van fossiel naar bio-based grondstof</text>
+  <text x="290" y="475" font-size="17" font-weight="600" fill="#B9770E" font-style="italic">Patroon: duurzaamheidswinst zonder data-investering.</text>
+  <text x="290" y="500" font-size="17" font-weight="600" fill="#B9770E" font-style="italic">Sturing: monitoring toevoegen om effect te borgen.</text>
+
+  <!-- Voorbeelden Rechtsonder (spanning) -->
+  <text x="1030" y="675" font-size="18" font-weight="600" fill="#A93226">Voorbeelden uit de procesindustrie:</text>
+  <circle cx="1050" cy="710" r="6" fill="#E74C3C"/>
+  <text x="1070" y="716" font-size="17" fill="#2C3E50">IoT-platform met 24/7-cloud-koeling — extra scope-2-emissies</text>
+  <circle cx="1050" cy="755" r="6" fill="#E74C3C"/>
+  <text x="1070" y="761" font-size="17" fill="#2C3E50">Sneller productieritme door AI — méér grondstof-doorzet</text>
+  <circle cx="1050" cy="800" r="6" fill="#E74C3C"/>
+  <text x="1070" y="806" font-size="17" fill="#2C3E50">Vervangen werkende sensoren door &quot;slimmere&quot; — extra hardware-footprint</text>
+  <text x="1030" y="865" font-size="17" font-weight="600" fill="#A93226" font-style="italic">Patroon: efficiency-winst, footprint groeit mee.</text>
+  <text x="1030" y="890" font-size="17" font-weight="600" fill="#A93226" font-style="italic">Sturing: bewuste keuze nodig — koppelen aan greener-doel.</text>
+
+  <!-- Voorbeelden Linksonder (stilstand) -->
+  <text x="290" y="675" font-size="18" font-weight="600" fill="#566573">Voorbeelden uit de procesindustrie:</text>
+  <circle cx="310" cy="710" r="6" fill="#7F8C8D"/>
+  <text x="330" y="716" font-size="17" fill="#2C3E50">Maandrapportages op papier, geen monitoring</text>
+  <circle cx="310" cy="755" r="6" fill="#7F8C8D"/>
+  <text x="330" y="761" font-size="17" fill="#2C3E50">Geplande onderhoudsintervallen, geen conditiedata</text>
+  <circle cx="310" cy="800" r="6" fill="#7F8C8D"/>
+  <text x="330" y="806" font-size="17" fill="#2C3E50">Status quo — geen digitaliserings- of verduurzamings-roadmap</text>
+  <text x="290" y="865" font-size="17" font-weight="600" fill="#566573" font-style="italic">Patroon: geen voortgang op een van beide assen.</text>
+  <text x="290" y="890" font-size="17" font-weight="600" fill="#566573" font-style="italic">Sturing: vertrekpunt herzien, lange termijn risico.</text>
+
+  <!-- Sturingspijl: van rechtsonder naar rechtsboven -->
+  <path d="M 1330 700 Q 1480 600 1330 460" fill="none" stroke="#2980B9" stroke-width="6" stroke-dasharray="12,8" marker-end="url(#arrow-blue)" opacity="0.7"/>
+  <rect role="presentation" x="1410" y="555" width="190" height="50" rx="8" fill="#2980B9"/>
+  <text x="1505" y="588" text-anchor="middle" font-size="17" font-weight="700" fill="white">Bewuste sturing</text>
+
+  <!-- Centrum-uitleg -->
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="660" y="990" width="600" height="60" rx="12" fill="white" stroke="#34495E" stroke-width="2"/>
+  </g>
+  <text x="960" y="1027" text-anchor="middle" font-size="18" font-weight="600" fill="#2C3E50">De uitkomst hangt af van bewuste sturing — niet van toeval.</text>
+
+  <!-- Bronvermelding -->
+  <text x="960" y="1075" text-anchor="middle" font-size="13" fill="#999">John et al. (2026), Navigating Twin Transitions, ch. 16 | AIMM Curriculum | Module 3: Op maat | v1.0</text>
+</svg>
