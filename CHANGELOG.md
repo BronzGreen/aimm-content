@@ -7,6 +7,73 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde15-lo-ai-fund-186
+
+**Kontext:** Ronde 15: lo-ai-fund-186
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-186/trainee.md`
+- `kennisbank/ai_fundamentals/ai_ethics_en_bias/ko-ai-fund-186.md`
+- `leerobjecten/lo-ai-fund-186/trainer.md`
+- `leerobjecten/lo-ai-fund-186/draaiboek.md`
+- `leerobjecten/lo-ai-fund-186/werkbladen/wb-01-casus-lasersnijder.md`
+- `leerobjecten/lo-ai-fund-186/werkbladen/wb-02-buurman-sterk-zwak.md`
+- `leerobjecten/lo-ai-fund-186/werkbladen/wb-03-handout-sterk-zwak.md`
+- `leerobjecten/lo-ai-fund-186/werkbladen/wb-04-eigen-risico.md`
+- `leerobjecten/lo-ai-fund-186/README.md`
+
+## 2026-05-20 — publish-ronde15-lo-smart-mfg-202
+
+**Kontext:** Ronde 15: lo-smart-mfg-202
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-202/trainee.md`
+- `kennisbank/smart_manufacturing/predictive_maintenance/ko-smart-mfg-202.md`
+- `leerobjecten/lo-smart-mfg-202/trainer.md`
+- `leerobjecten/lo-smart-mfg-202/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-202/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-smart-mfg-202/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-smart-mfg-202/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-smart-mfg-202/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-smart-mfg-202/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-202/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-202/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-202/README.md`
+
+## 2026-05-20 — publish-ronde15-lo-industry40-301
+
+**Kontext:** Ronde 15: lo-industry40-301
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-301/trainee.md`
+- `leerobjecten/lo-industry40-301/trainer.md`
+- `leerobjecten/lo-industry40-301/draaiboek.md`
+- `leerobjecten/lo-industry40-301/werkbladen/wb-01-componenten-verkennen.md`
+- `leerobjecten/lo-industry40-301/werkbladen/wb-02-duo-vraag-bij-component.md`
+- `leerobjecten/lo-industry40-301/werkbladen/wb-03-handout-sensor-keuze.md`
+- `leerobjecten/lo-industry40-301/werkbladen/wb-04-jouw-sensor-keuze.md`
+- `leerobjecten/lo-industry40-301/README.md`
+
+## 2026-05-20 — publish-ronde15-lo-spc-202
+
+**Kontext:** Ronde 15: lo-spc-202
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-202/trainee.md`
+- `kennisbank/spc/regelkaarten/ko-spc-202.md`
+- `leerobjecten/lo-spc-202/trainer.md`
+- `leerobjecten/lo-spc-202/draaiboek.md`
+- `leerobjecten/lo-spc-202/werkbladen/wb-01-oefening.md`
+- `leerobjecten/lo-spc-202/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-202/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-202/svg/diagram.svg`
+- `leerobjecten/lo-spc-202/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-202/README.md`
+
 ## 2026-05-20 — publish-ronde14-lo-ai-fund-181
 
 **Kontext:** Ronde 14: lo-ai-fund-181

@@ -1,0 +1,128 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 680"
+     font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Drempelwaarden instellen in 4 stappen</title>
+  <desc id="desc">Een flowchart die de vier stappen laat zien om drempelwaarden voor sensoren in te stellen: normaalwaarden meten, bandbreedte berekenen, drempel instellen in het systeem, en evalueren en bijstellen na twee weken.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="grad-step1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="grad-step2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="grad-step3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E67E22"/>
+      <stop offset="100%" stop-color="#D35400"/>
+    </linearGradient>
+    <linearGradient id="grad-step4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9B59B6"/>
+      <stop offset="100%" stop-color="#8E44AD"/>
+    </linearGradient>
+    <linearGradient id="grad-decision" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E74C3C"/>
+      <stop offset="100%" stop-color="#C0392B"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="800" height="680" fill="#FAFAF8" rx="8"/>
+
+  <!-- Titel -->
+  <text x="400" y="40" text-anchor="middle" font-size="22"
+        font-weight="700" fill="#2C3E50" letter-spacing="1">Drempelwaarden instellen</text>
+  <text x="400" y="62" text-anchor="middle" font-size="13"
+        fill="#7f8c8d" letter-spacing="0.5">4 stappen van meten tot bijstellen</text>
+
+  <!-- STAP 1 -->
+  <g filter="url(#shadow)">
+    <rect x="250" y="90" width="300" height="70" rx="12" fill="url(#grad-step1)"/>
+    <text x="285" y="120" font-size="12" font-weight="700" fill="rgba(255,255,255,0.7)">STAP 1</text>
+    <text x="285" y="140" font-size="14" font-weight="600" fill="white">Normaalwaarden meten</text>
+    <text x="515" y="130" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.8)">100 cycli</text>
+  </g>
+
+  <!-- Pijl 1→2 -->
+  <line x1="400" y1="160" x2="400" y2="195" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- STAP 2 -->
+  <g filter="url(#shadow)">
+    <rect x="250" y="200" width="300" height="70" rx="12" fill="url(#grad-step2)"/>
+    <text x="285" y="230" font-size="12" font-weight="700" fill="rgba(255,255,255,0.7)">STAP 2</text>
+    <text x="285" y="250" font-size="14" font-weight="600" fill="white">Bandbreedte berekenen</text>
+    <text x="515" y="240" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">gemiddelde</text>
+    <text x="515" y="254" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">+ 2x spreiding</text>
+  </g>
+
+  <!-- Pijl 2→3 -->
+  <line x1="400" y1="270" x2="400" y2="305" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- STAP 3 -->
+  <g filter="url(#shadow)">
+    <rect x="250" y="310" width="300" height="70" rx="12" fill="url(#grad-step3)"/>
+    <text x="285" y="340" font-size="12" font-weight="700" fill="rgba(255,255,255,0.7)">STAP 3</text>
+    <text x="285" y="360" font-size="14" font-weight="600" fill="white">Drempel instellen</text>
+    <text x="515" y="345" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Waarschuwing</text>
+    <text x="515" y="359" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">+ Alarm</text>
+  </g>
+
+  <!-- Pijl 3→4 -->
+  <line x1="400" y1="380" x2="400" y2="415" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- STAP 4 -->
+  <g filter="url(#shadow)">
+    <rect x="250" y="420" width="300" height="70" rx="12" fill="url(#grad-step4)"/>
+    <text x="285" y="450" font-size="12" font-weight="700" fill="rgba(255,255,255,0.7)">STAP 4</text>
+    <text x="285" y="470" font-size="14" font-weight="600" fill="white">Evalueren na 2 weken</text>
+    <text x="515" y="460" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">alarmen</text>
+    <text x="515" y="474" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">tellen</text>
+  </g>
+
+  <!-- Pijl 4→Beslissing -->
+  <line x1="400" y1="490" x2="400" y2="520" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Beslispunt -->
+  <g filter="url(#shadow)">
+    <rect x="365" y="530" width="70" height="70" rx="6"
+          fill="url(#grad-decision)" transform="rotate(45,400,565)"/>
+    <text x="400" y="570" text-anchor="middle" font-size="12"
+          font-weight="700" fill="white">Klopt</text>
+    <text x="400" y="584" text-anchor="middle" font-size="12"
+          font-weight="700" fill="white">het?</text>
+  </g>
+
+  <!-- Labels bij beslispunt -->
+  <!-- Ja → klaar -->
+  <text x="470" y="555" font-size="12" font-weight="700" fill="#27AE60">Ja</text>
+  <line x1="450" y1="560" x2="540" y2="560" stroke="#27AE60" stroke-width="2" marker-end="url(#arrow)"/>
+  <g filter="url(#shadow)">
+    <rect x="550" y="543" width="140" height="36" rx="18" fill="#27AE60"/>
+    <text x="620" y="566" text-anchor="middle" font-size="13" font-weight="600" fill="white">Drempel is goed</text>
+  </g>
+
+  <!-- Nee → terug naar stap 3 -->
+  <text x="310" y="555" text-anchor="end" font-size="12" font-weight="700" fill="#E74C3C">Nee</text>
+  <path d="M350,560 L180,560 L180,345 L245,345"
+        fill="none" stroke="#E74C3C" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)"/>
+  <text x="170" y="460" text-anchor="middle" font-size="10" fill="#E74C3C"
+        transform="rotate(-90,170,460)">Drempel bijstellen</text>
+
+  <!-- Legenda -->
+  <g transform="translate(250,640)">
+    <rect x="0" y="0" width="14" height="14" rx="3" fill="#F39C12" role="presentation"/>
+    <text x="20" y="12" font-size="11" fill="#555">Geel = waarschuwing</text>
+    <rect x="160" y="0" width="14" height="14" rx="3" fill="#E74C3C" role="presentation"/>
+    <text x="180" y="12" font-size="11" fill="#555">Rood = alarm</text>
+  </g>
+
+  <!-- Bronvermelding -->
+  <text x="400" y="670" text-anchor="middle" font-size="10" fill="#999">AIMM Predictive Maintenance Module 2 - Drempelwaarden instellen</text>
+</svg>
