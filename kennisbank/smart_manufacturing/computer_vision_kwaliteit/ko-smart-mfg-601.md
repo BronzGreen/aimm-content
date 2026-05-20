@@ -11,7 +11,7 @@ source_ref: RLC-Oost (2026). Workshop w00 — Waarom computer vision? (AI Vision
   Community)
 status: validated
 updated_at: '2026-05-19'
-correlation_id: ronde7-lo-smart-mfg-601
+correlation_id: ronde28-lo-smart-mfg-601-mbo4
 ---
 
 # Gelabelde data is de echte bottleneck bij computer vision

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" font-family="Arial, sans-serif">
+  <title>Drie zorgen, drie reactie-stappen</title>
+
+  <defs>
+    <marker id="arrow802" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- Titel -->
+  <text x="450" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#1a1a1a">
+    Draagvlak voor AI-invoering
+  </text>
+  <text x="450" y="62" text-anchor="middle" font-size="13" fill="#555">
+    Drie zorgen die altijd terugkomen — en drie reactie-stappen
+  </text>
+
+  <!-- Drie zorg-boxen boven -->
+  <g>
+    <rect x="50" y="100" width="260" height="130" rx="8" fill="#ffe4e1" stroke="#b5352f" stroke-width="2.5"/>
+    <text x="180" y="130" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a1a1a">ZORG 1</text>
+    <text x="180" y="160" text-anchor="middle" font-size="16" font-style="italic" fill="#b5352f">"Het neemt</text>
+    <text x="180" y="180" text-anchor="middle" font-size="16" font-style="italic" fill="#b5352f">mijn werk af"</text>
+    <text x="180" y="210" text-anchor="middle" font-size="11" fill="#555">Werkvloer-veiligheid, identiteit</text>
+  </g>
+
+  <g>
+    <rect x="320" y="100" width="260" height="130" rx="8" fill="#fff4d6" stroke="#d4a017" stroke-width="2.5"/>
+    <text x="450" y="130" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a1a1a">ZORG 2</text>
+    <text x="450" y="160" text-anchor="middle" font-size="16" font-style="italic" fill="#d4a017">"Het werkt</text>
+    <text x="450" y="180" text-anchor="middle" font-size="16" font-style="italic" fill="#d4a017">toch niet"</text>
+    <text x="450" y="210" text-anchor="middle" font-size="11" fill="#555">Scepsis, eerdere teleurstellingen</text>
+  </g>
+
+  <g>
+    <rect x="590" y="100" width="260" height="130" rx="8" fill="#d9e8f5" stroke="#1a5490" stroke-width="2.5"/>
+    <text x="720" y="130" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a1a1a">ZORG 3</text>
+    <text x="720" y="160" text-anchor="middle" font-size="16" font-style="italic" fill="#1a5490">"Wie bepaalt</text>
+    <text x="720" y="180" text-anchor="middle" font-size="16" font-style="italic" fill="#1a5490">wat defect is?"</text>
+    <text x="720" y="210" text-anchor="middle" font-size="11" fill="#555">Controle, expertise, invloed</text>
+  </g>
+
+  <!-- Pijlen omlaag -->
+  <line x1="180" y1="240" x2="180" y2="280" stroke="#333" stroke-width="3" marker-end="url(#arrow802)"/>
+  <line x1="450" y1="240" x2="450" y2="280" stroke="#333" stroke-width="3" marker-end="url(#arrow802)"/>
+  <line x1="720" y1="240" x2="720" y2="280" stroke="#333" stroke-width="3" marker-end="url(#arrow802)"/>
+
+  <!-- Het centrale reactie-patroon -->
+  <g>
+    <rect x="150" y="290" width="600" height="250" rx="10" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+    <text x="450" y="320" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a1a">
+      Eén reactie-patroon voor alle drie
+    </text>
+
+    <!-- Drie stappen binnen de box -->
+    <g>
+      <circle cx="250" cy="380" r="40" fill="#e0f0e3" stroke="#2c5f2d" stroke-width="3"/>
+      <text x="250" y="375" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c5f2d">1.</text>
+      <text x="250" y="395" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Erkennen</text>
+      <text x="250" y="440" text-anchor="middle" font-size="11" fill="#555">"Je hebt een punt"</text>
+      <text x="250" y="458" text-anchor="middle" font-size="10" fill="#777" font-style="italic">(zonder instemmen)</text>
+    </g>
+
+    <line x1="290" y1="380" x2="360" y2="380" stroke="#333" stroke-width="2" marker-end="url(#arrow802)"/>
+
+    <g>
+      <circle cx="450" cy="380" r="40" fill="#fff4d6" stroke="#d4a017" stroke-width="3"/>
+      <text x="450" y="375" text-anchor="middle" font-size="16" font-weight="bold" fill="#d4a017">2.</text>
+      <text x="450" y="395" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Concretiseren</text>
+      <text x="450" y="440" text-anchor="middle" font-size="11" fill="#555">"Bij ons specifiek..."</text>
+      <text x="450" y="458" text-anchor="middle" font-size="10" fill="#777" font-style="italic">(details, geen abstractie)</text>
+    </g>
+
+    <line x1="490" y1="380" x2="560" y2="380" stroke="#333" stroke-width="2" marker-end="url(#arrow802)"/>
+
+    <g>
+      <circle cx="650" cy="380" r="40" fill="#d9e8f5" stroke="#1a5490" stroke-width="3"/>
+      <text x="650" y="375" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a5490">3.</text>
+      <text x="650" y="395" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Input vragen</text>
+      <text x="650" y="440" text-anchor="middle" font-size="11" fill="#555">"Wat wil jij anders?"</text>
+      <text x="650" y="458" text-anchor="middle" font-size="10" fill="#777" font-style="italic">(mede-eigenaarschap)</text>
+    </g>
+
+    <!-- NIET-doen zone -->
+    <text x="450" y="495" text-anchor="middle" font-size="13" fill="#b5352f" font-weight="bold">
+      Wat je NIET moet doen:
+    </text>
+    <text x="450" y="515" text-anchor="middle" font-size="11" fill="#555">
+      verdedigen ("nee hoor") · wegmasseren ("valt wel mee") · overtuigen ("hier zijn 7 redenen")
+    </text>
+  </g>
+
+  <!-- Resultaat onderaan -->
+  <g>
+    <rect x="250" y="560" width="400" height="70" rx="8" fill="#e0f0e3" stroke="#2c5f2d" stroke-width="2"/>
+    <text x="450" y="590" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">
+      Sceptische collega wordt mede-denker
+    </text>
+    <text x="450" y="612" text-anchor="middle" font-size="12" fill="#555">
+      Niet overtuigd — wel meegenomen in het gesprek
+    </text>
+  </g>
+
+  <!-- Footer -->
+  <text x="450" y="660" text-anchor="middle" font-size="10" fill="#888" font-style="italic">
+    AIMM × BronzGreen | ko-smart-mfg-802 | Module 3: Op Maat | MBO-3 operator
+  </text>
+</svg>

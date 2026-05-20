@@ -7,6 +7,63 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde28-lo-smart-mfg-802
+
+**Kontext:** Ronde 28: lo-smart-mfg-802
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-802/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-802.md`
+- `leerobjecten/lo-smart-mfg-802/trainer.md`
+- `leerobjecten/lo-smart-mfg-802/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-802/werkbladen/wb-01-drie-zorgen.md`
+- `leerobjecten/lo-smart-mfg-802/werkbladen/wb-02-rollenspel-notities.md`
+- `leerobjecten/lo-smart-mfg-802/werkbladen/wb-03-drie-stappen.md`
+- `leerobjecten/lo-smart-mfg-802/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-802/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-802/README.md`
+
+## 2026-05-20 — publish-ronde28-lo-smart-mfg-601-mbo4
+
+**Kontext:** Ronde 28: lo-smart-mfg-601-mbo4
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-601-mbo4/trainee.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/trainer.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/werkbladen/wb-01-storingsquiz.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/werkbladen/wb-03-theorie-handout.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/werkbladen/wb-04-roi-afweging.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/README.md`
+
+Gewijzigd:
+
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-601.md`
+
+## 2026-05-20 — publish-ronde28-lo-spc-603
+
+**Kontext:** Ronde 28: lo-spc-603
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-603/trainee.md`
+- `kennisbank/spc/ai_integratie/ko-spc-603.md`
+- `leerobjecten/lo-spc-603/trainer.md`
+- `leerobjecten/lo-spc-603/draaiboek.md`
+- `leerobjecten/lo-spc-603/werkbladen/wb-01-cry-wolf-casus.md`
+- `leerobjecten/lo-spc-603/werkbladen/wb-02-alarmaudit.md`
+- `leerobjecten/lo-spc-603/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-603/werkbladen/wb-03-handout-rationalisatie.md`
+- `leerobjecten/lo-spc-603/werkbladen/wb-03-rationalisatie-handout.md`
+- `leerobjecten/lo-spc-603/werkbladen/wb-04-alarmaudit.md`
+- `leerobjecten/lo-spc-603/svg/diagram.svg`
+- `leerobjecten/lo-spc-603/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-603/README.md`
+
 ## 2026-05-20 — publish-ronde27-lo-smart-mfg-801
 
 **Kontext:** Ronde 27: lo-smart-mfg-801
