@@ -7,6 +7,25 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde14-lo-data-lit-304
+
+**Kontext:** Ronde 14: lo-data-lit-304
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-304/trainee.md`
+- `kennisbank/data_literacy/data_driven_besluitvorming/ko-data-lit-304.md`
+- `leerobjecten/lo-data-lit-304/trainer.md`
+- `leerobjecten/lo-data-lit-304/draaiboek.md`
+- `leerobjecten/lo-data-lit-304/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-data-lit-304/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-data-lit-304/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-data-lit-304/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-data-lit-304/svg/diagram.svg`
+- `leerobjecten/lo-data-lit-304/interactive/model.html`
+- `leerobjecten/lo-data-lit-304/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-data-lit-304/README.md`
+
 ## 2026-05-20 — publish-ronde13-lo-industry40-110
 
 **Kontext:** Ronde 13: lo-industry40-110
