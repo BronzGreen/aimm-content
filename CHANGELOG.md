@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde27-lo-smart-mfg-801
+
+**Kontext:** Ronde 27: lo-smart-mfg-801
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-801/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-801.md`
+- `leerobjecten/lo-smart-mfg-801/trainer.md`
+- `leerobjecten/lo-smart-mfg-801/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-801/werkbladen/wb-01-businesscase-template.md`
+- `leerobjecten/lo-smart-mfg-801/werkbladen/wb-02-directieblad.md`
+- `leerobjecten/lo-smart-mfg-801/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-801/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-801/README.md`
+
 ## 2026-05-20 — publish-ronde27-lo-smart-mfg-702
 
 **Kontext:** Ronde 27: lo-smart-mfg-702
