@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data-audit: Mijn Machine</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useMemo } = React;
+
+function DataAuditTool() {
+  const [step, setStep] = useState(0);
+  const [sensors, setSensors] = useState([
+    { id: 1, type: "", location: "", works: null },
+    { id: 2, type: "", location: "", works: null },
+    { id: 3, type: "", location: "", works: null },
+  ]);
+  const [storage, setStorage] = useState({
+    saved: null,
+    where: "",
+    months: null,
+  });
+  const [quality, setQuality] = useState({
+    volledigheid: null,
+    consistentie: null,
+    nauwkeurigheid: null,
+    tijdstempel: null,
+  });
+
+  const STEPS = [
+    { id: 0, label: "Start", color: "bg-blue-500" },
+    { id: 1, label: "Sensoren", color: "bg-blue-500" },
+    { id: 2, label: "Opslag", color: "bg-green-500" },
+    { id: 3, label: "Kwaliteit", color: "bg-orange-500" },
+    { id: 4, label: "Resultaat", color: "bg-purple-500" },
+  ];
+
+  const QUALITY_LABELS = {
+    volledigheid: { label: "Volledigheid", help: "Zitten er gaten in de data?" },
+    consistentie: { label: "Consistentie", help: "Meet de sensor steeds hetzelfde?" },
+    nauwkeurigheid: { label: "Nauwkeurigheid", help: "Klopt wat de sensor meet?" },
+    tijdstempel: { label: "Tijdstempel", help: "Staat er datum en tijd bij?" },
+  };
+
+  const SCORE_OPTIONS = [
+    { value: 3, label: "Goed", color: "bg-green-100 border-green-400 text-green-800", active: "bg-green-500 text-white" },
+    { value: 2, label: "Matig", color: "bg-amber-100 border-amber-400 text-amber-800", active: "bg-amber-500 text-white" },
+    { value: 1, label: "Slecht", color: "bg-red-100 border-red-400 text-red-800", active: "bg-red-500 text-white" },
+    { value: 0, label: "Weet niet", color: "bg-gray-100 border-gray-300 text-gray-600", active: "bg-gray-500 text-white" },
+  ];
+
+  const workingSensors = sensors.filter(s => s.type.trim() !== "" && s.works === true).length;
+  const filledSensors = sensors.filter(s => s.type.trim() !== "").length;
+
+  const qualityScore = useMemo(() => {
+    const vals = Object.values(quality).filter(v => v !== null);
+    if (vals.length === 0) return 0;
+    return vals.reduce((a, b) => a + b, 0);
+  }, [quality]);
+
+  const allQualityFilled = Object.values(quality).every(v => v !== null);
+
+  const totalScore = useMemo(() => {
+    let score = 0;
+    if (workingSensors >= 3) score += 3;
+    else if (workingSensors >= 1) score += 1;
+    if (storage.saved === true) score += 2;
+    if (storage.months >= 3) score += 3;
+    else if (storage.months >= 1) score += 1;
+    score += qualityScore;
+    return score;
+  }, [workingSensors, storage, qualityScore]);
+
+  const maxScore = 20;
+
+  const getVerdict = () => {
+    const pct = totalScore / maxScore;
+    if (pct >= 0.7) return { label: "Klaar voor een pilot", color: "text-green-600", bg: "bg-green-50", border: "border-green-400", advice: "Je hebt genoeg data en sensoren. Je kunt starten met een pilot." };
+    if (pct >= 0.4) return { label: "Bijna klaar", color: "text-amber-600", bg: "bg-amber-50", border: "border-amber-400", advice: "Je mist nog een paar dingen. Maak een actieplan." };
+    return { label: "Nog niet klaar", color: "text-red-600", bg: "bg-red-50", border: "border-red-400", advice: "Je moet eerst meer data verzamelen of sensoren laten checken." };
+  };
+
+  const addSensor = () => {
+    setSensors(prev => [...prev, { id: prev.length + 1, type: "", location: "", works: null }]);
+  };
+
+  const updateSensor = (id, field, value) => {
+    setSensors(prev => prev.map(s => s.id === id ? { ...s, [field]: value } : s));
+  };
+
+  const handleReset = () => {
+    setStep(0);
+    setSensors([
+      { id: 1, type: "", location: "", works: null },
+      { id: 2, type: "", location: "", works: null },
+      { id: 3, type: "", location: "", works: null },
+    ]);
+    setStorage({ saved: null, where: "", months: null });
+    setQuality({ volledigheid: null, consistentie: null, nauwkeurigheid: null, tijdstempel: null });
+  };
+
+  const ProgressBar = () => (
+    <div className="flex items-center gap-1 mb-6">
+      {STEPS.map((s, i) => (
+        <React.Fragment key={s.id}>
+          <button
+            onClick={() => setStep(s.id)}
+            className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
+              step === s.id ? `${s.color} text-white shadow-md scale-110` :
+              step > s.id ? "bg-gray-300 text-white" : "bg-gray-200 text-gray-400"
+            }`}
+          >
+            {i}
+          </button>
+          {i < STEPS.length - 1 && (
+            <div className={`flex-1 h-1 rounded ${step > s.id ? "bg-gray-300" : "bg-gray-200"}`} />
+          )}
+        </React.Fragment>
+      ))}
+      <span className="ml-2 text-sm text-gray-500">{STEPS[step].label}</span>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <div className="bg-white border-b px-6 py-4">
+        <h1 className="text-xl font-bold text-gray-900">Data-audit: Mijn Machine</h1>
+        <p className="text-gray-500 text-sm mt-1">Loop door de vier stappen. Beoordeel je eigen data.</p>
+      </div>
+
+      <div className="max-w-2xl mx-auto p-6">
+        <ProgressBar />
+
+        {step === 0 && (
+          <div className="space-y-4">
+            <div className="p-6 bg-blue-50 rounded-xl border border-blue-200">
+              <h2 className="text-lg font-bold text-blue-800 mb-2">Wat ga je doen?</h2>
+              <p className="text-blue-700 text-sm mb-3">
+                Je gaat de data op je eigen machine beoordelen. In vier stappen:
+              </p>
+              <ol className="space-y-2 text-sm text-blue-700">
+                <li className="flex items-start gap-2">
+                  <span className="bg-blue-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">1</span>
+                  <span><strong>Sensoren</strong> — Welke sensoren zitten op je machine?</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="bg-green-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">2</span>
+                  <span><strong>Opslag</strong> — Wordt de data bewaard?</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="bg-orange-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">3</span>
+                  <span><strong>Kwaliteit</strong> — Is de data goed genoeg?</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="bg-purple-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">4</span>
+                  <span><strong>Resultaat</strong> — Ben je klaar voor een pilot?</span>
+                </li>
+              </ol>
+            </div>
+            <button
+              onClick={() => setStep(1)}
+              className="w-full py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
+            >
+              Start de data-audit
+            </button>
+          </div>
+        )}
+
+        {step === 1 && (
+          <div className="space-y-4">
+            <h2 className="text-lg font-bold text-gray-900">Stap 1: Sensoren</h2>
+            <p className="text-gray-500 text-sm">Welke sensoren zitten op je machine? Vul ze in.</p>
+            <div className="space-y-3">
+              {sensors.map(sensor => (
+                <div key={sensor.id} className="bg-white rounded-xl border p-4 space-y-3">
+                  <div className="flex items-center gap-2">
+                    <span className="bg-blue-100 text-blue-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">{sensor.id}</span>
+                    <input
+                      type="text"
+                      value={sensor.type}
+                      onChange={e => updateSensor(sensor.id, "type", e.target.value)}
+                      placeholder="Type sensor (bv. trillingssensor)"
+                      className="flex-1 p-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    value={sensor.location}
+                    onChange={e => updateSensor(sensor.id, "location", e.target.value)}
+                    placeholder="Waar zit de sensor?"
+                    className="w-full p-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                  />
+                  <div className="flex gap-2">
+                    <span className="text-sm text-gray-500 mt-1">Werkt hij?</span>
+                    <button
+                      onClick={() => updateSensor(sensor.id, "works", true)}
+                      className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
+                        sensor.works === true ? "bg-green-500 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      }`}
+                    >Ja</button>
+                    <button
+                      onClick={() => updateSensor(sensor.id, "works", false)}
+                      className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
+                        sensor.works === false ? "bg-red-500 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      }`}
+                    >Nee</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <button
+              onClick={addSensor}
+              className="w-full py-2 border-2 border-dashed border-gray-300 rounded-lg text-sm text-gray-500 hover:border-blue-400 hover:text-blue-500 transition-colors"
+            >
+              + Nog een sensor
+            </button>
+            <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+              <span className="text-sm text-blue-700">Werkende sensoren: <strong>{workingSensors}</strong> van {filledSensors}</span>
+            </div>
+            <div className="flex gap-3">
+              <button onClick={() => setStep(0)} className="flex-1 py-2 border rounded-lg text-gray-500 hover:bg-gray-50">Terug</button>
+              <button onClick={() => setStep(2)} className="flex-1 py-2 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors">
+                Volgende: Opslag
+              </button>
+            </div>
+          </div>
+        )}
+
+        {step === 2 && (
+          <div className="space-y-4">
+            <h2 className="text-lg font-bold text-gray-900">Stap 2: Opslag</h2>
+            <p className="text-gray-500 text-sm">Wordt de data van je sensoren bewaard?</p>
+
+            <div className="bg-white rounded-xl border p-5 space-y-4">
+              <div>
+                <p className="text-sm font-medium text-gray-700 mb-2">Wordt de data opgeslagen?</p>
+                <div className="flex gap-2">
+                  {[{v: true, l: "Ja"}, {v: false, l: "Nee"}].map(opt => (
+                    <button key={String(opt.v)}
+                      onClick={() => setStorage(prev => ({ ...prev, saved: opt.v }))}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                        storage.saved === opt.v
+                          ? (opt.v ? "bg-green-500 text-white" : "bg-red-500 text-white")
+                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      }`}
+                    >{opt.l}</button>
+                  ))}
+                </div>
+              </div>
+
+              {storage.saved === true && (
+                <>
+                  <div>
+                    <p className="text-sm font-medium text-gray-700 mb-2">Waar wordt de data bewaard?</p>
+                    <div className="flex gap-2 flex-wrap">
+                      {["PLC", "Server", "Cloud", "Weet niet"].map(opt => (
+                        <button key={opt}
+                          onClick={() => setStorage(prev => ({ ...prev, where: opt }))}
+                          className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                            storage.where === opt ? "bg-blue-500 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                          }`}
+                        >{opt}</button>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-700 mb-2">Hoeveel maanden data heb je?</p>
+                    <div className="flex items-center gap-3">
+                      <input
+                        type="range"
+                        min={0} max={12}
+                        value={storage.months || 0}
+                        onChange={e => setStorage(prev => ({ ...prev, months: +e.target.value }))}
+                        className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                      />
+                      <span className={`text-lg font-bold ${
+                        (storage.months || 0) >= 3 ? "text-green-600" : "text-red-600"
+                      }`}>{storage.months || 0}</span>
+                    </div>
+                    <div className="flex justify-between text-xs text-gray-400 mt-1">
+                      <span>0 maanden</span>
+                      <span className="text-green-500 font-medium">3+ = genoeg</span>
+                      <span>12 maanden</span>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {storage.saved === false && (
+                <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+                  <p className="text-sm text-red-700">
+                    <strong>Let op:</strong> Zonder opgeslagen data kun je geen model trainen.
+                    Vraag de technische dienst of de data naar een server kan.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            <div className="flex gap-3">
+              <button onClick={() => setStep(1)} className="flex-1 py-2 border rounded-lg text-gray-500 hover:bg-gray-50">Terug</button>
+              <button onClick={() => setStep(3)} className="flex-1 py-2 bg-orange-500 text-white rounded-lg font-medium hover:bg-orange-600 transition-colors">
+                Volgende: Kwaliteit
+              </button>
+            </div>
+          </div>
+        )}
+
+        {step === 3 && (
+          <div className="space-y-4">
+            <h2 className="text-lg font-bold text-gray-900">Stap 3: Datakwaliteit</h2>
+            <p className="text-gray-500 text-sm">Beoordeel je data op vier criteria.</p>
+
+            <div className="space-y-3">
+              {Object.entries(QUALITY_LABELS).map(([key, info]) => (
+                <div key={key} className="bg-white rounded-xl border p-4">
+                  <div className="mb-2">
+                    <span className="font-medium text-gray-800">{info.label}</span>
+                    <span className="text-xs text-gray-400 ml-2">{info.help}</span>
+                  </div>
+                  <div className="flex gap-2">
+                    {SCORE_OPTIONS.map(opt => (
+                      <button key={opt.value}
+                        onClick={() => setQuality(prev => ({ ...prev, [key]: opt.value }))}
+                        className={`flex-1 py-2 rounded-lg text-xs font-medium border transition-all ${
+                          quality[key] === opt.value ? opt.active : opt.color + " hover:shadow-sm"
+                        }`}
+                      >{opt.label}</button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {allQualityFilled && (
+              <div className="p-3 bg-orange-50 rounded-lg border border-orange-200">
+                <span className="text-sm text-orange-700">
+                  Kwaliteitsscore: <strong>{qualityScore}</strong> / 12
+                  {qualityScore >= 9 && " — Goed!"}
+                  {qualityScore >= 5 && qualityScore < 9 && " — Redelijk, er is ruimte."}
+                  {qualityScore < 5 && " — Hier moet je aan werken."}
+                </span>
+              </div>
+            )}
+
+            <div className="flex gap-3">
+              <button onClick={() => setStep(2)} className="flex-1 py-2 border rounded-lg text-gray-500 hover:bg-gray-50">Terug</button>
+              <button onClick={() => setStep(4)} className="flex-1 py-2 bg-purple-500 text-white rounded-lg font-medium hover:bg-purple-600 transition-colors">
+                Bekijk resultaat
+              </button>
+            </div>
+          </div>
+        )}
+
+        {step === 4 && (() => {
+          const verdict = getVerdict();
+          return (
+            <div className="space-y-4">
+              <h2 className="text-lg font-bold text-gray-900">Resultaat</h2>
+
+              <div className={`p-6 rounded-xl border-2 ${verdict.bg} ${verdict.border}`}>
+                <div className={`text-xl font-bold ${verdict.color} mb-2`}>{verdict.label}</div>
+                <p className="text-sm text-gray-700">{verdict.advice}</p>
+                <div className="mt-4">
+                  <div className="flex justify-between text-sm text-gray-600 mb-1">
+                    <span>Totaalscore</span>
+                    <span className="font-bold">{totalScore} / {maxScore}</span>
+                  </div>
+                  <div className="h-3 bg-white rounded-full overflow-hidden border">
+                    <div
+                      className="h-full rounded-full transition-all duration-700"
+                      style={{
+                        width: `${(totalScore / maxScore) * 100}%`,
+                        backgroundColor: totalScore / maxScore >= 0.7 ? "#27AE60" : totalScore / maxScore >= 0.4 ? "#F59E0B" : "#E74C3C"
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div className="bg-white rounded-xl border p-4">
+                  <div className="text-xs text-gray-400 mb-1">Sensoren</div>
+                  <div className="text-2xl font-bold text-blue-600">{workingSensors}</div>
+                  <div className="text-xs text-gray-500">werkend</div>
+                </div>
+                <div className="bg-white rounded-xl border p-4">
+                  <div className="text-xs text-gray-400 mb-1">Data</div>
+                  <div className={`text-2xl font-bold ${(storage.months || 0) >= 3 ? "text-green-600" : "text-red-600"}`}>
+                    {storage.months || 0} mnd
+                  </div>
+                  <div className="text-xs text-gray-500">{(storage.months || 0) >= 3 ? "genoeg" : "te weinig"}</div>
+                </div>
+                <div className="bg-white rounded-xl border p-4">
+                  <div className="text-xs text-gray-400 mb-1">Kwaliteit</div>
+                  <div className={`text-2xl font-bold ${qualityScore >= 9 ? "text-green-600" : qualityScore >= 5 ? "text-amber-600" : "text-red-600"}`}>
+                    {qualityScore}/12
+                  </div>
+                  <div className="text-xs text-gray-500">{qualityScore >= 9 ? "goed" : qualityScore >= 5 ? "matig" : "onvoldoende"}</div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl border p-5">
+                <h3 className="font-bold text-gray-800 mb-3">Wat moet je nog doen?</h3>
+                <ul className="space-y-2 text-sm">
+                  {workingSensors < 1 && (
+                    <li className="flex items-start gap-2 text-red-700">
+                      <span className="mt-0.5">&#9679;</span>
+                      <span>Je hebt geen werkende sensoren. Praat met de technische dienst.</span>
+                    </li>
+                  )}
+                  {storage.saved !== true && (
+                    <li className="flex items-start gap-2 text-red-700">
+                      <span className="mt-0.5">&#9679;</span>
+                      <span>Data wordt niet opgeslagen. Regel opslag bij de technische dienst.</span>
+                    </li>
+                  )}
+                  {(storage.months || 0) < 3 && storage.saved === true && (
+                    <li className="flex items-start gap-2 text-amber-700">
+                      <span className="mt-0.5">&#9679;</span>
+                      <span>Je hebt minder dan 3 maanden data. Wacht tot je genoeg hebt.</span>
+                    </li>
+                  )}
+                  {qualityScore < 9 && allQualityFilled && (
+                    <li className="flex items-start gap-2 text-amber-700">
+                      <span className="mt-0.5">&#9679;</span>
+                      <span>De datakwaliteit kan beter. Check de criteria die je "matig" of "slecht" hebt gescoord.</span>
+                    </li>
+                  )}
+                  {totalScore / maxScore >= 0.7 && (
+                    <li className="flex items-start gap-2 text-green-700">
+                      <span className="mt-0.5">&#9679;</span>
+                      <span>Je bent klaar. Ga naar de volgende stap: een pilot opzetten.</span>
+                    </li>
+                  )}
+                </ul>
+              </div>
+
+              <div className="flex gap-3">
+                <button onClick={() => setStep(0)} className="flex-1 py-2 border rounded-lg text-gray-500 hover:bg-gray-50">
+                  Bekijk stappen
+                </button>
+                <button onClick={handleReset} className="flex-1 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300 transition-colors">
+                  Opnieuw beginnen
+                </button>
+              </div>
+
+              <p className="text-xs text-gray-400 text-center mt-4">
+                Bron: Data-audit framework — AIMM Predictive Maintenance | Module 3: Op Maat
+              </p>
+            </div>
+          );
+        })()}
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<DataAuditTool />);
+</script>
+</body>
+</html>
