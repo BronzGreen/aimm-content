@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sensordata Simulator — AIMM Module 2</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    const SCENARIOS = [
+      {
+        id: 1,
+        titel: "CNC-freesmachine: temperatuur",
+        sensor: "Temperatuur",
+        eenheid: "graden",
+        basislijn: 62,
+        waarden: [62, 62, 63, 63, 64, 64, 65],
+        weken: ["Week 1", "Week 1", "Week 2", "Week 2", "Week 3", "Week 3", "Week 4"],
+        juistAntwoord: "trend",
+        uitleg: "De temperatuur stijgt elke week met 1 graad. Dat is een trend. Meld dit bij de technicus.",
+        actie: "Meld het bij de onderhoudstechnicus. Plan onderhoud in."
+      },
+      {
+        id: 2,
+        titel: "Hydrauliekpers: druk",
+        sensor: "Druk",
+        eenheid: "bar",
+        basislijn: 150,
+        waarden: [150, 148, 152, 210, 151, 149, 150],
+        weken: ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],
+        juistAntwoord: "ruis",
+        uitleg: "De waarde sprong 1 keer naar 210 bar. Maar hij kwam meteen terug. Dat is ruis, geen echte piek.",
+        actie: "Noteer het. Houd het in de gaten. Nog geen actie nodig."
+      },
+      {
+        id: 3,
+        titel: "Pomp: trillingen",
+        sensor: "Trillingen",
+        eenheid: "mm/s",
+        basislijn: 2.1,
+        waarden: [2.1, 2.1, 5.0, 2.1, 5.0, 5.0, 5.0],
+        weken: ["10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30"],
+        juistAntwoord: "piek",
+        uitleg: "De trillingen springen 3 keer omhoog naar 5,0 mm/s in 1,5 uur. De waarden blijven hoog. Dit zijn pieken! Actie nodig.",
+        actie: "Stop de machine! Bel de onderhoudstechnicus. Noteer de waarden."
+      },
+      {
+        id: 4,
+        titel: "Verpakkingsmachine: temperatuur",
+        sensor: "Temperatuur",
+        eenheid: "graden",
+        basislijn: 45,
+        waarden: [45, 44, 46, 45, 44, 45, 46],
+        weken: ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],
+        juistAntwoord: "normaal",
+        uitleg: "Alle waarden schommelen rond de basislijn van 45 graden. Dat is normaal. Geen actie nodig.",
+        actie: "Niets doen. Blijf meten zoals je doet."
+      }
+    ];
+
+    const OPTIES = [
+      { id: "normaal", label: "Normaal", kleur: "bg-green-500", licht: "bg-green-50 border-green-300 text-green-800" },
+      { id: "trend",   label: "Trend",   kleur: "bg-amber-500", licht: "bg-amber-50 border-amber-300 text-amber-800" },
+      { id: "piek",    label: "Piek",    kleur: "bg-red-500",   licht: "bg-red-50 border-red-300 text-red-800" },
+      { id: "ruis",    label: "Ruis",    kleur: "bg-blue-500",  licht: "bg-blue-50 border-blue-300 text-blue-800" },
+    ];
+
+    function MiniGrafiek({ waarden, basislijn, eenheid, labels }) {
+      const max = Math.max(...waarden, basislijn + 10);
+      const min = Math.min(...waarden, basislijn - 10);
+      const range = max - min || 1;
+      const w = 100 / waarden.length;
+
+      return (
+        <div className="bg-white rounded-xl border p-4">
+          <div className="text-xs text-gray-400 mb-2 font-medium">Sensorwaarden ({eenheid})</div>
+          <div className="relative h-40">
+            {/* Basislijn */}
+            <div
+              className="absolute left-0 right-0 border-t-2 border-dashed border-green-400"
+              style={{ bottom: `${((basislijn - min) / range) * 100}%` }}
+            >
+              <span className="absolute right-0 -top-4 text-xs text-green-600 font-medium">
+                basislijn: {basislijn} {eenheid}
+              </span>
+            </div>
+            {/* Bars */}
+            <div className="flex items-end h-full gap-1">
+              {waarden.map((v, i) => {
+                const hoogte = ((v - min) / range) * 100;
+                const isHoog = v > basislijn * 1.1;
+                const isLaag = v < basislijn * 0.9;
+                return (
+                  <div key={i} className="flex-1 flex flex-col items-center justify-end h-full">
+                    <div className="text-xs font-bold mb-1 text-gray-700">{v}</div>
+                    <div
+                      className={`w-full rounded-t-md transition-all ${
+                        isHoog ? "bg-red-400" : isLaag ? "bg-blue-300" : "bg-sky-400"
+                      }`}
+                      style={{ height: `${Math.max(hoogte, 5)}%` }}
+                    />
+                    <div className="text-xs text-gray-400 mt-1 truncate w-full text-center">
+                      {labels[i]}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function App() {
+      const [stap, setStap] = useState(0);
+      const [antwoorden, setAntwoorden] = useState({});
+      const [toonUitleg, setToonUitleg] = useState({});
+
+      const scenario = SCENARIOS[stap];
+      const gekozen = antwoorden[scenario.id];
+      const isGoed = gekozen === scenario.juistAntwoord;
+      const toon = toonUitleg[scenario.id];
+
+      const totaalGoed = useMemo(() => {
+        return SCENARIOS.filter(s => antwoorden[s.id] === s.juistAntwoord).length;
+      }, [antwoorden]);
+
+      const alleBeantwoord = Object.keys(antwoorden).length === SCENARIOS.length;
+
+      const handleKies = (optieId) => {
+        setAntwoorden(prev => ({ ...prev, [scenario.id]: optieId }));
+        setToonUitleg(prev => ({ ...prev, [scenario.id]: true }));
+      };
+
+      const handleReset = () => {
+        setStap(0);
+        setAntwoorden({});
+        setToonUitleg({});
+      };
+
+      return (
+        <div className="min-h-screen bg-gray-50">
+          {/* Header */}
+          <div className="bg-white border-b px-6 py-4">
+            <h1 className="text-xl md:text-2xl font-bold text-gray-900">
+              Sensordata Simulator
+            </h1>
+            <p className="text-gray-500 text-sm mt-1">
+              Lees de sensordata. Bepaal: normaal, trend, piek of ruis?
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto p-4 md:p-6">
+            {/* Voortgang */}
+            <div className="flex items-center gap-2 mb-6">
+              <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-blue-500 rounded-full transition-all duration-500"
+                  style={{ width: `${((stap + 1) / SCENARIOS.length) * 100}%` }}
+                />
+              </div>
+              <span className="text-sm text-gray-500 font-mono">
+                {stap + 1}/{SCENARIOS.length}
+              </span>
+            </div>
+
+            {/* Scenario */}
+            <div className="bg-white rounded-2xl shadow-sm border p-5 md:p-6 mb-4">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-lg">
+                  {scenario.id}
+                </div>
+                <div>
+                  <h2 className="font-bold text-lg text-gray-900">{scenario.titel}</h2>
+                  <p className="text-sm text-gray-500">
+                    Basislijn: {scenario.basislijn} {scenario.eenheid}
+                  </p>
+                </div>
+              </div>
+
+              {/* Grafiek */}
+              <MiniGrafiek
+                waarden={scenario.waarden}
+                basislijn={scenario.basislijn}
+                eenheid={scenario.eenheid}
+                labels={scenario.weken}
+              />
+
+              {/* Keuze-opties */}
+              <div className="mt-5">
+                <p className="text-sm font-medium text-gray-700 mb-3">
+                  Wat zie je in deze data?
+                </p>
+                <div className="grid grid-cols-2 gap-3">
+                  {OPTIES.map(optie => {
+                    const isGekozen = gekozen === optie.id;
+                    const isJuist = toon && optie.id === scenario.juistAntwoord;
+                    return (
+                      <button
+                        key={optie.id}
+                        onClick={() => !gekozen && handleKies(optie.id)}
+                        disabled={!!gekozen}
+                        className={`p-3 rounded-xl border-2 font-medium text-sm transition-all ${
+                          isJuist
+                            ? "border-green-500 bg-green-50 text-green-800 ring-2 ring-green-300"
+                            : isGekozen && !isGoed
+                            ? "border-red-400 bg-red-50 text-red-700"
+                            : gekozen
+                            ? "border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed"
+                            : "border-gray-200 bg-white text-gray-700 hover:border-blue-400 hover:bg-blue-50 cursor-pointer"
+                        }`}
+                      >
+                        {optie.label}
+                        {isJuist && " \u2714"}
+                        {isGekozen && !isGoed && !isJuist && " \u2718"}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Uitleg */}
+              {toon && (
+                <div className={`mt-4 p-4 rounded-xl border text-sm ${
+                  isGoed
+                    ? "bg-green-50 border-green-300 text-green-800"
+                    : "bg-amber-50 border-amber-300 text-amber-800"
+                }`}>
+                  <div className="font-bold mb-1">
+                    {isGoed ? "Goed!" : "Niet helemaal."}
+                  </div>
+                  <p>{scenario.uitleg}</p>
+                  <p className="mt-2 font-medium">Actie: {scenario.actie}</p>
+                </div>
+              )}
+            </div>
+
+            {/* Navigatie */}
+            <div className="flex justify-between items-center">
+              <button
+                onClick={() => setStap(Math.max(0, stap - 1))}
+                disabled={stap === 0}
+                className={`px-5 py-2 rounded-lg font-medium text-sm transition-colors ${
+                  stap === 0
+                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                    : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
+                }`}
+              >
+                Vorige
+              </button>
+
+              {stap < SCENARIOS.length - 1 ? (
+                <button
+                  onClick={() => setStap(stap + 1)}
+                  className="px-5 py-2 bg-blue-500 text-white rounded-lg font-medium text-sm hover:bg-blue-600 transition-colors"
+                >
+                  Volgende
+                </button>
+              ) : (
+                <button
+                  onClick={handleReset}
+                  className="px-5 py-2 bg-gray-500 text-white rounded-lg font-medium text-sm hover:bg-gray-600 transition-colors"
+                >
+                  Opnieuw
+                </button>
+              )}
+            </div>
+
+            {/* Eindresultaat */}
+            {alleBeantwoord && (
+              <div className="mt-6 bg-white rounded-2xl shadow-sm border p-6 text-center">
+                <div className="text-3xl font-bold text-gray-900 mb-2">
+                  {totaalGoed} / {SCENARIOS.length} goed
+                </div>
+                <div className={`text-sm font-medium ${
+                  totaalGoed === SCENARIOS.length
+                    ? "text-green-600"
+                    : totaalGoed >= 3
+                    ? "text-amber-600"
+                    : "text-red-600"
+                }`}>
+                  {totaalGoed === SCENARIOS.length
+                    ? "Je kunt sensordata lezen. Goed gedaan!"
+                    : totaalGoed >= 3
+                    ? "Bijna! Bekijk de uitleg nog eens."
+                    : "Oefen nog even. Lees de handout erbij."}
+                </div>
+                <button
+                  onClick={handleReset}
+                  className="mt-4 px-6 py-2 text-gray-500 hover:text-gray-700 text-sm"
+                >
+                  Opnieuw beginnen
+                </button>
+              </div>
+            )}
+
+            {/* Footer */}
+            <div className="mt-8 text-center text-xs text-gray-400">
+              Predictive Maintenance — AIMM Module 2 (Train) | Sensordata interpreteren
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
