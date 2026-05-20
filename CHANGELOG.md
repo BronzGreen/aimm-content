@@ -7,6 +7,21 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde18-lo-ai-fund-205
+
+**Kontext:** Ronde 18: lo-ai-fund-205
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-205/trainee.md`
+- `leerobjecten/lo-ai-fund-205/trainer.md`
+- `leerobjecten/lo-ai-fund-205/draaiboek.md`
+- `leerobjecten/lo-ai-fund-205/werkbladen/wb-01-eerste-labelsessie.md`
+- `leerobjecten/lo-ai-fund-205/werkbladen/wb-02-buurman-vergelijking.md`
+- `leerobjecten/lo-ai-fund-205/werkbladen/wb-03-handout-vier-principes-vier-valkuilen.md`
+- `leerobjecten/lo-ai-fund-205/werkbladen/wb-04-eigen-labelschema.md`
+- `leerobjecten/lo-ai-fund-205/README.md`
+
 ## 2026-05-20 — publish-ronde18-lo-smart-mfg-205
 
 **Kontext:** Ronde 18: lo-smart-mfg-205
