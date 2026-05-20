@@ -7,6 +7,24 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde20-lo-ai-fund-cnn-001
+
+**Kontext:** Ronde 20: lo-ai-fund-cnn-001
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-cnn-001/trainee.md`
+- `kennisbank/ai_fundamentals/neural_networks_conceptueel/ko-ai-fundamentals-cnn-001.md`
+- `leerobjecten/lo-ai-fund-cnn-001/trainer.md`
+- `leerobjecten/lo-ai-fund-cnn-001/draaiboek.md`
+- `leerobjecten/lo-ai-fund-cnn-001/werkbladen/wb-01-architectuur-invullen.md`
+- `leerobjecten/lo-ai-fund-cnn-001/werkbladen/wb-02-data-voorbeelden.md`
+- `leerobjecten/lo-ai-fund-cnn-001/werkbladen/wb-03-reflectie.md`
+- `leerobjecten/lo-ai-fund-cnn-001/werkbladen/wb-04-actieplan.md`
+- `leerobjecten/lo-ai-fund-cnn-001/svg/diagram.svg`
+- `leerobjecten/lo-ai-fund-cnn-001/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-ai-fund-cnn-001/README.md`
+
 ## 2026-05-20 — publish-ronde20-lo-ai-fund-212
 
 **Kontext:** Ronde 20: lo-ai-fund-212
