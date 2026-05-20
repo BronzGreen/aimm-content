@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">Drie kaders voor SPC-implementatie — zwakste-schakel-diagnose</title>
+  <desc id="svg-desc">SPC slaagt alleen wanneer alle drie de kaders tegelijk werken: statistisch (Shewhart/Nelson), operationeel (reactieplan, monsterstrategie, control plan) en organisatorisch (cultuur, no-blame, kwartaaloverleg). De diagram toont drie overlappende ringen; de gezamenlijke overlap in het midden is de zone van effectieve SPC. Elke ring bevat kernelementen. Het zwakste kader bepaalt de sterkte van het geheel. Bron-note: Shewhart 1931 + Nelson 1984 + Deming 1986.</desc>
+
+  <style>
+    .ring-stat { fill: #2a6fba; fill-opacity: 0.22; stroke: #2a6fba; stroke-width: 2; }
+    .ring-op { fill: #d9480f; fill-opacity: 0.22; stroke: #d9480f; stroke-width: 2; }
+    .ring-org { fill: #4a7f2c; fill-opacity: 0.22; stroke: #4a7f2c; stroke-width: 2; }
+    .title { font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #1a1a1a; }
+    .subtitle { font-family: Arial, sans-serif; font-size: 13px; fill: #444; font-style: italic; }
+    .ring-label { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; }
+    .element { font-family: Arial, sans-serif; font-size: 12px; fill: #222; }
+    .core-label { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #1a1a1a; }
+    .weak-link { font-family: Arial, sans-serif; font-size: 13px; fill: #8a0000; font-weight: bold; }
+    .source-note { font-family: Arial, sans-serif; font-size: 11px; fill: #666; font-style: italic; }
+  </style>
+
+  <!-- Title -->
+  <text x="400" y="35" class="title" text-anchor="middle">Drie kaders voor SPC — effectiviteit = zwakste kader</text>
+  <text x="400" y="58" class="subtitle" text-anchor="middle">Statistisch · Operationeel · Organisatorisch — alle drie tegelijk nodig</text>
+
+  <!-- Three overlapping circles -->
+  <circle cx="280" cy="270" r="160" class="ring-stat"/>
+  <circle cx="520" cy="270" r="160" class="ring-op"/>
+  <circle cx="400" cy="420" r="160" class="ring-org"/>
+
+  <!-- Ring labels -->
+  <text x="180" y="170" class="ring-label" fill="#2a6fba">Statistisch</text>
+  <text x="580" y="170" class="ring-label" fill="#d9480f" text-anchor="end">Operationeel</text>
+  <text x="400" y="560" class="ring-label" fill="#4a7f2c" text-anchor="middle">Organisatorisch</text>
+
+  <!-- Statistisch kader elements -->
+  <text x="160" y="200" class="element">• Shewhart UCL/LCL</text>
+  <text x="160" y="220" class="element">• Nelson-regels (1-8)</text>
+  <text x="160" y="240" class="element">• Juist kaart-type</text>
+  <text x="160" y="260" class="element">• Subgroep-strategie</text>
+
+  <!-- Operationeel kader elements -->
+  <text x="640" y="200" class="element" text-anchor="end">• Reactieplan per signaal</text>
+  <text x="640" y="220" class="element" text-anchor="end">• Control plan per lijn</text>
+  <text x="640" y="240" class="element" text-anchor="end">• Monsterstrategie</text>
+  <text x="640" y="260" class="element" text-anchor="end">• Escalatie-route</text>
+
+  <!-- Organisatorisch kader elements -->
+  <text x="280" y="530" class="element">• No-blame cultuur</text>
+  <text x="280" y="550" class="element">• Ploegoverdracht met SPC</text>
+  <text x="520" y="530" class="element" text-anchor="end">• Kwartaal Gage R&amp;R</text>
+  <text x="520" y="550" class="element" text-anchor="end">• Kwaliteits-meetings</text>
+
+  <!-- Core overlap label -->
+  <text x="400" y="340" class="core-label" text-anchor="middle">Effectieve</text>
+  <text x="400" y="358" class="core-label" text-anchor="middle">SPC</text>
+
+  <!-- Weakest-link message -->
+  <text x="400" y="590" class="weak-link" text-anchor="middle">Zwakste kader bepaalt effectiviteit — diagnose: vraag per kader "wat werkt NIET?"</text>
+
+  <!-- Source note (top right corner) -->
+  <text x="790" y="15" class="source-note" text-anchor="end">Bron: Shewhart 1931 · Nelson 1984 · Deming 1986</text>
+</svg>

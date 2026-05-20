@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde27-lo-spc-701
+
+**Kontext:** Ronde 27: lo-spc-701
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-701/trainee.md`
+- `kennisbank/spc/implementatie/ko-spc-701.md`
+- `leerobjecten/lo-spc-701/trainer.md`
+- `leerobjecten/lo-spc-701/draaiboek.md`
+- `leerobjecten/lo-spc-701/werkbladen/wb-01-eigen-implementatieplan.md`
+- `leerobjecten/lo-spc-701/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-701/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-701/svg/diagram.svg`
+- `leerobjecten/lo-spc-701/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-701/README.md`
+
 ## 2026-05-20 — publish-ronde27-lo-spc-602
 
 **Kontext:** Ronde 27: lo-spc-602
