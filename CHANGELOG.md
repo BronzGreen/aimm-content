@@ -7,6 +7,26 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde28-lo-spc-603
+
+**Kontext:** Ronde 28: lo-spc-603
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-603/trainee.md`
+- `kennisbank/spc/ai_integratie/ko-spc-603.md`
+- `leerobjecten/lo-spc-603/trainer.md`
+- `leerobjecten/lo-spc-603/draaiboek.md`
+- `leerobjecten/lo-spc-603/werkbladen/wb-01-cry-wolf-casus.md`
+- `leerobjecten/lo-spc-603/werkbladen/wb-02-alarmaudit.md`
+- `leerobjecten/lo-spc-603/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-603/werkbladen/wb-03-handout-rationalisatie.md`
+- `leerobjecten/lo-spc-603/werkbladen/wb-03-rationalisatie-handout.md`
+- `leerobjecten/lo-spc-603/werkbladen/wb-04-alarmaudit.md`
+- `leerobjecten/lo-spc-603/svg/diagram.svg`
+- `leerobjecten/lo-spc-603/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-603/README.md`
+
 ## 2026-05-20 — publish-ronde27-lo-smart-mfg-801
 
 **Kontext:** Ronde 27: lo-smart-mfg-801
