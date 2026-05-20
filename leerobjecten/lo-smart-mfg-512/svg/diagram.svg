@@ -1,0 +1,149 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 900 520"
+     font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Matrix: Drempelwaarde vs Gevolgen</title>
+  <desc id="desc">Een matrix die laat zien hoe drie drempelwaarden (0.3, 0.5 en 0.7) de recall en het percentage valse alarmen beinvloeden. Bij 0.3 is de recall 95% maar zijn er 40% valse alarmen. Bij 0.5 is de recall 85% met 10% valse alarmen. Bij 0.7 is de recall 70% met 0% valse alarmen.</desc>
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2C3E50"/>
+      <stop offset="100%" stop-color="#34495E"/>
+    </linearGradient>
+    <linearGradient id="green-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#27AE60"/>
+      <stop offset="100%" stop-color="#1E8449"/>
+    </linearGradient>
+    <linearGradient id="amber-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F39C12"/>
+      <stop offset="100%" stop-color="#D68910"/>
+    </linearGradient>
+    <linearGradient id="red-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E74C3C"/>
+      <stop offset="100%" stop-color="#C0392B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="900" height="520" fill="#FAFAF8" rx="12"/>
+
+  <!-- Titel -->
+  <text x="450" y="42" text-anchor="middle" font-size="22"
+        font-weight="700" fill="#2C3E50" letter-spacing="1">Drempelwaarde instellen</text>
+  <text x="450" y="66" text-anchor="middle" font-size="13"
+        fill="#7f8c8d" letter-spacing="0.5">Wat gebeurt er als je de gevoeligheid verandert?</text>
+
+  <!-- Tabel -->
+  <!-- Header rij -->
+  <rect role="presentation" x="60" y="90" width="780" height="50" rx="8" fill="url(#header-grad)"/>
+  <text x="160" y="121" text-anchor="middle" font-size="13" font-weight="700" fill="white">Instelling</text>
+  <text x="330" y="121" text-anchor="middle" font-size="13" font-weight="700" fill="white">Drempelwaarde</text>
+  <text x="510" y="121" text-anchor="middle" font-size="13" font-weight="700" fill="white">Recall (gevonden fouten)</text>
+  <text x="720" y="121" text-anchor="middle" font-size="13" font-weight="700" fill="white">Valse alarmen</text>
+
+  <!-- Kolom scheidingslijnen in header -->
+  <line x1="240" y1="96" x2="240" y2="134" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <line x1="420" y1="96" x2="420" y2="134" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <line x1="620" y1="96" x2="620" y2="134" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+  <!-- Rij 1: Streng (0.3) -->
+  <rect role="presentation" x="60" y="142" width="780" height="80" fill="#FEF2F2"/>
+  <rect role="presentation" x="60" y="142" width="6" height="80" fill="#E74C3C" rx="0"/>
+  <!-- Gekleurde badge -->
+  <rect role="presentation" x="100" y="162" width="120" height="36" rx="8" fill="url(#red-grad)" filter="url(#shadow)"/>
+  <text x="160" y="185" text-anchor="middle" font-size="13" font-weight="700" fill="white">Streng</text>
+  <!-- Drempelwaarde -->
+  <text x="330" y="178" text-anchor="middle" font-size="28" font-weight="700" fill="#C0392B">0.3</text>
+  <text x="330" y="198" text-anchor="middle" font-size="10" fill="#7f8c8d">laag = streng</text>
+  <!-- Recall -->
+  <text x="510" y="178" text-anchor="middle" font-size="28" font-weight="700" fill="#27AE60">95%</text>
+  <text x="510" y="198" text-anchor="middle" font-size="10" fill="#7f8c8d">bijna alles gevonden</text>
+  <!-- Recall balk -->
+  <rect role="presentation" x="450" y="203" width="120" height="6" rx="3" fill="#E0E0E0"/>
+  <rect role="presentation" x="450" y="203" width="114" height="6" rx="3" fill="#27AE60"/>
+  <!-- Valse alarmen -->
+  <text x="720" y="178" text-anchor="middle" font-size="28" font-weight="700" fill="#E74C3C">40%</text>
+  <text x="720" y="198" text-anchor="middle" font-size="10" fill="#7f8c8d">veel onnodig afgekeurd</text>
+  <!-- Valse alarmen balk -->
+  <rect role="presentation" x="660" y="203" width="120" height="6" rx="3" fill="#E0E0E0"/>
+  <rect role="presentation" x="660" y="203" width="48" height="6" rx="3" fill="#E74C3C"/>
+
+  <!-- Kolom scheidingslijnen rij 1 -->
+  <line x1="240" y1="142" x2="240" y2="222" stroke="#E0E0E0" stroke-width="1"/>
+  <line x1="420" y1="142" x2="420" y2="222" stroke="#E0E0E0" stroke-width="1"/>
+  <line x1="620" y1="142" x2="620" y2="222" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Rij 2: Gemiddeld (0.5) -->
+  <rect role="presentation" x="60" y="224" width="780" height="80" fill="#FFFFFF"/>
+  <rect role="presentation" x="60" y="224" width="6" height="80" fill="#F39C12" rx="0"/>
+  <!-- Gekleurde badge -->
+  <rect role="presentation" x="100" y="244" width="120" height="36" rx="8" fill="url(#amber-grad)" filter="url(#shadow)"/>
+  <text x="160" y="267" text-anchor="middle" font-size="13" font-weight="700" fill="white">Gemiddeld</text>
+  <!-- Drempelwaarde -->
+  <text x="330" y="260" text-anchor="middle" font-size="28" font-weight="700" fill="#D68910">0.5</text>
+  <text x="330" y="280" text-anchor="middle" font-size="10" fill="#7f8c8d">balans</text>
+  <!-- Recall -->
+  <text x="510" y="260" text-anchor="middle" font-size="28" font-weight="700" fill="#27AE60">85%</text>
+  <text x="510" y="280" text-anchor="middle" font-size="10" fill="#7f8c8d">meeste fouten gevonden</text>
+  <!-- Recall balk -->
+  <rect role="presentation" x="450" y="285" width="120" height="6" rx="3" fill="#E0E0E0"/>
+  <rect role="presentation" x="450" y="285" width="102" height="6" rx="3" fill="#27AE60"/>
+  <!-- Valse alarmen -->
+  <text x="720" y="260" text-anchor="middle" font-size="28" font-weight="700" fill="#F39C12">10%</text>
+  <text x="720" y="280" text-anchor="middle" font-size="10" fill="#7f8c8d">weinig onnodig afgekeurd</text>
+  <!-- Valse alarmen balk -->
+  <rect role="presentation" x="660" y="285" width="120" height="6" rx="3" fill="#E0E0E0"/>
+  <rect role="presentation" x="660" y="285" width="12" height="6" rx="3" fill="#F39C12"/>
+
+  <!-- Kolom scheidingslijnen rij 2 -->
+  <line x1="240" y1="224" x2="240" y2="304" stroke="#E0E0E0" stroke-width="1"/>
+  <line x1="420" y1="224" x2="420" y2="304" stroke="#E0E0E0" stroke-width="1"/>
+  <line x1="620" y1="224" x2="620" y2="304" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Rij 3: Soepel (0.7) -->
+  <rect role="presentation" x="60" y="306" width="780" height="80" fill="#ECFDF5"/>
+  <rect role="presentation" x="60" y="306" width="6" height="80" fill="#27AE60" rx="0"/>
+  <!-- Gekleurde badge -->
+  <rect role="presentation" x="100" y="326" width="120" height="36" rx="8" fill="url(#green-grad)" filter="url(#shadow)"/>
+  <text x="160" y="349" text-anchor="middle" font-size="13" font-weight="700" fill="white">Soepel</text>
+  <!-- Drempelwaarde -->
+  <text x="330" y="342" text-anchor="middle" font-size="28" font-weight="700" fill="#1E8449">0.7</text>
+  <text x="330" y="362" text-anchor="middle" font-size="10" fill="#7f8c8d">hoog = soepel</text>
+  <!-- Recall -->
+  <text x="510" y="342" text-anchor="middle" font-size="28" font-weight="700" fill="#E67E22">70%</text>
+  <text x="510" y="362" text-anchor="middle" font-size="10" fill="#7f8c8d">minder fouten gevonden</text>
+  <!-- Recall balk -->
+  <rect role="presentation" x="450" y="367" width="120" height="6" rx="3" fill="#E0E0E0"/>
+  <rect role="presentation" x="450" y="367" width="84" height="6" rx="3" fill="#E67E22"/>
+  <!-- Valse alarmen -->
+  <text x="720" y="342" text-anchor="middle" font-size="28" font-weight="700" fill="#27AE60">0%</text>
+  <text x="720" y="362" text-anchor="middle" font-size="10" fill="#7f8c8d">niets onnodig afgekeurd</text>
+  <!-- Valse alarmen balk -->
+  <rect role="presentation" x="660" y="367" width="120" height="6" rx="3" fill="#E0E0E0"/>
+
+  <!-- Kolom scheidingslijnen rij 3 -->
+  <line x1="240" y1="306" x2="240" y2="386" stroke="#E0E0E0" stroke-width="1"/>
+  <line x1="420" y1="306" x2="420" y2="386" stroke="#E0E0E0" stroke-width="1"/>
+  <line x1="620" y1="306" x2="620" y2="386" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Tabel buitenrand -->
+  <rect role="presentation" x="60" y="90" width="780" height="296" rx="8" fill="none" stroke="#D1D5DB" stroke-width="1.5"/>
+
+  <!-- Legenda / conclusie -->
+  <rect role="presentation" x="60" y="410" width="780" height="60" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1"/>
+  <text x="450" y="435" text-anchor="middle" font-size="14" font-weight="700" fill="#2C3E50">
+    Er is geen perfecte instelling. Je kiest altijd tussen veiligheid en kosten.
+  </text>
+  <text x="450" y="457" text-anchor="middle" font-size="12" fill="#5B7083">
+    <tspan>Streng = veilig maar duur</tspan>
+    <tspan dx="12">|</tspan>
+    <tspan dx="12">Soepel = goedkoop maar risico</tspan>
+    <tspan dx="12">|</tspan>
+    <tspan dx="12">Gemiddeld = balans</tspan>
+  </text>
+
+  <!-- Bronvermelding -->
+  <text x="450" y="500" text-anchor="middle"
+        font-size="10" fill="#999">AI Vision voor Kwaliteitscontrole &#x2014; AIMM Module 2: Train</text>
+</svg>
