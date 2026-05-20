@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="Arial, sans-serif">
+  <title>Drempel-curves — vals alarm versus gemist defect</title>
+
+  <!-- Titel -->
+  <text x="450" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#1a1a1a">
+    Drempel-curves
+  </text>
+  <text x="450" y="62" text-anchor="middle" font-size="13" fill="#555">
+    Elk product heeft zijn eigen optimale drempel
+  </text>
+
+  <!-- Assenstelsel -->
+  <line x1="120" y1="500" x2="800" y2="500" stroke="#333" stroke-width="2"/>
+  <line x1="120" y1="500" x2="120" y2="120" stroke="#333" stroke-width="2"/>
+
+  <!-- X-as labels -->
+  <text x="120" y="525" text-anchor="middle" font-size="11" fill="#666">soepel</text>
+  <text x="460" y="525" text-anchor="middle" font-size="11" fill="#666">drempel</text>
+  <text x="800" y="525" text-anchor="middle" font-size="11" fill="#666">streng</text>
+  <text x="120" y="545" text-anchor="middle" font-size="10" fill="#999">50%</text>
+  <text x="460" y="545" text-anchor="middle" font-size="10" fill="#999">80%</text>
+  <text x="800" y="545" text-anchor="middle" font-size="10" fill="#999">99%</text>
+
+  <!-- Y-as label -->
+  <text x="80" y="310" text-anchor="middle" font-size="11" fill="#666" transform="rotate(-90 80 310)">aantal fouten per week</text>
+
+  <!-- Curve 1: Vals alarm (stijgt met strengere drempel) -->
+  <path d="M 120 470 Q 300 450 460 360 Q 620 230 800 150"
+        fill="none" stroke="#b5352f" stroke-width="3"/>
+  <text x="790" y="140" text-anchor="end" font-size="13" font-weight="bold" fill="#b5352f">Vals alarm ↑</text>
+  <text x="790" y="158" text-anchor="end" font-size="10" fill="#b5352f" font-style="italic">(goed product afgekeurd)</text>
+
+  <!-- Curve 2: Gemist defect (daalt met strengere drempel) -->
+  <path d="M 120 150 Q 300 230 460 360 Q 620 450 800 470"
+        fill="none" stroke="#1a5490" stroke-width="3"/>
+  <text x="130" y="140" text-anchor="start" font-size="13" font-weight="bold" fill="#1a5490">Gemist defect ↓</text>
+  <text x="130" y="158" text-anchor="start" font-size="10" fill="#1a5490" font-style="italic">(defect doorgelaten)</text>
+
+  <!-- Kruising-punt: neutraal optimum -->
+  <circle cx="460" cy="360" r="8" fill="#2c5f2d" stroke="#fff" stroke-width="2"/>
+  <text x="460" y="385" text-anchor="middle" font-size="11" fill="#2c5f2d" font-weight="bold">neutraal optimum</text>
+  <text x="460" y="400" text-anchor="middle" font-size="10" fill="#2c5f2d">(beide fouten even 'erg')</text>
+
+  <!-- Pijl: medicatie verschuift rechts (strenger) -->
+  <path d="M 480 340 Q 600 300 680 270" fill="none" stroke="#7a3b82" stroke-width="2" marker-end="url(#arrowmed)"/>
+  <text x="700" y="260" text-anchor="start" font-size="11" font-weight="bold" fill="#7a3b82">Medicatie →</text>
+  <text x="700" y="275" text-anchor="start" font-size="10" fill="#7a3b82">streng</text>
+
+  <!-- Pijl: verpakkingspapier verschuift links (soepeler) -->
+  <path d="M 440 380 Q 320 420 240 440" fill="none" stroke="#d4a017" stroke-width="2" marker-end="url(#arrowpap)"/>
+  <text x="130" y="455" text-anchor="start" font-size="11" font-weight="bold" fill="#d4a017">← Verpakkingspapier</text>
+  <text x="130" y="470" text-anchor="start" font-size="10" fill="#d4a017">soepel</text>
+
+  <defs>
+    <marker id="arrowmed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7a3b82"/>
+    </marker>
+    <marker id="arrowpap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a017"/>
+    </marker>
+  </defs>
+
+  <!-- Kernboodschap -->
+  <g>
+    <rect x="200" y="553" width="500" height="30" rx="4" fill="#fff4d6" stroke="#d4a017" stroke-width="1"/>
+    <text x="450" y="573" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">
+      Er is geen universele drempel. Waar de curves kruisen is context-afhankelijk.
+    </text>
+  </g>
+
+  <!-- Footer -->
+  <text x="450" y="595" text-anchor="middle" font-size="9" fill="#aaa" font-style="italic">
+    AIMM × BronzGreen | ko-smart-mfg-701 | Module 2: Train | MBO-3 operator
+  </text>
+</svg>

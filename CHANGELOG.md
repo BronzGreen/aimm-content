@@ -7,6 +7,73 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde26-lo-smart-mfg-701
+
+**Kontext:** Ronde 26: lo-smart-mfg-701
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-701/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-701.md`
+- `leerobjecten/lo-smart-mfg-701/trainer.md`
+- `leerobjecten/lo-smart-mfg-701/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-701/werkbladen/wb-01-drempel-simulatie.md`
+- `leerobjecten/lo-smart-mfg-701/werkbladen/wb-02-drempel-curves.md`
+- `leerobjecten/lo-smart-mfg-701/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-701/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-701/README.md`
+
+## 2026-05-20 — publish-ronde26-lo-smart-mfg-603
+
+**Kontext:** Ronde 26: lo-smart-mfg-603
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-603/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-603.md`
+- `leerobjecten/lo-smart-mfg-603/trainer.md`
+- `leerobjecten/lo-smart-mfg-603/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-603/werkbladen/wb-01-etna-case-uitleg.md`
+- `leerobjecten/lo-smart-mfg-603/werkbladen/wb-02-beslis-scenarios.md`
+- `leerobjecten/lo-smart-mfg-603/werkbladen/wb-03-actieplan-eigen-product.md`
+- `leerobjecten/lo-smart-mfg-603/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-603/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-603/README.md`
+
+## 2026-05-20 — publish-ronde26-lo-spc-601
+
+**Kontext:** Ronde 26: lo-spc-601
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-601/trainee.md`
+- `kennisbank/spc/ai_integratie/ko-spc-601.md`
+- `leerobjecten/lo-spc-601/trainer.md`
+- `leerobjecten/lo-spc-601/draaiboek.md`
+- `leerobjecten/lo-spc-601/werkbladen/wb-01-synthese-opdracht.md`
+- `leerobjecten/lo-spc-601/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-601/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-601/svg/diagram.svg`
+- `leerobjecten/lo-spc-601/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-601/README.md`
+
+## 2026-05-20 — publish-ronde26-lo-spc-502
+
+**Kontext:** Ronde 26: lo-spc-502
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-502/trainee.md`
+- `kennisbank/spc/regelkaarten/ko-spc-502.md`
+- `leerobjecten/lo-spc-502/trainer.md`
+- `leerobjecten/lo-spc-502/draaiboek.md`
+- `leerobjecten/lo-spc-502/werkbladen/wb-01-oefening.md`
+- `leerobjecten/lo-spc-502/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-502/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-502/svg/diagram.svg`
+- `leerobjecten/lo-spc-502/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-502/README.md`
+
 ## 2026-05-20 — publish-ronde25-lo-smart-mfg-602
 
 **Kontext:** Ronde 25: lo-smart-mfg-602
