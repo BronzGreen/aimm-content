@@ -7,6 +7,24 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde18-lo-spc-301
+
+**Kontext:** Ronde 18: lo-spc-301
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-301/trainee.md`
+- `kennisbank/spc/procesbekwaamheid/ko-spc-301.md`
+- `leerobjecten/lo-spc-301/trainer.md`
+- `leerobjecten/lo-spc-301/draaiboek.md`
+- `leerobjecten/lo-spc-301/werkbladen/wb-01-cpk-puzzel.md`
+- `leerobjecten/lo-spc-301/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-301/werkbladen/wb-03-cpk-handout.md`
+- `leerobjecten/lo-spc-301/werkbladen/wb-04-eigen-cpk-analyse.md`
+- `leerobjecten/lo-spc-301/svg/diagram.svg`
+- `leerobjecten/lo-spc-301/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-301/README.md`
+
 ## 2026-05-20 — publish-ronde17-lo-ai-fund-204
 
 **Kontext:** Ronde 17: lo-ai-fund-204
