@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde26-lo-smart-mfg-603
+
+**Kontext:** Ronde 26: lo-smart-mfg-603
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-603/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-603.md`
+- `leerobjecten/lo-smart-mfg-603/trainer.md`
+- `leerobjecten/lo-smart-mfg-603/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-603/werkbladen/wb-01-etna-case-uitleg.md`
+- `leerobjecten/lo-smart-mfg-603/werkbladen/wb-02-beslis-scenarios.md`
+- `leerobjecten/lo-smart-mfg-603/werkbladen/wb-03-actieplan-eigen-product.md`
+- `leerobjecten/lo-smart-mfg-603/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-603/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-603/README.md`
+
 ## 2026-05-20 — publish-ronde26-lo-spc-601
 
 **Kontext:** Ronde 26: lo-spc-601
