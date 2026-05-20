@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drempelwaarden Simulator</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    // Genereer 100 realistische sensormetingen rond een gemiddelde
+    function generateData(mean, stddev, count) {
+      const data = [];
+      for (let i = 0; i < count; i++) {
+        // Box-Muller transformatie voor normale verdeling
+        const u1 = Math.random();
+        const u2 = Math.random();
+        const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+        data.push(Math.round((mean + z * stddev) * 100) / 100);
+      }
+      return data;
+    }
+
+    function DrempelwaardenSimulator() {
+      const [step, setStep] = useState(0);
+      const [sensorData] = useState(() => generateData(0.28, 0.08, 100));
+      const [warningThreshold, setWarningThreshold] = useState('');
+      const [alarmThreshold, setAlarmThreshold] = useState('');
+      const [testWeeks, setTestWeeks] = useState(null);
+      const [adjusted, setAdjusted] = useState(false);
+
+      const stats = useMemo(() => {
+        const mean = sensorData.reduce((a, b) => a + b, 0) / sensorData.length;
+        const variance = sensorData.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / sensorData.length;
+        const stddev = Math.sqrt(variance);
+        return {
+          mean: Math.round(mean * 100) / 100,
+          stddev: Math.round(stddev * 100) / 100,
+          suggestedWarning: Math.round((mean + 2 * stddev) * 100) / 100,
+          suggestedAlarm: Math.round((mean + 3 * stddev) * 100) / 100,
+          min: Math.round(Math.min(...sensorData) * 100) / 100,
+          max: Math.round(Math.max(...sensorData) * 100) / 100,
+        };
+      }, [sensorData]);
+
+      // Simuleer 2 weken met drempelwaarden
+      const simulateWeeks = () => {
+        const w = parseFloat(warningThreshold);
+        const a = parseFloat(alarmThreshold);
+        if (isNaN(w) || isNaN(a)) return;
+
+        // Genereer 2 weken aan dagelijkse metingen (14 dagen, 20 metingen per dag)
+        let warnings = 0;
+        let alarms = 0;
+        let falseAlarms = 0;
+        let missedProblems = 0;
+
+        for (let day = 0; day < 14; day++) {
+          const dailyData = generateData(0.28, 0.08, 20);
+          // Simuleer 1-2 echte problemen per week (bij hogere waarden)
+          if (day % 5 === 3) {
+            dailyData[10] = 0.55 + Math.random() * 0.15; // Echt probleem
+          }
+
+          for (const val of dailyData) {
+            if (val >= a) {
+              alarms++;
+              if (val < 0.50) falseAlarms++; // Onder 0.50 is het waarschijnlijk vals
+            } else if (val >= w) {
+              warnings++;
+              if (val < 0.40) falseAlarms++;
+            }
+            if (val >= 0.55 && val < w) {
+              missedProblems++;
+            }
+          }
+        }
+
+        setTestWeeks({
+          warnings,
+          alarms,
+          falseAlarms,
+          missedProblems,
+          totalMeasurements: 14 * 20,
+        });
+      };
+
+      const handleReset = () => {
+        setStep(0);
+        setWarningThreshold('');
+        setAlarmThreshold('');
+        setTestWeeks(null);
+        setAdjusted(false);
+      };
+
+      const STEPS = [
+        { num: 1, title: 'Normaalwaarden meten', color: 'bg-blue-500' },
+        { num: 2, title: 'Bandbreedte berekenen', color: 'bg-green-500' },
+        { num: 3, title: 'Drempel instellen', color: 'bg-orange-500' },
+        { num: 4, title: 'Evalueren en bijstellen', color: 'bg-purple-500' },
+      ];
+
+      return (
+        <div className="min-h-screen bg-gray-50">
+          {/* Header */}
+          <div className="bg-white border-b px-6 py-4">
+            <h1 className="text-2xl font-bold text-gray-900">Drempelwaarden Simulator</h1>
+            <p className="text-gray-500 mt-1">Doorloop de 4 stappen met echte sensordata</p>
+          </div>
+
+          <div className="max-w-4xl mx-auto p-6">
+            {/* Stappen indicator */}
+            <div className="flex gap-2 mb-8">
+              {STEPS.map((s, i) => (
+                <button
+                  key={s.num}
+                  onClick={() => i <= step ? setStep(i) : null}
+                  className={`flex-1 py-3 px-2 rounded-lg text-sm font-medium transition-all ${
+                    i === step
+                      ? `${s.color} text-white shadow-lg`
+                      : i < step
+                        ? 'bg-gray-200 text-gray-700 cursor-pointer hover:bg-gray-300'
+                        : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                  }`}
+                >
+                  <span className="font-bold">Stap {s.num}</span>
+                  <br />
+                  <span className="text-xs">{s.title}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* STAP 1: Metingen bekijken */}
+            {step === 0 && (
+              <div className="bg-white rounded-xl shadow-sm border p-6">
+                <h2 className="text-xl font-bold text-blue-700 mb-4">Stap 1: Normaalwaarden meten</h2>
+                <p className="text-gray-600 mb-4">
+                  Hieronder zie je 100 metingen van een trillingssensor (in mm/s).
+                  De machine draaide normaal tijdens deze metingen.
+                </p>
+
+                {/* Mini bar chart van de data */}
+                <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                  <div className="text-sm font-medium text-gray-500 mb-2">100 sensormetingen (mm/s)</div>
+                  <div className="flex items-end gap-px h-32">
+                    {sensorData.map((val, i) => (
+                      <div
+                        key={i}
+                        className="flex-1 bg-blue-400 rounded-t-sm hover:bg-blue-600 transition-colors"
+                        style={{ height: `${(val / 0.6) * 100}%` }}
+                        title={`Meting ${i + 1}: ${val} mm/s`}
+                      />
+                    ))}
+                  </div>
+                  <div className="flex justify-between text-xs text-gray-400 mt-1">
+                    <span>Meting 1</span>
+                    <span>Meting 100</span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-3 gap-4 mb-4">
+                  <div className="bg-blue-50 rounded-lg p-3 text-center">
+                    <div className="text-xs text-blue-600 font-medium">Laagste</div>
+                    <div className="text-lg font-bold text-blue-800">{stats.min} mm/s</div>
+                  </div>
+                  <div className="bg-blue-50 rounded-lg p-3 text-center">
+                    <div className="text-xs text-blue-600 font-medium">Aantal metingen</div>
+                    <div className="text-lg font-bold text-blue-800">100</div>
+                  </div>
+                  <div className="bg-blue-50 rounded-lg p-3 text-center">
+                    <div className="text-xs text-blue-600 font-medium">Hoogste</div>
+                    <div className="text-lg font-bold text-blue-800">{stats.max} mm/s</div>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setStep(1)}
+                  className="w-full py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
+                >
+                  Naar stap 2: Berekenen
+                </button>
+              </div>
+            )}
+
+            {/* STAP 2: Berekenen */}
+            {step === 1 && (
+              <div className="bg-white rounded-xl shadow-sm border p-6">
+                <h2 className="text-xl font-bold text-green-700 mb-4">Stap 2: Bandbreedte berekenen</h2>
+                <p className="text-gray-600 mb-4">
+                  Nu berekenen we het gemiddelde en de spreiding.
+                  Zo weten we wat "normaal" is.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div className="bg-green-50 rounded-xl p-5 border-l-4 border-green-500">
+                    <div className="text-sm text-green-600 font-medium mb-1">Gemiddelde</div>
+                    <div className="text-3xl font-bold text-green-800">{stats.mean} mm/s</div>
+                    <div className="text-xs text-green-600 mt-1">Alle waarden opgeteld, gedeeld door 100</div>
+                  </div>
+                  <div className="bg-green-50 rounded-xl p-5 border-l-4 border-green-500">
+                    <div className="text-sm text-green-600 font-medium mb-1">Spreiding</div>
+                    <div className="text-3xl font-bold text-green-800">{stats.stddev} mm/s</div>
+                    <div className="text-xs text-green-600 mt-1">Hoe ver waarden van het gemiddelde afwijken</div>
+                  </div>
+                </div>
+
+                <div className="bg-yellow-50 rounded-xl p-5 border border-yellow-200 mb-6">
+                  <div className="font-bold text-yellow-800 mb-2">De vuistregel</div>
+                  <div className="text-sm text-yellow-700">
+                    <p className="mb-1"><strong>Waarschuwing</strong> = gemiddelde + 2x spreiding = {stats.mean} + 2 x {stats.stddev} = <strong>{stats.suggestedWarning} mm/s</strong></p>
+                    <p><strong>Alarm</strong> = gemiddelde + 3x spreiding = {stats.mean} + 3 x {stats.stddev} = <strong>{stats.suggestedAlarm} mm/s</strong></p>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setStep(2)}
+                  className="w-full py-3 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors"
+                >
+                  Naar stap 3: Drempels instellen
+                </button>
+              </div>
+            )}
+
+            {/* STAP 3: Instellen */}
+            {step === 2 && (
+              <div className="bg-white rounded-xl shadow-sm border p-6">
+                <h2 className="text-xl font-bold text-orange-700 mb-4">Stap 3: Drempel instellen</h2>
+                <p className="text-gray-600 mb-4">
+                  Stel nu je eigen drempelwaarden in.
+                  Je mag de vuistregel gebruiken, of een eigen waarde kiezen.
+                </p>
+
+                <div className="bg-orange-50 rounded-xl p-4 mb-4 text-sm text-orange-700">
+                  <strong>Ter herinnering:</strong> Gemiddelde = {stats.mean} mm/s | Spreiding = {stats.stddev} mm/s |
+                  Vuistregel: waarschuwing = {stats.suggestedWarning} mm/s, alarm = {stats.suggestedAlarm} mm/s
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="space-y-2">
+                    <label className="block text-sm font-bold text-yellow-700">
+                      Waarschuwing (geel) - mm/s
+                    </label>
+                    <input
+                      type="number"
+                      step="0.01"
+                      value={warningThreshold}
+                      onChange={e => setWarningThreshold(e.target.value)}
+                      placeholder={`bijv. ${stats.suggestedWarning}`}
+                      className="w-full p-3 border-2 border-yellow-300 rounded-lg text-lg font-bold focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none bg-yellow-50"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="block text-sm font-bold text-red-700">
+                      Alarm (rood) - mm/s
+                    </label>
+                    <input
+                      type="number"
+                      step="0.01"
+                      value={alarmThreshold}
+                      onChange={e => setAlarmThreshold(e.target.value)}
+                      placeholder={`bijv. ${stats.suggestedAlarm}`}
+                      className="w-full p-3 border-2 border-red-300 rounded-lg text-lg font-bold focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none bg-red-50"
+                    />
+                  </div>
+                </div>
+
+                {/* Visuele weergave van drempels op de data */}
+                {warningThreshold && alarmThreshold && (
+                  <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                    <div className="text-sm font-medium text-gray-500 mb-2">Jouw drempels op de data</div>
+                    <div className="relative flex items-end gap-px h-32">
+                      {sensorData.map((val, i) => {
+                        const w = parseFloat(warningThreshold);
+                        const a = parseFloat(alarmThreshold);
+                        let color = 'bg-blue-400';
+                        if (val >= a) color = 'bg-red-500';
+                        else if (val >= w) color = 'bg-yellow-500';
+                        return (
+                          <div
+                            key={i}
+                            className={`flex-1 ${color} rounded-t-sm transition-colors`}
+                            style={{ height: `${(val / 0.6) * 100}%` }}
+                            title={`${val} mm/s`}
+                          />
+                        );
+                      })}
+                    </div>
+                    <div className="flex gap-4 mt-2 text-xs">
+                      <span className="flex items-center gap-1"><span className="w-3 h-3 bg-blue-400 rounded"></span> Normaal</span>
+                      <span className="flex items-center gap-1"><span className="w-3 h-3 bg-yellow-500 rounded"></span> Waarschuwing</span>
+                      <span className="flex items-center gap-1"><span className="w-3 h-3 bg-red-500 rounded"></span> Alarm</span>
+                    </div>
+                  </div>
+                )}
+
+                <button
+                  onClick={() => setStep(3)}
+                  disabled={!warningThreshold || !alarmThreshold}
+                  className={`w-full py-3 rounded-lg font-medium transition-colors ${
+                    warningThreshold && alarmThreshold
+                      ? 'bg-orange-500 text-white hover:bg-orange-600'
+                      : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  }`}
+                >
+                  Naar stap 4: Evalueren
+                </button>
+              </div>
+            )}
+
+            {/* STAP 4: Evalueren */}
+            {step === 3 && (
+              <div className="bg-white rounded-xl shadow-sm border p-6">
+                <h2 className="text-xl font-bold text-purple-700 mb-4">Stap 4: Evalueren en bijstellen</h2>
+                <p className="text-gray-600 mb-4">
+                  We simuleren nu 2 weken productie met jouw drempelwaarden.
+                  Hoeveel alarmen krijg je? Hoeveel zijn er vals?
+                </p>
+
+                <div className="bg-purple-50 rounded-xl p-4 mb-4 text-sm">
+                  <strong>Jouw drempels:</strong> Waarschuwing = {warningThreshold} mm/s | Alarm = {alarmThreshold} mm/s
+                </div>
+
+                {!testWeeks && (
+                  <button
+                    onClick={simulateWeeks}
+                    className="w-full py-3 bg-purple-500 text-white rounded-lg font-medium hover:bg-purple-600 transition-colors mb-4"
+                  >
+                    Simuleer 2 weken productie
+                  </button>
+                )}
+
+                {testWeeks && (
+                  <div>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                      <div className="bg-yellow-50 rounded-lg p-4 text-center border border-yellow-200">
+                        <div className="text-2xl font-bold text-yellow-700">{testWeeks.warnings}</div>
+                        <div className="text-xs text-yellow-600 mt-1">Waarschuwingen</div>
+                      </div>
+                      <div className="bg-red-50 rounded-lg p-4 text-center border border-red-200">
+                        <div className="text-2xl font-bold text-red-700">{testWeeks.alarms}</div>
+                        <div className="text-xs text-red-600 mt-1">Alarmen</div>
+                      </div>
+                      <div className="bg-orange-50 rounded-lg p-4 text-center border border-orange-200">
+                        <div className="text-2xl font-bold text-orange-700">{testWeeks.falseAlarms}</div>
+                        <div className="text-xs text-orange-600 mt-1">Vals alarm</div>
+                      </div>
+                      <div className="bg-gray-50 rounded-lg p-4 text-center border border-gray-200">
+                        <div className="text-2xl font-bold text-gray-700">{testWeeks.missedProblems}</div>
+                        <div className="text-xs text-gray-600 mt-1">Gemist</div>
+                      </div>
+                    </div>
+
+                    {/* Advies op basis van resultaat */}
+                    <div className={`rounded-xl p-5 mb-6 border-l-4 ${
+                      testWeeks.falseAlarms > 5
+                        ? 'bg-orange-50 border-orange-500'
+                        : testWeeks.missedProblems > 0
+                          ? 'bg-red-50 border-red-500'
+                          : 'bg-green-50 border-green-500'
+                    }`}>
+                      <div className="font-bold mb-1">
+                        {testWeeks.falseAlarms > 5 ? 'Te veel valse alarmen' :
+                         testWeeks.missedProblems > 0 ? 'Problemen gemist!' :
+                         'Goed ingesteld!'}
+                      </div>
+                      <div className="text-sm">
+                        {testWeeks.falseAlarms > 5 &&
+                          'Je drempel staat te laag. Je krijgt te veel meldingen die niet kloppen. Verhoog je drempel een beetje.'}
+                        {testWeeks.missedProblems > 0 && testWeeks.falseAlarms <= 5 &&
+                          'Je drempel staat te hoog. Er waren echte problemen die je hebt gemist. Verlaag je drempel een beetje.'}
+                        {testWeeks.falseAlarms <= 5 && testWeeks.missedProblems === 0 &&
+                          'Je drempelwaarden werken goed. Weinig valse alarmen en geen gemiste problemen. Goed gedaan!'}
+                      </div>
+                    </div>
+
+                    {!adjusted && testWeeks.falseAlarms > 3 && (
+                      <div className="space-y-3 mb-4">
+                        <div className="text-sm font-medium text-gray-700">Wil je bijstellen?</div>
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="space-y-1">
+                            <label className="text-xs font-medium text-yellow-700">Nieuwe waarschuwing</label>
+                            <input
+                              type="number" step="0.01"
+                              value={warningThreshold}
+                              onChange={e => setWarningThreshold(e.target.value)}
+                              className="w-full p-2 border rounded-lg text-sm"
+                            />
+                          </div>
+                          <div className="space-y-1">
+                            <label className="text-xs font-medium text-red-700">Nieuw alarm</label>
+                            <input
+                              type="number" step="0.01"
+                              value={alarmThreshold}
+                              onChange={e => setAlarmThreshold(e.target.value)}
+                              className="w-full p-2 border rounded-lg text-sm"
+                            />
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => { setTestWeeks(null); setAdjusted(true); simulateWeeks(); }}
+                          className="w-full py-2 bg-purple-500 text-white rounded-lg text-sm font-medium hover:bg-purple-600 transition-colors"
+                        >
+                          Opnieuw simuleren met nieuwe drempels
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Reset knop */}
+            <button
+              onClick={handleReset}
+              className="mt-6 w-full py-2 text-sm text-gray-500 hover:text-gray-700 flex items-center justify-center gap-1 transition-colors"
+            >
+              Opnieuw beginnen
+            </button>
+
+            {/* Bron */}
+            <div className="text-center text-xs text-gray-400 mt-4">
+              AIMM Predictive Maintenance Module 2 - Drempelwaarden instellen | v1.0
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<DrempelwaardenSimulator />);
+  </script>
+</body>
+</html>

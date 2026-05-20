@@ -7,6 +7,25 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde15-lo-smart-mfg-202
+
+**Kontext:** Ronde 15: lo-smart-mfg-202
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-202/trainee.md`
+- `kennisbank/smart_manufacturing/predictive_maintenance/ko-smart-mfg-202.md`
+- `leerobjecten/lo-smart-mfg-202/trainer.md`
+- `leerobjecten/lo-smart-mfg-202/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-202/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-smart-mfg-202/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-smart-mfg-202/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-smart-mfg-202/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-smart-mfg-202/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-202/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-202/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-202/README.md`
+
 ## 2026-05-20 — publish-ronde15-lo-industry40-301
 
 **Kontext:** Ronde 15: lo-industry40-301
