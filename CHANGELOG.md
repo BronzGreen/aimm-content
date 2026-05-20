@@ -7,6 +7,21 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde16-lo-industry40-302
+
+**Kontext:** Ronde 16: lo-industry40-302
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-302/trainee.md`
+- `leerobjecten/lo-industry40-302/trainer.md`
+- `leerobjecten/lo-industry40-302/draaiboek.md`
+- `leerobjecten/lo-industry40-302/werkbladen/wb-01-drie-storingen.md`
+- `leerobjecten/lo-industry40-302/werkbladen/wb-02-buurman-check.md`
+- `leerobjecten/lo-industry40-302/werkbladen/wb-03-pipeline-handout.md`
+- `leerobjecten/lo-industry40-302/werkbladen/wb-04-eigen-pipeline.md`
+- `leerobjecten/lo-industry40-302/README.md`
+
 ## 2026-05-20 — publish-ronde16-lo-smart-mfg-203
 
 **Kontext:** Ronde 16: lo-smart-mfg-203
