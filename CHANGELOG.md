@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde16-lo-smart-mfg-203
+
+**Kontext:** Ronde 16: lo-smart-mfg-203
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-203/trainee.md`
+- `kennisbank/smart_manufacturing/predictive_maintenance/ko-smart-mfg-203.md`
+- `leerobjecten/lo-smart-mfg-203/trainer.md`
+- `leerobjecten/lo-smart-mfg-203/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-203/werkbladen/wb-anomaliescores-ronde1.md`
+- `leerobjecten/lo-smart-mfg-203/werkbladen/wb-anomaliescores-ronde2.md`
+- `leerobjecten/lo-smart-mfg-203/werkbladen/wb-handout-verkeerslichtmodel.md`
+- `leerobjecten/lo-smart-mfg-203/werkbladen/wb-reflectie-groepsdiscussie.md`
+- `leerobjecten/lo-smart-mfg-203/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-203/README.md`
+
 ## 2026-05-20 — publish-ronde16-lo-data-lit-302
 
 **Kontext:** Ronde 16: lo-data-lit-302
