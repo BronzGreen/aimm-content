@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde24-lo-smart-mfg-523
+
+**Kontext:** Ronde 24: lo-smart-mfg-523
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-523/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-523.md`
+- `leerobjecten/lo-smart-mfg-523/trainer.md`
+- `leerobjecten/lo-smart-mfg-523/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-523/werkbladen/wb-business-case.md`
+- `leerobjecten/lo-smart-mfg-523/werkbladen/wb-handout-implementatie.md`
+- `leerobjecten/lo-smart-mfg-523/werkbladen/wb-implementatieplan.md`
+- `leerobjecten/lo-smart-mfg-523/werkbladen/wb-reflectie-business-case.md`
+- `leerobjecten/lo-smart-mfg-523/README.md`
+
 ## 2026-05-20 — publish-ronde24-lo-smart-mfg-522
 
 **Kontext:** Ronde 24: lo-smart-mfg-522
