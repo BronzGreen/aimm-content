@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Labeltool Simulatie</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    const PRODUCTS = [
+      { id: 1, desc: "Stalen buis met een lichte kromming aan het uiteinde.", correct: "defect", type: "vervorming" },
+      { id: 2, desc: "Gefreesde aluminium plaat, alle maten binnen tolerantie.", correct: "goed", type: null },
+      { id: 3, desc: "Kunststof kap met een donkere verkleuring op het oppervlak.", correct: "defect", type: "verkleuring" },
+      { id: 4, desc: "Koperen connector, goed gesoldeerd, geen koude lasverbinding.", correct: "goed", type: null },
+      { id: 5, desc: "Rubber ring met een kleine scheur aan de binnenzijde.", correct: "defect", type: "scheur" },
+      { id: 6, desc: "Verpakt product, etiket compleet en leesbaar.", correct: "goed", type: null },
+      { id: 7, desc: "Gespoten onderdeel met een zichtbare inzinking (sink mark).", correct: "defect", type: "vervorming" },
+      { id: 8, desc: "Glasplaat, helder, geen krassen of chips.", correct: "goed", type: null },
+      { id: 9, desc: "Metalen frame met roestvorming bij de lasnaad.", correct: "defect", type: "verkleuring" },
+      { id: 10, desc: "Textielband, gelijkmatig geweven, correcte breedte.", correct: "goed", type: null },
+    ];
+
+    const DEFECT_TYPES = [
+      { id: "scheur", label: "Scheur / breuk", color: "#ef4444" },
+      { id: "verkleuring", label: "Verkleuring / roest", color: "#f59e0b" },
+      { id: "vervorming", label: "Vervorming / kromming", color: "#8b5cf6" },
+    ];
+
+    function App() {
+      const [labels, setLabels] = useState({});
+      const [currentIndex, setCurrentIndex] = useState(0);
+      const [showImpact, setShowImpact] = useState(false);
+
+      const labeledCount = Object.keys(labels).length;
+      const product = PRODUCTS[currentIndex];
+
+      const handleLabel = (id, label, defectType) => {
+        setLabels(prev => ({ ...prev, [id]: { label, defectType: defectType || null } }));
+        if (currentIndex < PRODUCTS.length - 1) {
+          setTimeout(() => setCurrentIndex(prev => prev + 1), 350);
+        }
+      };
+
+      // Simuleer modelkwaliteit op basis van aantal labels
+      const modelQuality = useMemo(() => {
+        const n = labeledCount;
+        if (n === 0) return { accuracy: 0, confidence: "Geen", level: "none" };
+        if (n <= 2) return { accuracy: 35 + n * 5, confidence: "Zeer laag", level: "low" };
+        if (n <= 4) return { accuracy: 50 + n * 4, confidence: "Laag", level: "low" };
+        if (n <= 6) return { accuracy: 62 + n * 3, confidence: "Gemiddeld", level: "medium" };
+        if (n <= 8) return { accuracy: 72 + n * 2, confidence: "Goed", level: "high" };
+        return { accuracy: Math.min(95, 80 + n), confidence: "Hoog", level: "high" };
+      }, [labeledCount]);
+
+      // Check correctheid van labels
+      const correctCount = useMemo(() => {
+        let correct = 0;
+        Object.entries(labels).forEach(([id, val]) => {
+          const prod = PRODUCTS.find(p => p.id === +id);
+          if (prod && val.label === prod.correct) {
+            if (prod.correct === "goed" || val.defectType === prod.type) correct++;
+          }
+        });
+        return correct;
+      }, [labels]);
+
+      const handleReset = () => {
+        setLabels({});
+        setCurrentIndex(0);
+        setShowImpact(false);
+      };
+
+      if (showImpact) {
+        return (
+          <div style={{ minHeight: "100vh", background: "#f9fafb", fontFamily: "system-ui, sans-serif" }}>
+            <div style={{ background: "white", borderBottom: "1px solid #e5e7eb", padding: "20px 24px" }}>
+              <h1 style={{ fontSize: "22px", fontWeight: "bold", color: "#111827", margin: 0 }}>
+                Impact van jouw labels
+              </h1>
+              <p style={{ color: "#6b7280", marginTop: "4px", fontSize: "14px" }}>
+                Zo goed zou het AI-model worden met jouw trainingsdata
+              </p>
+            </div>
+            <div style={{ maxWidth: "700px", margin: "0 auto", padding: "24px" }}>
+              {/* Model kwaliteit */}
+              <div style={{
+                background: "white", borderRadius: "16px", border: "1px solid #e5e7eb",
+                padding: "32px", textAlign: "center", marginBottom: "24px"
+              }}>
+                <div style={{ fontSize: "14px", color: "#6b7280", marginBottom: "4px" }}>Geschatte nauwkeurigheid model</div>
+                <div style={{
+                  fontSize: "56px", fontWeight: "bold",
+                  color: modelQuality.accuracy >= 80 ? "#10b981" : modelQuality.accuracy >= 60 ? "#f59e0b" : "#ef4444"
+                }}>
+                  {modelQuality.accuracy}%
+                </div>
+                <div style={{
+                  marginTop: "8px", padding: "6px 16px", borderRadius: "20px", display: "inline-block",
+                  background: modelQuality.level === "high" ? "#d1fae5" : modelQuality.level === "medium" ? "#fef3c7" : "#fee2e2",
+                  color: modelQuality.level === "high" ? "#065f46" : modelQuality.level === "medium" ? "#92400e" : "#991b1b",
+                  fontSize: "14px", fontWeight: "600"
+                }}>
+                  Betrouwbaarheid: {modelQuality.confidence}
+                </div>
+              </div>
+
+              {/* Grafiek: labels vs kwaliteit */}
+              <div style={{
+                background: "white", borderRadius: "16px", border: "1px solid #e5e7eb",
+                padding: "24px", marginBottom: "24px"
+              }}>
+                <div style={{ fontWeight: "600", color: "#374151", marginBottom: "16px" }}>
+                  Meer labels = beter model
+                </div>
+                <div style={{ display: "flex", alignItems: "flex-end", gap: "4px", height: "120px" }}>
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => {
+                    const h = n <= 2 ? 20 + n * 5 : n <= 4 ? 30 + n * 6 : n <= 6 ? 38 + n * 5 : n <= 8 ? 44 + n * 5 : Math.min(95, 50 + n * 4);
+                    const isLabeled = n <= labeledCount;
+                    return (
+                      <div key={n} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
+                        <div style={{ fontSize: "10px", color: "#6b7280" }}>{h}%</div>
+                        <div style={{
+                          width: "100%", borderRadius: "4px 4px 0 0",
+                          height: `${h}px`,
+                          background: isLabeled ? "#3b82f6" : "#e5e7eb",
+                          transition: "all 0.3s"
+                        }} />
+                        <div style={{ fontSize: "11px", color: "#9ca3af" }}>{n}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div style={{ textAlign: "center", fontSize: "12px", color: "#9ca3af", marginTop: "4px" }}>
+                  Aantal gelabelde producten
+                </div>
+              </div>
+
+              {/* Overzicht labels */}
+              <div style={{
+                background: "white", borderRadius: "16px", border: "1px solid #e5e7eb",
+                padding: "24px", marginBottom: "24px"
+              }}>
+                <div style={{ fontWeight: "600", color: "#374151", marginBottom: "12px" }}>
+                  Jouw labels ({correctCount} van {labeledCount} correct)
+                </div>
+                {PRODUCTS.map(p => {
+                  const myLabel = labels[p.id];
+                  if (!myLabel) return null;
+                  const isCorrect = myLabel.label === p.correct && (p.correct === "goed" || myLabel.defectType === p.type);
+                  return (
+                    <div key={p.id} style={{
+                      display: "flex", alignItems: "center", gap: "12px",
+                      padding: "10px 0", borderBottom: "1px solid #f3f4f6"
+                    }}>
+                      <div style={{
+                        width: "24px", height: "24px", borderRadius: "50%",
+                        background: isCorrect ? "#d1fae5" : "#fee2e2",
+                        color: isCorrect ? "#065f46" : "#991b1b",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        fontSize: "14px", fontWeight: "bold", flexShrink: 0
+                      }}>
+                        {isCorrect ? "\u2713" : "\u2717"}
+                      </div>
+                      <div style={{ flex: 1, fontSize: "13px", color: "#374151" }}>
+                        Product {p.id}: jij zei <strong>{myLabel.label}</strong>
+                        {myLabel.defectType && <span> ({DEFECT_TYPES.find(d => d.id === myLabel.defectType)?.label})</span>}
+                        {!isCorrect && (
+                          <span style={{ color: "#9ca3af" }}> — correct: {p.correct}{p.type ? ` (${p.type})` : ""}</span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Uitleg */}
+              <div style={{
+                background: "#eff6ff", borderRadius: "12px", padding: "16px",
+                fontSize: "13px", color: "#1e40af", marginBottom: "20px"
+              }}>
+                <strong>Waarom zijn labels belangrijk?</strong> Een AI-model leert van voorbeelden. Hoe meer producten
+                je correct labelt (goed of defect + type), hoe beter het model leert herkennen wat een defect is.
+                Met te weinig labels maakt het model veel fouten. Met genoeg goede labels wordt het bijna net zo
+                goed als een ervaren operator.
+              </div>
+
+              <button onClick={handleReset} style={{
+                display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+                margin: "0 auto", padding: "10px 24px", background: "white", border: "1px solid #d1d5db",
+                borderRadius: "8px", cursor: "pointer", fontSize: "14px", color: "#6b7280"
+              }}>
+                Opnieuw beginnen
+              </button>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div style={{ minHeight: "100vh", background: "#f9fafb", fontFamily: "system-ui, sans-serif" }}>
+          <div style={{ background: "white", borderBottom: "1px solid #e5e7eb", padding: "20px 24px" }}>
+            <h1 style={{ fontSize: "22px", fontWeight: "bold", color: "#111827", margin: 0 }}>
+              Labeltool Simulatie
+            </h1>
+            <p style={{ color: "#6b7280", marginTop: "4px", fontSize: "14px" }}>
+              Label elk product: is het goed of defect? Bij defect: welk type? Hoe meer je labelt, hoe beter het model.
+            </p>
+          </div>
+          <div style={{ maxWidth: "600px", margin: "0 auto", padding: "24px" }}>
+            {/* Voortgang */}
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
+              <div style={{ flex: 1, height: "8px", background: "#e5e7eb", borderRadius: "999px", overflow: "hidden" }}>
+                <div style={{
+                  height: "100%", background: "#3b82f6", borderRadius: "999px",
+                  width: `${(labeledCount / PRODUCTS.length) * 100}%`,
+                  transition: "width 0.5s ease"
+                }} />
+              </div>
+              <span style={{ fontSize: "13px", color: "#6b7280", fontFamily: "monospace" }}>
+                {labeledCount}/{PRODUCTS.length}
+              </span>
+            </div>
+
+            {/* Model kwaliteitsmeter */}
+            <div style={{
+              background: "white", borderRadius: "12px", border: "1px solid #e5e7eb",
+              padding: "12px 16px", marginBottom: "20px", display: "flex", alignItems: "center", gap: "12px"
+            }}>
+              <span style={{ fontSize: "13px", color: "#6b7280" }}>Modelkwaliteit:</span>
+              <div style={{ flex: 1, height: "8px", background: "#f3f4f6", borderRadius: "4px", overflow: "hidden" }}>
+                <div style={{
+                  height: "100%", borderRadius: "4px",
+                  background: modelQuality.accuracy >= 80 ? "#10b981" : modelQuality.accuracy >= 60 ? "#f59e0b" : "#ef4444",
+                  width: `${modelQuality.accuracy}%`,
+                  transition: "width 0.5s ease"
+                }} />
+              </div>
+              <span style={{ fontSize: "13px", fontWeight: "600", color: "#374151" }}>{modelQuality.accuracy}%</span>
+            </div>
+
+            {/* Product kaart */}
+            <div style={{
+              background: "white", borderRadius: "16px", border: "1px solid #e5e7eb",
+              padding: "28px", marginBottom: "20px", boxShadow: "0 1px 3px rgba(0,0,0,0.05)"
+            }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+                <span style={{
+                  padding: "4px 12px", background: "#eff6ff", color: "#1d4ed8",
+                  borderRadius: "20px", fontSize: "13px", fontWeight: "600"
+                }}>
+                  Product {product.id}
+                </span>
+                <span style={{ fontSize: "12px", color: "#9ca3af" }}>
+                  {currentIndex + 1} van {PRODUCTS.length}
+                </span>
+              </div>
+              <div style={{
+                background: "#f3f4f6", borderRadius: "12px", padding: "20px",
+                marginBottom: "20px", fontSize: "15px", color: "#374151", lineHeight: "1.6"
+              }}>
+                {product.desc}
+              </div>
+
+              {/* Label knoppen */}
+              <div style={{ marginBottom: "12px" }}>
+                <button onClick={() => handleLabel(product.id, "goed")} style={{
+                  width: "100%", padding: "14px", borderRadius: "12px", border: "2px solid",
+                  fontSize: "15px", fontWeight: "600", cursor: "pointer", marginBottom: "8px",
+                  transition: "all 0.2s",
+                  borderColor: labels[product.id]?.label === "goed" ? "#10b981" : "#d1d5db",
+                  background: labels[product.id]?.label === "goed" ? "#d1fae5" : "white",
+                  color: labels[product.id]?.label === "goed" ? "#065f46" : "#374151"
+                }}>
+                  Goed product
+                </button>
+
+                <div style={{ fontSize: "13px", color: "#6b7280", marginBottom: "8px", textAlign: "center" }}>
+                  Of kies een defect-type:
+                </div>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  {DEFECT_TYPES.map(dt => (
+                    <button key={dt.id} onClick={() => handleLabel(product.id, "defect", dt.id)} style={{
+                      flex: 1, padding: "12px 8px", borderRadius: "12px", border: "2px solid",
+                      fontSize: "13px", fontWeight: "600", cursor: "pointer",
+                      transition: "all 0.2s",
+                      borderColor: labels[product.id]?.defectType === dt.id ? dt.color : "#d1d5db",
+                      background: labels[product.id]?.defectType === dt.id ? `${dt.color}15` : "white",
+                      color: labels[product.id]?.defectType === dt.id ? dt.color : "#374151"
+                    }}>
+                      {dt.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Navigatie bolletjes */}
+            <div style={{ display: "flex", justifyContent: "center", gap: "6px", marginBottom: "20px" }}>
+              {PRODUCTS.map((p, i) => (
+                <button key={p.id} onClick={() => setCurrentIndex(i)} style={{
+                  width: "12px", height: "12px", borderRadius: "50%", border: "none", cursor: "pointer",
+                  transition: "all 0.2s",
+                  background: i === currentIndex ? "#3b82f6"
+                    : labels[p.id] ? (labels[p.id].label === "goed" ? "#86efac" : "#fca5a5")
+                    : "#d1d5db"
+                }} />
+              ))}
+            </div>
+
+            {labeledCount === PRODUCTS.length && (
+              <button onClick={() => setShowImpact(true)} style={{
+                width: "100%", padding: "14px", borderRadius: "12px", border: "none",
+                background: "#3b82f6", color: "white", fontSize: "15px", fontWeight: "600",
+                cursor: "pointer"
+              }}>
+                Bekijk de impact op het model
+              </button>
+            )}
+
+            <button onClick={handleReset} style={{
+              display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+              margin: "16px auto 0", padding: "8px 16px", background: "transparent", border: "none",
+              cursor: "pointer", fontSize: "13px", color: "#9ca3af"
+            }}>
+              Opnieuw beginnen
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
