@@ -7,6 +7,74 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde17-lo-ai-fund-204
+
+**Kontext:** Ronde 17: lo-ai-fund-204
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-204/trainee.md`
+- `kennisbank/ai_fundamentals/ai_ethics_en_bias/ko-ai-fund-204.md`
+- `leerobjecten/lo-ai-fund-204/trainer.md`
+- `leerobjecten/lo-ai-fund-204/draaiboek.md`
+- `leerobjecten/lo-ai-fund-204/werkbladen/wb-01-casus-kwaliteitscontrole.md`
+- `leerobjecten/lo-ai-fund-204/werkbladen/wb-02-buurman-drie-voorbeelden.md`
+- `leerobjecten/lo-ai-fund-204/werkbladen/wb-03-handout-bias-en-inclusie.md`
+- `leerobjecten/lo-ai-fund-204/werkbladen/wb-04-eigen-bias-en-inclusie.md`
+- `leerobjecten/lo-ai-fund-204/README.md`
+
+## 2026-05-20 — publish-ronde17-lo-industry40-303
+
+**Kontext:** Ronde 17: lo-industry40-303
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-303/trainee.md`
+- `leerobjecten/lo-industry40-303/trainer.md`
+- `leerobjecten/lo-industry40-303/draaiboek.md`
+- `leerobjecten/lo-industry40-303/werkbladen/wb-01-alarm-stroom.md`
+- `leerobjecten/lo-industry40-303/werkbladen/wb-02-reflecteren-duo.md`
+- `leerobjecten/lo-industry40-303/werkbladen/wb-03-theorie-handout.md`
+- `leerobjecten/lo-industry40-303/werkbladen/wb-04-experimenteren-eigen-lijn.md`
+- `leerobjecten/lo-industry40-303/README.md`
+
+## 2026-05-20 — publish-ronde17-lo-smart-mfg-204
+
+**Kontext:** Ronde 17: lo-smart-mfg-204
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-204/trainee.md`
+- `kennisbank/smart_manufacturing/predictive_maintenance/ko-smart-mfg-204.md`
+- `leerobjecten/lo-smart-mfg-204/trainer.md`
+- `leerobjecten/lo-smart-mfg-204/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-204/werkbladen/wb-bijstellen-ronde2.md`
+- `leerobjecten/lo-smart-mfg-204/werkbladen/wb-configuratie-model.md`
+- `leerobjecten/lo-smart-mfg-204/werkbladen/wb-handout-vuistregels.md`
+- `leerobjecten/lo-smart-mfg-204/werkbladen/wb-reflectie-duo.md`
+- `leerobjecten/lo-smart-mfg-204/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-204/README.md`
+
+## 2026-05-20 — publish-ronde17-lo-spc-203
+
+**Kontext:** Ronde 17: lo-spc-203
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-203/trainee.md`
+- `kennisbank/spc/regelkaarten/ko-spc-203.md`
+- `leerobjecten/lo-spc-203/trainer.md`
+- `leerobjecten/lo-spc-203/draaiboek.md`
+- `leerobjecten/lo-spc-203/werkbladen/wb-01-signaalcasus.md`
+- `leerobjecten/lo-spc-203/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-203/werkbladen/wb-02-starrt-reflectie.md`
+- `leerobjecten/lo-spc-203/werkbladen/wb-03-handout-vier-stappen.md`
+- `leerobjecten/lo-spc-203/werkbladen/wb-03-vier-stappen-handout.md`
+- `leerobjecten/lo-spc-203/werkbladen/wb-04-eigen-reactieplan.md`
+- `leerobjecten/lo-spc-203/svg/diagram.svg`
+- `leerobjecten/lo-spc-203/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-203/README.md`
+
 ## 2026-05-20 — publish-ronde16-lo-ai-fund-198
 
 **Kontext:** Ronde 16: lo-ai-fund-198

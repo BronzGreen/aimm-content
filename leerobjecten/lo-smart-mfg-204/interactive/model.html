@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drempelwaarde-simulator</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    // 30 producten met een anomaliescore en of ze echt defect zijn
+    const PRODUCTS = [
+      { id: 1,  score: 12, echt: false }, { id: 2,  score: 85, echt: true },
+      { id: 3,  score: 45, echt: false }, { id: 4,  score: 72, echt: true },
+      { id: 5,  score: 33, echt: false }, { id: 6,  score: 91, echt: true },
+      { id: 7,  score: 58, echt: true },  { id: 8,  score: 22, echt: false },
+      { id: 9,  score: 67, echt: true },  { id: 10, score: 41, echt: false },
+      { id: 11, score: 78, echt: true },  { id: 12, score: 36, echt: false },
+      { id: 13, score: 55, echt: true },  { id: 14, score: 19, echt: false },
+      { id: 15, score: 63, echt: true },  { id: 16, score: 48, echt: false },
+      { id: 17, score: 88, echt: true },  { id: 18, score: 29, echt: false },
+      { id: 19, score: 71, echt: true },  { id: 20, score: 52, echt: false },
+      { id: 21, score: 44, echt: true },  { id: 22, score: 15, echt: false },
+      { id: 23, score: 82, echt: true },  { id: 24, score: 37, echt: false },
+      { id: 25, score: 60, echt: true },  { id: 26, score: 25, echt: false },
+      { id: 27, score: 74, echt: true },  { id: 28, score: 50, echt: false },
+      { id: 29, score: 66, echt: true },  { id: 30, score: 31, echt: false },
+    ];
+
+    function App() {
+      const [threshold, setThreshold] = useState(50);
+
+      const stats = useMemo(() => {
+        let tp = 0, fp = 0, tn = 0, fn = 0;
+        PRODUCTS.forEach(p => {
+          const flagged = p.score >= threshold;
+          if (flagged && p.echt) tp++;
+          else if (flagged && !p.echt) fp++;
+          else if (!flagged && !p.echt) tn++;
+          else if (!flagged && p.echt) fn++;
+        });
+        const totalDefects = PRODUCTS.filter(p => p.echt).length;
+        const totalGood = PRODUCTS.filter(p => !p.echt).length;
+        return { tp, fp, tn, fn, totalDefects, totalGood };
+      }, [threshold]);
+
+      const catchRate = stats.totalDefects > 0 ? Math.round((stats.tp / stats.totalDefects) * 100) : 0;
+      const falseAlarmRate = stats.totalGood > 0 ? Math.round((stats.fp / stats.totalGood) * 100) : 0;
+
+      const getAdvice = () => {
+        if (threshold < 35) return { text: "Je drempel is erg laag. Je vangt bijna alle defecten, maar je hebt veel valse alarmen. Dat kost tijd en vertrouwen in het systeem.", color: "#f59e0b" };
+        if (threshold > 75) return { text: "Je drempel is erg hoog. Je hebt weinig valse alarmen, maar je mist defecte producten. Dat is een risico voor de kwaliteit.", color: "#ef4444" };
+        return { text: "Goed gebalanceerd! Je vangt de meeste defecten met een acceptabel aantal valse alarmen.", color: "#10b981" };
+      };
+      const advice = getAdvice();
+
+      const handleReset = () => setThreshold(50);
+
+      return (
+        <div style={{ minHeight: "100vh", background: "#f9fafb", fontFamily: "system-ui, sans-serif" }}>
+          <div style={{ background: "white", borderBottom: "1px solid #e5e7eb", padding: "20px 24px" }}>
+            <h1 style={{ fontSize: "22px", fontWeight: "bold", color: "#111827", margin: 0 }}>
+              Drempelwaarde-simulator
+            </h1>
+            <p style={{ color: "#6b7280", marginTop: "4px", fontSize: "14px" }}>
+              Stel de drempel in: wanneer slaat het systeem alarm? Vind de balans tussen te streng en te soepel.
+            </p>
+          </div>
+
+          <div style={{ maxWidth: "800px", margin: "0 auto", padding: "24px" }}>
+            {/* Slider */}
+            <div style={{
+              background: "white", borderRadius: "16px", border: "1px solid #e5e7eb",
+              padding: "24px", marginBottom: "24px"
+            }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
+                <span style={{ fontWeight: "600", color: "#374151" }}>Drempelwaarde</span>
+                <span style={{ fontSize: "32px", fontWeight: "bold", color: "#3b82f6" }}>{threshold}</span>
+              </div>
+              <input
+                type="range" min="10" max="95" value={threshold}
+                onChange={e => setThreshold(+e.target.value)}
+                style={{ width: "100%", height: "8px", borderRadius: "4px", cursor: "pointer", accentColor: "#3b82f6" }}
+              />
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "12px", color: "#9ca3af", marginTop: "4px" }}>
+                <span>Streng (veel alarmen)</span>
+                <span>Soepel (minder alarmen)</span>
+              </div>
+              <p style={{ fontSize: "13px", color: "#6b7280", marginTop: "12px" }}>
+                Producten met een anomaliescore van <strong>{threshold} of hoger</strong> worden als defect gemarkeerd.
+              </p>
+            </div>
+
+            {/* Resultaten kaarten */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "24px" }}>
+              <div style={{
+                background: "#fef2f2", borderRadius: "16px", padding: "20px",
+                border: "1px solid #fecaca"
+              }}>
+                <div style={{ fontSize: "13px", color: "#991b1b", fontWeight: "600", marginBottom: "4px" }}>
+                  Valse alarmen
+                </div>
+                <div style={{ fontSize: "36px", fontWeight: "bold", color: "#ef4444" }}>{stats.fp}</div>
+                <div style={{ fontSize: "13px", color: "#6b7280", marginTop: "4px" }}>
+                  van {stats.totalGood} goede producten ({falseAlarmRate}%)
+                </div>
+                <div style={{ fontSize: "12px", color: "#9ca3af", marginTop: "8px" }}>
+                  Goede producten die onnodig worden afgekeurd. Kost tijd en geld.
+                </div>
+              </div>
+              <div style={{
+                background: "#fefce8", borderRadius: "16px", padding: "20px",
+                border: "1px solid #fde68a"
+              }}>
+                <div style={{ fontSize: "13px", color: "#92400e", fontWeight: "600", marginBottom: "4px" }}>
+                  Gemiste defecten
+                </div>
+                <div style={{ fontSize: "36px", fontWeight: "bold", color: "#f59e0b" }}>{stats.fn}</div>
+                <div style={{ fontSize: "13px", color: "#6b7280", marginTop: "4px" }}>
+                  van {stats.totalDefects} echte defecten ({stats.totalDefects > 0 ? Math.round((stats.fn / stats.totalDefects) * 100) : 0}%)
+                </div>
+                <div style={{ fontSize: "12px", color: "#9ca3af", marginTop: "8px" }}>
+                  Defecte producten die door het systeem heen glippen. Risico voor de klant.
+                </div>
+              </div>
+            </div>
+
+            {/* Score balken */}
+            <div style={{
+              background: "white", borderRadius: "16px", border: "1px solid #e5e7eb",
+              padding: "24px", marginBottom: "24px"
+            }}>
+              <div style={{ marginBottom: "16px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "14px", marginBottom: "6px" }}>
+                  <span style={{ color: "#374151", fontWeight: "500" }}>Defecten gevangen</span>
+                  <span style={{ fontWeight: "bold", color: "#10b981" }}>{catchRate}%</span>
+                </div>
+                <div style={{ height: "12px", background: "#f3f4f6", borderRadius: "6px", overflow: "hidden" }}>
+                  <div style={{
+                    height: "100%", background: "#10b981", borderRadius: "6px",
+                    width: `${catchRate}%`, transition: "width 0.4s ease"
+                  }} />
+                </div>
+              </div>
+              <div>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "14px", marginBottom: "6px" }}>
+                  <span style={{ color: "#374151", fontWeight: "500" }}>Valse alarm percentage</span>
+                  <span style={{ fontWeight: "bold", color: "#ef4444" }}>{falseAlarmRate}%</span>
+                </div>
+                <div style={{ height: "12px", background: "#f3f4f6", borderRadius: "6px", overflow: "hidden" }}>
+                  <div style={{
+                    height: "100%", background: "#ef4444", borderRadius: "6px",
+                    width: `${falseAlarmRate}%`, transition: "width 0.4s ease"
+                  }} />
+                </div>
+              </div>
+            </div>
+
+            {/* Product visualisatie */}
+            <div style={{
+              background: "white", borderRadius: "16px", border: "1px solid #e5e7eb",
+              padding: "24px", marginBottom: "24px"
+            }}>
+              <div style={{ fontWeight: "600", color: "#374151", marginBottom: "12px", fontSize: "15px" }}>
+                30 producten op de lijn
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                {PRODUCTS.map(p => {
+                  const flagged = p.score >= threshold;
+                  let bg, border, label;
+                  if (flagged && p.echt) { bg = "#d1fae5"; border = "#10b981"; label = "Terecht alarm"; }
+                  else if (flagged && !p.echt) { bg = "#fee2e2"; border = "#ef4444"; label = "Vals alarm"; }
+                  else if (!flagged && !p.echt) { bg = "#f3f4f6"; border = "#d1d5db"; label = "Terecht doorgelaten"; }
+                  else { bg = "#fef3c7"; border = "#f59e0b"; label = "Gemist defect"; }
+                  return (
+                    <div key={p.id} title={`Score: ${p.score} | ${p.echt ? "Echt defect" : "Goed product"} | ${label}`} style={{
+                      width: "36px", height: "36px", borderRadius: "8px",
+                      background: bg, border: `2px solid ${border}`,
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontSize: "11px", fontWeight: "600", color: "#374151",
+                      cursor: "default", transition: "all 0.3s"
+                    }}>
+                      {p.score}
+                    </div>
+                  );
+                })}
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "16px", marginTop: "16px", fontSize: "12px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                  <div style={{ width: "14px", height: "14px", borderRadius: "4px", background: "#d1fae5", border: "2px solid #10b981" }} />
+                  <span style={{ color: "#6b7280" }}>Terecht alarm</span>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                  <div style={{ width: "14px", height: "14px", borderRadius: "4px", background: "#fee2e2", border: "2px solid #ef4444" }} />
+                  <span style={{ color: "#6b7280" }}>Vals alarm</span>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                  <div style={{ width: "14px", height: "14px", borderRadius: "4px", background: "#fef3c7", border: "2px solid #f59e0b" }} />
+                  <span style={{ color: "#6b7280" }}>Gemist defect</span>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                  <div style={{ width: "14px", height: "14px", borderRadius: "4px", background: "#f3f4f6", border: "2px solid #d1d5db" }} />
+                  <span style={{ color: "#6b7280" }}>Terecht doorgelaten</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Advies */}
+            <div style={{
+              background: advice.color === "#10b981" ? "#f0fdf4" : advice.color === "#f59e0b" ? "#fffbeb" : "#fef2f2",
+              borderRadius: "12px", padding: "16px", marginBottom: "24px",
+              border: `1px solid ${advice.color}30`
+            }}>
+              <div style={{ fontWeight: "600", color: advice.color, marginBottom: "4px", fontSize: "14px" }}>
+                Beoordeling
+              </div>
+              <p style={{ fontSize: "14px", color: "#374151", margin: 0 }}>{advice.text}</p>
+            </div>
+
+            {/* Uitleg */}
+            <div style={{
+              background: "#eff6ff", borderRadius: "12px", padding: "16px",
+              fontSize: "13px", color: "#1e40af", marginBottom: "20px"
+            }}>
+              <strong>Wat is een drempelwaarde?</strong> Het AI-systeem geeft elk product een score.
+              De drempelwaarde bepaalt wanneer het systeem alarm slaat. Een lage drempel vangt meer defecten,
+              maar geeft ook meer valse alarmen. Een hoge drempel geeft minder alarmen, maar mist ook defecten.
+              De kunst is het vinden van de juiste balans.
+            </div>
+
+            <button onClick={handleReset} style={{
+              display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+              margin: "0 auto", padding: "10px 24px", background: "white", border: "1px solid #d1d5db",
+              borderRadius: "8px", cursor: "pointer", fontSize: "14px", color: "#6b7280"
+            }}>
+              Opnieuw beginnen
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
