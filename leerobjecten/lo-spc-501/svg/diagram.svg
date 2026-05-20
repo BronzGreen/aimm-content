@@ -1,0 +1,256 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" role="img" aria-labelledby="title desc" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Drie meetreeksen op een I-chart — trend, ruis en punt-buiten</title>
+  <desc id="desc">Drie I-charts naast elkaar, elk met acht uurmetingen op een CNC-frees lijn met tolerantie 10,00 plus/min 0,02 mm. Control limits op elke chart: UCL op 10,010 mm (rode stippellijn), LCL op 9,990 mm (rode stippellijn), middellijn op 10,000 mm. Reeks A is de echte casus uit ko-spc-501: acht opeenvolgende metingen stijgen geleidelijk van 9,996 naar 10,008 mm, allemaal binnen UCL maar zes of meer op een rij omhoog — Nelson-regel 3, trend. Diagnose: gereedschapsslijtage. Eerste actie: meet het gereedschap. Reeks B is een oefenreeks: acht metingen schommelen rustig rond 10,000 mm, maximaal twee opeenvolgend dezelfde kant op — geen signaal, alleen ruis. Eerste actie: niets, blijven monitoren. Reeks C is een oefenreeks waar meting 6 op 10,013 mm ligt, duidelijk boven UCL — Nelson-regel 1, punt buiten UCL. Eerste actie: stop onmiddellijk, zoek special cause. Onderaan staat een interpretatietabel die per reeks het patroon, de Nelson-regel en de eerste actie samenvat, plus een centrale boodschap dat regel 3 een vroegere waarschuwing geeft dan regel 1.</desc>
+
+  <defs>
+    <linearGradient id="bg-trend" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFBEB"/>
+      <stop offset="100%" stop-color="#FEF3C7"/>
+    </linearGradient>
+    <linearGradient id="bg-noise" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F0FDF4"/>
+      <stop offset="100%" stop-color="#DCFCE7"/>
+    </linearGradient>
+    <linearGradient id="bg-outlier" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FEF2F2"/>
+      <stop offset="100%" stop-color="#FECACA"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow-amber" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#92400E"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#991B1B"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="960" height="760" fill="#F8F6F0"/>
+
+  <!-- Titel -->
+  <text x="480" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50" letter-spacing="1">Drie meetreeksen — trend, ruis en punt-buiten</text>
+  <text x="480" y="62" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic" letter-spacing="0.5">I-chart met UCL 10,010 en LCL 9,990 mm · CNC-frees casus ko-spc-501 · AIAG SPC · Nelson 1984</text>
+
+  <!-- ─────────── REEKS A — TREND (ko-spc-501) ─────────── -->
+  <g>
+    <!-- Paneel -->
+    <rect x="20" y="90" width="300" height="320" rx="10" fill="url(#bg-trend)" filter="url(#shadow)"/>
+
+    <!-- Paneel-titel -->
+    <text x="170" y="115" text-anchor="middle" font-size="14" font-weight="700" fill="#92400E">REEKS A — TREND</text>
+    <text x="170" y="133" text-anchor="middle" font-size="10" fill="#B45309" font-style="italic">CNC-frees casus (ko-spc-501)</text>
+
+    <!-- Chart-area -->
+    <rect x="50" y="150" width="240" height="180" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+
+    <!-- UCL (10,010) -->
+    <line x1="50" y1="165" x2="290" y2="165" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="295" y="168" font-size="9" fill="#DC2626" font-weight="600">UCL</text>
+    <text x="42" y="168" text-anchor="end" font-size="8" fill="#6B7280">10,010</text>
+
+    <!-- Middellijn (10,000) -->
+    <line x1="50" y1="240" x2="290" y2="240" stroke="#9CA3AF" stroke-width="1"/>
+    <text x="42" y="243" text-anchor="end" font-size="8" fill="#6B7280">10,000</text>
+
+    <!-- LCL (9,990) -->
+    <line x1="50" y1="315" x2="290" y2="315" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="295" y="318" font-size="9" fill="#DC2626" font-weight="600">LCL</text>
+    <text x="42" y="318" text-anchor="end" font-size="8" fill="#6B7280">9,990</text>
+
+    <!-- Datapunten Reeks A: 9,996 9,998 9,999 10,001 10,003 10,005 10,007 10,008 -->
+    <!-- y-mapping: 10,010 = 165 ; 9,990 = 315 ; schaal = 7,5 px per 0,001 mm ; 10,000 = 240 -->
+    <!-- x-positions: 8 punten evenredig verdeeld over 240 px (x=65,95,125,155,185,215,245,275) -->
+    <polyline points="65,270 95,255 125,247 155,232 185,217 215,202 245,187 275,180"
+              fill="none" stroke="#92400E" stroke-width="2.5"/>
+    <circle cx="65" cy="270" r="4" fill="#92400E"/>
+    <circle cx="95" cy="255" r="4" fill="#92400E"/>
+    <circle cx="125" cy="247" r="4" fill="#92400E"/>
+    <circle cx="155" cy="232" r="4" fill="#92400E"/>
+    <circle cx="185" cy="217" r="4" fill="#92400E"/>
+    <circle cx="215" cy="202" r="4" fill="#92400E"/>
+    <circle cx="245" cy="187" r="4" fill="#92400E"/>
+    <circle cx="275" cy="180" r="4" fill="#92400E"/>
+
+    <!-- Trend-pijl (regel 3 annotatie) -->
+    <path d="M 65,290 L 275,290" fill="none" stroke="#92400E" stroke-width="1.5" marker-end="url(#arrow-amber)" stroke-dasharray="2,2"/>
+    <text x="170" y="305" text-anchor="middle" font-size="10" font-weight="700" fill="#92400E">8 opeenvolgend stijgend</text>
+
+    <!-- x-as label -->
+    <text x="170" y="348" text-anchor="middle" font-size="9" fill="#6B7280" font-style="italic">uur 35 tot en met uur 42</text>
+
+    <!-- Diagnose-vak -->
+    <rect x="40" y="362" width="260" height="40" rx="6" fill="#92400E"/>
+    <text x="170" y="378" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">Nelson-regel 3 — TREND</text>
+    <text x="170" y="393" text-anchor="middle" font-size="10" fill="#FEF3C7">Meet gereedschap · geen directe vervanging</text>
+  </g>
+
+  <!-- ─────────── REEKS B — RUIS ─────────── -->
+  <g>
+    <!-- Paneel -->
+    <rect x="330" y="90" width="300" height="320" rx="10" fill="url(#bg-noise)" filter="url(#shadow)"/>
+
+    <!-- Paneel-titel -->
+    <text x="480" y="115" text-anchor="middle" font-size="14" font-weight="700" fill="#065F46">REEKS B — RUIS</text>
+    <text x="480" y="133" text-anchor="middle" font-size="10" fill="#047857" font-style="italic">Oefenreeks, fictief</text>
+
+    <!-- Chart-area -->
+    <rect x="360" y="150" width="240" height="180" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+
+    <!-- UCL -->
+    <line x1="360" y1="165" x2="600" y2="165" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="605" y="168" font-size="9" fill="#DC2626" font-weight="600">UCL</text>
+    <text x="352" y="168" text-anchor="end" font-size="8" fill="#6B7280">10,010</text>
+
+    <!-- Middellijn -->
+    <line x1="360" y1="240" x2="600" y2="240" stroke="#9CA3AF" stroke-width="1"/>
+    <text x="352" y="243" text-anchor="end" font-size="8" fill="#6B7280">10,000</text>
+
+    <!-- LCL -->
+    <line x1="360" y1="315" x2="600" y2="315" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="605" y="318" font-size="9" fill="#DC2626" font-weight="600">LCL</text>
+    <text x="352" y="318" text-anchor="end" font-size="8" fill="#6B7280">9,990</text>
+
+    <!-- Datapunten Reeks B: 10,002 9,997 10,004 9,999 10,001 9,998 10,003 10,000 -->
+    <polyline points="375,225 405,262 435,210 465,247 495,232 525,255 555,217 585,240"
+              fill="none" stroke="#047857" stroke-width="2.5"/>
+    <circle cx="375" cy="225" r="4" fill="#047857"/>
+    <circle cx="405" cy="262" r="4" fill="#047857"/>
+    <circle cx="435" cy="210" r="4" fill="#047857"/>
+    <circle cx="465" cy="247" r="4" fill="#047857"/>
+    <circle cx="495" cy="232" r="4" fill="#047857"/>
+    <circle cx="525" cy="255" r="4" fill="#047857"/>
+    <circle cx="555" cy="217" r="4" fill="#047857"/>
+    <circle cx="585" cy="240" r="4" fill="#047857"/>
+
+    <!-- x-as label -->
+    <text x="480" y="348" text-anchor="middle" font-size="9" fill="#6B7280" font-style="italic">uur 10 tot en met uur 17</text>
+
+    <!-- Diagnose-vak -->
+    <rect x="350" y="362" width="260" height="40" rx="6" fill="#065F46"/>
+    <text x="480" y="378" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">Geen signaal — ruis</text>
+    <text x="480" y="393" text-anchor="middle" font-size="10" fill="#D1FAE5">Max 2 op een rij · niets doen · monitoren</text>
+  </g>
+
+  <!-- ─────────── REEKS C — PUNT BUITEN ─────────── -->
+  <g>
+    <!-- Paneel -->
+    <rect x="640" y="90" width="300" height="320" rx="10" fill="url(#bg-outlier)" filter="url(#shadow)"/>
+
+    <!-- Paneel-titel -->
+    <text x="790" y="115" text-anchor="middle" font-size="14" font-weight="700" fill="#991B1B">REEKS C — PUNT BUITEN</text>
+    <text x="790" y="133" text-anchor="middle" font-size="10" fill="#B91C1C" font-style="italic">Oefenreeks, fictief</text>
+
+    <!-- Chart-area -->
+    <rect x="670" y="150" width="240" height="180" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+
+    <!-- UCL -->
+    <line x1="670" y1="165" x2="910" y2="165" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="915" y="168" font-size="9" fill="#DC2626" font-weight="600">UCL</text>
+    <text x="662" y="168" text-anchor="end" font-size="8" fill="#6B7280">10,010</text>
+
+    <!-- Middellijn -->
+    <line x1="670" y1="240" x2="910" y2="240" stroke="#9CA3AF" stroke-width="1"/>
+    <text x="662" y="243" text-anchor="end" font-size="8" fill="#6B7280">10,000</text>
+
+    <!-- LCL -->
+    <line x1="670" y1="315" x2="910" y2="315" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="915" y="318" font-size="9" fill="#DC2626" font-weight="600">LCL</text>
+    <text x="662" y="318" text-anchor="end" font-size="8" fill="#6B7280">9,990</text>
+
+    <!-- Datapunten Reeks C: 10,001 10,000 10,003 9,998 10,004 10,013 10,002 9,999 -->
+    <!-- 10,013 zit BOVEN UCL op y=142,5 → clampen naar y=140 (buiten chart-area) -->
+    <polyline points="685,232 715,240 745,217 775,255 805,210 835,143 865,225 895,247"
+              fill="none" stroke="#991B1B" stroke-width="2.5"/>
+    <circle cx="685" cy="232" r="4" fill="#991B1B"/>
+    <circle cx="715" cy="240" r="4" fill="#991B1B"/>
+    <circle cx="745" cy="217" r="4" fill="#991B1B"/>
+    <circle cx="775" cy="255" r="4" fill="#991B1B"/>
+    <circle cx="805" cy="210" r="4" fill="#991B1B"/>
+    <!-- Uitbijter op uur 6 -->
+    <circle cx="835" cy="143" r="6" fill="#DC2626" stroke="#7F1D1D" stroke-width="2"/>
+    <circle cx="865" cy="225" r="4" fill="#991B1B"/>
+    <circle cx="895" cy="247" r="4" fill="#991B1B"/>
+
+    <!-- Pijl naar uitbijter -->
+    <path d="M 835,115 L 835,135" fill="none" stroke="#7F1D1D" stroke-width="1.8" marker-end="url(#arrow-red)"/>
+    <text x="835" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#7F1D1D">10,013 · uur 6</text>
+
+    <!-- x-as label -->
+    <text x="790" y="348" text-anchor="middle" font-size="9" fill="#6B7280" font-style="italic">uur 1 tot en met uur 8</text>
+
+    <!-- Diagnose-vak -->
+    <rect x="660" y="362" width="260" height="40" rx="6" fill="#991B1B"/>
+    <text x="790" y="378" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">Nelson-regel 1 — PUNT BUITEN</text>
+    <text x="790" y="393" text-anchor="middle" font-size="10" fill="#FECACA">Stop onmiddellijk · zoek special cause</text>
+  </g>
+
+  <!-- ─────────── INTERPRETATIETABEL ─────────── -->
+  <g>
+    <text x="480" y="445" text-anchor="middle" font-size="15" font-weight="700" fill="#2C3E50">Drie reeksen, drie signalen — samengevat</text>
+
+    <!-- Tabel kolomheaders -->
+    <rect x="30" y="460" width="110" height="32" fill="#1F2937"/>
+    <rect x="140" y="460" width="270" height="32" fill="#1F2937"/>
+    <rect x="410" y="460" width="220" height="32" fill="#1F2937"/>
+    <rect x="630" y="460" width="300" height="32" fill="#1F2937"/>
+    <text x="85" y="481" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">Reeks</text>
+    <text x="275" y="481" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">Patroon</text>
+    <text x="520" y="481" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">Nelson-regel</text>
+    <text x="780" y="481" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">Eerste actie</text>
+
+    <!-- Rij A -->
+    <rect x="30" y="492" width="110" height="38" fill="#FEF3C7" stroke="#FDE68A" stroke-width="0.5"/>
+    <rect x="140" y="492" width="270" height="38" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+    <rect x="410" y="492" width="220" height="38" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+    <rect x="630" y="492" width="300" height="38" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+    <text x="85" y="511" text-anchor="middle" font-size="12" font-weight="700" fill="#92400E">A</text>
+    <text x="85" y="525" text-anchor="middle" font-size="9" fill="#6B7280" font-style="italic">echt · ko-spc-501</text>
+    <text x="150" y="511" font-size="10" fill="#374151">8 opeenvolgende metingen</text>
+    <text x="150" y="524" font-size="10" fill="#374151">allemaal stijgend, binnen UCL</text>
+    <text x="420" y="511" font-size="10" font-weight="700" fill="#92400E">Regel 3 — trend</text>
+    <text x="420" y="524" font-size="9" fill="#6B7280" font-style="italic">≥ 6 opeenvolgend zelfde kant</text>
+    <text x="640" y="511" font-size="10" fill="#374151">Stop · meet gereedschap</text>
+    <text x="640" y="524" font-size="10" fill="#374151">documenteer · dan pas vervangen</text>
+
+    <!-- Rij B -->
+    <rect x="30" y="530" width="110" height="38" fill="#DCFCE7" stroke="#BBF7D0" stroke-width="0.5"/>
+    <rect x="140" y="530" width="270" height="38" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="0.5"/>
+    <rect x="410" y="530" width="220" height="38" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="0.5"/>
+    <rect x="630" y="530" width="300" height="38" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="0.5"/>
+    <text x="85" y="549" text-anchor="middle" font-size="12" font-weight="700" fill="#065F46">B</text>
+    <text x="85" y="563" text-anchor="middle" font-size="9" fill="#6B7280" font-style="italic">oefen · fictief</text>
+    <text x="150" y="549" font-size="10" fill="#374151">Rustige schommeling rond target</text>
+    <text x="150" y="562" font-size="10" fill="#374151">max 2 opeenvolgend zelfde kant</text>
+    <text x="420" y="549" font-size="10" font-weight="700" fill="#065F46">Geen signaal</text>
+    <text x="420" y="562" font-size="9" fill="#6B7280" font-style="italic">normale procesruis</text>
+    <text x="640" y="549" font-size="10" fill="#374151">Niets — blijven monitoren</text>
+    <text x="640" y="562" font-size="9" fill="#6B7280" font-style="italic">niet over-diagnosticeren</text>
+
+    <!-- Rij C -->
+    <rect x="30" y="568" width="110" height="38" fill="#FECACA" stroke="#FCA5A5" stroke-width="0.5"/>
+    <rect x="140" y="568" width="270" height="38" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+    <rect x="410" y="568" width="220" height="38" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+    <rect x="630" y="568" width="300" height="38" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+    <text x="85" y="587" text-anchor="middle" font-size="12" font-weight="700" fill="#991B1B">C</text>
+    <text x="85" y="601" text-anchor="middle" font-size="9" fill="#6B7280" font-style="italic">oefen · fictief</text>
+    <text x="150" y="587" font-size="10" fill="#374151">Één punt (uur 6) boven UCL</text>
+    <text x="150" y="600" font-size="10" fill="#374151">10,013 mm &gt; UCL 10,010 mm</text>
+    <text x="420" y="587" font-size="10" font-weight="700" fill="#991B1B">Regel 1 — punt buiten</text>
+    <text x="420" y="600" font-size="9" fill="#6B7280" font-style="italic">duidelijk maar vaak laat</text>
+    <text x="640" y="587" font-size="10" fill="#374151">Stop onmiddellijk</text>
+    <text x="640" y="600" font-size="10" fill="#374151">zoek special cause · documenteer</text>
+  </g>
+
+  <!-- ─────────── KERN-BOODSCHAP ─────────── -->
+  <g>
+    <rect x="50" y="630" width="860" height="60" rx="10" fill="#1E3A8A"/>
+    <text x="480" y="655" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">Een trend binnen de control limits is al een signaal.</text>
+    <text x="480" y="676" text-anchor="middle" font-size="12" fill="#BFDBFE">Regel 3 pakt de drift ~6 metingen eerder dan regel 1 · minder afkeur · meer grip op gereedschapsslijtage</text>
+  </g>
+
+  <!-- Bronvermelding -->
+  <text x="480" y="720" text-anchor="middle" font-size="10" fill="#6B7280" font-style="italic">Reeks B en C zijn fictieve oefenreeksen — Reeks A is gebaseerd op de echte CNC-frees casus uit ko-spc-501</text>
+  <text x="480" y="745" text-anchor="middle" font-size="9" fill="#999">Bron: ko-spc-501 · AIAG SPC Reference Manual 2nd ed. · Nelson 1984 · NIST/SEMATECH 6.3.2 · AIMM SPC Module 2 (Train)</text>
+</svg>

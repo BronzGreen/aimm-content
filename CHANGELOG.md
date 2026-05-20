@@ -7,6 +7,77 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde25-lo-smart-mfg-602
+
+**Kontext:** Ronde 25: lo-smart-mfg-602
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-602/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-602.md`
+- `leerobjecten/lo-smart-mfg-602/trainer.md`
+- `leerobjecten/lo-smart-mfg-602/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-602/werkbladen/wb-01-patroon-meetekenen.md`
+- `leerobjecten/lo-smart-mfg-602/werkbladen/wb-02-case-diagnose.md`
+- `leerobjecten/lo-smart-mfg-602/werkbladen/wb-03-reflectie-cases.md`
+- `leerobjecten/lo-smart-mfg-602/werkbladen/wb-04-5-vragen-test.md`
+- `leerobjecten/lo-smart-mfg-602/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-602/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-602/README.md`
+
+## 2026-05-20 — publish-ronde25-lo-smart-mfg-524
+
+**Kontext:** Ronde 25: lo-smart-mfg-524
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-524/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-524.md`
+- `leerobjecten/lo-smart-mfg-524/trainer.md`
+- `leerobjecten/lo-smart-mfg-524/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-524/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-smart-mfg-524/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-smart-mfg-524/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-smart-mfg-524/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-smart-mfg-524/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-524/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-524/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-524/README.md`
+
+## 2026-05-20 — publish-ronde25-lo-spc-501
+
+**Kontext:** Ronde 25: lo-spc-501
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-501/trainee.md`
+- `kennisbank/spc/regelkaarten/ko-spc-501.md`
+- `leerobjecten/lo-spc-501/trainer.md`
+- `leerobjecten/lo-spc-501/draaiboek.md`
+- `leerobjecten/lo-spc-501/werkbladen/wb-01-oefening.md`
+- `leerobjecten/lo-spc-501/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-501/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-501/svg/diagram.svg`
+- `leerobjecten/lo-spc-501/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-501/README.md`
+
+## 2026-05-20 — publish-ronde25-lo-spc-403
+
+**Kontext:** Ronde 25: lo-spc-403
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-403/trainee.md`
+- `kennisbank/spc/six_sigma/ko-spc-403.md`
+- `leerobjecten/lo-spc-403/trainer.md`
+- `leerobjecten/lo-spc-403/draaiboek.md`
+- `leerobjecten/lo-spc-403/werkbladen/wb-01-eigen-rol.md`
+- `leerobjecten/lo-spc-403/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-403/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-403/svg/diagram.svg`
+- `leerobjecten/lo-spc-403/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-403/README.md`
+
 ## 2026-05-20 — publish-ronde24-lo-smart-mfg-523
 
 **Kontext:** Ronde 24: lo-smart-mfg-523

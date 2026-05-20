@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" role="img" aria-labelledby="title desc" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">ASQ belt-hierarchie en rolverdeling op de werkvloer</title>
+  <desc id="desc">Een visueel overzicht met aan de linkerkant een vier-treden-piramide van de ASQ belt-niveaus: onderaan Yellow Belt (teamlid, data lezen en signaleren, beperkt tijdsbeslag), daarboven Green Belt (projecttrekker naast dagelijks werk, DMAIC leiden, ongeveer 15 tot 25 procent van werktijd als ASQ-richtgetal), daarboven Black Belt (zware projectleider, voltijds), en bovenaan Master Black Belt (coach en programma-architect, voltijds senior). Aan de rechterkant een rolverdeling op de werkvloer met drie lagen: Operators werken op Yellow-functioneel niveau met taken als SPC-data lezen, deelnemen aan verbeterteams en signalen opvolgen. Teamleiders groeien richting Green-functioneel niveau met taken als oorzaakanalyse trekken, pilots ontwerpen en borging in standaardwerk. Kwaliteitsmanagers werken op Green of Black niveau aan programma-design, governance en coaching. Onderaan een richtzin: belt-structuur is een functioneel kader, geen doel op zich, en een bronnotatie die verwijst naar ASQ en IASSC Body of Knowledge.</desc>
+
+  <defs>
+    <linearGradient id="grad-yellow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F4D03F"/>
+      <stop offset="100%" stop-color="#D4AC0D"/>
+    </linearGradient>
+    <linearGradient id="grad-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#58D68D"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="grad-black" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5D6D7E"/>
+      <stop offset="100%" stop-color="#2C3E50"/>
+    </linearGradient>
+    <linearGradient id="grad-master" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#CD6155"/>
+      <stop offset="100%" stop-color="#922B21"/>
+    </linearGradient>
+    <linearGradient id="grad-op" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FCF3CF"/>
+      <stop offset="100%" stop-color="#F7DC6F"/>
+    </linearGradient>
+    <linearGradient id="grad-tl" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#D5F5E3"/>
+      <stop offset="100%" stop-color="#82E0AA"/>
+    </linearGradient>
+    <linearGradient id="grad-km" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#D6DBDF"/>
+      <stop offset="100%" stop-color="#85929E"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.18"/>
+    </filter>
+    <marker id="arrow-link" markerWidth="12" markerHeight="9" refX="11" refY="4.5" orient="auto">
+      <polygon points="0 0, 12 4.5, 0 9" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+
+  <rect role="presentation" width="960" height="760" fill="#F8F6F0"/>
+
+  <text x="480" y="42" text-anchor="middle" font-size="24" font-weight="700" fill="#2C3E50" letter-spacing="1">ASQ belt-structuur en rolverdeling op de werkvloer</text>
+  <text x="480" y="66" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic" letter-spacing="0.5">Functioneel kader, geen doel op zich — Yellow-functioneel voor operators, Green-functioneel voor teamleiders</text>
+
+  <text x="250" y="110" text-anchor="middle" font-size="16" font-weight="700" fill="#2C3E50">Belt-hierarchie (ASQ)</text>
+  <text x="720" y="110" text-anchor="middle" font-size="16" font-weight="700" fill="#2C3E50">Rol op de werkvloer</text>
+
+  <g filter="url(#shadow)">
+    <polygon points="250,150 320,150 340,220 160,220 180,150" fill="url(#grad-master)"/>
+    <text x="250" y="185" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">Master Black Belt</text>
+    <text x="250" y="205" text-anchor="middle" font-size="11" fill="#FFFFFF" opacity="0.9">Coach + architect · voltijds</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <polygon points="340,230 160,230 140,320 360,320" fill="url(#grad-black)"/>
+    <text x="250" y="270" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">Black Belt</text>
+    <text x="250" y="290" text-anchor="middle" font-size="11" fill="#FFFFFF" opacity="0.9">Zware projecten · DOE · vaak voltijds</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <polygon points="360,330 140,330 120,440 380,440" fill="url(#grad-green)"/>
+    <text x="250" y="380" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A2B">Green Belt</text>
+    <text x="250" y="400" text-anchor="middle" font-size="11" fill="#1E3A2B">Projecttrekker · DMAIC leiden</text>
+    <text x="250" y="418" text-anchor="middle" font-size="11" font-weight="700" fill="#1E3A2B">15-25% van werktijd (ASQ-richtgetal)</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <polygon points="380,450 120,450 100,570 400,570" fill="url(#grad-yellow)"/>
+    <text x="250" y="495" text-anchor="middle" font-size="14" font-weight="700" fill="#4A3B00">Yellow Belt</text>
+    <text x="250" y="515" text-anchor="middle" font-size="11" fill="#4A3B00">Teamlid · basisbewustzijn</text>
+    <text x="250" y="533" text-anchor="middle" font-size="11" fill="#4A3B00">Data lezen · deelnemen · signaleren</text>
+    <text x="250" y="551" text-anchor="middle" font-size="11" fill="#4A3B00" opacity="0.85">Beperkt, naast dagelijks werk</text>
+  </g>
+
+  <text x="250" y="602" text-anchor="middle" font-size="11" fill="#566573" font-style="italic">Bron: American Society for Quality (ASQ) Body of Knowledge</text>
+
+  <g filter="url(#shadow)">
+    <rect x="500" y="140" width="440" height="110" rx="10" fill="url(#grad-op)" stroke="#B7950B" stroke-width="1.5"/>
+    <text x="520" y="168" font-size="15" font-weight="700" fill="#4A3B00">Operator MBO-3/4</text>
+    <text x="520" y="186" font-size="12" font-weight="600" fill="#4A3B00">→ Yellow Belt-functioneel</text>
+    <text x="520" y="208" font-size="11" fill="#4A3B00">• SPC-regelkaart lezen, afwijkingen herkennen</text>
+    <text x="520" y="224" font-size="11" fill="#4A3B00">• Deelnemen aan verbeterteams (visgraat, 5-Why)</text>
+    <text x="520" y="240" font-size="11" fill="#4A3B00">• Reageren op signalen volgens reactieplan</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="500" y="270" width="440" height="140" rx="10" fill="url(#grad-tl)" stroke="#1E8449" stroke-width="1.5"/>
+    <text x="520" y="298" font-size="15" font-weight="700" fill="#1E3A2B">Teamleider MBO-4 / HBO</text>
+    <text x="520" y="316" font-size="12" font-weight="600" fill="#1E3A2B">→ Green Belt-functioneel</text>
+    <text x="520" y="338" font-size="11" fill="#1E3A2B">• Projectmatig oorzaken analyseren (DMAIC)</text>
+    <text x="520" y="354" font-size="11" fill="#1E3A2B">• Visgraat, 5-Why, Pareto faciliteren</text>
+    <text x="520" y="370" font-size="11" fill="#1E3A2B">• Pilots ontwerpen en testen</text>
+    <text x="520" y="386" font-size="11" fill="#1E3A2B">• Verbetering borgen in standaardwerk + control plan</text>
+    <text x="520" y="402" font-size="11" fill="#1E3A2B" font-style="italic">Tijd: verken wat realistisch is in jouw organisatie</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="500" y="430" width="440" height="120" rx="10" fill="url(#grad-km)" stroke="#566573" stroke-width="1.5"/>
+    <text x="520" y="458" font-size="15" font-weight="700" fill="#17202A">Kwaliteitsmanager</text>
+    <text x="520" y="476" font-size="12" font-weight="600" fill="#17202A">→ Green of Black Belt</text>
+    <text x="520" y="498" font-size="11" fill="#17202A">• Six Sigma-programma op organisatieniveau</text>
+    <text x="520" y="514" font-size="11" fill="#17202A">• Coachen van Green Belts</text>
+    <text x="520" y="530" font-size="11" fill="#17202A">• Governance, portfolio, audits</text>
+  </g>
+
+  <line x1="400" y1="500" x2="500" y2="195" stroke="#B7950B" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow-link)"/>
+  <line x1="380" y1="385" x2="500" y2="340" stroke="#1E8449" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow-link)"/>
+  <line x1="360" y1="275" x2="500" y2="490" stroke="#566573" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow-link)"/>
+
+  <g>
+    <rect x="60" y="630" width="840" height="80" rx="10" fill="#FFFFFF" stroke="#BDC3C7" stroke-width="1.5"/>
+    <text x="480" y="658" text-anchor="middle" font-size="14" font-weight="700" fill="#2C3E50">Kernprincipe</text>
+    <text x="480" y="680" text-anchor="middle" font-size="12" fill="#34495E">Belt-structuur is een functioneel kader, geen doel op zich.</text>
+    <text x="480" y="698" text-anchor="middle" font-size="11" fill="#7f8c8d" font-style="italic">Externe certificering (ASQ, IASSC) is optioneel — interne erkenning via afgeronde projecten is vaak overtuigender bewijs.</text>
+  </g>
+
+  <text x="480" y="740" text-anchor="middle" font-size="10" fill="#95A5A6">AIMM × BronzGreen · SPC Module 3 (Op Maat) · ko-spc-403 · Bron: ASQ + IASSC Body of Knowledge</text>
+</svg>
