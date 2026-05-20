@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde11-lo-ai-fund-132
+
+**Kontext:** Ronde 11: lo-ai-fund-132
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-132/trainee.md`
+- `kennisbank/ai_fundamentals/machine_learning_basics/ko-ai-fund-132.md`
+- `leerobjecten/lo-ai-fund-132/trainer.md`
+- `leerobjecten/lo-ai-fund-132/draaiboek.md`
+- `leerobjecten/lo-ai-fund-132/werkbladen/wb-01-drie-datasets.md`
+- `leerobjecten/lo-ai-fund-132/werkbladen/wb-02-reflectie-buurman.md`
+- `leerobjecten/lo-ai-fund-132/werkbladen/wb-03-handout-drie-vragen.md`
+- `leerobjecten/lo-ai-fund-132/werkbladen/wb-04-actieplan-eigen-lijn.md`
+- `leerobjecten/lo-ai-fund-132/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-ai-fund-132/README.md`
+
 ## 2026-05-20 — publish-ronde11-lo-data-lit-204
 
 **Kontext:** Ronde 11: lo-data-lit-204
