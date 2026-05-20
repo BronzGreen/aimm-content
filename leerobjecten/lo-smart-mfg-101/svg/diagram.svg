@@ -1,0 +1,155 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 700 700"
+     font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">AI-kwaliteitscontrole cyclus bij spuitgieten</title>
+  <desc id="desc">Een cyclisch diagram met 5 stappen die laat zien hoe AI-kwaliteitscontrole werkt: een camera maakt een foto, de AI bekijkt de foto, de AI geeft een oordeel, de operator controleert twijfelgevallen, en de AI leert van de feedback van de operator. Dit proces herhaalt zich steeds.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3498DB"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#27AE60"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E67E22"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#9B59B6"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E74C3C"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="700" height="700" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="350" y="42" text-anchor="middle" font-size="22"
+        font-weight="700" fill="#2C3E50" letter-spacing="1">AI-Kwaliteitscontrole</text>
+  <text x="350" y="65" text-anchor="middle" font-size="13"
+        fill="#7f8c8d" letter-spacing="0.5">Hoe werkt het bij spuitgieten?</text>
+
+  <!-- Achtergrondcirkel (pad van de cyclus) -->
+  <circle role="presentation" cx="350" cy="380" r="190" fill="none"
+          stroke="#E0E0E0" stroke-width="3" stroke-dasharray="8,4"/>
+
+  <!-- Centraal element -->
+  <circle role="presentation" cx="350" cy="380" r="58" fill="#2C3E50" filter="url(#shadow)"/>
+  <text x="350" y="372" text-anchor="middle" font-size="14"
+        font-weight="700" fill="white">Steeds</text>
+  <text x="350" y="392" text-anchor="middle" font-size="14"
+        font-weight="700" fill="white">beter</text>
+
+  <!-- 5 stappen, met de klok mee, startend bovenaan
+       Stap 0 (boven):    x=350, y=190
+       Stap 1 (rechts):   x=531, y=321
+       Stap 2 (rechtsonder): x=462, y=534
+       Stap 3 (linksonder):  x=238, y=534
+       Stap 4 (links):    x=169, y=321
+  -->
+
+  <!-- Stap 1: Foto maken (boven) -->
+  <g filter="url(#shadow)">
+    <circle cx="350" cy="190" r="52" fill="#3498DB"/>
+    <text x="350" y="183" text-anchor="middle" font-size="13"
+          font-weight="700" fill="white">1. Foto</text>
+    <text x="350" y="200" text-anchor="middle" font-size="10"
+          fill="rgba(255,255,255,0.8)">Camera maakt</text>
+    <text x="350" y="213" text-anchor="middle" font-size="10"
+          fill="rgba(255,255,255,0.8)">een foto</text>
+  </g>
+
+  <!-- Stap 2: AI bekijkt (rechts) -->
+  <g filter="url(#shadow)">
+    <circle cx="531" cy="321" r="52" fill="#27AE60"/>
+    <text x="531" y="314" text-anchor="middle" font-size="13"
+          font-weight="700" fill="white">2. AI bekijkt</text>
+    <text x="531" y="331" text-anchor="middle" font-size="10"
+          fill="rgba(255,255,255,0.8)">AI zoekt naar</text>
+    <text x="531" y="344" text-anchor="middle" font-size="10"
+          fill="rgba(255,255,255,0.8)">fouten</text>
+  </g>
+
+  <!-- Stap 3: Beslissing (rechtsonder) -->
+  <g filter="url(#shadow)">
+    <circle cx="462" cy="534" r="52" fill="#E67E22"/>
+    <text x="462" y="527" text-anchor="middle" font-size="13"
+          font-weight="700" fill="white">3. Beslissing</text>
+    <text x="462" y="544" text-anchor="middle" font-size="10"
+          fill="rgba(255,255,255,0.8)">Goed of</text>
+    <text x="462" y="557" text-anchor="middle" font-size="10"
+          fill="rgba(255,255,255,0.8)">niet goed?</text>
+  </g>
+
+  <!-- Stap 4: Operator controleert (linksonder) -->
+  <g filter="url(#shadow)">
+    <circle cx="238" cy="534" r="52" fill="#E74C3C"/>
+    <text x="238" y="520" text-anchor="middle" font-size="13"
+          font-weight="700" fill="white">4. Operator</text>
+    <text x="238" y="537" text-anchor="middle" font-size="10"
+          fill="rgba(255,255,255,0.8)">Controleert</text>
+    <text x="238" y="550" text-anchor="middle" font-size="10"
+          fill="rgba(255,255,255,0.8)">twijfelgevallen</text>
+  </g>
+
+  <!-- Stap 5: AI leert (links) -->
+  <g filter="url(#shadow)">
+    <circle cx="169" cy="321" r="52" fill="#9B59B6"/>
+    <text x="169" y="314" text-anchor="middle" font-size="13"
+          font-weight="700" fill="white">5. AI leert</text>
+    <text x="169" y="331" text-anchor="middle" font-size="10"
+          fill="rgba(255,255,255,0.8)">Feedback maakt</text>
+    <text x="169" y="344" text-anchor="middle" font-size="10"
+          fill="rgba(255,255,255,0.8)">AI beter</text>
+  </g>
+
+  <!-- Verbindingspijlen (gebogen, met de klok mee) -->
+
+  <!-- 1 -> 2: boven naar rechts -->
+  <path d="M395,210 Q500,220 515,278"
+        fill="none" stroke="#3498DB" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+
+  <!-- 2 -> 3: rechts naar rechtsonder -->
+  <path d="M555,365 Q565,460 500,515"
+        fill="none" stroke="#27AE60" stroke-width="2.5" marker-end="url(#arrow-orange)"/>
+
+  <!-- 3 -> 4: rechtsonder naar linksonder -->
+  <path d="M415,555 Q350,580 285,555"
+        fill="none" stroke="#E67E22" stroke-width="2.5" marker-end="url(#arrow-red)"/>
+
+  <!-- 4 -> 5: linksonder naar links -->
+  <path d="M200,515 Q145,460 150,365"
+        fill="none" stroke="#E74C3C" stroke-width="2.5" marker-end="url(#arrow-purple)"/>
+
+  <!-- 5 -> 1: links naar boven -->
+  <path d="M190,278 Q210,220 305,210"
+        fill="none" stroke="#9B59B6" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+
+  <!-- Legenda -->
+  <g transform="translate(60,640)">
+    <rect role="presentation" x="0" y="0" width="14" height="14" rx="3" fill="#3498DB"/>
+    <text x="20" y="12" font-size="10" fill="#555">Camera</text>
+
+    <rect role="presentation" x="100" y="0" width="14" height="14" rx="3" fill="#27AE60"/>
+    <text x="120" y="12" font-size="10" fill="#555">AI</text>
+
+    <rect role="presentation" x="180" y="0" width="14" height="14" rx="3" fill="#E67E22"/>
+    <text x="200" y="12" font-size="10" fill="#555">Beslissing</text>
+
+    <rect role="presentation" x="300" y="0" width="14" height="14" rx="3" fill="#E74C3C"/>
+    <text x="320" y="12" font-size="10" fill="#555">Operator</text>
+
+    <rect role="presentation" x="420" y="0" width="14" height="14" rx="3" fill="#9B59B6"/>
+    <text x="440" y="12" font-size="10" fill="#555">Feedback</text>
+  </g>
+
+  <!-- Bronvermelding -->
+  <text x="350" y="685" text-anchor="middle"
+        font-size="10" fill="#999">AIMM Curriculum - AI Visuele Kwaliteitsinspectie bij Spuitgieten</text>
+</svg>

@@ -7,6 +7,73 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde13-lo-industry40-110
+
+**Kontext:** Ronde 13: lo-industry40-110
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-110/trainee.md`
+- `kennisbank/industry_4_0/smart_factory_concepten/ko-industry40-110.md`
+- `leerobjecten/lo-industry40-110/trainer.md`
+- `leerobjecten/lo-industry40-110/draaiboek.md`
+- `leerobjecten/lo-industry40-110/werkbladen/wb-01-drie-vignetten.md`
+- `leerobjecten/lo-industry40-110/werkbladen/wb-02-duo-kenmerken.md`
+- `leerobjecten/lo-industry40-110/werkbladen/wb-03-drie-rollen-zelfscore.md`
+- `leerobjecten/lo-industry40-110/werkbladen/wb-04-mijn-volgende-stap.md`
+- `leerobjecten/lo-industry40-110/README.md`
+
+## 2026-05-20 — publish-ronde13-lo-ai-fund-135
+
+**Kontext:** Ronde 13: lo-ai-fund-135
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-135/trainee.md`
+- `kennisbank/ai_fundamentals/machine_learning_basics/ko-ai-fund-135.md`
+- `leerobjecten/lo-ai-fund-135/trainer.md`
+- `leerobjecten/lo-ai-fund-135/draaiboek.md`
+- `leerobjecten/lo-ai-fund-135/werkbladen/wb-01-scorekaarten.md`
+- `leerobjecten/lo-ai-fund-135/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-ai-fund-135/werkbladen/wb-03-handout-overfitting.md`
+- `leerobjecten/lo-ai-fund-135/werkbladen/wb-04-diagnose.md`
+- `leerobjecten/lo-ai-fund-135/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-ai-fund-135/README.md`
+
+## 2026-05-20 — publish-ronde13-lo-smart-mfg-101
+
+**Kontext:** Ronde 13: lo-smart-mfg-101
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-101/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-101.md`
+- `leerobjecten/lo-smart-mfg-101/trainer.md`
+- `leerobjecten/lo-smart-mfg-101/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-101/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-smart-mfg-101/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-smart-mfg-101/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-smart-mfg-101/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-smart-mfg-101/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-101/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-101/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-101/README.md`
+
+## 2026-05-20 — publish-ronde13-lo-data-lit-303
+
+**Kontext:** Ronde 13: lo-data-lit-303
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-303/trainee.md`
+- `kennisbank/data_literacy/data_driven_besluitvorming/ko-data-lit-303.md`
+- `leerobjecten/lo-data-lit-303/trainer.md`
+- `leerobjecten/lo-data-lit-303/draaiboek.md`
+- `leerobjecten/lo-data-lit-303/werkbladen/wb-dataplan-template.md`
+- `leerobjecten/lo-data-lit-303/werkbladen/wb-eindopdracht-evaluatie.md`
+- `leerobjecten/lo-data-lit-303/werkbladen/wb-verbetervoorstel.md`
+- `leerobjecten/lo-data-lit-303/README.md`
+
 ## 2026-05-20 — publish-ronde12-lo-smart-mfg-093
 
 **Kontext:** Ronde 12: lo-smart-mfg-093
