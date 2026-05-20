@@ -7,6 +7,21 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde13-lo-data-lit-303
+
+**Kontext:** Ronde 13: lo-data-lit-303
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-303/trainee.md`
+- `kennisbank/data_literacy/data_driven_besluitvorming/ko-data-lit-303.md`
+- `leerobjecten/lo-data-lit-303/trainer.md`
+- `leerobjecten/lo-data-lit-303/draaiboek.md`
+- `leerobjecten/lo-data-lit-303/werkbladen/wb-dataplan-template.md`
+- `leerobjecten/lo-data-lit-303/werkbladen/wb-eindopdracht-evaluatie.md`
+- `leerobjecten/lo-data-lit-303/werkbladen/wb-verbetervoorstel.md`
+- `leerobjecten/lo-data-lit-303/README.md`
+
 ## 2026-05-20 — publish-ronde12-lo-smart-mfg-093
 
 **Kontext:** Ronde 12: lo-smart-mfg-093
