@@ -1,0 +1,313 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 720" role="img" aria-labelledby="title desc" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">De zes hoofd Nelson-rules — patronen op een Shewhart-regelkaart</title>
+  <desc id="desc">Zes mini-regelkaarten in een 3 bij 2 raster. Elke kaart toont één Nelson-regel als een tijdreeks van 12 metingen met centrumlijn en grenzen op plus en min 1, 2 en 3 sigma. Regel 1: één punt boven de bovengrens van 3 sigma — alarm. Regel 2: negen opeenvolgende punten allemaal boven de centrumlijn — shift. Regel 3: zes punten op rij die geleidelijk stijgen — trend, vaak slijtage of opwarming. Regel 4: punten wisselen strak hoog en laag af — oscillatie tussen twee bronnen. Regel 5: twee van de laatste drie punten vallen voorbij plus 2 sigma aan dezelfde kant — kleine maar serieuze shift. Regel 6: vier van de laatste vijf punten vallen voorbij plus 1 sigma aan dezelfde kant — subtiele shift, proces drijft weg. Onder de zes kaarten staat een actieregel: zie het patroon vóór de UCL geraakt wordt.</desc>
+
+  <defs>
+    <linearGradient id="bg-card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F1F5F9"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="1.5" dy="2" stdDeviation="2.5" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="980" height="720" fill="#F8F6F0"/>
+
+  <!-- Titel -->
+  <text x="490" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50" letter-spacing="1">De zes hoofd Nelson-rules</text>
+  <text x="490" y="60" text-anchor="middle" font-size="13" fill="#7f8c8d" letter-spacing="0.5">Patronen op een Shewhart-kaart — vóór de UCL geraakt wordt</text>
+
+  <!-- ─────────────────────────────────────────────── -->
+  <!-- KAART 1 — Regel 1: punt buiten grens -->
+  <!-- ─────────────────────────────────────────────── -->
+  <g transform="translate(20,90)">
+    <rect role="presentation" x="0" y="0" width="305" height="240" rx="10" fill="url(#bg-card)" stroke="#CBD5E1" stroke-width="1" filter="url(#shadow)"/>
+
+    <!-- Header band -->
+    <rect role="presentation" x="0" y="0" width="305" height="38" rx="10" fill="#DC2626"/>
+    <rect role="presentation" x="0" y="20" width="305" height="18" fill="#DC2626"/>
+    <text x="18" y="25" font-size="13" font-weight="700" fill="white">REGEL 1</text>
+    <text x="18" y="34" font-size="10" fill="#FEE2E2" font-style="italic">1 punt buiten ±3σ — ALARM</text>
+
+    <!-- Mini-grafiek -->
+    <g transform="translate(20,55)">
+      <!-- Grenzen -->
+      <line x1="0" y1="0"  x2="265" y2="0"  stroke="#DC2626" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="270" y="3" font-size="8" fill="#DC2626" font-weight="600">+3σ</text>
+      <line x1="0" y1="25" x2="265" y2="25" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <text x="270" y="28" font-size="7" fill="#9CA3AF">+2σ</text>
+      <line x1="0" y1="50" x2="265" y2="50" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <text x="270" y="53" font-size="7" fill="#9CA3AF">+1σ</text>
+      <line x1="0" y1="75" x2="265" y2="75" stroke="#10B981" stroke-width="1.2"/>
+      <text x="270" y="78" font-size="8" fill="#10B981" font-weight="600">CL</text>
+      <line x1="0" y1="100" x2="265" y2="100" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="125" x2="265" y2="125" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="150" x2="265" y2="150" stroke="#DC2626" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="270" y="153" font-size="8" fill="#DC2626" font-weight="600">−3σ</text>
+
+      <!-- Datapunten: rustig + 1 punt boven UCL -->
+      <polyline fill="none" stroke="#94A3B8" stroke-width="1" points="10,80 32,72 54,85 76,70 98,82 120,78 142,72 164,80 186,75 208,82 230,78 252,-8" opacity="0.5"/>
+      <circle cx="10"  cy="80" r="3.5" fill="#10B981"/>
+      <circle cx="32"  cy="72" r="3.5" fill="#10B981"/>
+      <circle cx="54"  cy="85" r="3.5" fill="#10B981"/>
+      <circle cx="76"  cy="70" r="3.5" fill="#10B981"/>
+      <circle cx="98"  cy="82" r="3.5" fill="#10B981"/>
+      <circle cx="120" cy="78" r="3.5" fill="#10B981"/>
+      <circle cx="142" cy="72" r="3.5" fill="#10B981"/>
+      <circle cx="164" cy="80" r="3.5" fill="#10B981"/>
+      <circle cx="186" cy="75" r="3.5" fill="#10B981"/>
+      <circle cx="208" cy="82" r="3.5" fill="#10B981"/>
+      <circle cx="230" cy="78" r="3.5" fill="#10B981"/>
+      <circle cx="252" cy="-8" r="5"   fill="#DC2626" stroke="#7F1D1D" stroke-width="1.5"/>
+      <text x="252" y="-15" text-anchor="middle" font-size="9" font-weight="700" fill="#7F1D1D">!</text>
+    </g>
+
+    <!-- Footer -->
+    <text x="18" y="220" font-size="10" font-weight="700" fill="#374151">Operator-actie:</text>
+    <text x="18" y="232" font-size="9" fill="#374151">meetfout uitsluiten · check laatste wijziging · isoleer product</text>
+  </g>
+
+  <!-- ─────────────────────────────────────────────── -->
+  <!-- KAART 2 — Regel 2: 9 punten één kant -->
+  <!-- ─────────────────────────────────────────────── -->
+  <g transform="translate(337,90)">
+    <rect role="presentation" x="0" y="0" width="305" height="240" rx="10" fill="url(#bg-card)" stroke="#CBD5E1" stroke-width="1" filter="url(#shadow)"/>
+    <rect role="presentation" x="0" y="0" width="305" height="38" rx="10" fill="#EA580C"/>
+    <rect role="presentation" x="0" y="20" width="305" height="18" fill="#EA580C"/>
+    <text x="18" y="25" font-size="13" font-weight="700" fill="white">REGEL 2</text>
+    <text x="18" y="34" font-size="10" fill="#FFEDD5" font-style="italic">9 punten één kant — SHIFT</text>
+
+    <g transform="translate(20,55)">
+      <line x1="0" y1="0"  x2="265" y2="0"  stroke="#9CA3AF" stroke-width="0.7" stroke-dasharray="4,3"/>
+      <text x="270" y="3" font-size="8" fill="#6B7280">+3σ</text>
+      <line x1="0" y1="25" x2="265" y2="25" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="50" x2="265" y2="50" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="75" x2="265" y2="75" stroke="#10B981" stroke-width="1.2"/>
+      <text x="270" y="78" font-size="8" fill="#10B981" font-weight="600">CL</text>
+      <line x1="0" y1="100" x2="265" y2="100" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="125" x2="265" y2="125" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="150" x2="265" y2="150" stroke="#9CA3AF" stroke-width="0.7" stroke-dasharray="4,3"/>
+      <text x="270" y="153" font-size="8" fill="#6B7280">−3σ</text>
+
+      <!-- Eerste 3 punten rond/onder CL, daarna 9 boven CL -->
+      <polyline fill="none" stroke="#94A3B8" stroke-width="1" points="10,80 32,82 54,76 76,60 98,55 120,62 142,50 164,58 186,52 208,60 230,55 252,62" opacity="0.5"/>
+      <circle cx="10"  cy="80" r="3.5" fill="#94A3B8"/>
+      <circle cx="32"  cy="82" r="3.5" fill="#94A3B8"/>
+      <circle cx="54"  cy="76" r="3.5" fill="#94A3B8"/>
+      <circle cx="76"  cy="60" r="3.5" fill="#EA580C"/>
+      <circle cx="98"  cy="55" r="3.5" fill="#EA580C"/>
+      <circle cx="120" cy="62" r="3.5" fill="#EA580C"/>
+      <circle cx="142" cy="50" r="3.5" fill="#EA580C"/>
+      <circle cx="164" cy="58" r="3.5" fill="#EA580C"/>
+      <circle cx="186" cy="52" r="3.5" fill="#EA580C"/>
+      <circle cx="208" cy="60" r="3.5" fill="#EA580C"/>
+      <circle cx="230" cy="55" r="3.5" fill="#EA580C"/>
+      <circle cx="252" cy="62" r="3.5" fill="#EA580C"/>
+
+      <!-- Annotatie -->
+      <path d="M70,42 L260,42" stroke="#EA580C" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="165" y="38" text-anchor="middle" font-size="9" font-weight="600" fill="#9A3412">9× boven CL</text>
+    </g>
+
+    <text x="18" y="220" font-size="10" font-weight="700" fill="#374151">Operator-actie:</text>
+    <text x="18" y="232" font-size="9" fill="#374151">check set-up · gereedschap · offset · grondstofbatch · matrijs</text>
+  </g>
+
+  <!-- ─────────────────────────────────────────────── -->
+  <!-- KAART 3 — Regel 3: trend -->
+  <!-- ─────────────────────────────────────────────── -->
+  <g transform="translate(654,90)">
+    <rect role="presentation" x="0" y="0" width="305" height="240" rx="10" fill="url(#bg-card)" stroke="#CBD5E1" stroke-width="1" filter="url(#shadow)"/>
+    <rect role="presentation" x="0" y="0" width="305" height="38" rx="10" fill="#CA8A04"/>
+    <rect role="presentation" x="0" y="20" width="305" height="18" fill="#CA8A04"/>
+    <text x="18" y="25" font-size="13" font-weight="700" fill="white">REGEL 3</text>
+    <text x="18" y="34" font-size="10" fill="#FEF3C7" font-style="italic">6 punten stijgend/dalend — TREND</text>
+
+    <g transform="translate(20,55)">
+      <line x1="0" y1="0"  x2="265" y2="0"  stroke="#9CA3AF" stroke-width="0.7" stroke-dasharray="4,3"/>
+      <text x="270" y="3" font-size="8" fill="#6B7280">+3σ</text>
+      <line x1="0" y1="25" x2="265" y2="25" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="50" x2="265" y2="50" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="75" x2="265" y2="75" stroke="#10B981" stroke-width="1.2"/>
+      <text x="270" y="78" font-size="8" fill="#10B981" font-weight="600">CL</text>
+      <line x1="0" y1="100" x2="265" y2="100" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="125" x2="265" y2="125" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="150" x2="265" y2="150" stroke="#9CA3AF" stroke-width="0.7" stroke-dasharray="4,3"/>
+      <text x="270" y="153" font-size="8" fill="#6B7280">−3σ</text>
+
+      <!-- Eerste 6 willekeurig, daarna 6 stijgend -->
+      <polyline fill="none" stroke="#94A3B8" stroke-width="1" points="10,82 32,72 54,85 76,75 98,80 120,72 142,65 164,55 186,42 208,30 230,18 252,8" opacity="0.5"/>
+      <circle cx="10"  cy="82" r="3.5" fill="#94A3B8"/>
+      <circle cx="32"  cy="72" r="3.5" fill="#94A3B8"/>
+      <circle cx="54"  cy="85" r="3.5" fill="#94A3B8"/>
+      <circle cx="76"  cy="75" r="3.5" fill="#94A3B8"/>
+      <circle cx="98"  cy="80" r="3.5" fill="#94A3B8"/>
+      <circle cx="120" cy="72" r="3.5" fill="#94A3B8"/>
+      <circle cx="142" cy="65" r="3.5" fill="#CA8A04"/>
+      <circle cx="164" cy="55" r="3.5" fill="#CA8A04"/>
+      <circle cx="186" cy="42" r="3.5" fill="#CA8A04"/>
+      <circle cx="208" cy="30" r="3.5" fill="#CA8A04"/>
+      <circle cx="230" cy="18" r="3.5" fill="#CA8A04"/>
+      <circle cx="252" cy="8"  r="3.5" fill="#CA8A04"/>
+
+      <!-- Pijl trend -->
+      <path d="M142,68 Q200,40 252,12" fill="none" stroke="#A16207" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <text x="200" y="32" text-anchor="middle" font-size="9" font-weight="600" fill="#A16207">6× stijgend ↑</text>
+    </g>
+
+    <text x="18" y="220" font-size="10" font-weight="700" fill="#374151">Operator-actie:</text>
+    <text x="18" y="232" font-size="9" fill="#374151">check matrijskoeling · gereedschapsslijtage · temperatuur</text>
+  </g>
+
+  <!-- ─────────────────────────────────────────────── -->
+  <!-- KAART 4 — Regel 4: oscillatie -->
+  <!-- ─────────────────────────────────────────────── -->
+  <g transform="translate(20,345)">
+    <rect role="presentation" x="0" y="0" width="305" height="240" rx="10" fill="url(#bg-card)" stroke="#CBD5E1" stroke-width="1" filter="url(#shadow)"/>
+    <rect role="presentation" x="0" y="0" width="305" height="38" rx="10" fill="#7C3AED"/>
+    <rect role="presentation" x="0" y="20" width="305" height="18" fill="#7C3AED"/>
+    <text x="18" y="25" font-size="13" font-weight="700" fill="white">REGEL 4</text>
+    <text x="18" y="34" font-size="10" fill="#EDE9FE" font-style="italic">14× afwisselend op-neer — OSCILLATIE</text>
+
+    <g transform="translate(20,55)">
+      <line x1="0" y1="0"  x2="265" y2="0"  stroke="#9CA3AF" stroke-width="0.7" stroke-dasharray="4,3"/>
+      <text x="270" y="3" font-size="8" fill="#6B7280">+3σ</text>
+      <line x1="0" y1="25" x2="265" y2="25" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="50" x2="265" y2="50" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="75" x2="265" y2="75" stroke="#10B981" stroke-width="1.2"/>
+      <text x="270" y="78" font-size="8" fill="#10B981" font-weight="600">CL</text>
+      <line x1="0" y1="100" x2="265" y2="100" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="125" x2="265" y2="125" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="150" x2="265" y2="150" stroke="#9CA3AF" stroke-width="0.7" stroke-dasharray="4,3"/>
+      <text x="270" y="153" font-size="8" fill="#6B7280">−3σ</text>
+
+      <!-- Strak afwisselend hoog-laag -->
+      <polyline fill="none" stroke="#7C3AED" stroke-width="1" points="10,30 32,120 54,30 76,120 98,30 120,120 142,30 164,120 186,30 208,120 230,30 252,120" opacity="0.5"/>
+      <circle cx="10"  cy="30"  r="3.5" fill="#7C3AED"/>
+      <circle cx="32"  cy="120" r="3.5" fill="#7C3AED"/>
+      <circle cx="54"  cy="30"  r="3.5" fill="#7C3AED"/>
+      <circle cx="76"  cy="120" r="3.5" fill="#7C3AED"/>
+      <circle cx="98"  cy="30"  r="3.5" fill="#7C3AED"/>
+      <circle cx="120" cy="120" r="3.5" fill="#7C3AED"/>
+      <circle cx="142" cy="30"  r="3.5" fill="#7C3AED"/>
+      <circle cx="164" cy="120" r="3.5" fill="#7C3AED"/>
+      <circle cx="186" cy="30"  r="3.5" fill="#7C3AED"/>
+      <circle cx="208" cy="120" r="3.5" fill="#7C3AED"/>
+      <circle cx="230" cy="30"  r="3.5" fill="#7C3AED"/>
+      <circle cx="252" cy="120" r="3.5" fill="#7C3AED"/>
+
+      <text x="130" y="-3" text-anchor="middle" font-size="9" font-weight="600" fill="#5B21B6">↕ twee bronnen wisselen elkaar af</text>
+    </g>
+
+    <text x="18" y="220" font-size="10" font-weight="700" fill="#374151">Operator-actie:</text>
+    <text x="18" y="232" font-size="9" fill="#374151">zoek 2 bronnen: caviteiten · operators · pulserende regeling</text>
+  </g>
+
+  <!-- ─────────────────────────────────────────────── -->
+  <!-- KAART 5 — Regel 5: 2 van 3 voorbij ±2σ -->
+  <!-- ─────────────────────────────────────────────── -->
+  <g transform="translate(337,345)">
+    <rect role="presentation" x="0" y="0" width="305" height="240" rx="10" fill="url(#bg-card)" stroke="#CBD5E1" stroke-width="1" filter="url(#shadow)"/>
+    <rect role="presentation" x="0" y="0" width="305" height="38" rx="10" fill="#0891B2"/>
+    <rect role="presentation" x="0" y="20" width="305" height="18" fill="#0891B2"/>
+    <text x="18" y="25" font-size="13" font-weight="700" fill="white">REGEL 5</text>
+    <text x="18" y="34" font-size="10" fill="#CFFAFE" font-style="italic">2 van 3 voorbij ±2σ — KLEINE SHIFT</text>
+
+    <g transform="translate(20,55)">
+      <line x1="0" y1="0"  x2="265" y2="0"  stroke="#9CA3AF" stroke-width="0.7" stroke-dasharray="4,3"/>
+      <text x="270" y="3" font-size="8" fill="#6B7280">+3σ</text>
+      <line x1="0" y1="25" x2="265" y2="25" stroke="#0891B2" stroke-width="0.8" stroke-dasharray="3,2"/>
+      <text x="270" y="28" font-size="8" fill="#0891B2" font-weight="600">+2σ</text>
+      <line x1="0" y1="50" x2="265" y2="50" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="75" x2="265" y2="75" stroke="#10B981" stroke-width="1.2"/>
+      <text x="270" y="78" font-size="8" fill="#10B981" font-weight="600">CL</text>
+      <line x1="0" y1="100" x2="265" y2="100" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="125" x2="265" y2="125" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="150" x2="265" y2="150" stroke="#9CA3AF" stroke-width="0.7" stroke-dasharray="4,3"/>
+      <text x="270" y="153" font-size="8" fill="#6B7280">−3σ</text>
+
+      <!-- Rustig verloop, dan 2 van laatste 3 voorbij +2σ -->
+      <polyline fill="none" stroke="#94A3B8" stroke-width="1" points="10,80 32,75 54,82 76,70 98,78 120,72 142,65 164,55 186,15 208,38 230,18 252,55" opacity="0.5"/>
+      <circle cx="10"  cy="80" r="3.5" fill="#94A3B8"/>
+      <circle cx="32"  cy="75" r="3.5" fill="#94A3B8"/>
+      <circle cx="54"  cy="82" r="3.5" fill="#94A3B8"/>
+      <circle cx="76"  cy="70" r="3.5" fill="#94A3B8"/>
+      <circle cx="98"  cy="78" r="3.5" fill="#94A3B8"/>
+      <circle cx="120" cy="72" r="3.5" fill="#94A3B8"/>
+      <circle cx="142" cy="65" r="3.5" fill="#94A3B8"/>
+      <circle cx="164" cy="55" r="3.5" fill="#94A3B8"/>
+      <circle cx="186" cy="15" r="4"   fill="#0891B2" stroke="#164E63" stroke-width="1"/>
+      <circle cx="208" cy="38" r="3.5" fill="#94A3B8"/>
+      <circle cx="230" cy="18" r="4"   fill="#0891B2" stroke="#164E63" stroke-width="1"/>
+      <circle cx="252" cy="55" r="3.5" fill="#94A3B8"/>
+
+      <!-- Annotatie -->
+      <ellipse cx="208" cy="22" rx="40" ry="18" fill="none" stroke="#0E7490" stroke-width="1.2" stroke-dasharray="3,2"/>
+      <text x="208" y="-3" text-anchor="middle" font-size="9" font-weight="600" fill="#0E7490">2 van 3 voorbij +2σ</text>
+    </g>
+
+    <text x="18" y="220" font-size="10" font-weight="700" fill="#374151">Operator-actie:</text>
+    <text x="18" y="232" font-size="9" fill="#374151">vroeger reageren dan regel 2 · check set-up, batch, temp</text>
+  </g>
+
+  <!-- ─────────────────────────────────────────────── -->
+  <!-- KAART 6 — Regel 6: 4 van 5 voorbij ±1σ -->
+  <!-- ─────────────────────────────────────────────── -->
+  <g transform="translate(654,345)">
+    <rect role="presentation" x="0" y="0" width="305" height="240" rx="10" fill="url(#bg-card)" stroke="#CBD5E1" stroke-width="1" filter="url(#shadow)"/>
+    <rect role="presentation" x="0" y="0" width="305" height="38" rx="10" fill="#0D9488"/>
+    <rect role="presentation" x="0" y="20" width="305" height="18" fill="#0D9488"/>
+    <text x="18" y="25" font-size="13" font-weight="700" fill="white">REGEL 6</text>
+    <text x="18" y="34" font-size="10" fill="#CCFBF1" font-style="italic">4 van 5 voorbij ±1σ — SUBTIELE SHIFT</text>
+
+    <g transform="translate(20,55)">
+      <line x1="0" y1="0"  x2="265" y2="0"  stroke="#9CA3AF" stroke-width="0.7" stroke-dasharray="4,3"/>
+      <text x="270" y="3" font-size="8" fill="#6B7280">+3σ</text>
+      <line x1="0" y1="25" x2="265" y2="25" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="50" x2="265" y2="50" stroke="#0D9488" stroke-width="0.8" stroke-dasharray="3,2"/>
+      <text x="270" y="53" font-size="8" fill="#0D9488" font-weight="600">+1σ</text>
+      <line x1="0" y1="75" x2="265" y2="75" stroke="#10B981" stroke-width="1.2"/>
+      <text x="270" y="78" font-size="8" fill="#10B981" font-weight="600">CL</text>
+      <line x1="0" y1="100" x2="265" y2="100" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="125" x2="265" y2="125" stroke="#9CA3AF" stroke-width="0.5" stroke-dasharray="2,2"/>
+      <line x1="0" y1="150" x2="265" y2="150" stroke="#9CA3AF" stroke-width="0.7" stroke-dasharray="4,3"/>
+      <text x="270" y="153" font-size="8" fill="#6B7280">−3σ</text>
+
+      <!-- 4 van laatste 5 voorbij +1σ -->
+      <polyline fill="none" stroke="#94A3B8" stroke-width="1" points="10,80 32,72 54,82 76,75 98,80 120,72 142,82 164,38 186,42 208,68 230,32 252,40" opacity="0.5"/>
+      <circle cx="10"  cy="80" r="3.5" fill="#94A3B8"/>
+      <circle cx="32"  cy="72" r="3.5" fill="#94A3B8"/>
+      <circle cx="54"  cy="82" r="3.5" fill="#94A3B8"/>
+      <circle cx="76"  cy="75" r="3.5" fill="#94A3B8"/>
+      <circle cx="98"  cy="80" r="3.5" fill="#94A3B8"/>
+      <circle cx="120" cy="72" r="3.5" fill="#94A3B8"/>
+      <circle cx="142" cy="82" r="3.5" fill="#94A3B8"/>
+      <circle cx="164" cy="38" r="4"   fill="#0D9488" stroke="#134E4A" stroke-width="1"/>
+      <circle cx="186" cy="42" r="4"   fill="#0D9488" stroke="#134E4A" stroke-width="1"/>
+      <circle cx="208" cy="68" r="3.5" fill="#94A3B8"/>
+      <circle cx="230" cy="32" r="4"   fill="#0D9488" stroke="#134E4A" stroke-width="1"/>
+      <circle cx="252" cy="40" r="4"   fill="#0D9488" stroke="#134E4A" stroke-width="1"/>
+
+      <ellipse cx="208" cy="42" rx="58" ry="20" fill="none" stroke="#0F766E" stroke-width="1.2" stroke-dasharray="3,2"/>
+      <text x="208" y="-3" text-anchor="middle" font-size="9" font-weight="600" fill="#0F766E">4 van 5 voorbij +1σ</text>
+    </g>
+
+    <text x="18" y="220" font-size="10" font-weight="700" fill="#374151">Operator-actie:</text>
+    <text x="18" y="232" font-size="9" fill="#374151">proces drijft weg — check vóór er overschrijdingen komen</text>
+  </g>
+
+  <!-- ─────────────────────────────────────────────── -->
+  <!-- KERNREGEL ONDERAAN -->
+  <!-- ─────────────────────────────────────────────── -->
+  <rect role="presentation" x="60" y="610" width="860" height="42" rx="8" fill="#1F2937"/>
+  <text x="490" y="630" text-anchor="middle" font-size="13" font-weight="700" fill="white">Zie het patroon vóór de UCL geraakt wordt</text>
+  <text x="490" y="646" text-anchor="middle" font-size="11" fill="#E5E7EB" font-style="italic">Begin klein: regel 1 + 1 of 2 patroonregels die passen bij jouw lijn</text>
+
+  <!-- Verdieping verwijzing -->
+  <text x="490" y="678" text-anchor="middle" font-size="10" fill="#6B7280" font-style="italic">Verdieping later: regel 7 (15× binnen ±1σ — verdacht weinig spreiding) en regel 8 (8× buiten ±1σ aan beide kanten — mixture)</text>
+
+  <!-- Bronvermelding -->
+  <text x="490" y="704" text-anchor="middle" font-size="10" fill="#999">Bron: Nelson, L.S. (1984) Journal of Quality Technology · NIST/SEMATECH Handbook · AIMM SPC Module 2</text>
+</svg>

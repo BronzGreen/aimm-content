@@ -7,6 +7,25 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde14-lo-spc-201
+
+**Kontext:** Ronde 14: lo-spc-201
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-201/trainee.md`
+- `kennisbank/spc/regelkaarten/ko-spc-201.md`
+- `leerobjecten/lo-spc-201/trainer.md`
+- `leerobjecten/lo-spc-201/draaiboek.md`
+- `leerobjecten/lo-spc-201/werkbladen/wb-01-patroonquiz.md`
+- `leerobjecten/lo-spc-201/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-201/werkbladen/wb-03-handout-zes-regels.md`
+- `leerobjecten/lo-spc-201/werkbladen/wb-03-nelson-handout.md`
+- `leerobjecten/lo-spc-201/werkbladen/wb-04-eigen-kaart-analyse.md`
+- `leerobjecten/lo-spc-201/svg/diagram.svg`
+- `leerobjecten/lo-spc-201/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-201/README.md`
+
 ## 2026-05-20 — publish-ronde14-lo-smart-mfg-201
 
 **Kontext:** Ronde 14: lo-smart-mfg-201
