@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde28-lo-smart-mfg-802
+
+**Kontext:** Ronde 28: lo-smart-mfg-802
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-802/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-802.md`
+- `leerobjecten/lo-smart-mfg-802/trainer.md`
+- `leerobjecten/lo-smart-mfg-802/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-802/werkbladen/wb-01-drie-zorgen.md`
+- `leerobjecten/lo-smart-mfg-802/werkbladen/wb-02-rollenspel-notities.md`
+- `leerobjecten/lo-smart-mfg-802/werkbladen/wb-03-drie-stappen.md`
+- `leerobjecten/lo-smart-mfg-802/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-802/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-802/README.md`
+
 ## 2026-05-20 — publish-ronde28-lo-smart-mfg-601-mbo4
 
 **Kontext:** Ronde 28: lo-smart-mfg-601-mbo4
