@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde17-lo-ai-fund-204
+
+**Kontext:** Ronde 17: lo-ai-fund-204
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-204/trainee.md`
+- `kennisbank/ai_fundamentals/ai_ethics_en_bias/ko-ai-fund-204.md`
+- `leerobjecten/lo-ai-fund-204/trainer.md`
+- `leerobjecten/lo-ai-fund-204/draaiboek.md`
+- `leerobjecten/lo-ai-fund-204/werkbladen/wb-01-casus-kwaliteitscontrole.md`
+- `leerobjecten/lo-ai-fund-204/werkbladen/wb-02-buurman-drie-voorbeelden.md`
+- `leerobjecten/lo-ai-fund-204/werkbladen/wb-03-handout-bias-en-inclusie.md`
+- `leerobjecten/lo-ai-fund-204/werkbladen/wb-04-eigen-bias-en-inclusie.md`
+- `leerobjecten/lo-ai-fund-204/README.md`
+
 ## 2026-05-20 — publish-ronde17-lo-industry40-303
 
 **Kontext:** Ronde 17: lo-industry40-303
