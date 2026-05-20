@@ -1,0 +1,285 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1920 1080" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">BiLSTM-architectuur: forward en backward LSTM met drie gates per cel</title>
+  <desc id="desc">Een schematische weergave van een Bidirectional LSTM. Een tijdreeks van vibration-samples wordt door twee parallelle ketens van LSTM-cellen gelezen: één forward laag van begin naar einde, één backward laag van einde naar begin. Een uitvergrootte LSTM-cel toont de drie gates — forget gate die kiest wat te vergeten, input gate die kiest wat toe te voegen, output gate die kiest wat door te geven — en de cell-state die door de cel reist als een lopende schrijflijn. Aan de rechterkant wordt de output van forward en backward gecombineerd tot een betere voorspelling, met name nuttig voor offline RUL-analyse waarin toekomstcontext beschikbaar is.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.18"/>
+    </filter>
+    <linearGradient id="g-fwd" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="g-bwd" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9B59B6"/>
+      <stop offset="100%" stop-color="#8E44AD"/>
+    </linearGradient>
+    <linearGradient id="g-input" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34495E"/>
+      <stop offset="100%" stop-color="#2C3E50"/>
+    </linearGradient>
+    <linearGradient id="g-out" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <marker id="rnn-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7f8c8d"/>
+    </marker>
+    <marker id="rnn-arrow-back" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8E44AD"/>
+    </marker>
+    <marker id="rnn-arrow-fwd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2980B9"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="1920" height="1080" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="960" y="65" text-anchor="middle" font-size="38" font-weight="700" fill="#2C3E50">BiLSTM — twee LSTM's lezen de tijdreeks van twee kanten</text>
+  <text x="960" y="100" text-anchor="middle" font-size="19" fill="#7f8c8d">Forward + Backward LSTM samen kennen verleden én toekomst van elk meetpunt</text>
+
+  <!-- ── Input-laag: tijdreeks samples ── -->
+  <text x="100" y="160" font-size="14" letter-spacing="3" font-weight="700" fill="#2C3E50">INPUT — tijdreeks (vibration-samples)</text>
+
+  <g id="inputs">
+    <rect role="presentation" x="120" y="180" width="100" height="60" rx="6" fill="url(#g-input)"/>
+    <text x="170" y="218" text-anchor="middle" font-size="18" font-weight="600" fill="white">x₁</text>
+
+    <rect role="presentation" x="280" y="180" width="100" height="60" rx="6" fill="url(#g-input)"/>
+    <text x="330" y="218" text-anchor="middle" font-size="18" font-weight="600" fill="white">x₂</text>
+
+    <rect role="presentation" x="440" y="180" width="100" height="60" rx="6" fill="url(#g-input)"/>
+    <text x="490" y="218" text-anchor="middle" font-size="18" font-weight="600" fill="white">x₃</text>
+
+    <rect role="presentation" x="600" y="180" width="100" height="60" rx="6" fill="url(#g-input)"/>
+    <text x="650" y="218" text-anchor="middle" font-size="18" font-weight="600" fill="white">x₄</text>
+
+    <rect role="presentation" x="760" y="180" width="100" height="60" rx="6" fill="url(#g-input)"/>
+    <text x="810" y="218" text-anchor="middle" font-size="18" font-weight="600" fill="white">x₅</text>
+
+    <text x="900" y="218" font-size="22" fill="#7f8c8d">…</text>
+
+    <rect role="presentation" x="940" y="180" width="100" height="60" rx="6" fill="url(#g-input)"/>
+    <text x="990" y="218" text-anchor="middle" font-size="18" font-weight="600" fill="white">x_T</text>
+  </g>
+
+  <!-- Verbindingen input → forward LSTM -->
+  <line x1="170" y1="240" x2="170" y2="290" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#rnn-arrow)"/>
+  <line x1="330" y1="240" x2="330" y2="290" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#rnn-arrow)"/>
+  <line x1="490" y1="240" x2="490" y2="290" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#rnn-arrow)"/>
+  <line x1="650" y1="240" x2="650" y2="290" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#rnn-arrow)"/>
+  <line x1="810" y1="240" x2="810" y2="290" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#rnn-arrow)"/>
+  <line x1="990" y1="240" x2="990" y2="290" stroke="#7f8c8d" stroke-width="1.5" marker-end="url(#rnn-arrow)"/>
+
+  <!-- ── Forward LSTM keten ── -->
+  <text x="100" y="320" font-size="14" letter-spacing="3" font-weight="700" fill="#2980B9">FORWARD LSTM — leest van begin naar einde →</text>
+
+  <g id="forward">
+    <rect role="presentation" x="120" y="340" width="100" height="80" rx="10" fill="url(#g-fwd)"/>
+    <text x="170" y="368" text-anchor="middle" font-size="13" font-weight="600" fill="white">LSTM</text>
+    <text x="170" y="392" text-anchor="middle" font-size="14" font-weight="700" fill="white">h⃗₁</text>
+
+    <rect role="presentation" x="280" y="340" width="100" height="80" rx="10" fill="url(#g-fwd)"/>
+    <text x="330" y="368" text-anchor="middle" font-size="13" font-weight="600" fill="white">LSTM</text>
+    <text x="330" y="392" text-anchor="middle" font-size="14" font-weight="700" fill="white">h⃗₂</text>
+
+    <rect role="presentation" x="440" y="340" width="100" height="80" rx="10" fill="url(#g-fwd)"/>
+    <text x="490" y="368" text-anchor="middle" font-size="13" font-weight="600" fill="white">LSTM</text>
+    <text x="490" y="392" text-anchor="middle" font-size="14" font-weight="700" fill="white">h⃗₃</text>
+
+    <rect role="presentation" x="600" y="340" width="100" height="80" rx="10" fill="url(#g-fwd)"/>
+    <text x="650" y="368" text-anchor="middle" font-size="13" font-weight="600" fill="white">LSTM</text>
+    <text x="650" y="392" text-anchor="middle" font-size="14" font-weight="700" fill="white">h⃗₄</text>
+
+    <rect role="presentation" x="760" y="340" width="100" height="80" rx="10" fill="url(#g-fwd)"/>
+    <text x="810" y="368" text-anchor="middle" font-size="13" font-weight="600" fill="white">LSTM</text>
+    <text x="810" y="392" text-anchor="middle" font-size="14" font-weight="700" fill="white">h⃗₅</text>
+
+    <rect role="presentation" x="940" y="340" width="100" height="80" rx="10" fill="url(#g-fwd)"/>
+    <text x="990" y="368" text-anchor="middle" font-size="13" font-weight="600" fill="white">LSTM</text>
+    <text x="990" y="392" text-anchor="middle" font-size="14" font-weight="700" fill="white">h⃗_T</text>
+  </g>
+
+  <!-- Forward keten-pijlen -->
+  <line x1="220" y1="380" x2="280" y2="380" stroke="#2980B9" stroke-width="2.5" marker-end="url(#rnn-arrow-fwd)"/>
+  <line x1="380" y1="380" x2="440" y2="380" stroke="#2980B9" stroke-width="2.5" marker-end="url(#rnn-arrow-fwd)"/>
+  <line x1="540" y1="380" x2="600" y2="380" stroke="#2980B9" stroke-width="2.5" marker-end="url(#rnn-arrow-fwd)"/>
+  <line x1="700" y1="380" x2="760" y2="380" stroke="#2980B9" stroke-width="2.5" marker-end="url(#rnn-arrow-fwd)"/>
+  <line x1="860" y1="380" x2="940" y2="380" stroke="#2980B9" stroke-width="2.5" stroke-dasharray="4,3" marker-end="url(#rnn-arrow-fwd)"/>
+
+  <!-- ── Backward LSTM keten ── -->
+  <text x="100" y="465" font-size="14" letter-spacing="3" font-weight="700" fill="#8E44AD">BACKWARD LSTM — leest van einde naar begin ←</text>
+
+  <g id="backward">
+    <rect role="presentation" x="120" y="485" width="100" height="80" rx="10" fill="url(#g-bwd)"/>
+    <text x="170" y="513" text-anchor="middle" font-size="13" font-weight="600" fill="white">LSTM</text>
+    <text x="170" y="537" text-anchor="middle" font-size="14" font-weight="700" fill="white">h⃐₁</text>
+
+    <rect role="presentation" x="280" y="485" width="100" height="80" rx="10" fill="url(#g-bwd)"/>
+    <text x="330" y="513" text-anchor="middle" font-size="13" font-weight="600" fill="white">LSTM</text>
+    <text x="330" y="537" text-anchor="middle" font-size="14" font-weight="700" fill="white">h⃐₂</text>
+
+    <rect role="presentation" x="440" y="485" width="100" height="80" rx="10" fill="url(#g-bwd)"/>
+    <text x="490" y="513" text-anchor="middle" font-size="13" font-weight="600" fill="white">LSTM</text>
+    <text x="490" y="537" text-anchor="middle" font-size="14" font-weight="700" fill="white">h⃐₃</text>
+
+    <rect role="presentation" x="600" y="485" width="100" height="80" rx="10" fill="url(#g-bwd)"/>
+    <text x="650" y="513" text-anchor="middle" font-size="13" font-weight="600" fill="white">LSTM</text>
+    <text x="650" y="537" text-anchor="middle" font-size="14" font-weight="700" fill="white">h⃐₄</text>
+
+    <rect role="presentation" x="760" y="485" width="100" height="80" rx="10" fill="url(#g-bwd)"/>
+    <text x="810" y="513" text-anchor="middle" font-size="13" font-weight="600" fill="white">LSTM</text>
+    <text x="810" y="537" text-anchor="middle" font-size="14" font-weight="700" fill="white">h⃐₅</text>
+
+    <rect role="presentation" x="940" y="485" width="100" height="80" rx="10" fill="url(#g-bwd)"/>
+    <text x="990" y="513" text-anchor="middle" font-size="13" font-weight="600" fill="white">LSTM</text>
+    <text x="990" y="537" text-anchor="middle" font-size="14" font-weight="700" fill="white">h⃐_T</text>
+  </g>
+
+  <!-- Backward keten-pijlen (right to left) -->
+  <line x1="940" y1="525" x2="860" y2="525" stroke="#8E44AD" stroke-width="2.5" stroke-dasharray="4,3" marker-end="url(#rnn-arrow-back)"/>
+  <line x1="760" y1="525" x2="700" y2="525" stroke="#8E44AD" stroke-width="2.5" marker-end="url(#rnn-arrow-back)"/>
+  <line x1="600" y1="525" x2="540" y2="525" stroke="#8E44AD" stroke-width="2.5" marker-end="url(#rnn-arrow-back)"/>
+  <line x1="440" y1="525" x2="380" y2="525" stroke="#8E44AD" stroke-width="2.5" marker-end="url(#rnn-arrow-back)"/>
+  <line x1="280" y1="525" x2="220" y2="525" stroke="#8E44AD" stroke-width="2.5" marker-end="url(#rnn-arrow-back)"/>
+
+  <!-- Verbindingen input → backward LSTM -->
+  <line x1="170" y1="240" x2="170" y2="485" stroke="#9B59B6" stroke-width="1" stroke-dasharray="2,3" opacity="0.5"/>
+  <line x1="330" y1="240" x2="330" y2="485" stroke="#9B59B6" stroke-width="1" stroke-dasharray="2,3" opacity="0.5"/>
+  <line x1="490" y1="240" x2="490" y2="485" stroke="#9B59B6" stroke-width="1" stroke-dasharray="2,3" opacity="0.5"/>
+  <line x1="650" y1="240" x2="650" y2="485" stroke="#9B59B6" stroke-width="1" stroke-dasharray="2,3" opacity="0.5"/>
+  <line x1="810" y1="240" x2="810" y2="485" stroke="#9B59B6" stroke-width="1" stroke-dasharray="2,3" opacity="0.5"/>
+  <line x1="990" y1="240" x2="990" y2="485" stroke="#9B59B6" stroke-width="1" stroke-dasharray="2,3" opacity="0.5"/>
+
+  <!-- ── OUTPUT laag ── -->
+  <text x="100" y="610" font-size="14" letter-spacing="3" font-weight="700" fill="#27AE60">OUTPUT — combinatie van beide richtingen</text>
+
+  <g id="outputs">
+    <rect role="presentation" x="120" y="630" width="100" height="50" rx="6" fill="url(#g-out)"/>
+    <text x="170" y="662" text-anchor="middle" font-size="14" font-weight="700" fill="white">y₁</text>
+
+    <rect role="presentation" x="280" y="630" width="100" height="50" rx="6" fill="url(#g-out)"/>
+    <text x="330" y="662" text-anchor="middle" font-size="14" font-weight="700" fill="white">y₂</text>
+
+    <rect role="presentation" x="440" y="630" width="100" height="50" rx="6" fill="url(#g-out)"/>
+    <text x="490" y="662" text-anchor="middle" font-size="14" font-weight="700" fill="white">y₃</text>
+
+    <rect role="presentation" x="600" y="630" width="100" height="50" rx="6" fill="url(#g-out)"/>
+    <text x="650" y="662" text-anchor="middle" font-size="14" font-weight="700" fill="white">y₄</text>
+
+    <rect role="presentation" x="760" y="630" width="100" height="50" rx="6" fill="url(#g-out)"/>
+    <text x="810" y="662" text-anchor="middle" font-size="14" font-weight="700" fill="white">y₅</text>
+
+    <rect role="presentation" x="940" y="630" width="100" height="50" rx="6" fill="url(#g-out)"/>
+    <text x="990" y="662" text-anchor="middle" font-size="14" font-weight="700" fill="white">y_T</text>
+  </g>
+
+  <!-- Output → kombineer notatie -->
+  <text x="540" y="730" text-anchor="middle" font-size="16" fill="#2C3E50" font-style="italic">y_t = combinatie( h⃗_t , h⃐_t )  — voor offline RUL: béter dan alleen forward</text>
+
+  <!-- ── UITVERGROOTTE LSTM-CEL (rechts) ── -->
+  <text x="1450" y="160" text-anchor="middle" font-size="14" letter-spacing="3" font-weight="700" fill="#2C3E50">EÉN LSTM-CEL — drie gates en cell-state</text>
+
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="1130" y="180" width="640" height="500" rx="20" fill="white" stroke="#2980B9" stroke-width="2"/>
+  </g>
+
+  <!-- Cell-state lijn (lopende schrijflijn) -->
+  <line x1="1140" y1="240" x2="1760" y2="240" stroke="#34495E" stroke-width="4"/>
+  <text x="1450" y="225" text-anchor="middle" font-size="14" font-weight="700" fill="#34495E" letter-spacing="1">CELL-STATE — de lopende schrijflijn (langetermijngeheugen)</text>
+  <polygon points="1760,234 1772,240 1760,246" fill="#34495E"/>
+
+  <!-- Forget gate -->
+  <g>
+    <rect role="presentation" x="1170" y="290" width="160" height="100" rx="10" fill="#FADBD8" stroke="#E74C3C" stroke-width="2"/>
+    <text x="1250" y="320" text-anchor="middle" font-size="14" letter-spacing="2" font-weight="700" fill="#C0392B">FORGET GATE</text>
+    <text x="1250" y="345" text-anchor="middle" font-size="14" fill="#2C3E50">Doorstrepen</text>
+    <text x="1250" y="368" text-anchor="middle" font-size="13" fill="#555" font-style="italic">"wat vergeten?"</text>
+    <text x="1250" y="383" text-anchor="middle" font-size="13" fill="#555" font-style="italic">σ(W_f · [h, x] + b_f)</text>
+  </g>
+
+  <!-- Input gate -->
+  <g>
+    <rect role="presentation" x="1370" y="290" width="160" height="100" rx="10" fill="#D6EAF8" stroke="#2980B9" stroke-width="2"/>
+    <text x="1450" y="320" text-anchor="middle" font-size="14" letter-spacing="2" font-weight="700" fill="#2980B9">INPUT GATE</text>
+    <text x="1450" y="345" text-anchor="middle" font-size="14" fill="#2C3E50">Bijschrijven</text>
+    <text x="1450" y="368" text-anchor="middle" font-size="13" fill="#555" font-style="italic">"wat onthouden?"</text>
+    <text x="1450" y="383" text-anchor="middle" font-size="13" fill="#555" font-style="italic">σ(W_i · [h, x] + b_i)</text>
+  </g>
+
+  <!-- Output gate -->
+  <g>
+    <rect role="presentation" x="1570" y="290" width="160" height="100" rx="10" fill="#D5F5E3" stroke="#27AE60" stroke-width="2"/>
+    <text x="1650" y="320" text-anchor="middle" font-size="14" letter-spacing="2" font-weight="700" fill="#27AE60">OUTPUT GATE</text>
+    <text x="1650" y="345" text-anchor="middle" font-size="14" fill="#2C3E50">Voorlezen</text>
+    <text x="1650" y="368" text-anchor="middle" font-size="13" fill="#555" font-style="italic">"wat doorgeven?"</text>
+    <text x="1650" y="383" text-anchor="middle" font-size="13" fill="#555" font-style="italic">σ(W_o · [h, x] + b_o)</text>
+  </g>
+
+  <!-- Pijlen vanuit gates naar cell-state -->
+  <line x1="1250" y1="290" x2="1250" y2="245" stroke="#E74C3C" stroke-width="2" marker-end="url(#rnn-arrow)"/>
+  <line x1="1450" y1="290" x2="1450" y2="245" stroke="#2980B9" stroke-width="2" marker-end="url(#rnn-arrow)"/>
+
+  <!-- Input/output pijlen onderkant -->
+  <text x="1250" y="450" text-anchor="middle" font-size="14" font-weight="600" fill="#2C3E50">x_t  (input)</text>
+  <text x="1650" y="450" text-anchor="middle" font-size="14" font-weight="600" fill="#2C3E50">h_t  (hidden state)</text>
+  <line x1="1250" y1="460" x2="1250" y2="395" stroke="#7f8c8d" stroke-width="2" marker-end="url(#rnn-arrow)"/>
+  <line x1="1650" y1="395" x2="1650" y2="460" stroke="#7f8c8d" stroke-width="2" marker-end="url(#rnn-arrow)"/>
+
+  <!-- Wat lost LSTM op -->
+  <rect role="presentation" x="1170" y="495" width="560" height="60" rx="10" fill="#FEF9E7" stroke="#F39C12" stroke-width="1.5"/>
+  <text x="1450" y="522" text-anchor="middle" font-size="15" font-weight="700" fill="#B7950B">Wat lost LSTM op?</text>
+  <text x="1450" y="545" text-anchor="middle" font-size="13" fill="#2C3E50">Long-term dependency — een gewoon RNN vergeet wat lang geleden gebeurde.</text>
+
+  <!-- Vergelijking varianten -->
+  <rect role="presentation" x="1170" y="575" width="560" height="90" rx="10" fill="#FAFAF8" stroke="#7f8c8d" stroke-width="1"/>
+  <text x="1450" y="600" text-anchor="middle" font-size="14" font-weight="700" fill="#2C3E50">Drie varianten — wanneer kies je welke?</text>
+  <text x="1450" y="625" text-anchor="middle" font-size="13" fill="#555">• Vanilla RNN — korte sequentie, simpel, snel</text>
+  <text x="1450" y="645" text-anchor="middle" font-size="13" fill="#555">• LSTM — online + lange context, alleen verleden bekend</text>
+  <text x="1450" y="660" text-anchor="middle" font-size="13" fill="#555">• BiLSTM — offline + accuracy belangrijk, toekomst beschikbaar</text>
+
+  <!-- ── ONDERAAN: gebruiksgevallen ── -->
+  <text x="540" y="780" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50">Wanneer past welke variant?</text>
+
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="80" y="810" width="350" height="200" rx="14" fill="white" stroke="#7f8c8d" stroke-width="1.5"/>
+  </g>
+  <rect role="presentation" x="80" y="810" width="350" height="50" rx="14" fill="#7f8c8d"/>
+  <rect role="presentation" x="80" y="840" width="350" height="20" fill="#7f8c8d"/>
+  <text x="255" y="845" text-anchor="middle" font-size="20" font-weight="700" fill="white">RNN (basis)</text>
+  <text x="255" y="895" text-anchor="middle" font-size="14" fill="#2C3E50">Korte sequentie</text>
+  <text x="255" y="918" text-anchor="middle" font-size="14" fill="#2C3E50">Eenvoudig signaal</text>
+  <text x="255" y="940" text-anchor="middle" font-size="14" fill="#2C3E50">Geen long-term geheugen</text>
+  <text x="255" y="980" text-anchor="middle" font-size="13" fill="#555" font-style="italic">Voorbeeld: 20-sample</text>
+  <text x="255" y="998" text-anchor="middle" font-size="13" fill="#555" font-style="italic">akoestische klikdetectie</text>
+
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="455" y="810" width="350" height="200" rx="14" fill="white" stroke="#2980B9" stroke-width="2"/>
+  </g>
+  <rect role="presentation" x="455" y="810" width="350" height="50" rx="14" fill="url(#g-fwd)"/>
+  <rect role="presentation" x="455" y="840" width="350" height="20" fill="url(#g-fwd)"/>
+  <text x="630" y="845" text-anchor="middle" font-size="20" font-weight="700" fill="white">LSTM (online)</text>
+  <text x="630" y="895" text-anchor="middle" font-size="14" fill="#2C3E50">Online / realtime</text>
+  <text x="630" y="918" text-anchor="middle" font-size="14" fill="#2C3E50">Lange context-vensters</text>
+  <text x="630" y="940" text-anchor="middle" font-size="14" fill="#2C3E50">Toekomst niet beschikbaar</text>
+  <text x="630" y="980" text-anchor="middle" font-size="13" fill="#555" font-style="italic">Voorbeeld: realtime</text>
+  <text x="630" y="998" text-anchor="middle" font-size="13" fill="#555" font-style="italic">vibration-alarm</text>
+
+  <g filter="url(#shadow)">
+    <rect role="presentation" x="830" y="810" width="350" height="200" rx="14" fill="white" stroke="#8E44AD" stroke-width="2"/>
+  </g>
+  <rect role="presentation" x="830" y="810" width="350" height="50" rx="14" fill="url(#g-bwd)"/>
+  <rect role="presentation" x="830" y="840" width="350" height="20" fill="url(#g-bwd)"/>
+  <text x="1005" y="845" text-anchor="middle" font-size="20" font-weight="700" fill="white">BiLSTM (offline)</text>
+  <text x="1005" y="895" text-anchor="middle" font-size="14" fill="#2C3E50">Offline / batch</text>
+  <text x="1005" y="918" text-anchor="middle" font-size="14" fill="#2C3E50">Accuracy belangrijk</text>
+  <text x="1005" y="940" text-anchor="middle" font-size="14" fill="#2C3E50">Toekomstcontext beschikbaar</text>
+  <text x="1005" y="980" text-anchor="middle" font-size="13" fill="#555" font-style="italic">Voorbeeld: 24u-batch</text>
+  <text x="1005" y="998" text-anchor="middle" font-size="13" fill="#555" font-style="italic">RUL-prognose op vibration</text>
+
+  <!-- Bronvermelding -->
+  <text x="960" y="1055" text-anchor="middle" font-size="13" fill="#999">RNN/LSTM/BiLSTM — AIMM Curriculum | Module 2: Train | v1.0</text>
+</svg>
