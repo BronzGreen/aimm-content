@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactieve Confusion Matrix</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    function App() {
+      const [tp, setTp] = useState(40);
+      const [fp, setFp] = useState(5);
+      const [fn, setFn] = useState(8);
+      const [tn, setTn] = useState(47);
+
+      const stats = useMemo(() => {
+        const total = tp + fp + fn + tn;
+        const precision = (tp + fp) > 0 ? tp / (tp + fp) : 0;
+        const recall = (tp + fn) > 0 ? tp / (tp + fn) : 0;
+        const accuracy = total > 0 ? (tp + tn) / total : 0;
+        const f1 = (precision + recall) > 0 ? 2 * (precision * recall) / (precision + recall) : 0;
+        return {
+          total,
+          precision: Math.round(precision * 100),
+          recall: Math.round(recall * 100),
+          accuracy: Math.round(accuracy * 100),
+          f1: Math.round(f1 * 100)
+        };
+      }, [tp, fp, fn, tn]);
+
+      const handleReset = () => {
+        setTp(40); setFp(5); setFn(8); setTn(47);
+      };
+
+      const CellSlider = ({ label, desc, value, onChange, color, bgColor }) => (
+        <div style={{
+          background: bgColor, borderRadius: "12px", padding: "16px",
+          border: `2px solid ${color}20`
+        }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "4px" }}>
+            <div>
+              <div style={{ fontWeight: "600", fontSize: "14px", color: "#374151" }}>{label}</div>
+              <div style={{ fontSize: "12px", color: "#6b7280" }}>{desc}</div>
+            </div>
+            <div style={{ fontSize: "28px", fontWeight: "bold", color }}>{value}</div>
+          </div>
+          <input
+            type="range" min="0" max="50" value={value}
+            onChange={e => onChange(+e.target.value)}
+            style={{ width: "100%", height: "6px", borderRadius: "3px", cursor: "pointer", accentColor: color }}
+          />
+        </div>
+      );
+
+      const MetricCard = ({ label, value, unit, desc, color }) => (
+        <div style={{
+          background: "white", borderRadius: "12px", border: "1px solid #e5e7eb",
+          padding: "16px", textAlign: "center"
+        }}>
+          <div style={{ fontSize: "12px", color: "#6b7280", marginBottom: "4px" }}>{label}</div>
+          <div style={{ fontSize: "32px", fontWeight: "bold", color }}>
+            {value}<span style={{ fontSize: "16px", color: "#9ca3af" }}>{unit}</span>
+          </div>
+          <div style={{ fontSize: "11px", color: "#9ca3af", marginTop: "4px" }}>{desc}</div>
+        </div>
+      );
+
+      return (
+        <div style={{ minHeight: "100vh", background: "#f9fafb", fontFamily: "system-ui, sans-serif" }}>
+          <div style={{ background: "white", borderBottom: "1px solid #e5e7eb", padding: "20px 24px" }}>
+            <h1 style={{ fontSize: "22px", fontWeight: "bold", color: "#111827", margin: 0 }}>
+              Interactieve Confusion Matrix
+            </h1>
+            <p style={{ color: "#6b7280", marginTop: "4px", fontSize: "14px" }}>
+              Verschuif de waarden en zie hoe precision en recall veranderen. Vind de balans.
+            </p>
+          </div>
+
+          <div style={{ maxWidth: "800px", margin: "0 auto", padding: "24px" }}>
+            {/* Confusion Matrix visueel */}
+            <div style={{
+              background: "white", borderRadius: "16px", border: "1px solid #e5e7eb",
+              padding: "24px", marginBottom: "24px"
+            }}>
+              <div style={{ fontWeight: "600", color: "#374151", marginBottom: "16px", fontSize: "15px" }}>
+                Confusion Matrix
+              </div>
+
+              {/* Matrix header */}
+              <div style={{ display: "grid", gridTemplateColumns: "140px 1fr 1fr", gap: "0", marginBottom: "4px" }}>
+                <div />
+                <div style={{ textAlign: "center", fontSize: "13px", fontWeight: "600", color: "#374151", padding: "8px" }}>
+                  Echt defect
+                </div>
+                <div style={{ textAlign: "center", fontSize: "13px", fontWeight: "600", color: "#374151", padding: "8px" }}>
+                  Echt goed
+                </div>
+              </div>
+
+              {/* Rij 1: AI zegt defect */}
+              <div style={{ display: "grid", gridTemplateColumns: "140px 1fr 1fr", gap: "4px", marginBottom: "4px" }}>
+                <div style={{
+                  display: "flex", alignItems: "center", justifyContent: "flex-end",
+                  paddingRight: "12px", fontSize: "13px", fontWeight: "600", color: "#374151"
+                }}>
+                  AI zegt: defect
+                </div>
+                <div style={{
+                  background: "#d1fae5", borderRadius: "12px", padding: "16px", textAlign: "center",
+                  border: "2px solid #10b98140"
+                }}>
+                  <div style={{ fontSize: "11px", color: "#065f46", fontWeight: "600" }}>True Positive (TP)</div>
+                  <div style={{ fontSize: "32px", fontWeight: "bold", color: "#10b981" }}>{tp}</div>
+                  <div style={{ fontSize: "11px", color: "#6b7280" }}>Terecht alarm</div>
+                </div>
+                <div style={{
+                  background: "#fee2e2", borderRadius: "12px", padding: "16px", textAlign: "center",
+                  border: "2px solid #ef444440"
+                }}>
+                  <div style={{ fontSize: "11px", color: "#991b1b", fontWeight: "600" }}>False Positive (FP)</div>
+                  <div style={{ fontSize: "32px", fontWeight: "bold", color: "#ef4444" }}>{fp}</div>
+                  <div style={{ fontSize: "11px", color: "#6b7280" }}>Vals alarm</div>
+                </div>
+              </div>
+
+              {/* Rij 2: AI zegt goed */}
+              <div style={{ display: "grid", gridTemplateColumns: "140px 1fr 1fr", gap: "4px" }}>
+                <div style={{
+                  display: "flex", alignItems: "center", justifyContent: "flex-end",
+                  paddingRight: "12px", fontSize: "13px", fontWeight: "600", color: "#374151"
+                }}>
+                  AI zegt: goed
+                </div>
+                <div style={{
+                  background: "#fef3c7", borderRadius: "12px", padding: "16px", textAlign: "center",
+                  border: "2px solid #f59e0b40"
+                }}>
+                  <div style={{ fontSize: "11px", color: "#92400e", fontWeight: "600" }}>False Negative (FN)</div>
+                  <div style={{ fontSize: "32px", fontWeight: "bold", color: "#f59e0b" }}>{fn}</div>
+                  <div style={{ fontSize: "11px", color: "#6b7280" }}>Gemist defect</div>
+                </div>
+                <div style={{
+                  background: "#dbeafe", borderRadius: "12px", padding: "16px", textAlign: "center",
+                  border: "2px solid #3b82f640"
+                }}>
+                  <div style={{ fontSize: "11px", color: "#1e40af", fontWeight: "600" }}>True Negative (TN)</div>
+                  <div style={{ fontSize: "32px", fontWeight: "bold", color: "#3b82f6" }}>{tn}</div>
+                  <div style={{ fontSize: "11px", color: "#6b7280" }}>Terecht doorgelaten</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Sliders */}
+            <div style={{
+              display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px",
+              marginBottom: "24px"
+            }}>
+              <CellSlider label="True Positive (TP)" desc="Terecht alarm"
+                value={tp} onChange={setTp} color="#10b981" bgColor="#f0fdf4" />
+              <CellSlider label="False Positive (FP)" desc="Vals alarm"
+                value={fp} onChange={setFp} color="#ef4444" bgColor="#fef2f2" />
+              <CellSlider label="False Negative (FN)" desc="Gemist defect"
+                value={fn} onChange={setFn} color="#f59e0b" bgColor="#fffbeb" />
+              <CellSlider label="True Negative (TN)" desc="Terecht doorgelaten"
+                value={tn} onChange={setTn} color="#3b82f6" bgColor="#eff6ff" />
+            </div>
+
+            {/* Metrics */}
+            <div style={{
+              display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: "12px",
+              marginBottom: "24px"
+            }}>
+              <MetricCard label="Precision" value={stats.precision} unit="%"
+                desc="Van alle alarmen: hoeveel klopten?" color="#8b5cf6" />
+              <MetricCard label="Recall" value={stats.recall} unit="%"
+                desc="Van alle defecten: hoeveel gevonden?" color="#ec4899" />
+              <MetricCard label="Nauwkeurigheid" value={stats.accuracy} unit="%"
+                desc="Totaal correct van alles" color="#3b82f6" />
+              <MetricCard label="F1-score" value={stats.f1} unit="%"
+                desc="Balans precision en recall" color="#10b981" />
+            </div>
+
+            {/* Uitleg */}
+            <div style={{
+              background: "white", borderRadius: "16px", border: "1px solid #e5e7eb",
+              padding: "24px", marginBottom: "24px"
+            }}>
+              <div style={{ fontWeight: "600", color: "#374151", marginBottom: "12px" }}>Wat betekent dit?</div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px", fontSize: "14px", color: "#374151" }}>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <span style={{ fontWeight: "600", color: "#8b5cf6", minWidth: "80px" }}>Precision</span>
+                  <span>= TP / (TP + FP) = Als de AI "defect" zegt, hoe vaak klopt dat?
+                    {stats.precision >= 90 ? " Heel goed!" : stats.precision >= 70 ? " Redelijk." : " Veel valse alarmen."}</span>
+                </div>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <span style={{ fontWeight: "600", color: "#ec4899", minWidth: "80px" }}>Recall</span>
+                  <span>= TP / (TP + FN) = Van alle echte defecten, hoeveel vindt de AI?
+                    {stats.recall >= 90 ? " Bijna alles gevonden!" : stats.recall >= 70 ? " Redelijk." : " Te veel defecten gemist."}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Scenario's */}
+            <div style={{
+              background: "#eff6ff", borderRadius: "12px", padding: "16px",
+              fontSize: "13px", color: "#1e40af", marginBottom: "20px"
+            }}>
+              <strong>Probeer deze scenario's:</strong>
+              <ul style={{ margin: "8px 0 0 0", paddingLeft: "16px" }}>
+                <li style={{ marginBottom: "4px" }}>Zet FP hoog en FN laag: veel valse alarmen, maar je mist niets</li>
+                <li style={{ marginBottom: "4px" }}>Zet FN hoog en FP laag: weinig alarmen, maar je mist defecten</li>
+                <li>Zet beide laag: het ideale model! Maar dat is niet altijd mogelijk</li>
+              </ul>
+            </div>
+
+            <button onClick={handleReset} style={{
+              display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+              margin: "0 auto", padding: "10px 24px", background: "white", border: "1px solid #d1d5db",
+              borderRadius: "8px", cursor: "pointer", fontSize: "14px", color: "#6b7280"
+            }}>
+              Opnieuw beginnen
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

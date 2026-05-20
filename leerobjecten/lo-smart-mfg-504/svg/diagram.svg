@@ -1,0 +1,81 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 500"
+     font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Drie fases van predictive maintenance implementatie</title>
+  <desc id="desc">Een trapdiagram met drie oplopende treden. Fase 1 is de pilot: 1 machine, 3-6 maanden. Fase 2 is de uitrol: hele lijn, 6-12 maanden. Fase 3 is standaard: doorlopend, PM is normaal werk. De trap loopt van links-onder naar rechts-boven.</desc>
+
+  <defs>
+    <linearGradient id="g-pilot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5DADE2"/>
+      <stop offset="100%" stop-color="#2E86C1"/>
+    </linearGradient>
+    <linearGradient id="g-uitrol" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="g-standaard" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9B59B6"/>
+      <stop offset="100%" stop-color="#8E44AD"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="800" height="500" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="400" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50" letter-spacing="1">Van pilot naar standaard</text>
+  <text x="400" y="58" text-anchor="middle" font-size="13" fill="#7f8c8d" letter-spacing="0.5">Drie fases voor predictive maintenance op jouw afdeling</text>
+
+  <!-- Verticale as met pijl -->
+  <line x1="65" y1="420" x2="65" y2="90" stroke="#BDC3C7" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="52" y="260" text-anchor="middle" font-size="12" font-weight="600" fill="#7f8c8d" transform="rotate(-90,52,260)">Groei</text>
+
+  <!-- Horizontale as -->
+  <line x1="80" y1="420" x2="740" y2="420" stroke="#BDC3C7" stroke-width="1.5"/>
+  <text x="410" y="450" text-anchor="middle" font-size="11" fill="#7f8c8d">Tijd</text>
+
+  <!-- Stap 1: Pilot -->
+  <g filter="url(#shadow)">
+    <rect x="100" y="310" width="190" height="110" rx="8" fill="url(#g-pilot)"/>
+    <text x="195" y="342" text-anchor="middle" font-size="11" font-weight="700" fill="white" letter-spacing="0.5">FASE 1</text>
+    <text x="195" y="362" text-anchor="middle" font-size="16" font-weight="700" fill="white">Pilot</text>
+    <text x="195" y="383" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">1 machine</text>
+    <text x="195" y="400" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">3-6 maanden</text>
+  </g>
+
+  <!-- Stap 2: Uitrol -->
+  <g filter="url(#shadow)">
+    <rect x="310" y="200" width="190" height="110" rx="8" fill="url(#g-uitrol)"/>
+    <text x="405" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="white" letter-spacing="0.5">FASE 2</text>
+    <text x="405" y="252" text-anchor="middle" font-size="16" font-weight="700" fill="white">Uitrol</text>
+    <text x="405" y="273" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">Hele lijn</text>
+    <text x="405" y="290" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">6-12 maanden</text>
+  </g>
+
+  <!-- Stap 3: Standaard -->
+  <g filter="url(#shadow)">
+    <rect x="520" y="100" width="190" height="110" rx="8" fill="url(#g-standaard)"/>
+    <text x="615" y="132" text-anchor="middle" font-size="11" font-weight="700" fill="white" letter-spacing="0.5">FASE 3</text>
+    <text x="615" y="152" text-anchor="middle" font-size="16" font-weight="700" fill="white">Standaard</text>
+    <text x="615" y="173" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">Alle machines</text>
+    <text x="615" y="190" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">Doorlopend</text>
+  </g>
+
+  <!-- Verbindingspijlen tussen stappen -->
+  <line x1="290" y1="365" x2="310" y2="310" stroke="#BDC3C7" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <line x1="500" y1="255" x2="520" y2="210" stroke="#BDC3C7" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <!-- Labels onder de stappen -->
+  <text x="195" y="440" text-anchor="middle" font-size="10" fill="#2E86C1" font-weight="600">Bewijzen dat het werkt</text>
+  <text x="405" y="440" text-anchor="middle" font-size="10" fill="#27AE60" font-weight="600">Laten zien dat het schaalt</text>
+  <text x="615" y="440" text-anchor="middle" font-size="10" fill="#8E44AD" font-weight="600">PM is normaal werk</text>
+
+  <!-- Bronvermelding -->
+  <text x="400" y="485" text-anchor="middle" font-size="10" fill="#999">AIMM Curriculum -- Predictive Maintenance Implementatie | Module 3: Op Maat</text>
+</svg>
