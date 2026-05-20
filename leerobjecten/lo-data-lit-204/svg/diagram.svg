@@ -1,0 +1,134 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 680"
+     font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Vier stappen van een simpele data-analyse</title>
+  <desc id="desc">Een flowchart met vier stappen: vraag formuleren, data verzamelen, analyseren en concluderen. De stappen vormen een cyclus. Bij elke stap staat een korte uitleg en een voorbeeld uit de maakindustrie.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d"/>
+    </marker>
+    <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E67E22"/>
+      <stop offset="100%" stop-color="#D35400"/>
+    </linearGradient>
+    <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9B59B6"/>
+      <stop offset="100%" stop-color="#8E44AD"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="800" height="680" fill="#FAFAF8" rx="8"/>
+
+  <!-- Titel -->
+  <text x="400" y="42" text-anchor="middle" font-size="22"
+        font-weight="700" fill="#2C3E50" letter-spacing="1">Van Vraag naar Antwoord</text>
+  <text x="400" y="65" text-anchor="middle" font-size="13"
+        fill="#7f8c8d" letter-spacing="0.5">Vier stappen voor een simpele data-analyse</text>
+
+  <!-- Stap 1: Vraag formuleren -->
+  <g filter="url(#shadow)">
+    <rect x="275" y="95" width="250" height="70" rx="12" fill="url(#g1)"/>
+    <text x="315" y="125" font-size="12" font-weight="700" fill="white">STAP 1</text>
+    <text x="345" y="125" font-size="14" font-weight="600" fill="white">Vraag formuleren</text>
+    <text x="400" y="148" text-anchor="middle" font-size="11"
+          fill="rgba(255,255,255,0.85)">Specifiek, beantwoordbaar, relevant</text>
+  </g>
+  <!-- Voorbeeld stap 1 -->
+  <rect role="presentation" x="560" y="100" width="210" height="58" rx="8" fill="#EBF5FB" stroke="#3498DB" stroke-width="1"/>
+  <text x="575" y="120" font-size="10" font-weight="600" fill="#2980B9">Voorbeeld:</text>
+  <text x="575" y="136" font-size="10" fill="#2C3E50">"Waarom is het afkeurpercentage</text>
+  <text x="575" y="150" font-size="10" fill="#2C3E50">op dinsdag twee keer zo hoog?"</text>
+
+  <!-- Pijl 1 naar 2 -->
+  <line x1="400" y1="165" x2="400" y2="215" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Stap 2: Data verzamelen -->
+  <g filter="url(#shadow)">
+    <rect x="275" y="220" width="250" height="70" rx="12" fill="url(#g2)"/>
+    <text x="315" y="250" font-size="12" font-weight="700" fill="white">STAP 2</text>
+    <text x="345" y="250" font-size="14" font-weight="600" fill="white">Data verzamelen</text>
+    <text x="400" y="273" text-anchor="middle" font-size="11"
+          fill="rgba(255,255,255,0.85)">Alleen wat je nodig hebt</text>
+  </g>
+  <!-- Voorbeeld stap 2 -->
+  <rect role="presentation" x="560" y="225" width="210" height="58" rx="8" fill="#EAFAF1" stroke="#2ECC71" stroke-width="1"/>
+  <text x="575" y="245" font-size="10" font-weight="600" fill="#27AE60">Voorbeeld:</text>
+  <text x="575" y="261" font-size="10" fill="#2C3E50">Afkeurpercentage per dag</text>
+  <text x="575" y="275" font-size="10" fill="#2C3E50">en per ploeg opzoeken</text>
+
+  <!-- Pijl 2 naar 3 -->
+  <line x1="400" y1="290" x2="400" y2="340" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Stap 3: Analyseren -->
+  <g filter="url(#shadow)">
+    <rect x="275" y="345" width="250" height="70" rx="12" fill="url(#g3)"/>
+    <text x="315" y="375" font-size="12" font-weight="700" fill="white">STAP 3</text>
+    <text x="345" y="375" font-size="14" font-weight="600" fill="white">Analyseren</text>
+    <text x="400" y="398" text-anchor="middle" font-size="11"
+          fill="rgba(255,255,255,0.85)">Vergelijken, groeperen, tellen</text>
+  </g>
+  <!-- Voorbeeld stap 3 -->
+  <rect role="presentation" x="560" y="350" width="210" height="58" rx="8" fill="#FDF2E9" stroke="#E67E22" stroke-width="1"/>
+  <text x="575" y="370" font-size="10" font-weight="600" fill="#D35400">Voorbeeld:</text>
+  <text x="575" y="386" font-size="10" fill="#2C3E50">Ploeg B heeft 6% afkeur,</text>
+  <text x="575" y="400" font-size="10" fill="#2C3E50">ploeg A heeft 3% afkeur</text>
+
+  <!-- Pijl 3 naar 4 -->
+  <line x1="400" y1="415" x2="400" y2="465" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Stap 4: Concluderen -->
+  <g filter="url(#shadow)">
+    <rect x="275" y="470" width="250" height="70" rx="12" fill="url(#g4)"/>
+    <text x="315" y="500" font-size="12" font-weight="700" fill="white">STAP 4</text>
+    <text x="345" y="500" font-size="14" font-weight="600" fill="white">Concluderen</text>
+    <text x="400" y="523" text-anchor="middle" font-size="11"
+          fill="rgba(255,255,255,0.85)">Beantwoord je vraag + stel actie voor</text>
+  </g>
+  <!-- Voorbeeld stap 4 -->
+  <rect role="presentation" x="560" y="475" width="210" height="58" rx="8" fill="#F4ECF7" stroke="#9B59B6" stroke-width="1"/>
+  <text x="575" y="495" font-size="10" font-weight="600" fill="#8E44AD">Voorbeeld:</text>
+  <text x="575" y="511" font-size="10" fill="#2C3E50">Verschil zit in de ploeg.</text>
+  <text x="575" y="525" font-size="10" fill="#2C3E50">Actie: instellingen vergelijken.</text>
+
+  <!-- Cycluspijl: van stap 4 terug naar stap 1 -->
+  <path d="M275,505 L200,505 L200,130 L270,130"
+        fill="none" stroke="#7f8c8d" stroke-width="2" stroke-dasharray="8,4"
+        marker-end="url(#arrow)"/>
+  <text x="155" y="320" text-anchor="middle" font-size="11"
+        font-weight="600" fill="#7f8c8d"
+        transform="rotate(-90,155,320)">De cyclus draait door</text>
+
+  <!-- Stap-nummers links -->
+  <circle role="presentation" cx="260" cy="130" r="14" fill="#3498DB"/>
+  <text x="260" y="135" text-anchor="middle" font-size="12" font-weight="700" fill="white">1</text>
+  <circle role="presentation" cx="260" cy="255" r="14" fill="#2ECC71"/>
+  <text x="260" y="260" text-anchor="middle" font-size="12" font-weight="700" fill="white">2</text>
+  <circle role="presentation" cx="260" cy="380" r="14" fill="#E67E22"/>
+  <text x="260" y="385" text-anchor="middle" font-size="12" font-weight="700" fill="white">3</text>
+  <circle role="presentation" cx="260" cy="505" r="14" fill="#9B59B6"/>
+  <text x="260" y="510" text-anchor="middle" font-size="12" font-weight="700" fill="white">4</text>
+
+  <!-- Kernboodschap -->
+  <rect role="presentation" x="200" y="575" width="400" height="50" rx="10" fill="#2C3E50"/>
+  <text x="400" y="600" text-anchor="middle" font-size="13"
+        font-weight="600" fill="white">Een goede analyse begint met een goede vraag.</text>
+  <text x="400" y="618" text-anchor="middle" font-size="11"
+        fill="rgba(255,255,255,0.7)">En eindigt met een actie.</text>
+
+  <!-- Bronvermelding -->
+  <text x="400" y="660" text-anchor="middle"
+        font-size="10" fill="#999">AIMM Data Literacy -- Module 2: Train | ko-data-lit-204</text>
+</svg>
