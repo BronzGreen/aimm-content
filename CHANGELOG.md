@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde26-lo-smart-mfg-701
+
+**Kontext:** Ronde 26: lo-smart-mfg-701
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-701/trainee.md`
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-701.md`
+- `leerobjecten/lo-smart-mfg-701/trainer.md`
+- `leerobjecten/lo-smart-mfg-701/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-701/werkbladen/wb-01-drempel-simulatie.md`
+- `leerobjecten/lo-smart-mfg-701/werkbladen/wb-02-drempel-curves.md`
+- `leerobjecten/lo-smart-mfg-701/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-701/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-701/README.md`
+
 ## 2026-05-20 — publish-ronde26-lo-smart-mfg-603
 
 **Kontext:** Ronde 26: lo-smart-mfg-603
