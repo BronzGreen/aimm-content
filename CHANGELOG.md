@@ -7,6 +7,26 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde17-lo-spc-203
+
+**Kontext:** Ronde 17: lo-spc-203
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-203/trainee.md`
+- `kennisbank/spc/regelkaarten/ko-spc-203.md`
+- `leerobjecten/lo-spc-203/trainer.md`
+- `leerobjecten/lo-spc-203/draaiboek.md`
+- `leerobjecten/lo-spc-203/werkbladen/wb-01-signaalcasus.md`
+- `leerobjecten/lo-spc-203/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-203/werkbladen/wb-02-starrt-reflectie.md`
+- `leerobjecten/lo-spc-203/werkbladen/wb-03-handout-vier-stappen.md`
+- `leerobjecten/lo-spc-203/werkbladen/wb-03-vier-stappen-handout.md`
+- `leerobjecten/lo-spc-203/werkbladen/wb-04-eigen-reactieplan.md`
+- `leerobjecten/lo-spc-203/svg/diagram.svg`
+- `leerobjecten/lo-spc-203/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-203/README.md`
+
 ## 2026-05-20 — publish-ronde16-lo-ai-fund-198
 
 **Kontext:** Ronde 16: lo-ai-fund-198
