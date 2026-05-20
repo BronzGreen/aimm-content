@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data-analyse oefentool -- Van vraag naar antwoord</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    const SCENARIOS = [
+      {
+        id: "afkeur",
+        title: "Het hoge afkeurpercentage",
+        context: "Productielijn 2 heeft deze week een afkeurpercentage van 5,8%. Vorige week was het 2,9%. Dat is twee keer zo hoog.",
+        data: [
+          { dag: "Ma", afkeur: 2.8, ploeg: "A", snelheid: 120 },
+          { dag: "Di", afkeur: 5.9, ploeg: "B", snelheid: 135 },
+          { dag: "Wo", afkeur: 3.0, ploeg: "A", snelheid: 120 },
+          { dag: "Do", afkeur: 5.7, ploeg: "B", snelheid: 135 },
+          { dag: "Vr", afkeur: 2.9, ploeg: "A", snelheid: 120 },
+        ],
+        goodQuestion: "Waarom is het afkeurpercentage op dinsdag en donderdag twee keer zo hoog als op de andere dagen?",
+        hints: {
+          verzamelen: "Kijk naar de kolommen. Welke data past bij je vraag?",
+          analyseren: "Vergelijk de dagen met hoog afkeur. Wat hebben ze gemeen?",
+          concluderen: "Welk patroon zie je? Wat is het verschil tussen de groepen?",
+        },
+        idealConclusion: "Ploeg B draait op dinsdag en donderdag. Die dagen heeft de machine een hogere snelheid (135 i.p.v. 120). Het afkeurpercentage is daar twee keer zo hoog. Actie: de snelheid bij ploeg B terugzetten naar 120 en meten of het afkeur daalt.",
+      },
+      {
+        id: "stilstand",
+        title: "De onverklaarde stilstand",
+        context: "Machine 7 staat elke dag 45 minuten stil. Dat is meer dan het gemiddelde van 20 minuten. Er zijn geen storingen gemeld.",
+        data: [
+          { dag: "Ma", stilstand_min: 48, oorzaak: "omstellen", aantal_omstellen: 4 },
+          { dag: "Di", stilstand_min: 42, oorzaak: "omstellen", aantal_omstellen: 4 },
+          { dag: "Wo", stilstand_min: 50, oorzaak: "omstellen", aantal_omstellen: 5 },
+          { dag: "Do", stilstand_min: 44, oorzaak: "omstellen", aantal_omstellen: 4 },
+          { dag: "Vr", stilstand_min: 41, oorzaak: "omstellen", aantal_omstellen: 4 },
+        ],
+        goodQuestion: "Waarom staat machine 7 elke dag 45 minuten stil terwijl het gemiddelde 20 minuten is?",
+        hints: {
+          verzamelen: "Kijk naar de oorzaak-kolom en het aantal omstelacties.",
+          analyseren: "Tel het aantal keer omstellen. Reken uit: hoe lang duurt een keer omstellen?",
+          concluderen: "Hoeveel minuten kost elk omstellen? Is dat normaal?",
+        },
+        idealConclusion: "Machine 7 wordt gemiddeld 4 keer per dag omgesteld. Elke omstelling duurt ongeveer 11 minuten. Op andere machines duurt dat 5 minuten. Actie: het omstelproces observeren en verbeteren. Mogelijk ontbreekt gereedschap of is de procedure onduidelijk.",
+      },
+      {
+        id: "productie",
+        title: "Het verschil tussen de ploegen",
+        context: "De nachtploeg produceert 15% minder dan de dagploeg. De machines zijn dezelfde. Het product is hetzelfde.",
+        data: [
+          { ploeg: "Dag", productie: 920, pauze_min: 30, operators: 3 },
+          { ploeg: "Dag", productie: 940, pauze_min: 30, operators: 3 },
+          { ploeg: "Dag", productie: 910, pauze_min: 30, operators: 3 },
+          { ploeg: "Nacht", productie: 780, pauze_min: 45, operators: 2 },
+          { ploeg: "Nacht", productie: 790, pauze_min: 50, operators: 2 },
+        ],
+        goodQuestion: "Waarom produceert de nachtploeg 15% minder dan de dagploeg bij dezelfde machines en hetzelfde product?",
+        hints: {
+          verzamelen: "Vergelijk alle kolommen tussen dag en nacht.",
+          analyseren: "Groepeer op ploeg. Kijk naar pauze en aantal operators.",
+          concluderen: "Welke verschillen verklaren het productieverschil?",
+        },
+        idealConclusion: "De nachtploeg heeft 2 operators in plaats van 3. Daarnaast is de pauzetijd 45-50 minuten in plaats van 30. Twee oorzaken: minder mensen en meer pauze. Actie: een derde operator inplannen voor de nachtploeg. De pauzetijden evalueren.",
+      },
+    ];
+
+    const STEPS = [
+      { id: "intro", label: "Start" },
+      { id: "vraag", label: "1. Vraag" },
+      { id: "verzamelen", label: "2. Verzamelen" },
+      { id: "analyseren", label: "3. Analyseren" },
+      { id: "concluderen", label: "4. Concluderen" },
+      { id: "resultaat", label: "Resultaat" },
+    ];
+
+    function DataAnalyseTool() {
+      const [scenarioId, setScenarioId] = useState(null);
+      const [step, setStep] = useState(0);
+      const [answers, setAnswers] = useState({ vraag: "", verzamelen: "", analyseren: "", concluderen: "" });
+      const [showHint, setShowHint] = useState({});
+      const [scores, setScores] = useState(null);
+
+      const scenario = SCENARIOS.find(s => s.id === scenarioId);
+
+      const handleReset = () => {
+        setScenarioId(null);
+        setStep(0);
+        setAnswers({ vraag: "", verzamelen: "", analyseren: "", concluderen: "" });
+        setShowHint({});
+        setScores(null);
+      };
+
+      const handleFinish = () => {
+        const s = {};
+        s.vraag = answers.vraag.length > 20 ? (answers.vraag.includes("?") ? 2 : 1) : 0;
+        s.verzamelen = answers.verzamelen.length > 15 ? 2 : answers.verzamelen.length > 5 ? 1 : 0;
+        s.analyseren = answers.analyseren.length > 20 ? 2 : answers.analyseren.length > 5 ? 1 : 0;
+        s.concluderen = answers.concluderen.length > 20 ? 2 : answers.concluderen.length > 5 ? 1 : 0;
+        setScores(s);
+        setStep(5);
+      };
+
+      const totalScore = scores ? Object.values(scores).reduce((a, b) => a + b, 0) : 0;
+
+      // Scenario keuze
+      if (!scenarioId) {
+        return (
+          <div style={{ minHeight: "100vh", background: "#F9FAFB", padding: "24px" }}>
+            <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+              <h1 style={{ fontSize: "24px", fontWeight: "bold", color: "#1F2937", marginBottom: "4px" }}>
+                Data-analyse oefentool
+              </h1>
+              <p style={{ color: "#6B7280", marginBottom: "24px" }}>
+                Oefen de vier stappen: vraag formuleren, data verzamelen, analyseren, concluderen.
+              </p>
+              <p style={{ color: "#374151", marginBottom: "16px", fontWeight: "500" }}>
+                Kies een productieprobleem om te analyseren:
+              </p>
+              <div style={{ display: "grid", gap: "12px" }}>
+                {SCENARIOS.map(s => (
+                  <button
+                    key={s.id}
+                    onClick={() => { setScenarioId(s.id); setStep(1); }}
+                    style={{
+                      padding: "20px", background: "white", border: "2px solid #E5E7EB",
+                      borderRadius: "12px", textAlign: "left", cursor: "pointer",
+                      transition: "all 0.2s",
+                    }}
+                    onMouseOver={e => { e.currentTarget.style.borderColor = "#3B82F6"; e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.08)"; }}
+                    onMouseOut={e => { e.currentTarget.style.borderColor = "#E5E7EB"; e.currentTarget.style.boxShadow = "none"; }}
+                  >
+                    <div style={{ fontWeight: "bold", fontSize: "16px", color: "#1F2937" }}>{s.title}</div>
+                    <div style={{ color: "#6B7280", fontSize: "14px", marginTop: "4px" }}>{s.context}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      // Progress bar
+      const ProgressBar = () => (
+        <div style={{ display: "flex", gap: "4px", marginBottom: "24px" }}>
+          {STEPS.map((s, i) => (
+            <div key={s.id} style={{
+              flex: 1, height: "6px", borderRadius: "3px",
+              background: i <= step ? "#3B82F6" : "#E5E7EB",
+              transition: "background 0.3s",
+            }} />
+          ))}
+        </div>
+      );
+
+      // Data tabel
+      const DataTable = () => {
+        if (!scenario) return null;
+        const keys = Object.keys(scenario.data[0]);
+        return (
+          <div style={{ overflowX: "auto", marginBottom: "16px" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "14px" }}>
+              <thead>
+                <tr>
+                  {keys.map(k => (
+                    <th key={k} style={{
+                      padding: "8px 12px", background: "#F3F4F6", fontWeight: "600",
+                      textAlign: "left", borderBottom: "2px solid #E5E7EB",
+                    }}>{k}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {scenario.data.map((row, i) => (
+                  <tr key={i}>
+                    {keys.map(k => (
+                      <td key={k} style={{
+                        padding: "8px 12px", borderBottom: "1px solid #F3F4F6",
+                      }}>{typeof row[k] === "number" ? (row[k] % 1 !== 0 ? row[k].toFixed(1) + "%" : row[k]) : row[k]}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      };
+
+      const TextArea = ({ field, placeholder }) => (
+        <textarea
+          value={answers[field]}
+          onChange={e => setAnswers(prev => ({ ...prev, [field]: e.target.value }))}
+          placeholder={placeholder}
+          style={{
+            width: "100%", padding: "12px", border: "2px solid #E5E7EB",
+            borderRadius: "10px", resize: "vertical", minHeight: "80px",
+            fontSize: "14px", fontFamily: "inherit", outline: "none",
+            transition: "border-color 0.2s",
+          }}
+          onFocus={e => e.target.style.borderColor = "#3B82F6"}
+          onBlur={e => e.target.style.borderColor = "#E5E7EB"}
+        />
+      );
+
+      const HintButton = ({ field }) => (
+        <button
+          onClick={() => setShowHint(prev => ({ ...prev, [field]: true }))}
+          style={{
+            padding: "6px 12px", background: showHint[field] ? "#FEF3C7" : "#F3F4F6",
+            border: "none", borderRadius: "6px", fontSize: "13px", cursor: "pointer",
+            color: "#6B7280", marginTop: "8px",
+          }}
+        >
+          {showHint[field] ? scenario.hints[field] : "Hint nodig? Klik hier."}
+        </button>
+      );
+
+      const NavButtons = ({ canNext }) => (
+        <div style={{ display: "flex", justifyContent: "space-between", marginTop: "24px" }}>
+          <button
+            onClick={() => setStep(s => s - 1)}
+            style={{
+              padding: "10px 20px", background: "white", border: "1px solid #D1D5DB",
+              borderRadius: "8px", cursor: "pointer", fontSize: "14px", color: "#374151",
+            }}
+          >
+            Vorige
+          </button>
+          <button
+            onClick={() => step === 4 ? handleFinish() : setStep(s => s + 1)}
+            disabled={!canNext}
+            style={{
+              padding: "10px 20px",
+              background: canNext ? "#3B82F6" : "#E5E7EB",
+              color: canNext ? "white" : "#9CA3AF",
+              border: "none", borderRadius: "8px", cursor: canNext ? "pointer" : "not-allowed",
+              fontSize: "14px", fontWeight: "500",
+            }}
+          >
+            {step === 4 ? "Bekijk resultaat" : "Volgende stap"}
+          </button>
+        </div>
+      );
+
+      const stepColors = ["#3B82F6", "#3B82F6", "#10B981", "#F59E0B", "#8B5CF6"];
+
+      return (
+        <div style={{ minHeight: "100vh", background: "#F9FAFB", padding: "24px" }}>
+          <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+            {/* Header */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
+              <h1 style={{ fontSize: "20px", fontWeight: "bold", color: "#1F2937" }}>
+                {scenario.title}
+              </h1>
+              <button
+                onClick={handleReset}
+                style={{
+                  padding: "6px 12px", background: "none", border: "none",
+                  color: "#6B7280", cursor: "pointer", fontSize: "13px",
+                }}
+              >
+                Opnieuw beginnen
+              </button>
+            </div>
+
+            <ProgressBar />
+
+            {/* Context */}
+            <div style={{
+              padding: "16px", background: "#EFF6FF", borderRadius: "10px",
+              borderLeft: "4px solid #3B82F6", marginBottom: "20px", fontSize: "14px", color: "#1E40AF",
+            }}>
+              {scenario.context}
+            </div>
+
+            {/* Step 1: Vraag */}
+            {step === 1 && (
+              <div>
+                <h2 style={{ fontSize: "18px", fontWeight: "bold", color: "#3B82F6", marginBottom: "8px" }}>
+                  Stap 1: Vraag formuleren
+                </h2>
+                <p style={{ color: "#4B5563", marginBottom: "12px", fontSize: "14px" }}>
+                  Stel een specifieke vraag over dit probleem. De vraag moet beantwoordbaar zijn met data.
+                </p>
+                <TextArea field="vraag" placeholder="Typ je vraag hier... Begin met waarom, hoeveel, wanneer of welke." />
+                <div style={{ marginTop: "8px", padding: "10px", background: "#F9FAFB", borderRadius: "8px", fontSize: "13px", color: "#6B7280" }}>
+                  <strong>Check:</strong> Is je vraag specifiek? Kun je hem beantwoorden met de data die je hebt?
+                </div>
+                <NavButtons canNext={answers.vraag.length > 10} />
+              </div>
+            )}
+
+            {/* Step 2: Verzamelen */}
+            {step === 2 && (
+              <div>
+                <h2 style={{ fontSize: "18px", fontWeight: "bold", color: "#10B981", marginBottom: "8px" }}>
+                  Stap 2: Data verzamelen
+                </h2>
+                <p style={{ color: "#4B5563", marginBottom: "12px", fontSize: "14px" }}>
+                  Hier is de data. Bekijk de tabel. Welke kolommen heb je nodig voor je vraag?
+                </p>
+                <DataTable />
+                <TextArea field="verzamelen" placeholder="Welke data gebruik je? Welke kolommen zijn belangrijk?" />
+                <HintButton field="verzamelen" />
+                <NavButtons canNext={answers.verzamelen.length > 5} />
+              </div>
+            )}
+
+            {/* Step 3: Analyseren */}
+            {step === 3 && (
+              <div>
+                <h2 style={{ fontSize: "18px", fontWeight: "bold", color: "#F59E0B", marginBottom: "8px" }}>
+                  Stap 3: Analyseren
+                </h2>
+                <p style={{ color: "#4B5563", marginBottom: "12px", fontSize: "14px" }}>
+                  Bekijk de data nog een keer. Vergelijk, groepeer of tel. Wat valt je op?
+                </p>
+                <DataTable />
+                <div style={{ display: "flex", gap: "8px", marginBottom: "12px", flexWrap: "wrap" }}>
+                  {["Vergelijken", "Groeperen", "Tellen"].map(m => (
+                    <span key={m} style={{
+                      padding: "4px 12px", background: "#FEF3C7", borderRadius: "20px",
+                      fontSize: "12px", color: "#92400E", fontWeight: "500",
+                    }}>{m}</span>
+                  ))}
+                </div>
+                <TextArea field="analyseren" placeholder="Wat zie je in de data? Welk patroon valt je op?" />
+                <HintButton field="analyseren" />
+                <NavButtons canNext={answers.analyseren.length > 10} />
+              </div>
+            )}
+
+            {/* Step 4: Concluderen */}
+            {step === 4 && (
+              <div>
+                <h2 style={{ fontSize: "18px", fontWeight: "bold", color: "#8B5CF6", marginBottom: "8px" }}>
+                  Stap 4: Concluderen
+                </h2>
+                <p style={{ color: "#4B5563", marginBottom: "12px", fontSize: "14px" }}>
+                  Beantwoord je vraag. Wat is je conclusie? Welke actie stel je voor?
+                </p>
+                <div style={{ padding: "12px", background: "#F3F4F6", borderRadius: "8px", marginBottom: "12px", fontSize: "13px" }}>
+                  <strong>Je vraag was:</strong> {answers.vraag}
+                </div>
+                <TextArea field="concluderen" placeholder="Mijn conclusie is... Ik stel voor om..." />
+                <HintButton field="concluderen" />
+                <NavButtons canNext={answers.concluderen.length > 10} />
+              </div>
+            )}
+
+            {/* Resultaat */}
+            {step === 5 && scores && (
+              <div>
+                <div style={{ textAlign: "center", padding: "24px 0" }}>
+                  <div style={{ fontSize: "48px", marginBottom: "8px" }}>
+                    {totalScore >= 6 ? "Goed gedaan!" : totalScore >= 4 ? "Prima begin!" : "Goed geoefend!"}
+                  </div>
+                  <p style={{ color: "#6B7280", fontSize: "14px" }}>
+                    Je hebt alle vier de stappen doorlopen. Hier is je resultaat.
+                  </p>
+                </div>
+
+                {/* Score bars */}
+                <div style={{ display: "grid", gap: "12px", marginBottom: "24px" }}>
+                  {[
+                    { key: "vraag", label: "Stap 1: Vraag formuleren", color: "#3B82F6" },
+                    { key: "verzamelen", label: "Stap 2: Data verzamelen", color: "#10B981" },
+                    { key: "analyseren", label: "Stap 3: Analyseren", color: "#F59E0B" },
+                    { key: "concluderen", label: "Stap 4: Concluderen", color: "#8B5CF6" },
+                  ].map(s => (
+                    <div key={s.key}>
+                      <div style={{ display: "flex", justifyContent: "space-between", fontSize: "14px", marginBottom: "4px" }}>
+                        <span style={{ color: "#374151", fontWeight: "500" }}>{s.label}</span>
+                        <span style={{ fontWeight: "bold", color: s.color }}>{scores[s.key]}/2</span>
+                      </div>
+                      <div style={{ height: "10px", background: "#F3F4F6", borderRadius: "5px", overflow: "hidden" }}>
+                        <div style={{
+                          height: "100%", borderRadius: "5px", background: s.color,
+                          width: `${(scores[s.key] / 2) * 100}%`, transition: "width 0.7s ease-out",
+                        }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Jouw antwoorden vs voorbeeldantwoord */}
+                <div style={{ background: "white", borderRadius: "12px", border: "1px solid #E5E7EB", padding: "20px", marginBottom: "16px" }}>
+                  <h3 style={{ fontWeight: "bold", fontSize: "16px", color: "#1F2937", marginBottom: "12px" }}>
+                    Voorbeeldantwoord
+                  </h3>
+                  <p style={{ fontSize: "14px", color: "#4B5563", lineHeight: "1.6" }}>
+                    {scenario.idealConclusion}
+                  </p>
+                </div>
+
+                <div style={{ background: "white", borderRadius: "12px", border: "1px solid #E5E7EB", padding: "20px", marginBottom: "20px" }}>
+                  <h3 style={{ fontWeight: "bold", fontSize: "16px", color: "#1F2937", marginBottom: "12px" }}>
+                    Jouw antwoorden
+                  </h3>
+                  {["vraag", "verzamelen", "analyseren", "concluderen"].map((k, i) => (
+                    <div key={k} style={{ marginBottom: "12px" }}>
+                      <div style={{ fontSize: "13px", fontWeight: "600", color: "#6B7280", marginBottom: "2px" }}>
+                        Stap {i + 1}:
+                      </div>
+                      <div style={{ fontSize: "14px", color: "#374151" }}>
+                        {answers[k] || "(niet ingevuld)"}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ display: "flex", gap: "12px" }}>
+                  <button
+                    onClick={handleReset}
+                    style={{
+                      flex: 1, padding: "12px", background: "#3B82F6", color: "white",
+                      border: "none", borderRadius: "8px", cursor: "pointer",
+                      fontSize: "14px", fontWeight: "500",
+                    }}
+                  >
+                    Probeer een andere casus
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Footer */}
+          <div style={{ textAlign: "center", padding: "32px 0 16px", fontSize: "12px", color: "#9CA3AF" }}>
+            AIMM Data Literacy -- Module 2: Train | ko-data-lit-204
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<DataAnalyseTool />);
+  </script>
+</body>
+</html>
