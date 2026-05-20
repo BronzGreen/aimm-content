@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde13-lo-ai-fund-135
+
+**Kontext:** Ronde 13: lo-ai-fund-135
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-135/trainee.md`
+- `kennisbank/ai_fundamentals/machine_learning_basics/ko-ai-fund-135.md`
+- `leerobjecten/lo-ai-fund-135/trainer.md`
+- `leerobjecten/lo-ai-fund-135/draaiboek.md`
+- `leerobjecten/lo-ai-fund-135/werkbladen/wb-01-scorekaarten.md`
+- `leerobjecten/lo-ai-fund-135/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-ai-fund-135/werkbladen/wb-03-handout-overfitting.md`
+- `leerobjecten/lo-ai-fund-135/werkbladen/wb-04-diagnose.md`
+- `leerobjecten/lo-ai-fund-135/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-ai-fund-135/README.md`
+
 ## 2026-05-20 — publish-ronde13-lo-smart-mfg-101
 
 **Kontext:** Ronde 13: lo-smart-mfg-101
