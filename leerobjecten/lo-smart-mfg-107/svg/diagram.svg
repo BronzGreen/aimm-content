@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-labelledby="title desc" font-family="Segoe UI, Arial, sans-serif">
+  <title id="title">Knikkermetafoor: normaal versus afwijkend</title>
+  <desc id="desc">Eenvoudige visuele metafoor die laat zien hoe anomaliedetectie werkt. Links liggen blauwe knikkers dicht bij elkaar: dat zijn normale sensorwaarden. Rechts liggen enkele rode knikkers apart: dat zijn afwijkende waarden die eruit springen. Zo herkent een AI-systeem welke meetwaarden niet bij de rest passen.</desc>
+
+  <!-- Achtergrond -->
+  <rect width="600" height="400" fill="#F8FAFC" rx="8" role="presentation"/>
+
+  <!-- Titel -->
+  <text x="300" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#1E293B">Welke knikkers horen er niet bij?</text>
+  <text x="300" y="56" text-anchor="middle" font-size="12" fill="#64748B">Zo werkt anomaliedetectie: het AI-systeem zoekt de rode knikkers</text>
+
+  <!-- Verdeling: links normaal, rechts afwijkend -->
+  <!-- Scheidingslijn -->
+  <line x1="380" y1="75" x2="380" y2="340" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="6,4" role="presentation"/>
+
+  <!-- Label links -->
+  <text x="185" y="90" text-anchor="middle" font-size="14" font-weight="bold" fill="#2563EB">Normaal</text>
+  <text x="185" y="108" text-anchor="middle" font-size="11" fill="#64748B">Waarden die bij elkaar passen</text>
+
+  <!-- Blauwe knikkers — cluster links, organisch geplaatst -->
+  <circle cx="100" cy="170" r="18" fill="#2563EB" opacity="0.85" role="presentation"/>
+  <circle cx="140" cy="155" r="18" fill="#2563EB" opacity="0.80" role="presentation"/>
+  <circle cx="175" cy="175" r="18" fill="#2563EB" opacity="0.90" role="presentation"/>
+  <circle cx="130" cy="195" r="18" fill="#2563EB" opacity="0.85" role="presentation"/>
+  <circle cx="210" cy="160" r="18" fill="#2563EB" opacity="0.75" role="presentation"/>
+  <circle cx="200" cy="200" r="18" fill="#2563EB" opacity="0.85" role="presentation"/>
+  <circle cx="160" cy="215" r="18" fill="#2563EB" opacity="0.80" role="presentation"/>
+  <circle cx="115" cy="230" r="18" fill="#2563EB" opacity="0.90" role="presentation"/>
+  <circle cx="240" cy="185" r="18" fill="#2563EB" opacity="0.85" role="presentation"/>
+  <circle cx="250" cy="215" r="18" fill="#2563EB" opacity="0.80" role="presentation"/>
+  <circle cx="145" cy="250" r="18" fill="#2563EB" opacity="0.85" role="presentation"/>
+  <circle cx="195" cy="240" r="18" fill="#2563EB" opacity="0.75" role="presentation"/>
+  <circle cx="230" cy="245" r="18" fill="#2563EB" opacity="0.90" role="presentation"/>
+  <circle cx="270" cy="175" r="18" fill="#2563EB" opacity="0.80" role="presentation"/>
+  <circle cx="105" cy="260" r="18" fill="#2563EB" opacity="0.85" role="presentation"/>
+
+  <!-- Label rechts -->
+  <text x="490" y="90" text-anchor="middle" font-size="14" font-weight="bold" fill="#DC2626">Afwijkend</text>
+  <text x="490" y="108" text-anchor="middle" font-size="11" fill="#64748B">Waarden die eruit springen</text>
+
+  <!-- Rode knikkers — los, verspreid rechts -->
+  <circle cx="430" cy="175" r="18" fill="#DC2626" opacity="0.90" role="presentation"/>
+  <circle cx="510" cy="210" r="18" fill="#DC2626" opacity="0.85" role="presentation"/>
+  <circle cx="540" cy="155" r="18" fill="#DC2626" opacity="0.90" role="presentation"/>
+
+  <!-- Uitroeptekens bij rode knikkers -->
+  <text x="430" y="181" text-anchor="middle" font-size="14" font-weight="bold" fill="white" role="presentation">!</text>
+  <text x="510" y="216" text-anchor="middle" font-size="14" font-weight="bold" fill="white" role="presentation">!</text>
+  <text x="540" y="161" text-anchor="middle" font-size="14" font-weight="bold" fill="white" role="presentation">!</text>
+
+  <!-- Uitleg onderaan -->
+  <rect x="40" y="290" width="520" height="70" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="300" y="312" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E40AF">Wat doet het AI-systeem?</text>
+  <text x="300" y="330" text-anchor="middle" font-size="11" fill="#1E3A5F">Het leert welke knikkers normaal zijn (blauw). Als er een rode knikker</text>
+  <text x="300" y="346" text-anchor="middle" font-size="11" fill="#1E3A5F">langskomt, geeft het een melding aan jou als operator.</text>
+
+  <!-- Legenda -->
+  <circle cx="50" cy="380" r="8" fill="#2563EB" role="presentation"/>
+  <text x="65" y="384" font-size="10" fill="#64748B">Normale sensorwaarde</text>
+  <circle cx="230" cy="380" r="8" fill="#DC2626" role="presentation"/>
+  <text x="245" y="384" font-size="10" fill="#64748B">Afwijkende sensorwaarde (anomalie)</text>
+
+  <!-- Bron -->
+  <text x="590" y="392" text-anchor="end" font-size="8" fill="#94A3B8">AIMM | ko-smart-mfg-107</text>
+</svg>
