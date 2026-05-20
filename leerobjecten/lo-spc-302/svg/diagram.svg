@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" role="img" aria-labelledby="title desc" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Cpk versus Ppk — de gap als diagnostisch signaal</title>
+  <desc id="desc">Diagram van de diagnose-logica tussen Cpk en Ppk op een productielijn. Bovenaan links staat Cpk, de kortetermijn-bekwaamheid binnen een subgroep, in blauw. Rechtsboven staat Ppk, de langetermijn-bekwaamheid die de klant ervaart, in rood. Tussen de twee in staat de gap, berekend als Cpk min Ppk. Onder de gap staan drie categorieen: gap kleiner dan nul komma tien betekent een stabiel proces, gap tussen nul komma tien en nul komma twintig betekent merkbare tussen-subgroep-variatie, gap groter dan nul komma twintig betekent dat het systeem rondom de machine onrustig is. Rechtsonder staat de Ford PPAP vierde editie eis met Ppk groter of gelijk aan een komma zevenenzestig als drempel voor kritische automotive-kenmerken. Linksonder staan vier typische oorzaken van tussen-subgroep-variatie: materiaalbatch-wissels, shift-overdracht ploeg A en B, setup-aanpassingen en temperatuurschommelingen. In het midden staat de kernboodschap: een grote gap los je niet op door de machine strakker te zetten, maar door het systeem rondom de machine onder controle te krijgen. Onderaan een fictieve spuitgiet-referentiecase waarin Cpk een komma tweeenveertig was en Ppk een komma nul vijf, met een gap van nul komma zevenendertig, opgelost door de setup-procedure tussen ploeg A en B te standaardiseren.</desc>
+
+  <defs>
+    <linearGradient id="grad-cpk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="grad-ppk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E74C3C"/>
+      <stop offset="100%" stop-color="#C0392B"/>
+    </linearGradient>
+    <linearGradient id="grad-gap" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F39C12"/>
+      <stop offset="100%" stop-color="#D35400"/>
+    </linearGradient>
+    <linearGradient id="grad-center" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34495E"/>
+      <stop offset="100%" stop-color="#2C3E50"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.18"/>
+    </filter>
+    <marker id="arrow-gap" markerWidth="12" markerHeight="9" refX="11" refY="4.5" orient="auto">
+      <polygon points="0 0, 12 4.5, 0 9" fill="#D35400"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="960" height="760" fill="#F8F6F0"/>
+
+  <!-- Titel -->
+  <text x="480" y="42" text-anchor="middle" font-size="24" font-weight="700" fill="#2C3E50" letter-spacing="1">Cpk vs Ppk — de gap als diagnostisch signaal</text>
+  <text x="480" y="66" text-anchor="middle" font-size="13" fill="#7f8c8d" font-style="italic" letter-spacing="0.5">Wat je machine kan versus wat je klant ervaart — en waar de volgende actie ligt</text>
+
+  <!-- ─────────── CPK (linksboven) ─────────── -->
+  <g filter="url(#shadow)">
+    <rect x="70" y="100" width="320" height="130" rx="14" fill="url(#grad-cpk)"/>
+  </g>
+  <text x="230" y="138" text-anchor="middle" font-size="22" font-weight="700" fill="white" letter-spacing="2">CPK</text>
+  <text x="230" y="162" text-anchor="middle" font-size="13" fill="white" opacity="0.95">Kortetermijn · binnen-subgroep</text>
+  <text x="230" y="190" text-anchor="middle" font-size="13" fill="white" opacity="0.95">Wat je proces <tspan font-weight="700">kan</tspan> als het stabiel is</text>
+  <text x="230" y="212" text-anchor="middle" font-size="11" fill="white" opacity="0.8">σ_within — één shift, één batch</text>
+
+  <!-- ─────────── PPK (rechtsboven) ─────────── -->
+  <g filter="url(#shadow)">
+    <rect x="570" y="100" width="320" height="130" rx="14" fill="url(#grad-ppk)"/>
+  </g>
+  <text x="730" y="138" text-anchor="middle" font-size="22" font-weight="700" fill="white" letter-spacing="2">PPK</text>
+  <text x="730" y="162" text-anchor="middle" font-size="13" fill="white" opacity="0.95">Langetermijn · totale spreiding</text>
+  <text x="730" y="190" text-anchor="middle" font-size="13" fill="white" opacity="0.95">Wat je klant <tspan font-weight="700">ervaart</tspan></text>
+  <text x="730" y="212" text-anchor="middle" font-size="11" fill="white" opacity="0.8">σ_total — weken, shifts, batches</text>
+
+  <!-- Pijl Cpk → gap -->
+  <path role="presentation" d="M 390,165 L 440,165" fill="none" stroke="#2980B9" stroke-width="2.5" marker-end="url(#arrow-gap)"/>
+  <!-- Pijl Ppk → gap -->
+  <path role="presentation" d="M 570,165 L 520,165" fill="none" stroke="#C0392B" stroke-width="2.5" marker-end="url(#arrow-gap)"/>
+
+  <!-- ─────────── GAP (middenboven) ─────────── -->
+  <g filter="url(#shadow)">
+    <circle cx="480" cy="165" r="58" fill="url(#grad-gap)"/>
+  </g>
+  <text x="480" y="158" text-anchor="middle" font-size="14" font-weight="700" fill="white" letter-spacing="1">GAP</text>
+  <text x="480" y="180" text-anchor="middle" font-size="12" fill="white">Cpk − Ppk</text>
+
+  <!-- ─────────── GAP-CATEGORIEËN ─────────── -->
+  <text x="480" y="270" text-anchor="middle" font-size="15" font-weight="700" fill="#2C3E50">Wat zegt de gap?</text>
+
+  <!-- Klein -->
+  <g filter="url(#shadow)">
+    <rect x="70" y="290" width="260" height="100" rx="10" fill="#D6EAF8" stroke="#2980B9" stroke-width="2"/>
+  </g>
+  <text x="200" y="316" text-anchor="middle" font-size="15" font-weight="700" fill="#1B4F72">Gap &lt; 0,10</text>
+  <text x="200" y="340" text-anchor="middle" font-size="12" fill="#1B4F72">Stabiel proces</text>
+  <text x="200" y="360" text-anchor="middle" font-size="11" fill="#1B4F72" font-style="italic">Actie (als Cpk te laag):</text>
+  <text x="200" y="376" text-anchor="middle" font-size="12" font-weight="700" fill="#1B4F72">op het proces zelf</text>
+
+  <!-- Middel -->
+  <g filter="url(#shadow)">
+    <rect x="350" y="290" width="260" height="100" rx="10" fill="#FDEBD0" stroke="#D35400" stroke-width="2"/>
+  </g>
+  <text x="480" y="316" text-anchor="middle" font-size="15" font-weight="700" fill="#7E3A10">Gap 0,10 – 0,20</text>
+  <text x="480" y="340" text-anchor="middle" font-size="12" fill="#7E3A10">Merkbare tussen-subgroep-variatie</text>
+  <text x="480" y="360" text-anchor="middle" font-size="11" fill="#7E3A10" font-style="italic">Kijk naar:</text>
+  <text x="480" y="376" text-anchor="middle" font-size="12" font-weight="700" fill="#7E3A10">batches, shifts, setups</text>
+
+  <!-- Groot -->
+  <g filter="url(#shadow)">
+    <rect x="630" y="290" width="260" height="100" rx="10" fill="#FADBD8" stroke="#C0392B" stroke-width="2"/>
+  </g>
+  <text x="760" y="316" text-anchor="middle" font-size="15" font-weight="700" fill="#78281F">Gap &gt; 0,20</text>
+  <text x="760" y="340" text-anchor="middle" font-size="12" fill="#78281F">Systeem rondom is onrustig</text>
+  <text x="760" y="360" text-anchor="middle" font-size="11" fill="#78281F" font-style="italic">Actie ligt op:</text>
+  <text x="760" y="376" text-anchor="middle" font-size="12" font-weight="700" fill="#78281F">het systeem rondom</text>
+
+  <!-- ─────────── CENTRAAL PRINCIPE ─────────── -->
+  <g filter="url(#shadow)">
+    <rect x="150" y="415" width="660" height="70" rx="10" fill="url(#grad-center)"/>
+  </g>
+  <text x="480" y="442" text-anchor="middle" font-size="14" font-weight="700" fill="white">Een grote gap los je niet op door de machine strakker te zetten.</text>
+  <text x="480" y="466" text-anchor="middle" font-size="14" fill="white" opacity="0.95">Je lost hem op door wat <tspan font-weight="700">erbuiten</tspan> gebeurt onder controle te krijgen.</text>
+
+  <!-- ─────────── LINKS: oorzaken ─────────── -->
+  <text x="230" y="518" text-anchor="middle" font-size="13" font-weight="700" fill="#2C3E50">Typische oorzaken van tussen-subgroep-variatie</text>
+  <g>
+    <rect x="70" y="530" width="320" height="168" rx="10" fill="#FFFFFF" stroke="#BDC3C7" stroke-width="1.5"/>
+    <text x="88" y="558" font-size="12" fill="#2C3E50">● <tspan font-weight="700">Materiaalbatch-wissels</tspan> — andere eigenschappen</text>
+    <text x="88" y="594" font-size="12" fill="#2C3E50">● <tspan font-weight="700">Shift-overdracht</tspan> — ploeg A ≠ ploeg B</text>
+    <text x="88" y="630" font-size="12" fill="#2C3E50">● <tspan font-weight="700">Setup-aanpassingen</tspan> — niet gestandaardiseerd</text>
+    <text x="88" y="666" font-size="12" fill="#2C3E50">● <tspan font-weight="700">Temperatuur</tspan> — dag/nacht, seizoen, locatie</text>
+  </g>
+
+  <!-- ─────────── RECHTS: Ford PPAP-eis ─────────── -->
+  <text x="730" y="518" text-anchor="middle" font-size="13" font-weight="700" fill="#2C3E50">Industrie-eis (automotive)</text>
+  <g filter="url(#shadow)">
+    <rect x="570" y="530" width="320" height="168" rx="10" fill="#FEF9E7" stroke="#B7950B" stroke-width="2"/>
+  </g>
+  <text x="730" y="560" text-anchor="middle" font-size="13" font-weight="700" fill="#7D6608">Ford PPAP — 4th edition (actueel)</text>
+  <text x="730" y="600" text-anchor="middle" font-size="32" font-weight="700" fill="#7D6608">Ppk ≥ 1,67</text>
+  <text x="730" y="628" text-anchor="middle" font-size="11" fill="#7D6608">voor relevante kritische kenmerken</text>
+  <text x="730" y="660" text-anchor="middle" font-size="11" fill="#7D6608" font-style="italic">AIAG SPC Reference Manual</text>
+  <text x="730" y="678" text-anchor="middle" font-size="11" fill="#7D6608" font-style="italic">NIST/SEMATECH e-Handbook</text>
+
+  <!-- ─────────── Onderaan: fictieve spuitgiet-referentiecase ─────────── -->
+  <g>
+    <rect x="70" y="714" width="820" height="34" rx="6" fill="#ECF0F1" stroke="#BDC3C7" stroke-width="1"/>
+    <text x="480" y="736" text-anchor="middle" font-size="11" fill="#34495E" font-style="italic">
+      Fictieve referentiecase spuitgietlijn: Cpk 1,42 · Ppk 1,05 · gap 0,37 — ploeg B stelde 0,15 mm hoger in. Actie: setup-procedure standaardiseren, niet de machine.
+    </text>
+  </g>
+</svg>
