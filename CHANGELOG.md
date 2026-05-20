@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde19-lo-ai-fund-211
+
+**Kontext:** Ronde 19: lo-ai-fund-211
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-211/trainee.md`
+- `leerobjecten/lo-ai-fund-211/trainer.md`
+- `leerobjecten/lo-ai-fund-211/draaiboek.md`
+- `leerobjecten/lo-ai-fund-211/werkbladen/wb-01-observatie-demo.md`
+- `leerobjecten/lo-ai-fund-211/werkbladen/wb-02-zes-scenarios.md`
+- `leerobjecten/lo-ai-fund-211/werkbladen/wb-03-handout-stappen-wel-niet-avg.md`
+- `leerobjecten/lo-ai-fund-211/werkbladen/wb-03-handout-wel-niet-avg.md`
+- `leerobjecten/lo-ai-fund-211/werkbladen/wb-04-eigen-keuze-no-code.md`
+- `leerobjecten/lo-ai-fund-211/README.md`
+
 ## 2026-05-20 — publish-ronde19-lo-smart-mfg-107
 
 **Kontext:** Ronde 19: lo-smart-mfg-107
