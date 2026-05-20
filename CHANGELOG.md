@@ -7,6 +7,24 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde20-lo-ai-fund-212
+
+**Kontext:** Ronde 20: lo-ai-fund-212
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-212/trainee.md`
+- `leerobjecten/lo-ai-fund-212/trainer.md`
+- `leerobjecten/lo-ai-fund-212/draaiboek.md`
+- `leerobjecten/lo-ai-fund-212/werkbladen/wb-01-twee-confusion-matrices-vleesverwerker.md`
+- `leerobjecten/lo-ai-fund-212/werkbladen/wb-01-twee-matrices-lezen.md`
+- `leerobjecten/lo-ai-fund-212/werkbladen/wb-02-precision-recall-formules.md`
+- `leerobjecten/lo-ai-fund-212/werkbladen/wb-02-vals-positief-vals-negatief-in-duo.md`
+- `leerobjecten/lo-ai-fund-212/werkbladen/wb-03-precision-recall-handout.md`
+- `leerobjecten/lo-ai-fund-212/werkbladen/wb-03-werkvloer-keuze-precision-of-recall.md`
+- `leerobjecten/lo-ai-fund-212/werkbladen/wb-04-eigen-werkvloer-ai-doorlichten.md`
+- `leerobjecten/lo-ai-fund-212/README.md`
+
 ## 2026-05-20 — publish-ronde20-lo-smart-mfg-108
 
 **Kontext:** Ronde 20: lo-smart-mfg-108
