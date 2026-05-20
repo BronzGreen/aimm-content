@@ -1,0 +1,144 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 900 580"
+     font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Datakwaliteit-audit matrix</title>
+  <desc id="desc">Een matrix die vier databronnen (MES, logboek, Excel, kwaliteitssysteem) scoort op drie kwaliteitscriteria (volledigheid, consistentie, actualiteit). Elke cel toont een voorbeeldscore van ++ tot -- met kleurcodering: groen voor goed, oranje voor voldoende, rood voor onvoldoende en donkerrood voor kritiek.</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+    <linearGradient id="header-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2C3E50"/>
+      <stop offset="100%" stop-color="#1A252F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect width="900" height="580" fill="#FAFAF8" role="presentation"/>
+
+  <!-- Titel -->
+  <text x="450" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50" letter-spacing="1">Datakwaliteit-Audit Matrix</text>
+  <text x="450" y="60" text-anchor="middle" font-size="13" fill="#7f8c8d" letter-spacing="0.5">Score je databronnen op drie criteria</text>
+
+  <!-- Legenda -->
+  <g transform="translate(140, 78)">
+    <rect x="0" y="0" width="18" height="18" rx="4" fill="#27AE60"/>
+    <text x="24" y="14" font-size="11" fill="#555">++ Uitstekend</text>
+    <rect x="150" y="0" width="18" height="18" rx="4" fill="#2ECC71"/>
+    <text x="174" y="14" font-size="11" fill="#555">+ Voldoende</text>
+    <rect x="300" y="0" width="18" height="18" rx="4" fill="#E67E22"/>
+    <text x="324" y="14" font-size="11" fill="#555">- Onvoldoende</text>
+    <rect x="470" y="0" width="18" height="18" rx="4" fill="#C0392B"/>
+    <text x="494" y="14" font-size="11" fill="#555">-- Kritiek</text>
+  </g>
+
+  <!-- Tabel: header rij -->
+  <rect x="50" y="115" width="800" height="45" rx="8" ry="8" fill="url(#header-grad)" filter="url(#shadow)"/>
+  <!-- Kolom labels -->
+  <text x="170" y="143" text-anchor="middle" font-size="13" font-weight="700" fill="white">Databron</text>
+  <text x="390" y="137" text-anchor="middle" font-size="13" font-weight="700" fill="white">Volledigheid</text>
+  <text x="390" y="153" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.6)">Is alle data er?</text>
+  <text x="570" y="137" text-anchor="middle" font-size="13" font-weight="700" fill="white">Consistentie</text>
+  <text x="570" y="153" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.6)">Klopt het met andere bronnen?</text>
+  <text x="750" y="137" text-anchor="middle" font-size="13" font-weight="700" fill="white">Actualiteit</text>
+  <text x="750" y="153" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.6)">Is het recent genoeg?</text>
+
+  <!-- Kolom scheidingslijnen -->
+  <line x1="280" y1="115" x2="280" y2="490" stroke="#E0E0E0" stroke-width="1"/>
+  <line x1="460" y1="115" x2="460" y2="490" stroke="#E0E0E0" stroke-width="1"/>
+  <line x1="640" y1="115" x2="640" y2="490" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Rij 1: MES (lichte achtergrond) -->
+  <rect x="50" y="160" width="800" height="80" fill="#F8F9FA"/>
+  <rect x="50" y="160" width="6" height="80" rx="0" fill="#3498DB"/>
+  <text x="65" y="195" font-size="14" font-weight="700" fill="#2C3E50">MES</text>
+  <text x="65" y="215" font-size="10" fill="#7f8c8d">Manufacturing</text>
+  <text x="65" y="228" font-size="10" fill="#7f8c8d">Execution System</text>
+  <!-- Scores -->
+  <rect x="340" y="180" width="100" height="36" rx="6" fill="rgba(39,174,96,0.12)"/>
+  <text x="390" y="204" text-anchor="middle" font-size="18" font-weight="700" fill="#27AE60">++</text>
+  <text x="390" y="230" text-anchor="middle" font-size="9" fill="#7f8c8d">Automatisch</text>
+
+  <rect x="520" y="180" width="100" height="36" rx="6" fill="rgba(46,204,113,0.12)"/>
+  <text x="570" y="204" text-anchor="middle" font-size="18" font-weight="700" fill="#2ECC71">+</text>
+  <text x="570" y="230" text-anchor="middle" font-size="9" fill="#7f8c8d">Meestal goed</text>
+
+  <rect x="700" y="180" width="100" height="36" rx="6" fill="rgba(39,174,96,0.12)"/>
+  <text x="750" y="204" text-anchor="middle" font-size="18" font-weight="700" fill="#27AE60">++</text>
+  <text x="750" y="230" text-anchor="middle" font-size="9" fill="#7f8c8d">Real-time</text>
+
+  <!-- Rij scheidingslijn -->
+  <line x1="50" y1="240" x2="850" y2="240" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Rij 2: Logboek (wit) -->
+  <rect x="50" y="240" width="800" height="80" fill="#FFFFFF"/>
+  <rect x="50" y="240" width="6" height="80" rx="0" fill="#E67E22"/>
+  <text x="65" y="275" font-size="14" font-weight="700" fill="#2C3E50">Logboek</text>
+  <text x="65" y="295" font-size="10" fill="#7f8c8d">Papier of digitaal</text>
+  <!-- Scores -->
+  <rect x="340" y="260" width="100" height="36" rx="6" fill="rgba(230,126,34,0.12)"/>
+  <text x="390" y="284" text-anchor="middle" font-size="18" font-weight="700" fill="#E67E22">-</text>
+  <text x="390" y="310" text-anchor="middle" font-size="9" fill="#7f8c8d">Nachtdienst mist</text>
+
+  <rect x="520" y="260" width="100" height="36" rx="6" fill="rgba(192,57,43,0.12)"/>
+  <text x="570" y="284" text-anchor="middle" font-size="18" font-weight="700" fill="#C0392B">--</text>
+  <text x="570" y="310" text-anchor="middle" font-size="9" fill="#7f8c8d">Ieder schrijft anders</text>
+
+  <rect x="700" y="260" width="100" height="36" rx="6" fill="rgba(46,204,113,0.12)"/>
+  <text x="750" y="284" text-anchor="middle" font-size="18" font-weight="700" fill="#2ECC71">+</text>
+  <text x="750" y="310" text-anchor="middle" font-size="9" fill="#7f8c8d">Per dienst</text>
+
+  <!-- Rij scheidingslijn -->
+  <line x1="50" y1="320" x2="850" y2="320" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Rij 3: Excel (lichte achtergrond) -->
+  <rect x="50" y="320" width="800" height="80" fill="#F8F9FA"/>
+  <rect x="50" y="320" width="6" height="80" rx="0" fill="#9B59B6"/>
+  <text x="65" y="355" font-size="14" font-weight="700" fill="#2C3E50">Excel</text>
+  <text x="65" y="375" font-size="10" fill="#7f8c8d">Spreadsheets</text>
+  <!-- Scores -->
+  <rect x="340" y="340" width="100" height="36" rx="6" fill="rgba(46,204,113,0.12)"/>
+  <text x="390" y="364" text-anchor="middle" font-size="18" font-weight="700" fill="#2ECC71">+</text>
+  <text x="390" y="390" text-anchor="middle" font-size="9" fill="#7f8c8d">Soms lege cellen</text>
+
+  <rect x="520" y="340" width="100" height="36" rx="6" fill="rgba(230,126,34,0.12)"/>
+  <text x="570" y="364" text-anchor="middle" font-size="18" font-weight="700" fill="#E67E22">-</text>
+  <text x="570" y="390" text-anchor="middle" font-size="9" fill="#7f8c8d">Veel versies</text>
+
+  <rect x="700" y="340" width="100" height="36" rx="6" fill="rgba(192,57,43,0.12)"/>
+  <text x="750" y="364" text-anchor="middle" font-size="18" font-weight="700" fill="#C0392B">--</text>
+  <text x="750" y="390" text-anchor="middle" font-size="9" fill="#7f8c8d">Vorige maand</text>
+
+  <!-- Rij scheidingslijn -->
+  <line x1="50" y1="400" x2="850" y2="400" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Rij 4: Kwaliteitssysteem (wit) -->
+  <rect x="50" y="400" width="800" height="80" fill="#FFFFFF"/>
+  <rect x="50" y="400" width="6" height="80" rx="0" fill="#2ECC71"/>
+  <text x="65" y="430" font-size="14" font-weight="700" fill="#2C3E50">Kwaliteits-</text>
+  <text x="65" y="448" font-size="14" font-weight="700" fill="#2C3E50">systeem</text>
+  <text x="65" y="468" font-size="10" fill="#7f8c8d">QMS / SAP QM</text>
+  <!-- Scores -->
+  <rect x="340" y="420" width="100" height="36" rx="6" fill="rgba(39,174,96,0.12)"/>
+  <text x="390" y="444" text-anchor="middle" font-size="18" font-weight="700" fill="#27AE60">++</text>
+  <text x="390" y="470" text-anchor="middle" font-size="9" fill="#7f8c8d">Verplichte velden</text>
+
+  <rect x="520" y="420" width="100" height="36" rx="6" fill="rgba(39,174,96,0.12)"/>
+  <text x="570" y="444" text-anchor="middle" font-size="18" font-weight="700" fill="#27AE60">++</text>
+  <text x="570" y="470" text-anchor="middle" font-size="9" fill="#7f8c8d">Gevalideerd</text>
+
+  <rect x="700" y="420" width="100" height="36" rx="6" fill="rgba(46,204,113,0.12)"/>
+  <text x="750" y="444" text-anchor="middle" font-size="18" font-weight="700" fill="#2ECC71">+</text>
+  <text x="750" y="470" text-anchor="middle" font-size="9" fill="#7f8c8d">Na elke controle</text>
+
+  <!-- Onderrand tabel -->
+  <rect x="50" y="480" width="800" height="4" rx="2" fill="#E0E0E0" role="presentation"/>
+
+  <!-- Toelichting -->
+  <text x="450" y="515" text-anchor="middle" font-size="12" font-weight="600" fill="#2C3E50">Dit is een voorbeeld. Vul jouw eigen databronnen en scores in!</text>
+  <text x="450" y="535" text-anchor="middle" font-size="11" fill="#7f8c8d">Rood en oranje = hier zit je risico. Pak die als eerste aan.</text>
+
+  <!-- Bronvermelding -->
+  <text x="450" y="565" text-anchor="middle" font-size="10" fill="#999">Datakwaliteit-audit framework | AIMM Data Literacy Module 3</text>
+</svg>
