@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde25-lo-spc-501
+
+**Kontext:** Ronde 25: lo-spc-501
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-501/trainee.md`
+- `kennisbank/spc/regelkaarten/ko-spc-501.md`
+- `leerobjecten/lo-spc-501/trainer.md`
+- `leerobjecten/lo-spc-501/draaiboek.md`
+- `leerobjecten/lo-spc-501/werkbladen/wb-01-oefening.md`
+- `leerobjecten/lo-spc-501/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-501/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-501/svg/diagram.svg`
+- `leerobjecten/lo-spc-501/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-501/README.md`
+
 ## 2026-05-20 — publish-ronde25-lo-spc-403
 
 **Kontext:** Ronde 25: lo-spc-403
