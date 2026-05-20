@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde19-lo-spc-401
+
+**Kontext:** Ronde 19: lo-spc-401
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-401/trainee.md`
+- `kennisbank/spc/six_sigma/ko-spc-401.md`
+- `leerobjecten/lo-spc-401/trainer.md`
+- `leerobjecten/lo-spc-401/draaiboek.md`
+- `leerobjecten/lo-spc-401/werkbladen/wb-01-eigen-analyse.md`
+- `leerobjecten/lo-spc-401/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-401/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-401/svg/diagram.svg`
+- `leerobjecten/lo-spc-401/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-401/README.md`
+
 ## 2026-05-20 — publish-ronde19-lo-spc-302
 
 **Kontext:** Ronde 19: lo-spc-302
