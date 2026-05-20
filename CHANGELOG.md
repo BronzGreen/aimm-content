@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde13-lo-industry40-110
+
+**Kontext:** Ronde 13: lo-industry40-110
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-110/trainee.md`
+- `kennisbank/industry_4_0/smart_factory_concepten/ko-industry40-110.md`
+- `leerobjecten/lo-industry40-110/trainer.md`
+- `leerobjecten/lo-industry40-110/draaiboek.md`
+- `leerobjecten/lo-industry40-110/werkbladen/wb-01-drie-vignetten.md`
+- `leerobjecten/lo-industry40-110/werkbladen/wb-02-duo-kenmerken.md`
+- `leerobjecten/lo-industry40-110/werkbladen/wb-03-drie-rollen-zelfscore.md`
+- `leerobjecten/lo-industry40-110/werkbladen/wb-04-mijn-volgende-stap.md`
+- `leerobjecten/lo-industry40-110/README.md`
+
 ## 2026-05-20 — publish-ronde13-lo-ai-fund-135
 
 **Kontext:** Ronde 13: lo-ai-fund-135
