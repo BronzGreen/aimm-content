@@ -7,6 +7,74 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde19-lo-ai-fund-211
+
+**Kontext:** Ronde 19: lo-ai-fund-211
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-211/trainee.md`
+- `leerobjecten/lo-ai-fund-211/trainer.md`
+- `leerobjecten/lo-ai-fund-211/draaiboek.md`
+- `leerobjecten/lo-ai-fund-211/werkbladen/wb-01-observatie-demo.md`
+- `leerobjecten/lo-ai-fund-211/werkbladen/wb-02-zes-scenarios.md`
+- `leerobjecten/lo-ai-fund-211/werkbladen/wb-03-handout-stappen-wel-niet-avg.md`
+- `leerobjecten/lo-ai-fund-211/werkbladen/wb-03-handout-wel-niet-avg.md`
+- `leerobjecten/lo-ai-fund-211/werkbladen/wb-04-eigen-keuze-no-code.md`
+- `leerobjecten/lo-ai-fund-211/README.md`
+
+## 2026-05-20 — publish-ronde19-lo-smart-mfg-107
+
+**Kontext:** Ronde 19: lo-smart-mfg-107
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-107/trainee.md`
+- `kennisbank/smart_manufacturing/predictive_maintenance/ko-smart-mfg-107.md`
+- `leerobjecten/lo-smart-mfg-107/trainer.md`
+- `leerobjecten/lo-smart-mfg-107/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-107/werkbladen/wb-01-worked-example.md`
+- `leerobjecten/lo-smart-mfg-107/werkbladen/wb-02-groepsanalyse.md`
+- `leerobjecten/lo-smart-mfg-107/werkbladen/wb-03-reflectie.md`
+- `leerobjecten/lo-smart-mfg-107/werkbladen/wb-04-duo-analyse.md`
+- `leerobjecten/lo-smart-mfg-107/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-107/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-107/README.md`
+
+## 2026-05-20 — publish-ronde19-lo-spc-401
+
+**Kontext:** Ronde 19: lo-spc-401
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-401/trainee.md`
+- `kennisbank/spc/six_sigma/ko-spc-401.md`
+- `leerobjecten/lo-spc-401/trainer.md`
+- `leerobjecten/lo-spc-401/draaiboek.md`
+- `leerobjecten/lo-spc-401/werkbladen/wb-01-eigen-analyse.md`
+- `leerobjecten/lo-spc-401/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-401/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-401/svg/diagram.svg`
+- `leerobjecten/lo-spc-401/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-401/README.md`
+
+## 2026-05-20 — publish-ronde19-lo-spc-302
+
+**Kontext:** Ronde 19: lo-spc-302
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-302/trainee.md`
+- `kennisbank/spc/procesbekwaamheid/ko-spc-302.md`
+- `leerobjecten/lo-spc-302/trainer.md`
+- `leerobjecten/lo-spc-302/draaiboek.md`
+- `leerobjecten/lo-spc-302/werkbladen/wb-01-eigen-analyse.md`
+- `leerobjecten/lo-spc-302/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-302/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-302/svg/diagram.svg`
+- `leerobjecten/lo-spc-302/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-302/README.md`
+
 ## 2026-05-20 — publish-ronde18-lo-data-lit-202
 
 **Kontext:** Ronde 18: lo-data-lit-202
