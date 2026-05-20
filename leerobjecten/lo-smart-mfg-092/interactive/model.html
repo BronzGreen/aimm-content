@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sensordata Dashboard</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
+
+    const SENSOREN = [
+      {
+        id: "temperatuur",
+        naam: "Temperatuur",
+        eenheid: "\u00b0C",
+        icon: "\uD83C\uDF21\uFE0F",
+        normaalMin: 65,
+        normaalMax: 70,
+        actueel: 82,
+        isAnomalie: true,
+        type: "puntanomalie",
+        uitleg:
+          "82\u00b0C is ver boven het normale bereik van 65\u201370\u00b0C. Dit is een puntanomalie: \u00e9\u00e9n meetwaarde die duidelijk afwijkt. Mogelijke oorzaak: koelprobleem, overbelasting of een verstopte luchtinlaat. Actie: check de koeling en neem contact op met onderhoud.",
+        kleurNormaal: "#059669",
+        kleurAlarm: "#dc2626",
+      },
+      {
+        id: "druk",
+        naam: "Druk",
+        eenheid: "bar",
+        icon: "\u2B55",
+        normaalMin: 3.0,
+        normaalMax: 3.5,
+        actueel: 3.2,
+        isAnomalie: false,
+        type: null,
+        uitleg:
+          "3,2 bar zit precies in het normale bereik van 3,0\u20133,5 bar. De machine werkt zoals het hoort. Geen actie nodig.",
+        kleurNormaal: "#059669",
+        kleurAlarm: "#dc2626",
+      },
+      {
+        id: "trillingen",
+        naam: "Trillingen",
+        eenheid: "mm/s",
+        icon: "\uD83D\uDCC8",
+        normaalMin: 0.2,
+        normaalMax: 0.4,
+        actueel: 0.9,
+        isAnomalie: true,
+        type: "puntanomalie",
+        uitleg:
+          "0,9 mm/s is meer dan het dubbele van het maximale normaal (0,4 mm/s). Dit is een puntanomalie. Hoge trillingen kunnen wijzen op slijtage van lagers, onbalans of een losgeraakt onderdeel. Actie: plan een inspectie in, dit kan snel verergeren.",
+        kleurNormaal: "#059669",
+        kleurAlarm: "#dc2626",
+      },
+      {
+        id: "snelheid",
+        naam: "Snelheid",
+        eenheid: "rpm",
+        icon: "\u2699\uFE0F",
+        normaalMin: 1480,
+        normaalMax: 1520,
+        actueel: 1495,
+        isAnomalie: false,
+        type: null,
+        uitleg:
+          "1.495 rpm zit midden in het normale bereik van 1.480\u20131.520 rpm. De motor draait stabiel op de juiste snelheid. Geen actie nodig.",
+        kleurNormaal: "#059669",
+        kleurAlarm: "#dc2626",
+      },
+      {
+        id: "stroom",
+        naam: "Stroom",
+        eenheid: "A",
+        icon: "\u26A1",
+        normaalMin: 12,
+        normaalMax: 15,
+        actueel: 19.5,
+        isAnomalie: true,
+        type: "contextuele anomalie",
+        uitleg:
+          "19,5 A is 30% boven het normale maximum van 15 A. Dit is een contextuele anomalie: of het echt een probleem is, hangt af van de situatie. Draai je een zwaarder product? Dan kan het normaal zijn. Draai je hetzelfde als altijd? Dan wijst dit op extra weerstand \u2014 bijvoorbeeld slijtage of een mechanisch probleem. Actie: check wat je produceert en vergelijk met gisteren.",
+        kleurNormaal: "#059669",
+        kleurAlarm: "#dc2626",
+      },
+    ]
+
+    function formatWaarde(waarde) {
+      if (Number.isInteger(waarde)) return waarde.toString()
+      return waarde.toFixed(1).replace(".", ",")
+    }
+
+    function berekenPositie(sensor) {
+      const totaalBereik = (sensor.normaalMax - sensor.normaalMin) * 3
+      const min = sensor.normaalMin - (sensor.normaalMax - sensor.normaalMin)
+      const positie = ((sensor.actueel - min) / totaalBereik) * 100
+      return Math.min(100, Math.max(0, positie))
+    }
+
+    function SensordataDashboard() {
+      const [geselecteerd, setGeselecteerd] = useState(null)
+      const [bekeken, setBekeken] = useState(new Set())
+
+      const actieveSensor = SENSOREN.find((s) => s.id === geselecteerd)
+      const aantalAfwijkend = SENSOREN.filter((s) => s.isAnomalie).length
+      const aantalBekeken = bekeken.size
+
+      function selecteer(id) {
+        const nieuwBekeken = new Set(bekeken)
+        nieuwBekeken.add(id)
+        setBekeken(nieuwBekeken)
+        setGeselecteerd(geselecteerd === id ? null : id)
+      }
+
+      function reset() {
+        setGeselecteerd(null)
+        setBekeken(new Set())
+      }
+
+      return (
+        <div style={{ minHeight: "100vh", backgroundColor: "#f9fafb", padding: "24px", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+          <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+            {/* Header */}
+            <h1 style={{ fontSize: "24px", fontWeight: "bold", color: "#111827", marginBottom: "4px" }}>
+              Sensordata Dashboard
+            </h1>
+            <p style={{ color: "#6b7280", marginBottom: "24px", fontSize: "14px" }}>
+              Klik op een sensor om te zien of de waarde normaal of afwijkend is.
+            </p>
+
+            {/* Status balk */}
+            <div style={{ display: "flex", gap: "12px", marginBottom: "24px" }}>
+              <div style={{
+                flex: 1,
+                backgroundColor: "white",
+                borderRadius: "10px",
+                padding: "12px 16px",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+              }}>
+                <div style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "50%",
+                  backgroundColor: "#d1fae5",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "16px",
+                }}>
+                  {SENSOREN.length - aantalAfwijkend}
+                </div>
+                <div>
+                  <div style={{ fontSize: "12px", color: "#6b7280" }}>Normaal</div>
+                  <div style={{ fontSize: "14px", fontWeight: "600", color: "#059669" }}>sensoren</div>
+                </div>
+              </div>
+              <div style={{
+                flex: 1,
+                backgroundColor: "white",
+                borderRadius: "10px",
+                padding: "12px 16px",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+              }}>
+                <div style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "50%",
+                  backgroundColor: "#fee2e2",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "16px",
+                }}>
+                  {aantalAfwijkend}
+                </div>
+                <div>
+                  <div style={{ fontSize: "12px", color: "#6b7280" }}>Afwijkend</div>
+                  <div style={{ fontSize: "14px", fontWeight: "600", color: "#dc2626" }}>sensoren</div>
+                </div>
+              </div>
+              <div style={{
+                flex: 1,
+                backgroundColor: "white",
+                borderRadius: "10px",
+                padding: "12px 16px",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+              }}>
+                <div style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "50%",
+                  backgroundColor: "#dbeafe",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "16px",
+                }}>
+                  {aantalBekeken}
+                </div>
+                <div>
+                  <div style={{ fontSize: "12px", color: "#6b7280" }}>Bekeken</div>
+                  <div style={{ fontSize: "14px", fontWeight: "600", color: "#3b82f6" }}>van {SENSOREN.length}</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Sensor kaarten */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "12px", marginBottom: "24px" }}>
+              {SENSOREN.map((sensor) => {
+                const isActief = geselecteerd === sensor.id
+                const isBekeken = bekeken.has(sensor.id)
+                const positie = berekenPositie(sensor)
+                const normaalBereik = sensor.normaalMax - sensor.normaalMin
+                const groeneStart = ((normaalBereik) / (normaalBereik * 3)) * 100
+                const groeneEind = ((normaalBereik * 2) / (normaalBereik * 3)) * 100
+
+                return (
+                  <button
+                    key={sensor.id}
+                    onClick={() => selecteer(sensor.id)}
+                    style={{
+                      width: "100%",
+                      textAlign: "left",
+                      backgroundColor: "white",
+                      borderRadius: "12px",
+                      padding: "16px 20px",
+                      border: isActief
+                        ? `2px solid ${sensor.isAnomalie ? "#dc2626" : "#059669"}`
+                        : "2px solid transparent",
+                      boxShadow: isActief ? "0 4px 12px rgba(0,0,0,0.1)" : "0 1px 3px rgba(0,0,0,0.1)",
+                      cursor: "pointer",
+                      transition: "all 0.15s ease",
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                        <span style={{ fontSize: "20px" }}>{sensor.icon}</span>
+                        <div>
+                          <div style={{ fontWeight: "600", fontSize: "15px", color: "#111827" }}>{sensor.naam}</div>
+                          <div style={{ fontSize: "12px", color: "#9ca3af" }}>
+                            Normaal: {formatWaarde(sensor.normaalMin)}{"\u2013"}{formatWaarde(sensor.normaalMax)} {sensor.eenheid}
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ textAlign: "right" }}>
+                        <div style={{
+                          fontSize: "22px",
+                          fontWeight: "bold",
+                          color: isBekeken ? (sensor.isAnomalie ? "#dc2626" : "#059669") : "#374151",
+                        }}>
+                          {formatWaarde(sensor.actueel)}
+                        </div>
+                        <div style={{ fontSize: "12px", color: "#9ca3af" }}>{sensor.eenheid}</div>
+                      </div>
+                    </div>
+
+                    {/* Visuele balk */}
+                    <div style={{
+                      position: "relative",
+                      height: "8px",
+                      borderRadius: "4px",
+                      backgroundColor: "#fee2e2",
+                      overflow: "visible",
+                    }}>
+                      {/* Groene zone */}
+                      <div style={{
+                        position: "absolute",
+                        left: `${groeneStart}%`,
+                        width: `${groeneEind - groeneStart}%`,
+                        height: "100%",
+                        backgroundColor: "#d1fae5",
+                        borderRadius: "4px",
+                      }} />
+                      {/* Actuele waarde indicator */}
+                      <div style={{
+                        position: "absolute",
+                        left: `${positie}%`,
+                        top: "-4px",
+                        width: "16px",
+                        height: "16px",
+                        borderRadius: "50%",
+                        backgroundColor: isBekeken
+                          ? (sensor.isAnomalie ? "#dc2626" : "#059669")
+                          : "#6b7280",
+                        border: "2px solid white",
+                        boxShadow: "0 1px 3px rgba(0,0,0,0.2)",
+                        transform: "translateX(-8px)",
+                        transition: "background-color 0.2s",
+                      }} />
+                    </div>
+
+                    {isBekeken && (
+                      <div style={{
+                        marginTop: "8px",
+                        fontSize: "12px",
+                        fontWeight: "600",
+                        color: sensor.isAnomalie ? "#dc2626" : "#059669",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px",
+                      }}>
+                        {sensor.isAnomalie ? "\u26A0 Afwijkend" : "\u2713 Normaal"}
+                        {sensor.type && (
+                          <span style={{
+                            marginLeft: "8px",
+                            padding: "1px 8px",
+                            borderRadius: "9999px",
+                            backgroundColor: "#fef3c7",
+                            color: "#92400e",
+                            fontWeight: "500",
+                            fontSize: "11px",
+                          }}>
+                            {sensor.type}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </button>
+                )
+              })}
+            </div>
+
+            {/* Detail paneel */}
+            {actieveSensor && (
+              <div style={{
+                backgroundColor: "white",
+                borderRadius: "12px",
+                padding: "20px",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+                marginBottom: "24px",
+                borderLeft: `4px solid ${actieveSensor.isAnomalie ? "#dc2626" : "#059669"}`,
+              }}>
+                <h3 style={{
+                  fontSize: "16px",
+                  fontWeight: "bold",
+                  color: actieveSensor.isAnomalie ? "#991b1b" : "#065f46",
+                  marginBottom: "12px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                }}>
+                  {actieveSensor.icon} {actieveSensor.naam}: {actieveSensor.isAnomalie ? "Afwijkend" : "Normaal"}
+                </h3>
+
+                <div style={{
+                  backgroundColor: actieveSensor.isAnomalie ? "#fef2f2" : "#f0fdf4",
+                  borderRadius: "8px",
+                  padding: "16px",
+                  marginBottom: "16px",
+                }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "12px" }}>
+                    <div>
+                      <div style={{ fontSize: "12px", color: "#6b7280" }}>Actuele waarde</div>
+                      <div style={{ fontSize: "18px", fontWeight: "bold", color: "#111827" }}>
+                        {formatWaarde(actieveSensor.actueel)} {actieveSensor.eenheid}
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: "12px", color: "#6b7280" }}>Normaal bereik</div>
+                      <div style={{ fontSize: "18px", fontWeight: "bold", color: "#059669" }}>
+                        {formatWaarde(actieveSensor.normaalMin)}{"\u2013"}{formatWaarde(actieveSensor.normaalMax)} {actieveSensor.eenheid}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <p style={{ fontSize: "14px", lineHeight: "1.7", color: "#374151" }}>
+                  {actieveSensor.uitleg}
+                </p>
+              </div>
+            )}
+
+            {/* Alle bekeken — samenvatting */}
+            {aantalBekeken === SENSOREN.length && (
+              <div style={{
+                backgroundColor: "#eff6ff",
+                borderRadius: "12px",
+                padding: "20px",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+                marginBottom: "24px",
+              }}>
+                <h3 style={{ fontSize: "16px", fontWeight: "bold", color: "#1e40af", marginBottom: "12px" }}>
+                  Goed gedaan! Je hebt alle sensoren bekeken.
+                </h3>
+                <div style={{ fontSize: "14px", color: "#374151", lineHeight: "1.7", marginBottom: "16px" }}>
+                  <p style={{ marginBottom: "8px" }}>
+                    <strong>Wat heb je geleerd:</strong>
+                  </p>
+                  <ul style={{ paddingLeft: "20px", margin: 0 }}>
+                    <li style={{ marginBottom: "6px" }}>
+                      <strong>Puntanomalie</strong> {"\u2014"} {"\u00e9\u00e9"}n waarde die duidelijk buiten het normale bereik valt
+                      (temperatuur 82{"\u00b0"}C, trillingen 0,9 mm/s)
+                    </li>
+                    <li style={{ marginBottom: "6px" }}>
+                      <strong>Contextuele anomalie</strong> {"\u2014"} een waarde die afwijkt, maar waarvan je de context
+                      moet weten om te beoordelen (stroom 19,5 A: ligt het aan het product?)
+                    </li>
+                    <li style={{ marginBottom: "6px" }}>
+                      Een waarde binnen het normale bereik is <strong>geen anomalie</strong> {"\u2014"} maar blijf
+                      wel opletten
+                    </li>
+                  </ul>
+                </div>
+                <div style={{
+                  backgroundColor: "white",
+                  borderRadius: "8px",
+                  padding: "12px 16px",
+                  fontSize: "13px",
+                  color: "#6b7280",
+                }}>
+                  Tip: op jouw werkvloer kun je dezelfde stappen toepassen. Kijk naar de actuele waarde,
+                  vergelijk met het normale bereik, en bedenk of de context iets verklaart.
+                </div>
+              </div>
+            )}
+
+            {/* Reset */}
+            {aantalBekeken > 0 && (
+              <div style={{ textAlign: "center" }}>
+                <button
+                  onClick={reset}
+                  style={{
+                    padding: "8px 20px",
+                    borderRadius: "8px",
+                    border: "1px solid #d1d5db",
+                    backgroundColor: "white",
+                    color: "#6b7280",
+                    fontSize: "13px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Opnieuw beginnen
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<SensordataDashboard />);
+  </script>
+</body>
+</html>

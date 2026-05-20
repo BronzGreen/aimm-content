@@ -7,6 +7,25 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde11-lo-smart-mfg-092
+
+**Kontext:** Ronde 11: lo-smart-mfg-092
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-092/trainee.md`
+- `kennisbank/smart_manufacturing/predictive_maintenance/ko-smart-mfg-092.md`
+- `leerobjecten/lo-smart-mfg-092/trainer.md`
+- `leerobjecten/lo-smart-mfg-092/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-092/werkbladen/wb-handout-theorie.md`
+- `leerobjecten/lo-smart-mfg-092/werkbladen/wb-meekijk-worked-example.md`
+- `leerobjecten/lo-smart-mfg-092/werkbladen/wb-oefening-sensordata.md`
+- `leerobjecten/lo-smart-mfg-092/werkbladen/wb-reflectie-groepsoefening.md`
+- `leerobjecten/lo-smart-mfg-092/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-092/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-092/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-092/README.md`
+
 ## 2026-05-20 — publish-ronde11-lo-ai-fund-132
 
 **Kontext:** Ronde 11: lo-ai-fund-132
