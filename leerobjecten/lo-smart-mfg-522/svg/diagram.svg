@@ -1,0 +1,148 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 720" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Stappenplan: eigen trainingsdata maken</title>
+  <desc id="desc">Een flowchart met 5 stappen voor het maken van eigen trainingsdata voor AI-visuele inspectie. De stappen zijn: opstelling bouwen, belichting instellen, foto's maken, labelcriteria afspreken, en foto's labelen met het team. Tussen stap 3 en 4 zit een controle: zijn de foto's consistent?</desc>
+  <defs>
+    <linearGradient id="g-start" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="g-step1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="g-step2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2471A3"/>
+    </linearGradient>
+    <linearGradient id="g-step3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2E86C1"/>
+      <stop offset="100%" stop-color="#21618C"/>
+    </linearGradient>
+    <linearGradient id="g-check" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F39C12"/>
+      <stop offset="100%" stop-color="#D68910"/>
+    </linearGradient>
+    <linearGradient id="g-step4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8E44AD"/>
+      <stop offset="100%" stop-color="#7D3C98"/>
+    </linearGradient>
+    <linearGradient id="g-step5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8E44AD"/>
+      <stop offset="100%" stop-color="#6C3483"/>
+    </linearGradient>
+    <linearGradient id="g-end" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#27AE60"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E74C3C"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="800" height="720" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="400" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50" letter-spacing="1">Eigen trainingsdata maken</text>
+  <text x="400" y="62" text-anchor="middle" font-size="13" fill="#7f8c8d" letter-spacing="0.5">5 stappen van opstelling tot gelabelde dataset</text>
+
+  <!-- START -->
+  <g filter="url(#shadow)">
+    <rect x="300" y="80" width="200" height="40" rx="20" fill="url(#g-start)"/>
+    <text x="400" y="105" text-anchor="middle" font-size="13" font-weight="600" fill="white">Start: eigen producten</text>
+  </g>
+
+  <!-- Pijl start naar stap 1 -->
+  <line x1="400" y1="120" x2="400" y2="140" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- STAP 1: Opstelling bouwen -->
+  <g filter="url(#shadow)">
+    <rect x="275" y="145" width="250" height="55" rx="10" fill="url(#g-step1)"/>
+    <text x="400" y="168" text-anchor="middle" font-size="11" font-weight="700" fill="white" letter-spacing="0.5">STAP 1</text>
+    <text x="400" y="186" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.9)">Bouw een vaste opstelling</text>
+  </g>
+  <!-- Icoon-hint rechts -->
+  <text x="540" y="178" font-size="11" fill="#7f8c8d">camera + lamp + achtergrond</text>
+
+  <!-- Pijl 1 naar 2 -->
+  <line x1="400" y1="200" x2="400" y2="225" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- STAP 2: Belichting instellen -->
+  <g filter="url(#shadow)">
+    <rect x="275" y="230" width="250" height="55" rx="10" fill="url(#g-step2)"/>
+    <text x="400" y="253" text-anchor="middle" font-size="11" font-weight="700" fill="white" letter-spacing="0.5">STAP 2</text>
+    <text x="400" y="271" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.9)">Stel gelijke belichting in</text>
+  </g>
+  <text x="540" y="263" font-size="11" fill="#7f8c8d">geen schaduwen, geen zonlicht</text>
+
+  <!-- Pijl 2 naar 3 -->
+  <line x1="400" y1="285" x2="400" y2="310" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- STAP 3: Foto's maken -->
+  <g filter="url(#shadow)">
+    <rect x="275" y="315" width="250" height="55" rx="10" fill="url(#g-step3)"/>
+    <text x="400" y="338" text-anchor="middle" font-size="11" font-weight="700" fill="white" letter-spacing="0.5">STAP 3</text>
+    <text x="400" y="356" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.9)">Maak foto's (min. 50 per type)</text>
+  </g>
+  <text x="540" y="348" font-size="11" fill="#7f8c8d">goed + defect, steeds zelfde plek</text>
+
+  <!-- Pijl 3 naar check -->
+  <line x1="400" y1="370" x2="400" y2="405" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- CHECK: Beslispunt -->
+  <g filter="url(#shadow)">
+    <rect x="365" y="410" width="70" height="70" rx="6" fill="url(#g-check)" transform="rotate(45,400,445)"/>
+    <text x="400" y="440" text-anchor="middle" font-size="11" font-weight="600" fill="white">Foto's</text>
+    <text x="400" y="455" text-anchor="middle" font-size="11" font-weight="600" fill="white">gelijk?</text>
+  </g>
+
+  <!-- Nee: terug naar stap 1 -->
+  <text x="305" y="440" text-anchor="end" font-size="12" font-weight="600" fill="#E74C3C">Nee</text>
+  <path d="M355,445 L230,445 L230,172 L275,172" fill="none" stroke="#E74C3C" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-red)"/>
+  <text x="220" y="310" text-anchor="middle" font-size="10" fill="#E74C3C" transform="rotate(-90,220,310)">pas opstelling aan</text>
+
+  <!-- Ja: door naar stap 4 -->
+  <text x="400" y="500" text-anchor="middle" font-size="12" font-weight="600" fill="#27AE60">Ja</text>
+  <line x1="400" y1="485" x2="400" y2="515" stroke="#27AE60" stroke-width="2" marker-end="url(#arrow-green)"/>
+
+  <!-- STAP 4: Labelcriteria afspreken -->
+  <g filter="url(#shadow)">
+    <rect x="275" y="520" width="250" height="55" rx="10" fill="url(#g-step4)"/>
+    <text x="400" y="543" text-anchor="middle" font-size="11" font-weight="700" fill="white" letter-spacing="0.5">STAP 4</text>
+    <text x="400" y="561" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.9)">Spreek labelcriteria af</text>
+  </g>
+  <text x="540" y="553" font-size="11" fill="#7f8c8d">als team: wanneer goed/defect?</text>
+
+  <!-- Pijl 4 naar 5 -->
+  <line x1="400" y1="575" x2="400" y2="600" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- STAP 5: Labelen met team -->
+  <g filter="url(#shadow)">
+    <rect x="275" y="605" width="250" height="55" rx="10" fill="url(#g-step5)"/>
+    <text x="400" y="628" text-anchor="middle" font-size="11" font-weight="700" fill="white" letter-spacing="0.5">STAP 5</text>
+    <text x="400" y="646" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.9)">Label alle foto's met het team</text>
+  </g>
+  <text x="540" y="638" font-size="11" fill="#7f8c8d">samen labelen = consistent</text>
+
+  <!-- Pijl 5 naar eind -->
+  <line x1="400" y1="660" x2="400" y2="678" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- EIND -->
+  <g filter="url(#shadow)">
+    <rect x="280" y="682" width="240" height="26" rx="13" fill="url(#g-end)"/>
+    <text x="400" y="700" text-anchor="middle" font-size="12" font-weight="600" fill="white">Klaar: eigen dataset!</text>
+  </g>
+
+  <!-- Bronvermelding -->
+  <text x="400" y="718" text-anchor="middle" font-size="10" fill="#999">ko-smart-mfg-522 - AIMM AI Vision Op Maat</text>
+</svg>
