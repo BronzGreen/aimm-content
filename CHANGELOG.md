@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde22-lo-smart-mfg-501
+
+**Kontext:** Ronde 22: lo-smart-mfg-501
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-501/trainee.md`
+- `kennisbank/smart_manufacturing/predictive_maintenance/ko-smart-mfg-501.md`
+- `leerobjecten/lo-smart-mfg-501/trainer.md`
+- `leerobjecten/lo-smart-mfg-501/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-501/werkbladen/wb-data-audit.md`
+- `leerobjecten/lo-smart-mfg-501/werkbladen/wb-handout-framework.md`
+- `leerobjecten/lo-smart-mfg-501/werkbladen/wb-reflectie-machinekeuze.md`
+- `leerobjecten/lo-smart-mfg-501/werkbladen/wb-stilstandanalyse.md`
+- `leerobjecten/lo-smart-mfg-501/README.md`
+
 ## 2026-05-20 — publish-ronde22-lo-ai-fund-rnn-001
 
 **Kontext:** Ronde 22: lo-ai-fund-rnn-001
