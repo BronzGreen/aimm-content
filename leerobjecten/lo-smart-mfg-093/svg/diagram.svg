@@ -1,0 +1,173 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 620" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Autoencoder: AI leert wat normaal is</title>
+  <desc id="desc">Een diagram dat laat zien hoe een autoencoder werkt in drie stappen: sensordata gaat erin (encoder), wordt samengevat tot een kort overzicht (compacte code), en wordt weer opgebouwd (decoder). Het verschil tussen origineel en herstel is de reconstructiefout. Als die fout groot is, gaat er een alarm af.</desc>
+
+  <defs>
+    <linearGradient id="g-blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="g-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="g-purple" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9B59B6"/>
+      <stop offset="100%" stop-color="#8E44AD"/>
+    </linearGradient>
+    <linearGradient id="g-orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E67E22"/>
+      <stop offset="100%" stop-color="#D35400"/>
+    </linearGradient>
+    <linearGradient id="g-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E74C3C"/>
+      <stop offset="100%" stop-color="#C0392B"/>
+    </linearGradient>
+    <linearGradient id="g-teal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1ABC9C"/>
+      <stop offset="100%" stop-color="#16A085"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#27AE60"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#C0392B"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="800" height="620" fill="#FAFAF8"/>
+
+  <!-- Titel -->
+  <text x="400" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50" letter-spacing="1">Autoencoder: AI leert wat normaal is</text>
+  <text x="400" y="62" text-anchor="middle" font-size="13" fill="#7f8c8d" letter-spacing="0.5">Hoe AI afwijkingen herkent in productiedata</text>
+
+  <!-- ===== BOVENSTE RIJ: HET PROCES ===== -->
+
+  <!-- Stap 1: Sensordata (invoer) -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="100" width="150" height="70" rx="10" fill="url(#g-blue)"/>
+    <text x="105" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="white">STAP 1</text>
+    <text x="105" y="148" text-anchor="middle" font-size="13" font-weight="600" fill="white">Sensordata</text>
+    <text x="105" y="163" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">temperatuur, druk, energie</text>
+  </g>
+
+  <!-- Pijl 1 -->
+  <line x1="180" y1="135" x2="218" y2="135" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Stap 2: Encoder (samenvatten) -->
+  <g filter="url(#shadow)">
+    <rect x="228" y="100" width="130" height="70" rx="10" fill="url(#g-purple)"/>
+    <text x="293" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="white">STAP 2</text>
+    <text x="293" y="148" text-anchor="middle" font-size="13" font-weight="600" fill="white">Encoder</text>
+    <text x="293" y="163" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">data samenvatten</text>
+  </g>
+
+  <!-- Pijl 2 naar bottleneck -->
+  <line x1="358" y1="135" x2="378" y2="135" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Bottleneck (compact overzicht) -->
+  <g filter="url(#shadow)">
+    <rect x="388" y="110" width="50" height="50" rx="8" fill="url(#g-orange)"/>
+    <text x="413" y="140" text-anchor="middle" font-size="9" font-weight="700" fill="white">code</text>
+  </g>
+
+  <!-- Pijl 3 naar decoder -->
+  <line x1="438" y1="135" x2="458" y2="135" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Stap 3: Decoder (herstellen) -->
+  <g filter="url(#shadow)">
+    <rect x="468" y="100" width="130" height="70" rx="10" fill="url(#g-teal)"/>
+    <text x="533" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="white">STAP 3</text>
+    <text x="533" y="148" text-anchor="middle" font-size="13" font-weight="600" fill="white">Decoder</text>
+    <text x="533" y="163" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">data herstellen</text>
+  </g>
+
+  <!-- Pijl 4 naar output -->
+  <line x1="598" y1="135" x2="628" y2="135" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Output: Herstelde data -->
+  <g filter="url(#shadow)">
+    <rect x="638" y="100" width="140" height="70" rx="10" fill="url(#g-green)"/>
+    <text x="708" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="white">RESULTAAT</text>
+    <text x="708" y="148" text-anchor="middle" font-size="13" font-weight="600" fill="white">Herstelde data</text>
+    <text x="708" y="163" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">kopie van origineel</text>
+  </g>
+
+  <!-- ===== VERGELIJKING-BLOK ===== -->
+
+  <!-- Label encoder-decoder boog -->
+  <path d="M228,95 Q400,50 598,95" fill="none" stroke="#7f8c8d" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="413" y="72" text-anchor="middle" font-size="10" fill="#7f8c8d" font-style="italic">het model comprimeert en herstelt</text>
+
+  <!-- Bracket: vergelijking -->
+  <line x1="105" y1="180" x2="105" y2="240" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="708" y1="180" x2="708" y2="240" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Vergelijking-blok -->
+  <g filter="url(#shadow)">
+    <rect x="200" y="210" width="420" height="55" rx="10" fill="#FFF" stroke="#E67E22" stroke-width="2"/>
+    <text x="410" y="233" text-anchor="middle" font-size="12" font-weight="700" fill="#D35400">Vergelijk: origineel vs. herstel</text>
+    <text x="410" y="252" text-anchor="middle" font-size="11" fill="#7f8c8d">Het verschil = de reconstructiefout</text>
+  </g>
+  <line x1="105" y1="240" x2="200" y2="237" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="708" y1="240" x2="620" y2="237" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Pijl naar beslissing -->
+  <line x1="410" y1="265" x2="410" y2="300" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ===== BESLISPUNT ===== -->
+  <g filter="url(#shadow)">
+    <rect x="335" y="310" width="150" height="55" rx="10" fill="url(#g-orange)"/>
+    <text x="410" y="335" text-anchor="middle" font-size="12" font-weight="700" fill="white">Fout groter dan</text>
+    <text x="410" y="353" text-anchor="middle" font-size="12" font-weight="700" fill="white">de drempel?</text>
+  </g>
+
+  <!-- ===== TWEE UITKOMSTEN ===== -->
+
+  <!-- Ja-tak (links) - ALARM -->
+  <path d="M335,337 L220,337 L220,405" fill="none" stroke="#C0392B" stroke-width="2.5" marker-end="url(#arrow-red)"/>
+  <text x="270" y="328" text-anchor="middle" font-size="13" font-weight="700" fill="#C0392B">JA</text>
+
+  <g filter="url(#shadow)">
+    <rect x="110" y="415" width="220" height="90" rx="12" fill="url(#g-red)"/>
+    <text x="220" y="445" text-anchor="middle" font-size="16" font-weight="700" fill="white">ALARM</text>
+    <text x="220" y="465" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.9)">Afwijking gevonden!</text>
+    <text x="220" y="483" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">Operator controleert de machine</text>
+  </g>
+
+  <!-- Nee-tak (rechts) - NORMAAL -->
+  <path d="M485,337 L600,337 L600,405" fill="none" stroke="#27AE60" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+  <text x="550" y="328" text-anchor="middle" font-size="13" font-weight="700" fill="#27AE60">NEE</text>
+
+  <g filter="url(#shadow)">
+    <rect x="490" y="415" width="220" height="90" rx="12" fill="url(#g-green)"/>
+    <text x="600" y="445" text-anchor="middle" font-size="16" font-weight="700" fill="white">NORMAAL</text>
+    <text x="600" y="465" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.9)">Geen afwijking</text>
+    <text x="600" y="483" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">Productie gaat door</text>
+  </g>
+
+  <!-- ===== VERGELIJKINGS-ILLUSTRATIE ===== -->
+
+  <!-- Links: normaal voorbeeld -->
+  <rect role="presentation" x="110" y="530" width="250" height="55" rx="8" fill="#ECFDF5" stroke="#10B981" stroke-width="1"/>
+  <text x="135" y="550" font-size="10" font-weight="600" fill="#27AE60">Normaal:</text>
+  <text x="135" y="568" font-size="9" fill="#555">Origineel en herstel lijken op elkaar</text>
+  <text x="135" y="580" font-size="9" fill="#555">Kleine fout = geen alarm</text>
+
+  <!-- Rechts: afwijkend voorbeeld -->
+  <rect role="presentation" x="440" y="530" width="250" height="55" rx="8" fill="#FEF2F2" stroke="#EF4444" stroke-width="1"/>
+  <text x="465" y="550" font-size="10" font-weight="600" fill="#C0392B">Afwijkend:</text>
+  <text x="465" y="568" font-size="9" fill="#555">Origineel en herstel zijn heel anders</text>
+  <text x="465" y="580" font-size="9" fill="#555">Grote fout = alarm!</text>
+
+  <!-- Bronvermelding -->
+  <text x="400" y="610" text-anchor="middle" font-size="10" fill="#999">Autoencoder voor anomaliedetectie | AIMM Predictive Maintenance</text>
+</svg>

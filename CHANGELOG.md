@@ -7,6 +7,76 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde12-lo-smart-mfg-093
+
+**Kontext:** Ronde 12: lo-smart-mfg-093
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-093/trainee.md`
+- `kennisbank/smart_manufacturing/predictive_maintenance/ko-smart-mfg-093.md`
+- `leerobjecten/lo-smart-mfg-093/trainer.md`
+- `leerobjecten/lo-smart-mfg-093/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-093/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-smart-mfg-093/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-smart-mfg-093/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-smart-mfg-093/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-smart-mfg-093/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-093/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-093/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-093/README.md`
+
+## 2026-05-20 — publish-ronde12-lo-industry40-026
+
+**Kontext:** Ronde 12: lo-industry40-026
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-026/trainee.md`
+- `leerobjecten/lo-industry40-026/trainer.md`
+- `leerobjecten/lo-industry40-026/draaiboek.md`
+- `leerobjecten/lo-industry40-026/werkbladen/wb-01-casus-fietsfabriek-planning.md`
+- `leerobjecten/lo-industry40-026/werkbladen/wb-02-duo-bijzondere-keuze.md`
+- `leerobjecten/lo-industry40-026/werkbladen/wb-03-human-in-the-loop-handout.md`
+- `leerobjecten/lo-industry40-026/werkbladen/wb-04-eigen-ervaring.md`
+- `leerobjecten/lo-industry40-026/README.md`
+
+## 2026-05-20 — publish-ronde12-lo-ai-fund-133
+
+**Kontext:** Ronde 12: lo-ai-fund-133
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-133/trainee.md`
+- `kennisbank/ai_fundamentals/supervised_vs_unsupervised/ko-ai-fund-133.md`
+- `leerobjecten/lo-ai-fund-133/trainer.md`
+- `leerobjecten/lo-ai-fund-133/draaiboek.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-01-binair-voorbeeld.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-01-ervaren-eerste-classificatie.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-02-multi-class.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-02-reflecteren-vier-foto-s.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-03-handout-classificatie.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-03-theoretiseren-twee-smaken.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-04-experimenteren-twijfelgeval.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-04-twijfelgeval.md`
+- `leerobjecten/lo-ai-fund-133/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-ai-fund-133/README.md`
+
+## 2026-05-20 — publish-ronde12-lo-data-lit-301
+
+**Kontext:** Ronde 12: lo-data-lit-301
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-301/trainee.md`
+- `kennisbank/data_literacy/dashboarding/ko-data-lit-301.md`
+- `leerobjecten/lo-data-lit-301/trainer.md`
+- `leerobjecten/lo-data-lit-301/draaiboek.md`
+- `leerobjecten/lo-data-lit-301/werkbladen/wb-audit-template.md`
+- `leerobjecten/lo-data-lit-301/werkbladen/wb-kpi-canvas.md`
+- `leerobjecten/lo-data-lit-301/werkbladen/wb-verbeterplan-transfer.md`
+- `leerobjecten/lo-data-lit-301/README.md`
+
 ## 2026-05-20 — publish-ronde11-lo-smart-mfg-092
 
 **Kontext:** Ronde 11: lo-smart-mfg-092
