@@ -7,6 +7,79 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde14-lo-ai-fund-181
+
+**Kontext:** Ronde 14: lo-ai-fund-181
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-181/trainee.md`
+- `kennisbank/ai_fundamentals/ai_ethics_en_bias/ko-ai-fund-181.md`
+- `leerobjecten/lo-ai-fund-181/trainer.md`
+- `leerobjecten/lo-ai-fund-181/draaiboek.md`
+- `leerobjecten/lo-ai-fund-181/werkbladen/wb-01-twee-operators.md`
+- `leerobjecten/lo-ai-fund-181/werkbladen/wb-02-buurman-bouwstenen.md`
+- `leerobjecten/lo-ai-fund-181/werkbladen/wb-03-handout-vier-bouwstenen.md`
+- `leerobjecten/lo-ai-fund-181/werkbladen/wb-04-eigen-zelfcheck.md`
+- `leerobjecten/lo-ai-fund-181/README.md`
+
+## 2026-05-20 — publish-ronde14-lo-spc-201
+
+**Kontext:** Ronde 14: lo-spc-201
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-201/trainee.md`
+- `kennisbank/spc/regelkaarten/ko-spc-201.md`
+- `leerobjecten/lo-spc-201/trainer.md`
+- `leerobjecten/lo-spc-201/draaiboek.md`
+- `leerobjecten/lo-spc-201/werkbladen/wb-01-patroonquiz.md`
+- `leerobjecten/lo-spc-201/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-201/werkbladen/wb-03-handout-zes-regels.md`
+- `leerobjecten/lo-spc-201/werkbladen/wb-03-nelson-handout.md`
+- `leerobjecten/lo-spc-201/werkbladen/wb-04-eigen-kaart-analyse.md`
+- `leerobjecten/lo-spc-201/svg/diagram.svg`
+- `leerobjecten/lo-spc-201/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-201/README.md`
+
+## 2026-05-20 — publish-ronde14-lo-smart-mfg-201
+
+**Kontext:** Ronde 14: lo-smart-mfg-201
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-201/trainee.md`
+- `kennisbank/smart_manufacturing/predictive_maintenance/ko-smart-mfg-201.md`
+- `leerobjecten/lo-smart-mfg-201/trainer.md`
+- `leerobjecten/lo-smart-mfg-201/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-201/werkbladen/wb-01-experimenteren.md`
+- `leerobjecten/lo-smart-mfg-201/werkbladen/wb-02-ervaren.md`
+- `leerobjecten/lo-smart-mfg-201/werkbladen/wb-03-reflecteren.md`
+- `leerobjecten/lo-smart-mfg-201/werkbladen/wb-04-theoretiseren.md`
+- `leerobjecten/lo-smart-mfg-201/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-201/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-201/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-201/README.md`
+
+## 2026-05-20 — publish-ronde14-lo-data-lit-304
+
+**Kontext:** Ronde 14: lo-data-lit-304
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-304/trainee.md`
+- `kennisbank/data_literacy/data_driven_besluitvorming/ko-data-lit-304.md`
+- `leerobjecten/lo-data-lit-304/trainer.md`
+- `leerobjecten/lo-data-lit-304/draaiboek.md`
+- `leerobjecten/lo-data-lit-304/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-data-lit-304/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-data-lit-304/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-data-lit-304/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-data-lit-304/svg/diagram.svg`
+- `leerobjecten/lo-data-lit-304/interactive/model.html`
+- `leerobjecten/lo-data-lit-304/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-data-lit-304/README.md`
+
 ## 2026-05-20 — publish-ronde13-lo-industry40-110
 
 **Kontext:** Ronde 13: lo-industry40-110
