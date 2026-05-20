@@ -7,6 +7,24 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde21-lo-spc-402
+
+**Kontext:** Ronde 21: lo-spc-402
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-402/trainee.md`
+- `kennisbank/spc/six_sigma/ko-spc-402.md`
+- `leerobjecten/lo-spc-402/trainer.md`
+- `leerobjecten/lo-spc-402/draaiboek.md`
+- `leerobjecten/lo-spc-402/werkbladen/wb-01-handout-dmaic.md`
+- `leerobjecten/lo-spc-402/werkbladen/wb-02-dmaic-canvas.md`
+- `leerobjecten/lo-spc-402/werkbladen/wb-03-peer-review.md`
+- `leerobjecten/lo-spc-402/werkbladen/wb-04-deelronde-format.md`
+- `leerobjecten/lo-spc-402/svg/diagram.svg`
+- `leerobjecten/lo-spc-402/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-402/README.md`
+
 ## 2026-05-20 — publish-ronde20-lo-ai-fund-cnn-001
 
 **Kontext:** Ronde 20: lo-ai-fund-cnn-001
