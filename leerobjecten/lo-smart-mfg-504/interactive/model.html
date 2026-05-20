@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Implementatieplan PM -- Interactief Model</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    function ImplementatiePlanTool() {
+      const PHASES = [
+        {
+          id: "pilot",
+          label: "Fase 1: Pilot",
+          color: "blue",
+          bg: "bg-blue-50",
+          border: "border-blue-400",
+          accent: "bg-blue-500",
+          textColor: "text-blue-700",
+          duur: "3-6 maanden",
+          omschrijving: "Je test PM op 1 machine. Je verzamelt data en leert hoe het werkt.",
+          vragen: [
+            { id: "machine", label: "Welke machine kies je?", placeholder: "Bijv. draaibank lijn 3", type: "text" },
+            { id: "waarom", label: "Waarom die machine?", placeholder: "Bijv. veel storingen, dure stilstand", type: "text" },
+            { id: "team", label: "Wie doet mee? (minimaal 2 namen/rollen)", placeholder: "Bijv. Jan (operator), Kees (monteur)", type: "text" },
+            { id: "sensor", label: "Welke sensor(en) gebruik je?", placeholder: "Bijv. trillingssensor, temperatuursensor", type: "text" },
+            { id: "risico1", label: "Risico 1: wat kan misgaan?", placeholder: "Bijv. sensor levert slechte data", type: "text" },
+            { id: "risico2", label: "Risico 2: wat kan misgaan?", placeholder: "Bijv. collega's zien het nut niet", type: "text" },
+            { id: "succes", label: "Hoe meet je succes?", placeholder: "Bijv. ongeplande stops halveren", type: "text" },
+          ]
+        },
+        {
+          id: "uitrol",
+          label: "Fase 2: Uitrol",
+          color: "green",
+          bg: "bg-green-50",
+          border: "border-green-400",
+          accent: "bg-green-500",
+          textColor: "text-green-700",
+          duur: "6-12 maanden",
+          omschrijving: "De pilot werkt. Nu rol je PM uit naar de hele lijn. Meer machines, meer mensen.",
+          vragen: [
+            { id: "machines", label: "Welke machines komen erbij?", placeholder: "Bijv. alle CNC-machines op lijn 3", type: "text" },
+            { id: "training", label: "Wie moet je trainen?", placeholder: "Bijv. alle operators van de dagploeg", type: "text" },
+            { id: "dashboard", label: "Wat moet op het dashboard?", placeholder: "Bijv. status per machine, voorspelde storingen", type: "text" },
+            { id: "risico1", label: "Risico 1: wat kan misgaan?", placeholder: "Bijv. te veel data, onduidelijk dashboard", type: "text" },
+            { id: "risico2", label: "Risico 2: wat kan misgaan?", placeholder: "Bijv. weerstand bij nachtploeg", type: "text" },
+            { id: "succes", label: "Hoe meet je succes?", placeholder: "Bijv. 30% minder ongeplande stilstand op hele lijn", type: "text" },
+          ]
+        },
+        {
+          id: "standaard",
+          label: "Fase 3: Standaard",
+          color: "purple",
+          bg: "bg-purple-50",
+          border: "border-purple-400",
+          accent: "bg-purple-500",
+          textColor: "text-purple-700",
+          duur: "Doorlopend",
+          omschrijving: "PM is nu normaal werk. Iedereen gebruikt het. Je blijft verbeteren.",
+          vragen: [
+            { id: "procedure", label: "Welke werkprocedure past je aan?", placeholder: "Bijv. onderhoudsprocedure, storingsprotocol", type: "text" },
+            { id: "verantwoordelijk", label: "Wie is verantwoordelijk voor PM?", placeholder: "Bijv. teamleider + 1 operator per ploeg", type: "text" },
+            { id: "verbeteren", label: "Hoe blijf je verbeteren?", placeholder: "Bijv. maandelijks resultaat bespreken in teamoverleg", type: "text" },
+            { id: "risico1", label: "Risico: wat kan op lange termijn misgaan?", placeholder: "Bijv. aandacht verslapt, data wordt niet meer bekeken", type: "text" },
+            { id: "succes", label: "Hoe weet je dat PM echt standaard is?", placeholder: "Bijv. niemand plant meer ongeplande stops in", type: "text" },
+          ]
+        },
+      ];
+
+      const [currentPhase, setCurrentPhase] = useState(0);
+      const [answers, setAnswers] = useState({});
+      const [showSummary, setShowSummary] = useState(false);
+
+      const phase = PHASES[currentPhase];
+
+      const handleChange = (phaseId, questionId, value) => {
+        setAnswers(prev => ({
+          ...prev,
+          [phaseId]: { ...(prev[phaseId] || {}), [questionId]: value }
+        }));
+      };
+
+      const phaseAnswers = answers[phase.id] || {};
+      const phaseComplete = phase.vragen.every(v => (phaseAnswers[v.id] || "").trim().length > 0);
+
+      const allComplete = PHASES.every(p =>
+        p.vragen.every(v => ((answers[p.id] || {})[v.id] || "").trim().length > 0)
+      );
+
+      const completedPhases = PHASES.filter(p =>
+        p.vragen.every(v => ((answers[p.id] || {})[v.id] || "").trim().length > 0)
+      ).length;
+
+      const handleReset = () => {
+        setAnswers({});
+        setCurrentPhase(0);
+        setShowSummary(false);
+      };
+
+      if (showSummary) {
+        return (
+          <div className="min-h-screen bg-gray-50 p-4 md:p-6">
+            <div className="max-w-3xl mx-auto">
+              <h1 className="text-2xl font-bold text-gray-900 mb-1">Jouw Implementatieplan</h1>
+              <p className="text-gray-500 mb-6">Hier staat jouw complete plan. Bespreek dit met je teamleider.</p>
+
+              {PHASES.map(p => {
+                const a = answers[p.id] || {};
+                return (
+                  <div key={p.id} className={`mb-6 p-5 rounded-xl border-2 ${p.bg} ${p.border}`}>
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className={`w-3 h-3 rounded-full ${p.accent}`}></div>
+                      <h2 className={`font-bold text-lg ${p.textColor}`}>{p.label}</h2>
+                      <span className="text-sm text-gray-500 ml-auto">{p.duur}</span>
+                    </div>
+                    <div className="space-y-2">
+                      {p.vragen.map(v => (
+                        <div key={v.id} className="flex gap-2">
+                          <span className="text-sm font-medium text-gray-600 w-48 flex-shrink-0">{v.label}</span>
+                          <span className="text-sm text-gray-800">{a[v.id] || "—"}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+
+              <div className="flex gap-3 justify-center mt-6">
+                <button
+                  onClick={() => setShowSummary(false)}
+                  className="px-5 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                >
+                  Terug naar invullen
+                </button>
+                <button
+                  onClick={handleReset}
+                  className="px-5 py-2 text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                >
+                  Opnieuw beginnen
+                </button>
+              </div>
+
+              <div className="mt-8 text-center text-xs text-gray-400">
+                Implementatieplan Predictive Maintenance -- AIMM Curriculum | Module 3: Op Maat
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div className="min-h-screen bg-gray-50 p-4 md:p-6">
+          <div className="max-w-3xl mx-auto">
+            {/* Header */}
+            <div className="mb-6">
+              <h1 className="text-2xl font-bold text-gray-900">Implementatieplan PM</h1>
+              <p className="text-gray-500 mt-1">Bouw stap voor stap jouw plan. Vul elke fase in.</p>
+            </div>
+
+            {/* Fase-tabs */}
+            <div className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-6">
+              {PHASES.map((p, i) => {
+                const done = p.vragen.every(v => ((answers[p.id] || {})[v.id] || "").trim().length > 0);
+                return (
+                  <button
+                    key={p.id}
+                    onClick={() => setCurrentPhase(i)}
+                    className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-all ${
+                      currentPhase === i
+                        ? "bg-white shadow-sm text-gray-900"
+                        : "text-gray-500 hover:text-gray-700"
+                    }`}
+                  >
+                    <span>{done ? "\u2713 " : ""}{p.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Voortgang */}
+            <div className="flex items-center gap-2 mb-4">
+              <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-blue-500 rounded-full transition-all duration-500"
+                  style={{ width: `${(completedPhases / PHASES.length) * 100}%` }}
+                ></div>
+              </div>
+              <span className="text-sm text-gray-500 font-mono">{completedPhases}/{PHASES.length} fases</span>
+            </div>
+
+            {/* Fase-info */}
+            <div className={`p-4 rounded-xl border-2 ${phase.bg} ${phase.border} mb-6`}>
+              <div className="flex items-center gap-2 mb-1">
+                <div className={`w-3 h-3 rounded-full ${phase.accent}`}></div>
+                <h2 className={`font-bold ${phase.textColor}`}>{phase.label}</h2>
+                <span className="text-sm text-gray-500 ml-auto">{phase.duur}</span>
+              </div>
+              <p className="text-sm text-gray-600">{phase.omschrijving}</p>
+            </div>
+
+            {/* Vragen */}
+            <div className="space-y-4">
+              {phase.vragen.map(v => (
+                <div key={v.id} className="bg-white rounded-xl border p-4">
+                  <label className="block font-medium text-gray-800 mb-2 text-sm">{v.label}</label>
+                  <input
+                    type="text"
+                    value={(phaseAnswers[v.id] || "")}
+                    onChange={e => handleChange(phase.id, v.id, e.target.value)}
+                    placeholder={v.placeholder}
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-700 text-sm"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Navigatie */}
+            <div className="flex justify-between mt-6">
+              <button
+                onClick={() => setCurrentPhase(Math.max(0, currentPhase - 1))}
+                disabled={currentPhase === 0}
+                className={`px-5 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  currentPhase === 0
+                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                    : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
+                }`}
+              >
+                Vorige fase
+              </button>
+
+              {currentPhase < PHASES.length - 1 ? (
+                <button
+                  onClick={() => setCurrentPhase(currentPhase + 1)}
+                  className="px-5 py-2 bg-blue-500 text-white rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors"
+                >
+                  Volgende fase
+                </button>
+              ) : (
+                <button
+                  onClick={() => setShowSummary(true)}
+                  disabled={!allComplete}
+                  className={`px-5 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    allComplete
+                      ? "bg-purple-500 text-white hover:bg-purple-600"
+                      : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                  }`}
+                >
+                  Bekijk mijn plan
+                </button>
+              )}
+            </div>
+
+            {/* Reset */}
+            <div className="mt-4 text-center">
+              <button
+                onClick={handleReset}
+                className="text-sm text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                Opnieuw beginnen
+              </button>
+            </div>
+
+            <div className="mt-6 text-center text-xs text-gray-400">
+              Implementatieplan Predictive Maintenance -- AIMM Curriculum | Module 3: Op Maat
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<ImplementatiePlanTool />);
+  </script>
+</body>
+</html>
