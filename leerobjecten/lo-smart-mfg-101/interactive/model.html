@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Kwaliteitscontrole Verkenner</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
+
+    const STEPS = [
+      {
+        id: "foto",
+        nummer: 1,
+        titel: "Foto maken",
+        korteText: "Camera maakt een foto",
+        kleur: { bg: "bg-blue-500", light: "bg-blue-50", border: "border-blue-500", text: "text-blue-700" },
+        detail: "Een camera boven de productielijn maakt van elk onderdeel een foto. Dit gebeurt automatisch na elke spuitgietcyclus. De operator hoeft hier niets voor te doen.",
+        wieDoetHet: "Camera (automatisch)",
+        voorbeeld: "Bij elke cyclus schuift het onderdeel onder de camera. In minder dan 1 seconde is de foto gemaakt.",
+        icoon: "\uD83D\uDCF7"
+      },
+      {
+        id: "ai-bekijkt",
+        nummer: 2,
+        titel: "AI bekijkt de foto",
+        korteText: "AI zoekt naar fouten",
+        kleur: { bg: "bg-green-500", light: "bg-green-50", border: "border-green-500", text: "text-green-700" },
+        detail: "Het AI-model bekijkt de foto. Het zoekt naar vloeisporen, luchtbellen, onvolledige vulling en oppervlaktedefecten. Het model heeft dit geleerd van duizenden voorbeeldfoto's.",
+        wieDoetHet: "AI-model (automatisch)",
+        voorbeeld: "Het model vergelijkt de foto met duizenden eerdere foto's. Het zoekt patronen die wijzen op fouten.",
+        icoon: "\uD83E\uDDE0"
+      },
+      {
+        id: "beslissing",
+        nummer: 3,
+        titel: "Beslissing",
+        korteText: "Goed of niet goed?",
+        kleur: { bg: "bg-orange-500", light: "bg-orange-50", border: "border-orange-500", text: "text-orange-700" },
+        detail: "Het AI-model geeft een oordeel: goed, niet goed, of twijfelgeval. Bij 'goed' gaat het product door. Bij 'niet goed' gaat het eruit. Bij 'twijfel' gaat het naar de operator.",
+        wieDoetHet: "AI-model",
+        voorbeeld: "Van 100 producten zegt de AI: 94 goed, 3 niet goed, 3 twijfelgeval.",
+        icoon: "\u2696\uFE0F"
+      },
+      {
+        id: "operator",
+        nummer: 4,
+        titel: "Operator controleert",
+        korteText: "Controleert twijfelgevallen",
+        kleur: { bg: "bg-red-500", light: "bg-red-50", border: "border-red-500", text: "text-red-700" },
+        detail: "De operator bekijkt de twijfelgevallen. De operator kan de AI corrigeren: 'Dit is toch goed' of 'Dit is toch fout'. De operator ziet ook dingen die de AI nog niet kent.",
+        wieDoetHet: "Operator (jij!)",
+        voorbeeld: "Je bekijkt 3 twijfelgevallen. Bij 2 klopt de AI. Bij 1 zie je dat het toch goed is. Je corrigeert de AI.",
+        icoon: "\uD83D\uDC77"
+      },
+      {
+        id: "ai-leert",
+        nummer: 5,
+        titel: "AI leert",
+        korteText: "Feedback maakt AI beter",
+        kleur: { bg: "bg-purple-500", light: "bg-purple-50", border: "border-purple-500", text: "text-purple-700" },
+        detail: "De feedback van de operator wordt teruggevoerd naar het AI-model. Het model leert van elke correctie. Zo wordt het systeem steeds beter. Dit heet een feedback-loop.",
+        wieDoetHet: "AI-model (leert van operator)",
+        voorbeeld: "Na 1.000 correcties herkent de AI 98% van de fouten. Zonder feedback was dat maar 90%.",
+        icoon: "\uD83D\uDCCA"
+      },
+    ];
+
+    function AIKwaliteitscontroleVerkenner() {
+      const [activeStep, setActiveStep] = useState(null);
+      const [visited, setVisited] = useState(new Set());
+
+      const handleClick = (stepId) => {
+        setActiveStep(activeStep === stepId ? null : stepId);
+        setVisited(prev => new Set([...prev, stepId]));
+      };
+
+      const handleReset = () => {
+        setActiveStep(null);
+        setVisited(new Set());
+      };
+
+      const active = STEPS.find(s => s.id === activeStep);
+      const allVisited = visited.size === STEPS.length;
+
+      return (
+        <div className="min-h-screen bg-gray-50">
+          {/* Header */}
+          <div className="bg-white border-b px-6 py-4">
+            <div className="max-w-4xl mx-auto">
+              <h1 className="text-2xl font-bold text-gray-900">AI-Kwaliteitscontrole Verkenner</h1>
+              <p className="text-gray-500 mt-1">Klik op een stap om te ontdekken hoe AI-kwaliteitscontrole werkt bij spuitgieten</p>
+            </div>
+          </div>
+
+          <div className="max-w-4xl mx-auto p-6">
+            {/* Voortgang */}
+            <div className="mb-6">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-blue-500 rounded-full transition-all duration-500"
+                    style={{ width: `${(visited.size / STEPS.length) * 100}%` }}
+                  />
+                </div>
+                <span className="text-sm text-gray-500 font-mono">{visited.size}/{STEPS.length} stappen bekeken</span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-6">
+              {/* Stappen */}
+              <div className="space-y-3">
+                {STEPS.map((step) => (
+                  <button
+                    key={step.id}
+                    onClick={() => handleClick(step.id)}
+                    className={`w-full p-4 rounded-xl border-2 text-left transition-all ${
+                      activeStep === step.id
+                        ? `${step.kleur.light} ${step.kleur.border} shadow-lg scale-[1.02]`
+                        : visited.has(step.id)
+                        ? "bg-gray-50 border-gray-300 hover:shadow-md hover:scale-[1.01]"
+                        : "bg-white border-gray-200 hover:shadow-md hover:scale-[1.01]"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm ${step.kleur.bg}`}>
+                        {step.nummer}
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-bold text-gray-900">{step.titel}</div>
+                        <div className="text-sm text-gray-500">{step.korteText}</div>
+                      </div>
+                      <div className="text-2xl">{step.icoon}</div>
+                      {visited.has(step.id) && (
+                        <div className="text-green-500 text-lg">&#10003;</div>
+                      )}
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Detail paneel */}
+              <div>
+                {active ? (
+                  <div className={`p-6 rounded-xl border-2 ${active.kleur.light} ${active.kleur.border} transition-all duration-300`}>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="text-3xl">{active.icoon}</div>
+                      <div>
+                        <h2 className={`text-xl font-bold ${active.kleur.text}`}>Stap {active.nummer}: {active.titel}</h2>
+                      </div>
+                    </div>
+
+                    <p className="text-gray-700 mb-4 leading-relaxed">{active.detail}</p>
+
+                    <div className="space-y-3">
+                      <div className="bg-white bg-opacity-60 rounded-lg p-3">
+                        <div className="text-sm font-medium text-gray-500 mb-1">Wie doet het?</div>
+                        <div className="font-medium text-gray-800">{active.wieDoetHet}</div>
+                      </div>
+
+                      <div className="bg-white bg-opacity-60 rounded-lg p-3">
+                        <div className="text-sm font-medium text-gray-500 mb-1">Voorbeeld</div>
+                        <div className="text-gray-700 text-sm">{active.voorbeeld}</div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-6 rounded-xl border-2 border-dashed border-gray-300 text-center text-gray-400 flex flex-col items-center justify-center min-h-[300px]">
+                    <div className="text-4xl mb-3">&#128072;</div>
+                    <p className="font-medium">Klik op een stap</p>
+                    <p className="text-sm mt-1">om te zien hoe het werkt</p>
+                  </div>
+                )}
+
+                {/* Afronding */}
+                {allVisited && (
+                  <div className="mt-4 p-4 bg-green-50 border-2 border-green-400 rounded-xl">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-xl">&#127942;</span>
+                      <span className="font-bold text-green-700">Alle stappen bekeken!</span>
+                    </div>
+                    <p className="text-green-700 text-sm">
+                      Je hebt alle 5 stappen van AI-kwaliteitscontrole verkend.
+                      Het belangrijkste: de AI en de operator werken samen.
+                      De AI wordt beter door jouw feedback.
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Reset knop */}
+            <div className="mt-6 text-center">
+              <button
+                onClick={handleReset}
+                className="px-4 py-2 text-gray-500 hover:text-gray-700 text-sm flex items-center gap-1 mx-auto"
+              >
+                &#8634; Opnieuw beginnen
+              </button>
+            </div>
+
+            {/* Bron */}
+            <div className="mt-8 text-center text-xs text-gray-400">
+              Bron: AI Visuele Kwaliteitsinspectie bij Spuitgieten | AIMM Curriculum | v1.0
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<AIKwaliteitscontroleVerkenner />);
+  </script>
+</body>
+</html>
