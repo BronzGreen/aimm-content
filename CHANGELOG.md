@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde25-lo-spc-403
+
+**Kontext:** Ronde 25: lo-spc-403
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-403/trainee.md`
+- `kennisbank/spc/six_sigma/ko-spc-403.md`
+- `leerobjecten/lo-spc-403/trainer.md`
+- `leerobjecten/lo-spc-403/draaiboek.md`
+- `leerobjecten/lo-spc-403/werkbladen/wb-01-eigen-rol.md`
+- `leerobjecten/lo-spc-403/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-403/werkbladen/wb-03-handout.md`
+- `leerobjecten/lo-spc-403/svg/diagram.svg`
+- `leerobjecten/lo-spc-403/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-403/README.md`
+
 ## 2026-05-20 — publish-ronde24-lo-smart-mfg-523
 
 **Kontext:** Ronde 24: lo-smart-mfg-523
