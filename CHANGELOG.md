@@ -7,6 +7,21 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde12-lo-data-lit-301
+
+**Kontext:** Ronde 12: lo-data-lit-301
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-301/trainee.md`
+- `kennisbank/data_literacy/dashboarding/ko-data-lit-301.md`
+- `leerobjecten/lo-data-lit-301/trainer.md`
+- `leerobjecten/lo-data-lit-301/draaiboek.md`
+- `leerobjecten/lo-data-lit-301/werkbladen/wb-audit-template.md`
+- `leerobjecten/lo-data-lit-301/werkbladen/wb-kpi-canvas.md`
+- `leerobjecten/lo-data-lit-301/werkbladen/wb-verbeterplan-transfer.md`
+- `leerobjecten/lo-data-lit-301/README.md`
+
 ## 2026-05-20 — publish-ronde11-lo-smart-mfg-092
 
 **Kontext:** Ronde 11: lo-smart-mfg-092
