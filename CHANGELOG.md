@@ -7,6 +7,23 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde17-lo-smart-mfg-204
+
+**Kontext:** Ronde 17: lo-smart-mfg-204
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-204/trainee.md`
+- `kennisbank/smart_manufacturing/predictive_maintenance/ko-smart-mfg-204.md`
+- `leerobjecten/lo-smart-mfg-204/trainer.md`
+- `leerobjecten/lo-smart-mfg-204/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-204/werkbladen/wb-bijstellen-ronde2.md`
+- `leerobjecten/lo-smart-mfg-204/werkbladen/wb-configuratie-model.md`
+- `leerobjecten/lo-smart-mfg-204/werkbladen/wb-handout-vuistregels.md`
+- `leerobjecten/lo-smart-mfg-204/werkbladen/wb-reflectie-duo.md`
+- `leerobjecten/lo-smart-mfg-204/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-204/README.md`
+
 ## 2026-05-20 — publish-ronde17-lo-spc-203
 
 **Kontext:** Ronde 17: lo-spc-203
