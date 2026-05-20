@@ -7,6 +7,21 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde17-lo-industry40-303
+
+**Kontext:** Ronde 17: lo-industry40-303
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-303/trainee.md`
+- `leerobjecten/lo-industry40-303/trainer.md`
+- `leerobjecten/lo-industry40-303/draaiboek.md`
+- `leerobjecten/lo-industry40-303/werkbladen/wb-01-alarm-stroom.md`
+- `leerobjecten/lo-industry40-303/werkbladen/wb-02-reflecteren-duo.md`
+- `leerobjecten/lo-industry40-303/werkbladen/wb-03-theorie-handout.md`
+- `leerobjecten/lo-industry40-303/werkbladen/wb-04-experimenteren-eigen-lijn.md`
+- `leerobjecten/lo-industry40-303/README.md`
+
 ## 2026-05-20 — publish-ronde17-lo-smart-mfg-204
 
 **Kontext:** Ronde 17: lo-smart-mfg-204
