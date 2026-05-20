@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 960 620"
+     role="img"
+     aria-labelledby="diagram-title diagram-desc"
+     font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title id="diagram-title">ARL — vals-alarmfrequentie per regelset op een regelkaart</title>
+  <desc id="diagram-desc">
+    Staafdiagram met drie regelsets op een regelkaart en de bijbehorende ARL (Average Run Length):
+    Kale Shewhart met ARL ongeveer 371 geeft ongeveer 1 vals alarm per 4 dagen (goed te doen);
+    Kale Shewhart plus WECO met ARL ongeveer 91,75 geeft ongeveer 1 vals alarm per dag (voelbaar);
+    Kale Shewhart plus volledige Nelson met ARL ongeveer 50 geeft ongeveer 2 valse alarmen per dag
+    (alarm-fatigue-risico). Rekenbasis: fictieve verpakkingslijn met 96 metingen per dag.
+    De ARL-waarde 91,75 voor WECO komt uit Champ en Woodall, 1987, Technometrics —
+    niet uit NIST zoals vaak foutief wordt doorgegeven.
+  </desc>
+
+  <!-- Background -->
+  <rect width="960" height="620" fill="#ffffff"/>
+
+  <!-- Header -->
+  <text x="480" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">
+    Vals alarm per dag — drie regelsets op dezelfde lijn
+  </text>
+  <text x="480" y="70" text-anchor="middle" font-size="13" fill="#475569">
+    Fictieve verpakkingslijn · 96 metingen per dag · proces is in werkelijkheid stabiel
+  </text>
+
+  <!-- Axes -->
+  <line x1="90" y1="480" x2="900" y2="480" stroke="#334155" stroke-width="2" aria-hidden="true"/>
+  <line x1="90" y1="140" x2="90" y2="480" stroke="#334155" stroke-width="2" aria-hidden="true"/>
+
+  <!-- Y-axis label -->
+  <text x="40" y="310" font-size="12" fill="#475569" transform="rotate(-90 40 310)" text-anchor="middle">
+    Vals alarm per dag
+  </text>
+
+  <!-- Gridlines with labels -->
+  <g stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 4" aria-hidden="true">
+    <line x1="90" y1="400" x2="900" y2="400"/>
+    <line x1="90" y1="320" x2="900" y2="320"/>
+    <line x1="90" y1="240" x2="900" y2="240"/>
+    <line x1="90" y1="160" x2="900" y2="160"/>
+  </g>
+  <g font-size="11" fill="#64748b" text-anchor="end" aria-hidden="true">
+    <text x="82" y="484">0</text>
+    <text x="82" y="404">0,5</text>
+    <text x="82" y="324">1,0</text>
+    <text x="82" y="244">1,5</text>
+    <text x="82" y="164">2,0</text>
+  </g>
+
+  <!-- Bar 1: Kale Shewhart -->
+  <g role="group" aria-label="Kale Shewhart, ARL 371, 0,26 vals alarm per dag, ongeveer 1 per 4 dagen, oordeel goed te doen">
+    <rect x="170" y="438" width="140" height="42" fill="#16a34a" rx="4"/>
+    <text x="240" y="420" text-anchor="middle" font-size="14" font-weight="700" fill="#14532d">
+      0,26 / dag
+    </text>
+    <text x="240" y="510" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">
+      Kale Shewhart
+    </text>
+    <text x="240" y="530" text-anchor="middle" font-size="12" fill="#475569">
+      1 punt buiten ±3σ
+    </text>
+    <text x="240" y="550" text-anchor="middle" font-size="12" fill="#475569">
+      ARL = 371
+    </text>
+    <text x="240" y="572" text-anchor="middle" font-size="12" font-style="italic" fill="#16a34a" font-weight="600">
+      ~1 per 4 dagen
+    </text>
+    <text x="240" y="590" text-anchor="middle" font-size="11" fill="#16a34a">
+      goed te doen
+    </text>
+  </g>
+
+  <!-- Bar 2: WECO -->
+  <g role="group" aria-label="Kale Shewhart plus WECO, ARL 91,75, 1,05 vals alarm per dag, ongeveer 1 per dag, oordeel voelbaar">
+    <rect x="410" y="313" width="140" height="167" fill="#f59e0b" rx="4"/>
+    <text x="480" y="300" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">
+      1,05 / dag
+    </text>
+    <text x="480" y="510" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">
+      + WECO (4 regels)
+    </text>
+    <text x="480" y="530" text-anchor="middle" font-size="12" fill="#475569">
+      Trends + zones
+    </text>
+    <text x="480" y="550" text-anchor="middle" font-size="12" fill="#475569">
+      ARL = 91,75
+    </text>
+    <text x="480" y="572" text-anchor="middle" font-size="12" font-style="italic" fill="#f59e0b" font-weight="600">
+      ~1 per dag
+    </text>
+    <text x="480" y="590" text-anchor="middle" font-size="11" fill="#b45309">
+      voelbaar
+    </text>
+  </g>
+
+  <!-- Bar 3: Nelson -->
+  <g role="group" aria-label="Kale Shewhart plus volledige Nelson, ARL circa 50, 1,92 vals alarm per dag, ongeveer 2 per dag, oordeel te veel, alarm-fatigue-risico">
+    <rect x="650" y="173" width="140" height="307" fill="#dc2626" rx="4"/>
+    <text x="720" y="160" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">
+      1,92 / dag
+    </text>
+    <text x="720" y="510" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">
+      + Nelson (8 regels)
+    </text>
+    <text x="720" y="530" text-anchor="middle" font-size="12" fill="#475569">
+      Diagnostisch volledig
+    </text>
+    <text x="720" y="550" text-anchor="middle" font-size="12" fill="#475569">
+      ARL ≈ 50 (schatting)
+    </text>
+    <text x="720" y="572" text-anchor="middle" font-size="12" font-style="italic" fill="#dc2626" font-weight="600">
+      ~2 per dag
+    </text>
+    <text x="720" y="590" text-anchor="middle" font-size="11" fill="#b91c1c">
+      alarm-fatigue-risico
+    </text>
+  </g>
+
+  <!-- Rekenformule -->
+  <g aria-hidden="true">
+    <rect x="300" y="95" width="360" height="30" rx="15" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="480" y="115" text-anchor="middle" font-size="13" font-weight="600" fill="#1e293b">
+      Vals alarm per dag = metingen per dag ÷ ARL
+    </text>
+  </g>
+
+  <!-- Bronbalk -->
+  <text x="480" y="612" text-anchor="middle" font-size="10" fill="#94a3b8">
+    Bron: Champ &amp; Woodall 1987 (Technometrics 29:4) voor WECO-ARL · Nelson 1984 (JQT 16:4) · NIST/SEMATECH Handbook · Minitab docs · AIMM SPC M2
+  </text>
+</svg>
