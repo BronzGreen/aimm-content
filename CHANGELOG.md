@@ -7,6 +7,26 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde28-lo-smart-mfg-601-mbo4
+
+**Kontext:** Ronde 28: lo-smart-mfg-601-mbo4
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-601-mbo4/trainee.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/trainer.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/werkbladen/wb-01-storingsquiz.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/werkbladen/wb-03-theorie-handout.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/werkbladen/wb-04-roi-afweging.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-601-mbo4/README.md`
+
+Gewijzigd:
+
+- `kennisbank/smart_manufacturing/computer_vision_kwaliteit/ko-smart-mfg-601.md`
+
 ## 2026-05-20 — publish-ronde28-lo-spc-603
 
 **Kontext:** Ronde 28: lo-spc-603
