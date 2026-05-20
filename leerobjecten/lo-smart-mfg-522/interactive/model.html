@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trainingsdata Planner - AI Vision Op Maat</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    function TrainingdataPlanner() {
+      const [step, setStep] = useState(0);
+      const [answers, setAnswers] = useState({});
+
+      const STEPS = [
+        {
+          id: "product",
+          title: "Stap 1: Kies je product",
+          question: "Welk product wil je fotograferen?",
+          instruction: "Kies het product dat je het vaakst controleert op kwaliteit.",
+          type: "text",
+          placeholder: "Bijv.: metalen ring, kunststof dop, kabel...",
+          tip: "Kies een product met duidelijke fouten. Dat maakt het labelen makkelijker.",
+        },
+        {
+          id: "defecten",
+          title: "Stap 2: Welke fouten komen voor?",
+          question: "Welke defecten zie je bij dit product?",
+          instruction: "Noem de 3 meest voorkomende fouten. Per fout schrijf je een korte omschrijving.",
+          type: "multi_text",
+          fields: [
+            { key: "defect1", placeholder: "Defect 1: bijv. kras langer dan 2 mm" },
+            { key: "defect2", placeholder: "Defect 2: bijv. deuk in het oppervlak" },
+            { key: "defect3", placeholder: "Defect 3: bijv. verkleuring" },
+          ],
+          tip: "Wees zo precies mogelijk. 'Beschadigd' is te vaag. 'Kras langer dan 2 mm' is goed.",
+        },
+        {
+          id: "opstelling",
+          title: "Stap 3: Kies je opstelling",
+          question: "Hoe bouw je de opstelling?",
+          instruction: "Kies per onderdeel wat je gaat gebruiken.",
+          type: "choices",
+          choices: [
+            {
+              label: "Camera",
+              options: [
+                { id: "telefoon", text: "Telefoon-camera", score: 1, feedback: "Prima keuze. De meeste telefoons maken foto's die goed genoeg zijn." },
+                { id: "webcam", text: "Webcam", score: 0, feedback: "Webcams geven vaak lage kwaliteit. Gebruik liever een telefoon." },
+                { id: "camera", text: "Industriele camera", score: 2, feedback: "Beste keuze als die beschikbaar is. Geeft de meest consistente foto's." },
+              ],
+            },
+            {
+              label: "Verlichting",
+              options: [
+                { id: "tl", text: "TL-verlichting (plafond)", score: 0, feedback: "Plafondlicht geeft schaduwen. Gebruik een extra lamp dicht bij het product." },
+                { id: "bureaulamp", text: "Bureaulamp", score: 1, feedback: "Goed genoeg. Zet de lamp schuin boven het product." },
+                { id: "led", text: "LED-paneel", score: 2, feedback: "Beste keuze. Geeft gelijk licht zonder schaduwen." },
+              ],
+            },
+            {
+              label: "Achtergrond",
+              options: [
+                { id: "werkbank", text: "Werkbank (zoals het is)", score: 0, feedback: "Te rommelig. Het model raakt in de war door de achtergrond." },
+                { id: "papier", text: "Wit vel papier", score: 1, feedback: "Prima keuze. Schoon en eenvoudig." },
+                { id: "doek", text: "Grijs fotodoek", score: 2, feedback: "Beste keuze. Geen reflecties, goed contrast." },
+              ],
+            },
+          ],
+          tip: "Je hoeft niet de duurste spullen te hebben. Een telefoon, bureaulamp en wit papier werken al goed.",
+        },
+        {
+          id: "planning",
+          title: "Stap 4: Maak een plan",
+          question: "Hoeveel foto's ga je maken?",
+          instruction: "Vul in hoeveel foto's je per categorie wilt maken.",
+          type: "numbers",
+          fields: [
+            { key: "fotos_goed", label: "Goede producten", placeholder: "bijv. 100", min: 10 },
+            { key: "fotos_defect", label: "Defecte producten", placeholder: "bijv. 100", min: 10 },
+            { key: "dagen", label: "Hoeveel dagen?", placeholder: "bijv. 3", min: 1 },
+            { key: "operators", label: "Hoeveel operators?", placeholder: "bijv. 3", min: 1 },
+          ],
+          tip: "Vuistregel: minimaal 50 foto's per categorie. Meer is beter.",
+        },
+        {
+          id: "criteria",
+          title: "Stap 5: Stel labelcriteria op",
+          question: "Wanneer is een product goed? Wanneer defect?",
+          instruction: "Schrijf 3 heldere regels op die iedereen in het team begrijpt.",
+          type: "multi_text",
+          fields: [
+            { key: "regel1", placeholder: "Regel 1: bijv. kras > 2 mm = defect" },
+            { key: "regel2", placeholder: "Regel 2: bijv. deuk zichtbaar met het oog = defect" },
+            { key: "regel3", placeholder: "Regel 3: bijv. verkleuring > 5 mm2 = defect" },
+          ],
+          tip: "Test je regels: kan een collega die er niet bij was ze begrijpen?",
+        },
+      ];
+
+      const currentStep = STEPS[step];
+      const isLastStep = step === STEPS.length - 1;
+      const totalSteps = STEPS.length;
+
+      const handleTextChange = (key, value) => {
+        setAnswers(prev => ({ ...prev, [key]: value }));
+      };
+
+      const handleChoiceSelect = (choiceLabel, optionId) => {
+        setAnswers(prev => ({ ...prev, [choiceLabel]: optionId }));
+      };
+
+      const handleReset = () => {
+        setStep(0);
+        setAnswers({});
+      };
+
+      const canProceed = () => {
+        if (!currentStep) return false;
+        switch (currentStep.type) {
+          case "text":
+            return (answers[currentStep.id] || "").trim().length > 0;
+          case "multi_text":
+            return currentStep.fields.every(f => (answers[f.key] || "").trim().length > 0);
+          case "choices":
+            return currentStep.choices.every(c => answers[c.label]);
+          case "numbers":
+            return currentStep.fields.every(f => {
+              const val = parseInt(answers[f.key]);
+              return !isNaN(val) && val >= (f.min || 1);
+            });
+          default:
+            return true;
+        }
+      };
+
+      const opstellingScore = useMemo(() => {
+        if (step <= totalSteps - 1 && currentStep?.id !== "opstelling" && !answers["Camera"]) return null;
+        const choices = STEPS[2]?.choices || [];
+        let total = 0;
+        let max = 0;
+        choices.forEach(c => {
+          max += 2;
+          const selected = c.options.find(o => o.id === answers[c.label]);
+          if (selected) total += selected.score;
+        });
+        return { total, max, pct: Math.round((total / max) * 100) };
+      }, [answers, step]);
+
+      const totalFotos = useMemo(() => {
+        const goed = parseInt(answers.fotos_goed) || 0;
+        const defect = parseInt(answers.fotos_defect) || 0;
+        return goed + defect;
+      }, [answers.fotos_goed, answers.fotos_defect]);
+
+      const fotosPerDag = useMemo(() => {
+        const dagen = parseInt(answers.dagen) || 1;
+        const operators = parseInt(answers.operators) || 1;
+        return Math.ceil(totalFotos / (dagen * operators));
+      }, [totalFotos, answers.dagen, answers.operators]);
+
+      const renderStep = () => {
+        if (step >= totalSteps) return renderSummary();
+
+        return (
+          <div>
+            <h2 className="text-xl font-bold text-gray-900 mb-1">{currentStep.title}</h2>
+            <p className="text-gray-600 mb-4">{currentStep.question}</p>
+            <p className="text-sm text-gray-500 italic mb-4">{currentStep.instruction}</p>
+
+            {currentStep.type === "text" && (
+              <input
+                type="text"
+                value={answers[currentStep.id] || ""}
+                onChange={e => handleTextChange(currentStep.id, e.target.value)}
+                placeholder={currentStep.placeholder}
+                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-700 text-lg"
+              />
+            )}
+
+            {currentStep.type === "multi_text" && (
+              <div className="space-y-3">
+                {currentStep.fields.map(f => (
+                  <input
+                    key={f.key}
+                    type="text"
+                    value={answers[f.key] || ""}
+                    onChange={e => handleTextChange(f.key, e.target.value)}
+                    placeholder={f.placeholder}
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-700"
+                  />
+                ))}
+              </div>
+            )}
+
+            {currentStep.type === "choices" && (
+              <div className="space-y-6">
+                {currentStep.choices.map(choice => (
+                  <div key={choice.label}>
+                    <div className="font-medium text-gray-700 mb-2">{choice.label}</div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                      {choice.options.map(opt => {
+                        const isSelected = answers[choice.label] === opt.id;
+                        return (
+                          <button
+                            key={opt.id}
+                            onClick={() => handleChoiceSelect(choice.label, opt.id)}
+                            className={`p-3 rounded-lg border-2 text-left transition-all ${
+                              isSelected
+                                ? "border-blue-500 bg-blue-50 shadow-md"
+                                : "border-gray-200 bg-white hover:border-gray-300"
+                            }`}
+                          >
+                            <div className="font-medium text-sm">{opt.text}</div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                    {answers[choice.label] && (
+                      <div className="mt-2 p-3 bg-amber-50 rounded-lg text-sm text-amber-800 border border-amber-200">
+                        {choice.options.find(o => o.id === answers[choice.label])?.feedback}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {currentStep.type === "numbers" && (
+              <div className="space-y-4">
+                {currentStep.fields.map(f => (
+                  <div key={f.key} className="flex items-center gap-4">
+                    <label className="w-40 text-sm font-medium text-gray-700">{f.label}</label>
+                    <input
+                      type="number"
+                      min={f.min || 1}
+                      value={answers[f.key] || ""}
+                      onChange={e => handleTextChange(f.key, e.target.value)}
+                      placeholder={f.placeholder}
+                      className="w-32 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-700 text-center"
+                    />
+                  </div>
+                ))}
+                {totalFotos > 0 && (
+                  <div className="mt-4 p-4 bg-blue-50 rounded-xl border border-blue-200">
+                    <div className="text-blue-800 font-medium">Totaal: {totalFotos} foto's</div>
+                    <div className="text-blue-600 text-sm mt-1">
+                      Dat is {fotosPerDag} foto's per operator per dag.
+                      {totalFotos < 100 && <span className="text-amber-600 font-medium"> Probeer minimaal 100 foto's te maken.</span>}
+                      {totalFotos >= 100 && totalFotos < 300 && <span> Goed begin!</span>}
+                      {totalFotos >= 300 && <span className="text-green-600 font-medium"> Uitstekend aantal!</span>}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Tip */}
+            <div className="mt-4 flex items-start gap-3 p-4 bg-gray-50 rounded-xl text-sm text-gray-600">
+              <span className="text-lg">💡</span>
+              <div>{currentStep.tip}</div>
+            </div>
+          </div>
+        );
+      };
+
+      const renderSummary = () => (
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Jouw plan: trainingsdata maken</h2>
+
+          <div className="space-y-4">
+            {/* Product */}
+            <div className="bg-white rounded-xl border p-4">
+              <div className="text-xs font-bold text-blue-500 uppercase tracking-wider mb-1">Product</div>
+              <div className="text-lg font-medium text-gray-900">{answers.product}</div>
+            </div>
+
+            {/* Defecten */}
+            <div className="bg-white rounded-xl border p-4">
+              <div className="text-xs font-bold text-red-500 uppercase tracking-wider mb-1">Defecten</div>
+              <ul className="space-y-1">
+                <li className="text-gray-700 flex items-start gap-2"><span className="mt-1 w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></span>{answers.defect1}</li>
+                <li className="text-gray-700 flex items-start gap-2"><span className="mt-1 w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></span>{answers.defect2}</li>
+                <li className="text-gray-700 flex items-start gap-2"><span className="mt-1 w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></span>{answers.defect3}</li>
+              </ul>
+            </div>
+
+            {/* Opstelling */}
+            <div className="bg-white rounded-xl border p-4">
+              <div className="text-xs font-bold text-purple-500 uppercase tracking-wider mb-1">Opstelling</div>
+              <div className="grid grid-cols-3 gap-2 text-sm">
+                {STEPS[2].choices.map(c => {
+                  const selected = c.options.find(o => o.id === answers[c.label]);
+                  return (
+                    <div key={c.label}>
+                      <div className="text-gray-500">{c.label}</div>
+                      <div className="font-medium text-gray-800">{selected?.text || "-"}</div>
+                    </div>
+                  );
+                })}
+              </div>
+              {opstellingScore && (
+                <div className="mt-3">
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full rounded-full transition-all ${
+                          opstellingScore.pct >= 70 ? "bg-green-500" : opstellingScore.pct >= 40 ? "bg-amber-500" : "bg-red-500"
+                        }`}
+                        style={{ width: `${opstellingScore.pct}%` }}
+                      />
+                    </div>
+                    <span className="text-sm font-medium text-gray-600">{opstellingScore.total}/{opstellingScore.max}</span>
+                  </div>
+                  <div className="text-xs text-gray-500 mt-1">
+                    {opstellingScore.pct >= 70 ? "Goede opstelling!" : opstellingScore.pct >= 40 ? "Kan beter. Overweeg een betere lamp of achtergrond." : "Pas je opstelling aan voor betere foto's."}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Planning */}
+            <div className="bg-white rounded-xl border p-4">
+              <div className="text-xs font-bold text-green-500 uppercase tracking-wider mb-1">Planning</div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-gray-900">{answers.fotos_goed || 0}</div>
+                  <div className="text-xs text-gray-500">foto's goed</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-gray-900">{answers.fotos_defect || 0}</div>
+                  <div className="text-xs text-gray-500">foto's defect</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-gray-900">{answers.dagen || 0}</div>
+                  <div className="text-xs text-gray-500">dagen</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-gray-900">{answers.operators || 0}</div>
+                  <div className="text-xs text-gray-500">operators</div>
+                </div>
+              </div>
+              <div className="mt-2 text-center text-sm text-gray-600">
+                = {fotosPerDag} foto's per operator per dag
+              </div>
+            </div>
+
+            {/* Labelcriteria */}
+            <div className="bg-white rounded-xl border p-4">
+              <div className="text-xs font-bold text-amber-500 uppercase tracking-wider mb-1">Labelcriteria</div>
+              <ul className="space-y-1">
+                <li className="text-gray-700 flex items-start gap-2"><span className="mt-1 w-2 h-2 rounded-full bg-amber-400 flex-shrink-0"></span>{answers.regel1}</li>
+                <li className="text-gray-700 flex items-start gap-2"><span className="mt-1 w-2 h-2 rounded-full bg-amber-400 flex-shrink-0"></span>{answers.regel2}</li>
+                <li className="text-gray-700 flex items-start gap-2"><span className="mt-1 w-2 h-2 rounded-full bg-amber-400 flex-shrink-0"></span>{answers.regel3}</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-6 p-4 bg-green-50 rounded-xl border border-green-200">
+            <div className="font-bold text-green-800 mb-1">Klaar om te starten!</div>
+            <div className="text-sm text-green-700">
+              Print dit plan uit en neem het mee naar de werkvloer.
+              Begin met het bouwen van de opstelling.
+              Maak de eerste foto's en label ze met je team.
+            </div>
+          </div>
+        </div>
+      );
+
+      return (
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 p-4 md:p-6">
+          <div className="max-w-2xl mx-auto">
+            {/* Header */}
+            <div className="mb-6">
+              <h1 className="text-2xl font-bold text-gray-900">Trainingsdata Planner</h1>
+              <p className="text-gray-500 mt-1">Plan je eigen dataset voor AI-visuele inspectie</p>
+            </div>
+
+            {/* Progress */}
+            <div className="mb-6">
+              <div className="flex items-center gap-2">
+                <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-blue-500 rounded-full transition-all duration-500"
+                    style={{ width: `${((step >= totalSteps ? totalSteps : step + 1) / totalSteps) * 100}%` }}
+                  />
+                </div>
+                <span className="text-sm text-gray-500 font-mono">
+                  {step >= totalSteps ? totalSteps : step + 1}/{totalSteps}
+                </span>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="bg-white rounded-2xl shadow-sm border p-6">
+              {renderStep()}
+            </div>
+
+            {/* Navigation */}
+            <div className="flex justify-between mt-4">
+              <button
+                onClick={() => setStep(s => Math.max(0, s - 1))}
+                className={`px-4 py-2 text-sm rounded-lg transition-colors ${
+                  step === 0
+                    ? "text-gray-300 cursor-not-allowed"
+                    : "text-gray-600 hover:bg-white hover:shadow-sm"
+                }`}
+                disabled={step === 0}
+              >
+                Vorige
+              </button>
+
+              <button
+                onClick={handleReset}
+                className="px-4 py-2 text-sm text-gray-400 hover:text-gray-600"
+              >
+                Opnieuw
+              </button>
+
+              {step < totalSteps && (
+                <button
+                  onClick={() => setStep(s => s + 1)}
+                  className={`px-6 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    canProceed()
+                      ? "bg-blue-500 text-white hover:bg-blue-600"
+                      : "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  }`}
+                  disabled={!canProceed()}
+                >
+                  {isLastStep ? "Bekijk plan" : "Volgende"}
+                </button>
+              )}
+            </div>
+
+            {/* Bron */}
+            <div className="mt-6 text-center text-xs text-gray-400">
+              ko-smart-mfg-522 — Eigen trainingsdata maken | AIMM AI Vision Op Maat
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<TrainingdataPlanner />);
+  </script>
+</body>
+</html>
