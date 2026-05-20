@@ -1,0 +1,108 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 900 620"
+     font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Verkeerslichtmodel voor anomaliescores</title>
+  <desc id="desc">Een matrix die laat zien hoe je een anomaliescore vertaalt naar een kleurzone en een onderhoudsactie. Vier zones: groen (0-30, geen actie), geel (30-50, vaker checken), oranje (50-70, plan onderhoud binnen 2 weken), rood (70+, plan inspectie binnen 48 uur).</desc>
+
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="grad-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ECC71"/><stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+    <linearGradient id="grad-yellow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F1C40F"/><stop offset="100%" stop-color="#D4AC0D"/>
+    </linearGradient>
+    <linearGradient id="grad-orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E67E22"/><stop offset="100%" stop-color="#D35400"/>
+    </linearGradient>
+    <linearGradient id="grad-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E74C3C"/><stop offset="100%" stop-color="#C0392B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="900" height="620" fill="#FAFAF8" rx="12"/>
+
+  <!-- Titel -->
+  <text x="450" y="42" text-anchor="middle" font-size="22"
+        font-weight="700" fill="#2C3E50" letter-spacing="0.8">Verkeerslichtmodel</text>
+  <text x="450" y="64" text-anchor="middle" font-size="13"
+        fill="#7f8c8d" letter-spacing="0.4">Van anomaliescore naar onderhoudsactie</text>
+
+  <!-- Tabel header -->
+  <rect role="presentation" x="40" y="90" width="820" height="48" rx="8" fill="#2C3E50"/>
+  <text x="120" y="120" text-anchor="middle" font-size="13" font-weight="700" fill="white">Score</text>
+  <text x="265" y="120" text-anchor="middle" font-size="13" font-weight="700" fill="white">Kleur</text>
+  <text x="450" y="120" text-anchor="middle" font-size="13" font-weight="700" fill="white">Wat doe je?</text>
+  <text x="700" y="120" text-anchor="middle" font-size="13" font-weight="700" fill="white">Hoe snel?</text>
+
+  <!-- Kolom scheidingslijnen -->
+  <line x1="185" y1="90" x2="185" y2="534" stroke="#E0E0E0" stroke-width="1"/>
+  <line x1="345" y1="90" x2="345" y2="534" stroke="#E0E0E0" stroke-width="1"/>
+  <line x1="580" y1="90" x2="580" y2="534" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Rij 1: Groen -->
+  <rect role="presentation" x="40" y="138" width="820" height="90" fill="#F0FFF4"/>
+  <rect role="presentation" x="40" y="138" width="8" height="90" fill="url(#grad-green)" rx="0"/>
+  <text x="120" y="183" text-anchor="middle" font-size="26" font-weight="700" fill="#27AE60">0 - 30</text>
+  <!-- Verkeerslicht-indicator groen -->
+  <circle cx="265" cy="175" r="22" fill="url(#grad-green)" filter="url(#shadow)"/>
+  <text x="265" y="181" text-anchor="middle" font-size="13" font-weight="700" fill="white">Groen</text>
+  <text x="460" y="175" text-anchor="middle" font-size="14" fill="#2C3E50">Geen actie.</text>
+  <text x="460" y="195" text-anchor="middle" font-size="12" fill="#7f8c8d">Alles is normaal. Gewoon doorwerken.</text>
+  <text x="700" y="183" text-anchor="middle" font-size="14" fill="#7f8c8d">--</text>
+
+  <!-- Rij scheidingslijn -->
+  <line x1="40" y1="228" x2="860" y2="228" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Rij 2: Geel -->
+  <rect role="presentation" x="40" y="228" width="820" height="90" fill="#FFFEF0"/>
+  <rect role="presentation" x="40" y="228" width="8" height="90" fill="url(#grad-yellow)" rx="0"/>
+  <text x="120" y="273" text-anchor="middle" font-size="26" font-weight="700" fill="#D4AC0D">30 - 50</text>
+  <circle cx="265" cy="265" r="22" fill="url(#grad-yellow)" filter="url(#shadow)"/>
+  <text x="265" y="271" text-anchor="middle" font-size="13" font-weight="700" fill="white">Geel</text>
+  <text x="460" y="265" text-anchor="middle" font-size="14" fill="#2C3E50">Vaker checken.</text>
+  <text x="460" y="285" text-anchor="middle" font-size="12" fill="#7f8c8d">Iets wijkt af. Houd het in de gaten.</text>
+  <text x="700" y="273" text-anchor="middle" font-size="14" font-weight="600" fill="#D4AC0D">Dagelijks</text>
+
+  <!-- Rij scheidingslijn -->
+  <line x1="40" y1="318" x2="860" y2="318" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Rij 3: Oranje -->
+  <rect role="presentation" x="40" y="318" width="820" height="90" fill="#FFF8F0"/>
+  <rect role="presentation" x="40" y="318" width="8" height="90" fill="url(#grad-orange)" rx="0"/>
+  <text x="120" y="363" text-anchor="middle" font-size="26" font-weight="700" fill="#D35400">50 - 70</text>
+  <circle cx="265" cy="355" r="22" fill="url(#grad-orange)" filter="url(#shadow)"/>
+  <text x="265" y="361" text-anchor="middle" font-size="12" font-weight="700" fill="white">Oranje</text>
+  <text x="460" y="355" text-anchor="middle" font-size="14" fill="#2C3E50">Plan onderhoud in.</text>
+  <text x="460" y="375" text-anchor="middle" font-size="12" fill="#7f8c8d">Maak een werkorder voor de technische dienst.</text>
+  <text x="700" y="358" text-anchor="middle" font-size="14" font-weight="600" fill="#D35400">Binnen</text>
+  <text x="700" y="376" text-anchor="middle" font-size="14" font-weight="600" fill="#D35400">2 weken</text>
+
+  <!-- Rij scheidingslijn -->
+  <line x1="40" y1="408" x2="860" y2="408" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Rij 4: Rood -->
+  <rect role="presentation" x="40" y="408" width="820" height="90" fill="#FFF0F0"/>
+  <rect role="presentation" x="40" y="408" width="8" height="90" fill="url(#grad-red)" rx="0"/>
+  <text x="120" y="453" text-anchor="middle" font-size="26" font-weight="700" fill="#C0392B">70+</text>
+  <circle cx="265" cy="445" r="22" fill="url(#grad-red)" filter="url(#shadow)"/>
+  <text x="265" y="451" text-anchor="middle" font-size="13" font-weight="700" fill="white">Rood</text>
+  <text x="460" y="445" text-anchor="middle" font-size="14" fill="#2C3E50">Plan inspectie. Meld het direct.</text>
+  <text x="460" y="465" text-anchor="middle" font-size="12" fill="#7f8c8d">Serieus probleem. Technicus moet kijken.</text>
+  <text x="700" y="448" text-anchor="middle" font-size="14" font-weight="600" fill="#C0392B">Binnen</text>
+  <text x="700" y="466" text-anchor="middle" font-size="14" font-weight="600" fill="#C0392B">48 uur</text>
+
+  <!-- Tabel buitenrand -->
+  <rect role="presentation" x="40" y="90" width="820" height="408" rx="8" fill="none" stroke="#E0E0E0" stroke-width="1.5"/>
+
+  <!-- Ondertitel / tip -->
+  <rect role="presentation" x="120" y="520" width="660" height="50" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="450" y="543" text-anchor="middle" font-size="13" fill="#2C3E50" font-weight="600">De score is een advies, geen bevel.</text>
+  <text x="450" y="561" text-anchor="middle" font-size="11" fill="#7f8c8d">Jij kent je machine. Als jij iets raars hoort of ziet, plan dan toch een inspectie.</text>
+
+  <!-- Bronvermelding -->
+  <text x="450" y="605" text-anchor="middle" font-size="10" fill="#999">AIMM Predictive Maintenance - Module 2: Train | Verkeerslichtmodel voor anomaliescores</text>
+</svg>

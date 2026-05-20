@@ -7,6 +7,77 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde18-lo-data-lit-202
+
+**Kontext:** Ronde 18: lo-data-lit-202
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-202/trainee.md`
+- `kennisbank/data_literacy/data_kwaliteit/ko-data-lit-202.md`
+- `leerobjecten/lo-data-lit-202/trainer.md`
+- `leerobjecten/lo-data-lit-202/draaiboek.md`
+- `leerobjecten/lo-data-lit-202/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-data-lit-202/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-data-lit-202/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-data-lit-202/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-data-lit-202/svg/diagram.svg`
+- `leerobjecten/lo-data-lit-202/interactive/model.html`
+- `leerobjecten/lo-data-lit-202/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-data-lit-202/README.md`
+
+## 2026-05-20 — publish-ronde18-lo-ai-fund-205
+
+**Kontext:** Ronde 18: lo-ai-fund-205
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-205/trainee.md`
+- `leerobjecten/lo-ai-fund-205/trainer.md`
+- `leerobjecten/lo-ai-fund-205/draaiboek.md`
+- `leerobjecten/lo-ai-fund-205/werkbladen/wb-01-eerste-labelsessie.md`
+- `leerobjecten/lo-ai-fund-205/werkbladen/wb-02-buurman-vergelijking.md`
+- `leerobjecten/lo-ai-fund-205/werkbladen/wb-03-handout-vier-principes-vier-valkuilen.md`
+- `leerobjecten/lo-ai-fund-205/werkbladen/wb-04-eigen-labelschema.md`
+- `leerobjecten/lo-ai-fund-205/README.md`
+
+## 2026-05-20 — publish-ronde18-lo-smart-mfg-205
+
+**Kontext:** Ronde 18: lo-smart-mfg-205
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-205/trainee.md`
+- `kennisbank/smart_manufacturing/predictive_maintenance/ko-smart-mfg-205.md`
+- `leerobjecten/lo-smart-mfg-205/trainer.md`
+- `leerobjecten/lo-smart-mfg-205/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-205/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-smart-mfg-205/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-smart-mfg-205/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-smart-mfg-205/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-smart-mfg-205/svg/diagram.svg`
+- `leerobjecten/lo-smart-mfg-205/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-205/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-smart-mfg-205/README.md`
+
+## 2026-05-20 — publish-ronde18-lo-spc-301
+
+**Kontext:** Ronde 18: lo-spc-301
+
+Toegevoegd:
+
+- `leerobjecten/lo-spc-301/trainee.md`
+- `kennisbank/spc/procesbekwaamheid/ko-spc-301.md`
+- `leerobjecten/lo-spc-301/trainer.md`
+- `leerobjecten/lo-spc-301/draaiboek.md`
+- `leerobjecten/lo-spc-301/werkbladen/wb-01-cpk-puzzel.md`
+- `leerobjecten/lo-spc-301/werkbladen/wb-02-reflectie.md`
+- `leerobjecten/lo-spc-301/werkbladen/wb-03-cpk-handout.md`
+- `leerobjecten/lo-spc-301/werkbladen/wb-04-eigen-cpk-analyse.md`
+- `leerobjecten/lo-spc-301/svg/diagram.svg`
+- `leerobjecten/lo-spc-301/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-spc-301/README.md`
+
 ## 2026-05-20 — publish-ronde17-lo-ai-fund-204
 
 **Kontext:** Ronde 17: lo-ai-fund-204

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Datakwaliteit Checker -- AIMM</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    // Voorbeelddataset: productiedata van een freesmachine
+    const DATASET = [
+      { id: 1, datum: "2026-04-01", temperatuur: "42.3", druk: "3.1", eenheid_druk: "bar", gewicht: "12.5", eenheid_gewicht: "kg" },
+      { id: 2, datum: "2026-04-01", temperatuur: "43.1", druk: "3.0", eenheid_druk: "bar", gewicht: "12.4", eenheid_gewicht: "kg" },
+      { id: 3, datum: "2026-04-02", temperatuur: "",     druk: "3.2", eenheid_druk: "bar", gewicht: "12.6", eenheid_gewicht: "kg" },
+      { id: 4, datum: "2026-04-02", temperatuur: "41.8", druk: "3.1", eenheid_druk: "bar", gewicht: "12500", eenheid_gewicht: "g" },
+      { id: 5, datum: "2026-04-03", temperatuur: "42.0", druk: "",    eenheid_druk: "",    gewicht: "12.3", eenheid_gewicht: "kg" },
+      { id: 6, datum: "2025-01-15", temperatuur: "44.2", druk: "3.0", eenheid_druk: "bar", gewicht: "12.7", eenheid_gewicht: "kg" },
+      { id: 7, datum: "2026-04-03", temperatuur: "",     druk: "3.3", eenheid_druk: "bar", gewicht: "12.4", eenheid_gewicht: "kg" },
+      { id: 8, datum: "2026-04-04", temperatuur: "42.5", druk: "3.1", eenheid_druk: "bar", gewicht: "",     eenheid_gewicht: "" },
+      { id: 9, datum: "2026-04-04", temperatuur: "43.0", druk: "310", eenheid_druk: "bar", gewicht: "12.5", eenheid_gewicht: "kg" },
+      { id: 10,datum: "2026-04-05", temperatuur: "42.2", druk: "3.0", eenheid_druk: "bar", gewicht: "12.6", eenheid_gewicht: "kg" },
+    ];
+
+    function DatakwaliteitChecker() {
+      const [step, setStep] = useState(0);
+      const [answers, setAnswers] = useState({
+        volledigheid: null,
+        consistentie_eenheid: null,
+        consistentie_waarde: null,
+        actualiteit: null,
+      });
+
+      const steps = [
+        { key: "intro",        label: "Start" },
+        { key: "data",         label: "Data bekijken" },
+        { key: "volledigheid", label: "Check 1: Volledigheid" },
+        { key: "consistentie", label: "Check 2: Consistentie" },
+        { key: "actualiteit",  label: "Check 3: Actualiteit" },
+        { key: "resultaat",    label: "Resultaat" },
+      ];
+
+      const currentStep = steps[step];
+
+      const getColor = (correct) => {
+        if (correct === null) return "bg-gray-100 text-gray-400";
+        if (correct) return "bg-green-100 text-green-700 border-green-300";
+        return "bg-red-100 text-red-700 border-red-300";
+      };
+
+      const score = useMemo(() => {
+        let s = 0;
+        if (answers.volledigheid === "20") s++;
+        if (answers.consistentie_eenheid === "ja") s++;
+        if (answers.consistentie_waarde === "ja") s++;
+        if (answers.actualiteit === "ja") s++;
+        return s;
+      }, [answers]);
+
+      const handleReset = () => {
+        setStep(0);
+        setAnswers({ volledigheid: null, consistentie_eenheid: null, consistentie_waarde: null, actualiteit: null });
+      };
+
+      // DataTable component
+      const DataTable = () => (
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="border p-2 text-left">#</th>
+                <th className="border p-2 text-left">Datum</th>
+                <th className="border p-2 text-left">Temperatuur</th>
+                <th className="border p-2 text-left">Druk</th>
+                <th className="border p-2 text-left">Eenheid druk</th>
+                <th className="border p-2 text-left">Gewicht</th>
+                <th className="border p-2 text-left">Eenheid gewicht</th>
+              </tr>
+            </thead>
+            <tbody>
+              {DATASET.map(row => (
+                <tr key={row.id} className="hover:bg-blue-50 transition-colors">
+                  <td className="border p-2 font-mono text-gray-400">{row.id}</td>
+                  <td className={`border p-2 ${row.datum === "2025-01-15" && step >= 4 ? "bg-orange-100" : ""}`}>{row.datum}</td>
+                  <td className={`border p-2 ${row.temperatuur === "" ? "bg-yellow-100" : ""}`}>
+                    {row.temperatuur || <span className="text-gray-300 italic">leeg</span>}
+                  </td>
+                  <td className={`border p-2 ${row.druk === "" ? "bg-yellow-100" : row.druk === "310" ? "bg-red-100" : ""}`}>
+                    {row.druk || <span className="text-gray-300 italic">leeg</span>}
+                  </td>
+                  <td className="border p-2">{row.eenheid_druk || <span className="text-gray-300 italic">leeg</span>}</td>
+                  <td className={`border p-2 ${row.gewicht === "" ? "bg-yellow-100" : row.gewicht === "12500" ? "bg-red-100" : ""}`}>
+                    {row.gewicht || <span className="text-gray-300 italic">leeg</span>}
+                  </td>
+                  <td className={`border p-2 ${row.eenheid_gewicht === "g" ? "bg-orange-100" : ""}`}>
+                    {row.eenheid_gewicht || <span className="text-gray-300 italic">leeg</span>}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+
+      return (
+        <div className="min-h-screen bg-gray-50">
+          {/* Header */}
+          <div className="bg-white border-b px-6 py-4">
+            <h1 className="text-2xl font-bold text-gray-900">Datakwaliteit Checker</h1>
+            <p className="text-gray-500 mt-1">Oefen de drie checks op een echte dataset</p>
+          </div>
+
+          {/* Progress */}
+          <div className="max-w-4xl mx-auto px-6 pt-4">
+            <div className="flex gap-1">
+              {steps.map((s, i) => (
+                <div key={s.key}
+                  className={`flex-1 h-2 rounded-full transition-all duration-500 ${
+                    i <= step ? "bg-blue-500" : "bg-gray-200"
+                  }`}
+                />
+              ))}
+            </div>
+            <div className="text-sm text-gray-500 mt-2">
+              Stap {step + 1} van {steps.length}: {currentStep.label}
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="max-w-4xl mx-auto p-6">
+
+            {/* INTRO */}
+            {step === 0 && (
+              <div className="bg-white rounded-xl shadow-sm border p-8 text-center">
+                <div className="text-5xl mb-4">&#128202;</div>
+                <h2 className="text-xl font-bold mb-3">Kun jij de problemen vinden?</h2>
+                <p className="text-gray-600 mb-2">Je krijgt een dataset van een freesmachine.</p>
+                <p className="text-gray-600 mb-6">Er zitten fouten in. Jouw taak: vind ze met de drie checks.</p>
+                <div className="flex gap-4 justify-center mb-6">
+                  <div className="bg-blue-50 rounded-lg p-4 flex-1 max-w-48">
+                    <div className="font-bold text-blue-700">Check 1</div>
+                    <div className="text-sm text-blue-600">Volledigheid</div>
+                  </div>
+                  <div className="bg-green-50 rounded-lg p-4 flex-1 max-w-48">
+                    <div className="font-bold text-green-700">Check 2</div>
+                    <div className="text-sm text-green-600">Consistentie</div>
+                  </div>
+                  <div className="bg-orange-50 rounded-lg p-4 flex-1 max-w-48">
+                    <div className="font-bold text-orange-700">Check 3</div>
+                    <div className="text-sm text-orange-600">Actualiteit</div>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setStep(1)}
+                  className="px-8 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
+                >
+                  Bekijk de data
+                </button>
+              </div>
+            )}
+
+            {/* DATA BEKIJKEN */}
+            {step === 1 && (
+              <div className="bg-white rounded-xl shadow-sm border p-6">
+                <h2 className="text-lg font-bold mb-2">Productiedata freesmachine</h2>
+                <p className="text-gray-500 mb-4">Bekijk de data rustig. Wat valt je op?</p>
+                <DataTable />
+                <div className="mt-6 flex justify-end">
+                  <button
+                    onClick={() => setStep(2)}
+                    className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
+                  >
+                    Start Check 1: Volledigheid
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* CHECK 1: VOLLEDIGHEID */}
+            {step === 2 && (
+              <div className="space-y-6">
+                <div className="bg-white rounded-xl shadow-sm border p-6">
+                  <h2 className="text-lg font-bold mb-2">Check 1: Volledigheid</h2>
+                  <p className="text-gray-500 mb-4">Hoeveel procent van de cellen is leeg? Tel de lege cellen in de tabel.</p>
+                  <DataTable />
+                </div>
+                <div className="bg-white rounded-xl shadow-sm border p-6">
+                  <p className="font-medium mb-3">Hoeveel procent van alle waarden is leeg?</p>
+                  <p className="text-sm text-gray-500 mb-4">Tip: er zijn 10 rijen en 5 datakolommen (temperatuur, druk, eenheid druk, gewicht, eenheid gewicht). Dat zijn 50 cellen totaal.</p>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {["10", "15", "20", "25"].map(opt => (
+                      <button
+                        key={opt}
+                        onClick={() => setAnswers(p => ({ ...p, volledigheid: opt }))}
+                        className={`p-4 rounded-xl border-2 text-center font-bold text-lg transition-all ${
+                          answers.volledigheid === opt
+                            ? opt === "20" ? "border-green-500 bg-green-50 text-green-700 shadow-md scale-105"
+                              : "border-red-500 bg-red-50 text-red-700 shadow-md scale-105"
+                            : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm"
+                        }`}
+                      >
+                        {opt}%
+                      </button>
+                    ))}
+                  </div>
+                  {answers.volledigheid && (
+                    <div className={`mt-4 p-4 rounded-xl ${answers.volledigheid === "20" ? "bg-green-50 text-green-800" : "bg-red-50 text-red-800"}`}>
+                      {answers.volledigheid === "20"
+                        ? "Goed! Er zijn 10 lege cellen op 50. Dat is 20%. De vuistregel zegt: meer dan 10% leeg = wees voorzichtig."
+                        : "Niet helemaal. Tel nog eens. Er zijn 10 lege cellen op 50 totaal. Dat is 20%."}
+                    </div>
+                  )}
+                  {answers.volledigheid && (
+                    <div className="mt-4 flex justify-end">
+                      <button
+                        onClick={() => setStep(3)}
+                        className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
+                      >
+                        Naar Check 2: Consistentie
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* CHECK 2: CONSISTENTIE */}
+            {step === 3 && (
+              <div className="space-y-6">
+                <div className="bg-white rounded-xl shadow-sm border p-6">
+                  <h2 className="text-lg font-bold mb-2">Check 2: Consistentie</h2>
+                  <p className="text-gray-500 mb-4">Bekijk de waarden. Kloppen de eenheden? Zijn de waarden logisch?</p>
+                  <DataTable />
+                </div>
+                <div className="bg-white rounded-xl shadow-sm border p-6 space-y-6">
+                  <div>
+                    <p className="font-medium mb-3">Vraag A: Staan de eenheden overal hetzelfde?</p>
+                    <div className="flex gap-3">
+                      {[{val: "ja", label: "Nee, er zit een fout in"}, {val: "nee", label: "Ja, alles klopt"}].map(opt => (
+                        <button
+                          key={opt.val}
+                          onClick={() => setAnswers(p => ({ ...p, consistentie_eenheid: opt.val }))}
+                          className={`flex-1 p-4 rounded-xl border-2 text-center font-medium transition-all ${
+                            answers.consistentie_eenheid === opt.val
+                              ? opt.val === "ja" ? "border-green-500 bg-green-50 text-green-700 shadow-md" : "border-red-500 bg-red-50 text-red-700 shadow-md"
+                              : "border-gray-200 bg-white hover:border-gray-300"
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
+                    {answers.consistentie_eenheid && (
+                      <div className={`mt-3 p-3 rounded-lg text-sm ${answers.consistentie_eenheid === "ja" ? "bg-green-50 text-green-800" : "bg-red-50 text-red-800"}`}>
+                        {answers.consistentie_eenheid === "ja"
+                          ? "Goed gezien! Rij 4 heeft gewicht in gram (12500 g) terwijl de rest in kilogram staat."
+                          : "Kijk nog eens naar rij 4. Het gewicht staat daar in gram, niet in kilogram."}
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <p className="font-medium mb-3">Vraag B: Zijn alle waarden logisch?</p>
+                    <div className="flex gap-3">
+                      {[{val: "ja", label: "Nee, er is een rare waarde"}, {val: "nee", label: "Ja, alles is logisch"}].map(opt => (
+                        <button
+                          key={opt.val}
+                          onClick={() => setAnswers(p => ({ ...p, consistentie_waarde: opt.val }))}
+                          className={`flex-1 p-4 rounded-xl border-2 text-center font-medium transition-all ${
+                            answers.consistentie_waarde === opt.val
+                              ? opt.val === "ja" ? "border-green-500 bg-green-50 text-green-700 shadow-md" : "border-red-500 bg-red-50 text-red-700 shadow-md"
+                              : "border-gray-200 bg-white hover:border-gray-300"
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
+                    {answers.consistentie_waarde && (
+                      <div className={`mt-3 p-3 rounded-lg text-sm ${answers.consistentie_waarde === "ja" ? "bg-green-50 text-green-800" : "bg-red-50 text-red-800"}`}>
+                        {answers.consistentie_waarde === "ja"
+                          ? "Goed! Rij 9 toont een druk van 310 bar. Dat is veel te hoog. Waarschijnlijk een typfout (3.10)."
+                          : "Kijk nog eens naar rij 9. Een druk van 310 bar is niet logisch voor een freesmachine."}
+                      </div>
+                    )}
+                  </div>
+                  {answers.consistentie_eenheid && answers.consistentie_waarde && (
+                    <div className="flex justify-end">
+                      <button
+                        onClick={() => setStep(4)}
+                        className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
+                      >
+                        Naar Check 3: Actualiteit
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* CHECK 3: ACTUALITEIT */}
+            {step === 4 && (
+              <div className="space-y-6">
+                <div className="bg-white rounded-xl shadow-sm border p-6">
+                  <h2 className="text-lg font-bold mb-2">Check 3: Actualiteit</h2>
+                  <p className="text-gray-500 mb-4">Bekijk de datums. Zijn alle data uit dezelfde periode?</p>
+                  <DataTable />
+                </div>
+                <div className="bg-white rounded-xl shadow-sm border p-6">
+                  <p className="font-medium mb-3">Is er een meting die er qua datum uitspringt?</p>
+                  <div className="flex gap-3">
+                    {[{val: "ja", label: "Ja, er is een oude meting"}, {val: "nee", label: "Nee, alles is recent"}].map(opt => (
+                      <button
+                        key={opt.val}
+                        onClick={() => setAnswers(p => ({ ...p, actualiteit: opt.val }))}
+                        className={`flex-1 p-4 rounded-xl border-2 text-center font-medium transition-all ${
+                          answers.actualiteit === opt.val
+                            ? opt.val === "ja" ? "border-green-500 bg-green-50 text-green-700 shadow-md" : "border-red-500 bg-red-50 text-red-700 shadow-md"
+                            : "border-gray-200 bg-white hover:border-gray-300"
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                  </div>
+                  {answers.actualiteit && (
+                    <div className={`mt-3 p-3 rounded-lg text-sm ${answers.actualiteit === "ja" ? "bg-green-50 text-green-800" : "bg-red-50 text-red-800"}`}>
+                      {answers.actualiteit === "ja"
+                        ? "Goed gevonden! Rij 6 is van 15 januari 2025. Dat is meer dan een jaar oud. De rest is van april 2026."
+                        : "Kijk nog eens naar rij 6. Die datum is van januari 2025, meer dan een jaar geleden."}
+                    </div>
+                  )}
+                  {answers.actualiteit && (
+                    <div className="mt-4 flex justify-end">
+                      <button
+                        onClick={() => setStep(5)}
+                        className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
+                      >
+                        Bekijk je resultaat
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* RESULTAAT */}
+            {step === 5 && (
+              <div className="bg-white rounded-xl shadow-sm border p-8">
+                <h2 className="text-xl font-bold mb-6 text-center">Jouw resultaat</h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                  <div className={`p-5 rounded-xl border-2 text-center ${answers.volledigheid === "20" ? "bg-green-50 border-green-300" : "bg-red-50 border-red-300"}`}>
+                    <div className="text-3xl mb-2">{answers.volledigheid === "20" ? "\u2705" : "\u274C"}</div>
+                    <div className="font-bold">Volledigheid</div>
+                    <div className="text-sm mt-1">{answers.volledigheid === "20" ? "20% leeg gevonden" : "Niet goed geteld"}</div>
+                  </div>
+                  <div className={`p-5 rounded-xl border-2 text-center ${answers.consistentie_eenheid === "ja" && answers.consistentie_waarde === "ja" ? "bg-green-50 border-green-300" : "bg-orange-50 border-orange-300"}`}>
+                    <div className="text-3xl mb-2">{answers.consistentie_eenheid === "ja" && answers.consistentie_waarde === "ja" ? "\u2705" : "\u26A0\uFE0F"}</div>
+                    <div className="font-bold">Consistentie</div>
+                    <div className="text-sm mt-1">
+                      {answers.consistentie_eenheid === "ja" && answers.consistentie_waarde === "ja"
+                        ? "Beide fouten gevonden"
+                        : "Niet alles gevonden"}
+                    </div>
+                  </div>
+                  <div className={`p-5 rounded-xl border-2 text-center ${answers.actualiteit === "ja" ? "bg-green-50 border-green-300" : "bg-red-50 border-red-300"}`}>
+                    <div className="text-3xl mb-2">{answers.actualiteit === "ja" ? "\u2705" : "\u274C"}</div>
+                    <div className="font-bold">Actualiteit</div>
+                    <div className="text-sm mt-1">{answers.actualiteit === "ja" ? "Oude data gevonden" : "Niet gezien"}</div>
+                  </div>
+                </div>
+
+                {/* Stoplicht */}
+                <div className={`p-6 rounded-xl text-center ${
+                  score === 4 ? "bg-green-100 border-2 border-green-400" :
+                  score >= 2 ? "bg-orange-100 border-2 border-orange-400" :
+                  "bg-red-100 border-2 border-red-400"
+                }`}>
+                  <div className="text-4xl mb-2">
+                    {score === 4 ? "\uD83D\uDFE2" : score >= 2 ? "\uD83D\uDFE0" : "\uD83D\uDD34"}
+                  </div>
+                  <div className="text-lg font-bold">
+                    {score === 4
+                      ? "Je hebt alle fouten gevonden!"
+                      : score >= 2
+                        ? "Goed bezig, maar je mist nog een paar dingen."
+                        : "Oefen nog even. Bekijk de data opnieuw."}
+                  </div>
+                  <div className="text-sm mt-2 text-gray-600">
+                    Score: {score} van 4 checks goed
+                  </div>
+                </div>
+
+                {/* Conclusie */}
+                <div className="mt-6 p-5 bg-blue-50 rounded-xl border border-blue-200">
+                  <p className="font-bold text-blue-800 mb-2">Wat betekent dit voor deze dataset?</p>
+                  <ul className="text-sm text-blue-700 space-y-1">
+                    <li>&#8226; 20% van de data ontbreekt. Dat is boven de grens van 10%.</li>
+                    <li>&#8226; Er staan verkeerde eenheden in (gram vs kilogram).</li>
+                    <li>&#8226; Een meting van 310 bar is niet logisch.</li>
+                    <li>&#8226; Een meting is meer dan een jaar oud.</li>
+                    <li className="font-bold pt-2">&#8594; Oordeel: deze data zijn NIET betrouwbaar. Eerst opschonen!</li>
+                  </ul>
+                </div>
+
+                {/* Opnieuw knop */}
+                <div className="mt-6 text-center">
+                  <button
+                    onClick={handleReset}
+                    className="px-6 py-3 bg-white border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                  >
+                    Opnieuw proberen
+                  </button>
+                </div>
+
+                {/* Bron */}
+                <div className="mt-6 text-center text-xs text-gray-400">
+                  AIMM Data Literacy -- Datakwaliteit beoordelen | Module 2: Train | v1.0
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<DatakwaliteitChecker />);
+  </script>
+</body>
+</html>
