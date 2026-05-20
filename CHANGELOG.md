@@ -7,6 +7,21 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde15-lo-industry40-301
+
+**Kontext:** Ronde 15: lo-industry40-301
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-301/trainee.md`
+- `leerobjecten/lo-industry40-301/trainer.md`
+- `leerobjecten/lo-industry40-301/draaiboek.md`
+- `leerobjecten/lo-industry40-301/werkbladen/wb-01-componenten-verkennen.md`
+- `leerobjecten/lo-industry40-301/werkbladen/wb-02-duo-vraag-bij-component.md`
+- `leerobjecten/lo-industry40-301/werkbladen/wb-03-handout-sensor-keuze.md`
+- `leerobjecten/lo-industry40-301/werkbladen/wb-04-jouw-sensor-keuze.md`
+- `leerobjecten/lo-industry40-301/README.md`
+
 ## 2026-05-20 — publish-ronde15-lo-spc-202
 
 **Kontext:** Ronde 15: lo-spc-202
