@@ -7,6 +7,27 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde12-lo-ai-fund-133
+
+**Kontext:** Ronde 12: lo-ai-fund-133
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-133/trainee.md`
+- `kennisbank/ai_fundamentals/supervised_vs_unsupervised/ko-ai-fund-133.md`
+- `leerobjecten/lo-ai-fund-133/trainer.md`
+- `leerobjecten/lo-ai-fund-133/draaiboek.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-01-binair-voorbeeld.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-01-ervaren-eerste-classificatie.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-02-multi-class.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-02-reflecteren-vier-foto-s.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-03-handout-classificatie.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-03-theoretiseren-twee-smaken.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-04-experimenteren-twijfelgeval.md`
+- `leerobjecten/lo-ai-fund-133/werkbladen/wb-04-twijfelgeval.md`
+- `leerobjecten/lo-ai-fund-133/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-ai-fund-133/README.md`
+
 ## 2026-05-20 — publish-ronde12-lo-data-lit-301
 
 **Kontext:** Ronde 12: lo-data-lit-301
