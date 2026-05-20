@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde16-lo-ai-fund-198
+
+**Kontext:** Ronde 16: lo-ai-fund-198
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-198/trainee.md`
+- `kennisbank/ai_fundamentals/ai_ethics_en_bias/ko-ai-fund-198.md`
+- `leerobjecten/lo-ai-fund-198/trainer.md`
+- `leerobjecten/lo-ai-fund-198/draaiboek.md`
+- `leerobjecten/lo-ai-fund-198/werkbladen/wb-01-casus-spuitgietmachine.md`
+- `leerobjecten/lo-ai-fund-198/werkbladen/wb-02-buurman-drie-checks.md`
+- `leerobjecten/lo-ai-fund-198/werkbladen/wb-03-handout-checks-vragen.md`
+- `leerobjecten/lo-ai-fund-198/werkbladen/wb-04-eigen-advies-checks.md`
+- `leerobjecten/lo-ai-fund-198/README.md`
+
 ## 2026-05-20 — publish-ronde16-lo-industry40-302
 
 **Kontext:** Ronde 16: lo-industry40-302
