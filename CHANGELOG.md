@@ -7,6 +7,22 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde15-lo-ai-fund-186
+
+**Kontext:** Ronde 15: lo-ai-fund-186
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-186/trainee.md`
+- `kennisbank/ai_fundamentals/ai_ethics_en_bias/ko-ai-fund-186.md`
+- `leerobjecten/lo-ai-fund-186/trainer.md`
+- `leerobjecten/lo-ai-fund-186/draaiboek.md`
+- `leerobjecten/lo-ai-fund-186/werkbladen/wb-01-casus-lasersnijder.md`
+- `leerobjecten/lo-ai-fund-186/werkbladen/wb-02-buurman-sterk-zwak.md`
+- `leerobjecten/lo-ai-fund-186/werkbladen/wb-03-handout-sterk-zwak.md`
+- `leerobjecten/lo-ai-fund-186/werkbladen/wb-04-eigen-risico.md`
+- `leerobjecten/lo-ai-fund-186/README.md`
+
 ## 2026-05-20 — publish-ronde15-lo-smart-mfg-202
 
 **Kontext:** Ronde 15: lo-smart-mfg-202
