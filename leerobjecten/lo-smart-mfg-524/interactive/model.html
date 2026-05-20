@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Van pilot naar productie — AI-inspectie implementeren</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    function PilotNaarProductie() {
+      const FASES = [
+        {
+          id: "pilot",
+          nummer: 1,
+          titel: "Pilot",
+          subtitel: "Klein beginnen",
+          kleur: { bg: "bg-sky-50", border: "border-sky-400", text: "text-sky-800", accent: "bg-sky-500", ring: "ring-sky-400" },
+          duur: "3 maanden",
+          waar: "1 productielijn",
+          wie: "AI naast de inspecteur",
+          doel: "Testen en leren",
+          uitleg: "Je kiest 1 lijn en 1 product. De AI draait naast de inspecteur. Je vergelijkt de resultaten. Zo leer je wat de AI goed doet.",
+          checklist: [
+            "Kies 1 lijn en 1 product",
+            "Verzamel foto's van goed en fout",
+            "Laat AI en inspecteur allebei keuren",
+            "Vergelijk de scores elke week",
+            "Schrijf op wat je leert"
+          ],
+          voorbeeld: "Bij aluminium profielen vond de AI 92% van de fouten. De inspecteur vond 85%. Samen vonden ze meer dan 95%."
+        },
+        {
+          id: "uitrol",
+          nummer: 2,
+          titel: "Uitrol",
+          subtitel: "Groter maken",
+          kleur: { bg: "bg-blue-50", border: "border-blue-400", text: "text-blue-800", accent: "bg-blue-500", ring: "ring-blue-400" },
+          duur: "3-6 maanden",
+          waar: "Meer lijnen",
+          wie: "Operators werken zelf met AI",
+          doel: "Aanpassen en vertrouwen opbouwen",
+          uitleg: "Je voegt meer lijnen toe. Operators leren met het systeem werken. Je past het AI-model aan per product. De inspecteur blijft checken.",
+          checklist: [
+            "Voeg 1 extra lijn toe per keer",
+            "Train operators op het systeem",
+            "Pas het model aan per producttype",
+            "Vraag feedback aan operators",
+            "Meet de resultaten per lijn"
+          ],
+          voorbeeld: "Na de pilot op lijn 1 rolde het bedrijf uit naar lijn 2 en 3. Per lijn pasten ze de instellingen aan."
+        },
+        {
+          id: "standaard",
+          nummer: 3,
+          titel: "Standaard",
+          subtitel: "De nieuwe norm",
+          kleur: { bg: "bg-indigo-50", border: "border-indigo-400", text: "text-indigo-800", accent: "bg-indigo-600", ring: "ring-indigo-400" },
+          duur: "Doorlopend",
+          waar: "Alle lijnen",
+          wie: "AI is de norm",
+          doel: "Borgen en steeds beter maken",
+          uitleg: "AI-inspectie draait op alle lijnen. Het is onderdeel van het proces. Operators bewaken samen met AI de kwaliteit. Je blijft het model trainen.",
+          checklist: [
+            "AI draait op alle productlijnen",
+            "Operators bewaken de kwaliteit samen met AI",
+            "Je traint het model met nieuwe data",
+            "Je meet de kwaliteit elke maand",
+            "Je deelt de lessen met het hele team"
+          ],
+          voorbeeld: "Het bedrijf haalde minder dan 1% afkeur bij klanten. De kosten voor herwerk daalden met 30%."
+        }
+      ];
+
+      const [activeFase, setActiveFase] = useState(null);
+      const [mijnFase, setMijnFase] = useState(null);
+      const [afgevinkt, setAfgevinkt] = useState({});
+
+      const active = FASES.find(f => f.id === activeFase);
+
+      const toggleCheck = (faseId, index) => {
+        const key = faseId + "-" + index;
+        setAfgevinkt(prev => ({ ...prev, [key]: !prev[key] }));
+      };
+
+      const getProgress = (faseId, total) => {
+        let done = 0;
+        for (let i = 0; i < total; i++) {
+          if (afgevinkt[faseId + "-" + i]) done++;
+        }
+        return done;
+      };
+
+      const handleReset = () => {
+        setActiveFase(null);
+        setMijnFase(null);
+        setAfgevinkt({});
+      };
+
+      return (
+        <div className="min-h-screen bg-gray-50">
+          {/* Header */}
+          <div className="bg-white border-b px-6 py-5">
+            <h1 className="text-2xl font-bold text-gray-900">
+              Van pilot naar productie
+            </h1>
+            <p className="text-gray-500 mt-1">
+              Klik op een fase om te zien wat erbij hoort. Vink af wat jij al doet.
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto p-6">
+            {/* Waar sta ik? */}
+            <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+              <p className="font-medium text-amber-800 mb-2">Waar zit jouw bedrijf nu?</p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { id: "nog-niet", label: "Nog niet begonnen" },
+                  { id: "pilot", label: "In de pilot" },
+                  { id: "uitrol", label: "In de uitrol" },
+                  { id: "standaard", label: "Standaard" }
+                ].map(opt => (
+                  <button
+                    key={opt.id}
+                    onClick={() => setMijnFase(opt.id)}
+                    className={
+                      "px-4 py-2 rounded-lg text-sm font-medium transition-all " +
+                      (mijnFase === opt.id
+                        ? "bg-amber-500 text-white shadow-md"
+                        : "bg-white border border-amber-300 text-amber-700 hover:bg-amber-100")
+                    }
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+              {mijnFase && (
+                <p className="mt-2 text-sm text-amber-700">
+                  {mijnFase === "nog-niet" && "Goed dat je hier bent. Bekijk fase 1 om te zien hoe je start."}
+                  {mijnFase === "pilot" && "Mooi! Klik op fase 1 en vink af wat al werkt."}
+                  {mijnFase === "uitrol" && "Goed bezig! Bekijk fase 2 voor de volgende stappen."}
+                  {mijnFase === "standaard" && "Top! Bekijk fase 3 om te zien of alles geborgd is."}
+                </p>
+              )}
+            </div>
+
+            {/* Trapdiagram als knoppen */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              {FASES.map((fase) => {
+                const progress = getProgress(fase.id, fase.checklist.length);
+                const isActive = activeFase === fase.id;
+                return (
+                  <button
+                    key={fase.id}
+                    onClick={() => setActiveFase(isActive ? null : fase.id)}
+                    className={
+                      "relative p-5 rounded-xl border-2 text-left transition-all " +
+                      fase.kleur.bg + " " + fase.kleur.border + " " + fase.kleur.text + " " +
+                      (isActive
+                        ? "shadow-lg scale-[1.03] ring-2 " + fase.kleur.ring
+                        : "hover:shadow-md hover:scale-[1.01]")
+                    }
+                  >
+                    {/* Nummer */}
+                    <div className={"inline-flex items-center justify-center w-8 h-8 rounded-full text-white font-bold text-sm mb-2 " + fase.kleur.accent}>
+                      {fase.nummer}
+                    </div>
+                    <div className="font-bold text-lg">{fase.titel}</div>
+                    <div className="text-sm opacity-75 mb-2">{fase.subtitel}</div>
+                    <div className="text-xs opacity-60">{fase.duur} | {fase.waar}</div>
+
+                    {/* Progress bar */}
+                    {progress > 0 && (
+                      <div className="mt-3">
+                        <div className="h-1.5 bg-white/50 rounded-full overflow-hidden">
+                          <div
+                            className={"h-full rounded-full transition-all duration-500 " + fase.kleur.accent}
+                            style={{ width: (progress / fase.checklist.length * 100) + "%" }}
+                          />
+                        </div>
+                        <div className="text-xs mt-1 opacity-60">{progress}/{fase.checklist.length} stappen</div>
+                      </div>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Detail paneel */}
+            {active && (
+              <div className={"rounded-xl border-2 p-6 transition-all " + active.kleur.bg + " " + active.kleur.border}>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={"inline-flex items-center justify-center w-10 h-10 rounded-full text-white font-bold " + active.kleur.accent}>
+                    {active.nummer}
+                  </div>
+                  <div>
+                    <h2 className={"text-xl font-bold " + active.kleur.text}>{active.titel}: {active.subtitel}</h2>
+                    <p className="text-sm opacity-60">{active.duur} | {active.waar} | {active.wie}</p>
+                  </div>
+                </div>
+
+                <p className={"mb-4 " + active.kleur.text}>{active.uitleg}</p>
+
+                {/* Checklist */}
+                <div className="mb-4">
+                  <h3 className={"font-bold mb-2 " + active.kleur.text}>Checklist: dit hoort erbij</h3>
+                  <div className="space-y-2">
+                    {active.checklist.map((item, i) => {
+                      const key = active.id + "-" + i;
+                      const checked = afgevinkt[key];
+                      return (
+                        <button
+                          key={i}
+                          onClick={() => toggleCheck(active.id, i)}
+                          className={
+                            "w-full flex items-center gap-3 p-3 rounded-lg text-left transition-all " +
+                            (checked
+                              ? "bg-white/80 line-through opacity-60"
+                              : "bg-white/50 hover:bg-white/70")
+                          }
+                        >
+                          <div className={
+                            "w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 " +
+                            (checked ? active.kleur.accent + " border-transparent" : active.kleur.border)
+                          }>
+                            {checked && (
+                              <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                              </svg>
+                            )}
+                          </div>
+                          <span className={"text-sm " + active.kleur.text}>{item}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Voorbeeld */}
+                <div className="p-4 bg-white/60 rounded-lg border border-white/80">
+                  <p className={"text-sm font-medium mb-1 " + active.kleur.text}>Voorbeeld uit de praktijk:</p>
+                  <p className={"text-sm " + active.kleur.text}>{active.voorbeeld}</p>
+                </div>
+              </div>
+            )}
+
+            {!active && (
+              <div className="p-8 rounded-xl border-2 border-dashed border-gray-300 text-center text-gray-400">
+                Klik op een fase hierboven om de details te zien.
+              </div>
+            )}
+
+            {/* Resultaat blok */}
+            <div className="mt-6 p-5 bg-emerald-50 border border-emerald-200 rounded-xl">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-bold text-emerald-800">AI + inspecteur samen is het sterkst</p>
+                  <p className="text-sm text-emerald-700">AI vindt 92%, inspecteur 85%, samen meer dan 95%.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Reset knop */}
+            <div className="mt-6 text-center">
+              <button
+                onClick={handleReset}
+                className="px-4 py-2 text-gray-400 hover:text-gray-600 text-sm transition-colors"
+              >
+                Opnieuw beginnen
+              </button>
+            </div>
+
+            {/* Bron */}
+            <div className="mt-4 text-center text-xs text-gray-400">
+              Bron: ko-smart-mfg-524 — Van pilot naar productie | AIMM Module 3 Op Maat
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<PilotNaarProductie />);
+  </script>
+</body>
+</html>

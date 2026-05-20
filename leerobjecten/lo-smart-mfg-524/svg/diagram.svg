@@ -1,0 +1,140 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 520"
+     font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">Drie fases van AI-inspectie implementeren</title>
+  <desc id="desc">Een trapdiagram met drie oplopende stappen: Fase 1 Pilot (1 lijn, 3 maanden, AI naast inspecteur), Fase 2 Uitrol (meer lijnen, operators werken met AI), en Fase 3 Standaard (alle lijnen, AI is de norm). Elke stap bouwt voort op de vorige.</desc>
+
+  <defs>
+    <!-- Gradienten per fase -->
+    <linearGradient id="grad-1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5DADE2"/>
+      <stop offset="100%" stop-color="#3498DB"/>
+    </linearGradient>
+    <linearGradient id="grad-2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2980B9"/>
+    </linearGradient>
+    <linearGradient id="grad-3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2980B9"/>
+      <stop offset="100%" stop-color="#1A5276"/>
+    </linearGradient>
+
+    <!-- Schaduw -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+
+    <!-- Pijlpunt -->
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect role="presentation" width="800" height="520" fill="#FAFAF8" rx="4"/>
+
+  <!-- Titel -->
+  <text x="400" y="40" text-anchor="middle" font-size="22"
+        font-weight="700" fill="#2C3E50" letter-spacing="1">Van pilot naar productie</text>
+  <text x="400" y="62" text-anchor="middle" font-size="13"
+        fill="#7f8c8d" letter-spacing="0.5">AI-inspectie in drie stappen invoeren</text>
+
+  <!-- Verticale as-pijl -->
+  <line x1="65" y1="440" x2="65" y2="90" stroke="#BDC3C7"
+        stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="45" y="270" text-anchor="middle" font-size="12" font-weight="600"
+        fill="#7f8c8d" transform="rotate(-90,45,270)">Groei</text>
+
+  <!-- Horizontale as-pijl -->
+  <line x1="80" y1="455" x2="740" y2="455" stroke="#BDC3C7"
+        stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="410" y="478" text-anchor="middle" font-size="12" font-weight="600"
+        fill="#7f8c8d">Tijd</text>
+
+  <!-- === FASE 1: PILOT === -->
+  <g filter="url(#shadow)">
+    <rect x="100" y="320" width="190" height="120" rx="8" fill="url(#grad-1)"/>
+
+    <!-- Fasenummer -->
+    <circle cx="130" cy="348" r="16" fill="rgba(255,255,255,0.25)"/>
+    <text x="130" y="353" text-anchor="middle" font-size="16"
+          font-weight="700" fill="white">1</text>
+
+    <!-- Titel -->
+    <text x="200" y="352" text-anchor="middle" font-size="16"
+          font-weight="700" fill="white">Pilot</text>
+
+    <!-- Details -->
+    <text x="200" y="378" text-anchor="middle" font-size="11"
+          fill="rgba(255,255,255,0.9)">1 lijn, 3 maanden</text>
+    <text x="200" y="396" text-anchor="middle" font-size="11"
+          fill="rgba(255,255,255,0.9)">AI naast de inspecteur</text>
+    <text x="200" y="414" text-anchor="middle" font-size="11"
+          fill="rgba(255,255,255,0.75)">Testen en leren</text>
+  </g>
+
+  <!-- === FASE 2: UITROL === -->
+  <g filter="url(#shadow)">
+    <rect x="310" y="210" width="190" height="120" rx="8" fill="url(#grad-2)"/>
+
+    <!-- Fasenummer -->
+    <circle cx="340" cy="238" r="16" fill="rgba(255,255,255,0.25)"/>
+    <text x="340" y="243" text-anchor="middle" font-size="16"
+          font-weight="700" fill="white">2</text>
+
+    <!-- Titel -->
+    <text x="410" y="242" text-anchor="middle" font-size="16"
+          font-weight="700" fill="white">Uitrol</text>
+
+    <!-- Details -->
+    <text x="410" y="268" text-anchor="middle" font-size="11"
+          fill="rgba(255,255,255,0.9)">Meer lijnen</text>
+    <text x="410" y="286" text-anchor="middle" font-size="11"
+          fill="rgba(255,255,255,0.9)">Operators werken met AI</text>
+    <text x="410" y="304" text-anchor="middle" font-size="11"
+          fill="rgba(255,255,255,0.75)">Aanpassen en vertrouwen</text>
+  </g>
+
+  <!-- Verbinding 1 naar 2 -->
+  <path d="M290,340 C310,340 310,270 310,270" fill="none"
+        stroke="#BDC3C7" stroke-width="2" stroke-dasharray="6,4"/>
+
+  <!-- === FASE 3: STANDAARD === -->
+  <g filter="url(#shadow)">
+    <rect x="520" y="105" width="190" height="120" rx="8" fill="url(#grad-3)"/>
+
+    <!-- Fasenummer -->
+    <circle cx="550" cy="133" r="16" fill="rgba(255,255,255,0.25)"/>
+    <text x="550" y="138" text-anchor="middle" font-size="16"
+          font-weight="700" fill="white">3</text>
+
+    <!-- Titel -->
+    <text x="620" y="137" text-anchor="middle" font-size="16"
+          font-weight="700" fill="white">Standaard</text>
+
+    <!-- Details -->
+    <text x="620" y="163" text-anchor="middle" font-size="11"
+          fill="rgba(255,255,255,0.9)">Alle lijnen</text>
+    <text x="620" y="181" text-anchor="middle" font-size="11"
+          fill="rgba(255,255,255,0.9)">AI is de norm</text>
+    <text x="620" y="199" text-anchor="middle" font-size="11"
+          fill="rgba(255,255,255,0.75)">Borgen en verbeteren</text>
+  </g>
+
+  <!-- Verbinding 2 naar 3 -->
+  <path d="M500,260 C520,260 520,165 520,165" fill="none"
+        stroke="#BDC3C7" stroke-width="2" stroke-dasharray="6,4"/>
+
+  <!-- Resultaat-blokje rechtsonder -->
+  <g filter="url(#shadow)">
+    <rect x="530" y="370" width="200" height="70" rx="8" fill="#27AE60" opacity="0.9"/>
+    <text x="630" y="398" text-anchor="middle" font-size="12"
+          font-weight="700" fill="white">AI + inspecteur samen</text>
+    <text x="630" y="418" text-anchor="middle" font-size="14"
+          font-weight="700" fill="white">meer dan 95% gevonden</text>
+  </g>
+
+  <!-- Bronvermelding -->
+  <text x="400" y="505" text-anchor="middle"
+        font-size="10" fill="#999">AIMM — ko-smart-mfg-524 | AI-inspectie implementatiemodel</text>
+</svg>
