@@ -7,6 +7,28 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde21-lo-ai-fund-fl-001
+
+**Kontext:** Ronde 21: lo-ai-fund-fl-001
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-fl-001/trainee.md`
+- `kennisbank/ai_fundamentals/machine_learning_basics/ko-ai-fundamentals-fl-001.md`
+- `leerobjecten/lo-ai-fund-fl-001/trainer.md`
+- `leerobjecten/lo-ai-fund-fl-001/draaiboek.md`
+- `leerobjecten/lo-ai-fund-fl-001/werkbladen/wb-01-theoretiseren.md`
+- `leerobjecten/lo-ai-fund-fl-001/werkbladen/wb-01-vergelijkingsschema.md`
+- `leerobjecten/lo-ai-fund-fl-001/werkbladen/wb-02-ervaren.md`
+- `leerobjecten/lo-ai-fund-fl-001/werkbladen/wb-02-scenarios.md`
+- `leerobjecten/lo-ai-fund-fl-001/werkbladen/wb-03-reflecteren.md`
+- `leerobjecten/lo-ai-fund-fl-001/werkbladen/wb-03-reflectie.md`
+- `leerobjecten/lo-ai-fund-fl-001/werkbladen/wb-04-actieplan.md`
+- `leerobjecten/lo-ai-fund-fl-001/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-ai-fund-fl-001/svg/diagram.svg`
+- `leerobjecten/lo-ai-fund-fl-001/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-ai-fund-fl-001/README.md`
+
 ## 2026-05-20 — publish-ronde21-lo-ai-fund-ensemble-001
 
 **Kontext:** Ronde 21: lo-ai-fund-ensemble-001
