@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Datakwaliteit-Audit Tool</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    const SCORE_OPTIONS = [
+      { value: "++", label: "++ Uitstekend", color: "#27AE60", bg: "rgba(39,174,96,0.12)", textClass: "text-green-700" },
+      { value: "+",  label: "+ Voldoende",   color: "#2ECC71", bg: "rgba(46,204,113,0.12)", textClass: "text-green-600" },
+      { value: "-",  label: "- Onvoldoende", color: "#E67E22", bg: "rgba(230,126,34,0.12)", textClass: "text-orange-600" },
+      { value: "--", label: "-- Kritiek",    color: "#C0392B", bg: "rgba(192,57,43,0.12)",  textClass: "text-red-700" },
+    ];
+
+    const CRITERIA = [
+      { id: "volledigheid", label: "Volledigheid", question: "Is alle data er?" },
+      { id: "consistentie", label: "Consistentie", question: "Klopt het met andere bronnen?" },
+      { id: "actualiteit",  label: "Actualiteit",  question: "Is het recent genoeg?" },
+    ];
+
+    const DEFAULT_SOURCES = [
+      { id: 1, name: "MES", desc: "Manufacturing Execution System" },
+      { id: 2, name: "Logboek", desc: "Papier of digitaal" },
+      { id: 3, name: "Excel", desc: "Spreadsheets" },
+      { id: 4, name: "Kwaliteitssysteem", desc: "QMS / SAP QM" },
+    ];
+
+    function DataAuditTool() {
+      const [sources, setSources] = useState(DEFAULT_SOURCES);
+      const [scores, setScores] = useState({});
+      const [reasons, setReasons] = useState({});
+      const [newSource, setNewSource] = useState("");
+      const [showResults, setShowResults] = useState(false);
+      const [step, setStep] = useState("intro");
+
+      const scoreKey = (sourceId, criterionId) => `${sourceId}-${criterionId}`;
+
+      const handleScore = (sourceId, criterionId, value) => {
+        setScores(prev => ({ ...prev, [scoreKey(sourceId, criterionId)]: value }));
+      };
+
+      const handleReason = (sourceId, criterionId, text) => {
+        setReasons(prev => ({ ...prev, [scoreKey(sourceId, criterionId)]: text }));
+      };
+
+      const addSource = () => {
+        if (newSource.trim()) {
+          const id = Math.max(...sources.map(s => s.id), 0) + 1;
+          setSources(prev => [...prev, { id, name: newSource.trim(), desc: "Eigen bron" }]);
+          setNewSource("");
+        }
+      };
+
+      const removeSource = (id) => {
+        setSources(prev => prev.filter(s => s.id !== id));
+      };
+
+      const totalCells = sources.length * CRITERIA.length;
+      const filledCells = sources.reduce((count, src) => {
+        return count + CRITERIA.filter(c => scores[scoreKey(src.id, c.id)]).length;
+      }, 0);
+      const progress = totalCells > 0 ? Math.round((filledCells / totalCells) * 100) : 0;
+      const isComplete = filledCells === totalCells && totalCells > 0;
+
+      const risks = useMemo(() => {
+        const riskList = [];
+        sources.forEach(src => {
+          CRITERIA.forEach(crit => {
+            const key = scoreKey(src.id, crit.id);
+            const score = scores[key];
+            if (score === "-" || score === "--") {
+              riskList.push({
+                source: src.name,
+                criterion: crit.label,
+                score,
+                severity: score === "--" ? 2 : 1,
+                reason: reasons[key] || "",
+              });
+            }
+          });
+        });
+        riskList.sort((a, b) => b.severity - a.severity);
+        return riskList;
+      }, [scores, reasons, sources]);
+
+      const handleReset = () => {
+        setSources(DEFAULT_SOURCES);
+        setScores({});
+        setReasons({});
+        setNewSource("");
+        setShowResults(false);
+        setStep("intro");
+      };
+
+      const getScoreOption = (value) => SCORE_OPTIONS.find(o => o.value === value);
+
+      // ─── INTRO SCHERM ───
+      if (step === "intro") {
+        return (
+          <div className="min-h-screen bg-gray-50">
+            <div className="bg-white border-b px-6 py-4">
+              <h1 className="text-2xl font-bold text-gray-900">Datakwaliteit-Audit</h1>
+              <p className="text-gray-500 mt-1">Check de data op jouw afdeling</p>
+            </div>
+            <div className="max-w-2xl mx-auto p-6">
+              <div className="bg-white rounded-xl shadow-sm border p-6 mb-6">
+                <h2 className="text-lg font-bold text-gray-900 mb-3">Hoe werkt het?</h2>
+                <div className="space-y-3 text-sm text-gray-700">
+                  <div className="flex items-start gap-3">
+                    <span className="bg-blue-100 text-blue-700 rounded-full w-7 h-7 flex items-center justify-center font-bold flex-shrink-0">1</span>
+                    <span>Kies je databronnen. We beginnen met vier voorbeelden. Je kunt er zelf bij zetten of weghalen.</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="bg-blue-100 text-blue-700 rounded-full w-7 h-7 flex items-center justify-center font-bold flex-shrink-0">2</span>
+                    <span>Score elke bron op drie punten: volledigheid, consistentie, actualiteit.</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="bg-blue-100 text-blue-700 rounded-full w-7 h-7 flex items-center justify-center font-bold flex-shrink-0">3</span>
+                    <span>Bekijk je risico's en maak een plan.</span>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-blue-50 rounded-xl border border-blue-200 p-4 mb-6">
+                <p className="text-sm text-blue-800">
+                  <strong>Tip:</strong> Wees eerlijk. Iedereen heeft databronnen die beter kunnen. Dat is juist het punt van deze audit.
+                </p>
+              </div>
+              <button
+                onClick={() => setStep("audit")}
+                className="w-full py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
+              >
+                Start de audit
+              </button>
+            </div>
+          </div>
+        );
+      }
+
+      // ─── RESULTATEN SCHERM ───
+      if (showResults) {
+        return (
+          <div className="min-h-screen bg-gray-50">
+            <div className="bg-white border-b px-6 py-4">
+              <h1 className="text-2xl font-bold text-gray-900">Resultaten</h1>
+              <p className="text-gray-500 mt-1">Jouw datakwaliteit-audit</p>
+            </div>
+            <div className="max-w-3xl mx-auto p-6">
+
+              {/* Samenvatting */}
+              <div className="grid grid-cols-3 gap-4 mb-6">
+                <div className="bg-white rounded-xl border p-4 text-center">
+                  <div className="text-3xl font-bold text-gray-900">{sources.length}</div>
+                  <div className="text-sm text-gray-500">Databronnen</div>
+                </div>
+                <div className="bg-white rounded-xl border p-4 text-center">
+                  <div className="text-3xl font-bold text-green-600">
+                    {Object.values(scores).filter(s => s === "++" || s === "+").length}
+                  </div>
+                  <div className="text-sm text-gray-500">Goed / voldoende</div>
+                </div>
+                <div className="bg-white rounded-xl border p-4 text-center">
+                  <div className="text-3xl font-bold text-red-600">{risks.length}</div>
+                  <div className="text-sm text-gray-500">Risico's</div>
+                </div>
+              </div>
+
+              {/* Matrix overzicht */}
+              <div className="bg-white rounded-xl border shadow-sm overflow-hidden mb-6">
+                <div className="bg-gray-800 text-white px-4 py-3 grid grid-cols-4 gap-2 text-sm font-medium">
+                  <div>Databron</div>
+                  {CRITERIA.map(c => <div key={c.id} className="text-center">{c.label}</div>)}
+                </div>
+                {sources.map((src, i) => (
+                  <div key={src.id} className={`px-4 py-3 grid grid-cols-4 gap-2 items-center text-sm ${i % 2 === 0 ? "bg-gray-50" : "bg-white"}`}>
+                    <div className="font-medium text-gray-900">{src.name}</div>
+                    {CRITERIA.map(crit => {
+                      const val = scores[scoreKey(src.id, crit.id)];
+                      const opt = getScoreOption(val);
+                      return (
+                        <div key={crit.id} className="text-center">
+                          {opt ? (
+                            <span
+                              className="inline-block px-3 py-1 rounded-full font-bold text-sm"
+                              style={{ backgroundColor: opt.bg, color: opt.color }}
+                            >
+                              {opt.value}
+                            </span>
+                          ) : (
+                            <span className="text-gray-300">--</span>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
+
+              {/* Risico's */}
+              {risks.length > 0 && (
+                <div className="bg-white rounded-xl border shadow-sm p-5 mb-6">
+                  <h3 className="font-bold text-gray-900 mb-3">
+                    Jouw risico's (van groot naar klein)
+                  </h3>
+                  <div className="space-y-3">
+                    {risks.map((risk, i) => (
+                      <div
+                        key={i}
+                        className={`rounded-lg border-l-4 p-4 ${
+                          risk.severity === 2 ? "border-red-500 bg-red-50" : "border-orange-400 bg-orange-50"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="font-bold text-sm">{risk.source}</span>
+                          <span className="text-gray-400">|</span>
+                          <span className="text-sm text-gray-600">{risk.criterion}</span>
+                          <span
+                            className="ml-auto font-bold text-sm"
+                            style={{ color: getScoreOption(risk.score)?.color }}
+                          >
+                            {risk.score}
+                          </span>
+                        </div>
+                        {risk.reason && (
+                          <p className="text-sm text-gray-600 mt-1">{risk.reason}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {risks.length === 0 && (
+                <div className="bg-green-50 rounded-xl border border-green-200 p-5 mb-6 text-center">
+                  <div className="text-2xl mb-2">Geen risico's gevonden.</div>
+                  <p className="text-sm text-green-700">Alle databronnen scoren voldoende of beter. Goed werk!</p>
+                </div>
+              )}
+
+              {/* Acties */}
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowResults(false)}
+                  className="flex-1 py-3 bg-white border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                >
+                  Terug naar audit
+                </button>
+                <button
+                  onClick={handleReset}
+                  className="flex-1 py-3 bg-gray-100 rounded-lg font-medium text-gray-500 hover:bg-gray-200 transition-colors"
+                >
+                  Opnieuw beginnen
+                </button>
+              </div>
+
+              <div className="mt-6 text-center text-xs text-gray-400">
+                Datakwaliteit-audit framework | AIMM Data Literacy Module 3
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      // ─── AUDIT SCHERM ───
+      return (
+        <div className="min-h-screen bg-gray-50">
+          <div className="bg-white border-b px-6 py-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <h1 className="text-2xl font-bold text-gray-900">Datakwaliteit-Audit</h1>
+                <p className="text-gray-500 mt-1">Score je databronnen op drie criteria</p>
+              </div>
+              <button
+                onClick={handleReset}
+                className="text-sm text-gray-400 hover:text-gray-600 flex items-center gap-1"
+              >
+                Opnieuw
+              </button>
+            </div>
+            {/* Voortgang */}
+            <div className="mt-3 flex items-center gap-3">
+              <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-blue-500 rounded-full transition-all duration-500"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+              <span className="text-sm text-gray-500 font-mono">{filledCells}/{totalCells}</span>
+            </div>
+          </div>
+
+          <div className="max-w-4xl mx-auto p-6">
+            {/* Bronnen beheren */}
+            <div className="mb-6">
+              <div className="flex items-center gap-2 mb-3">
+                <input
+                  type="text"
+                  value={newSource}
+                  onChange={e => setNewSource(e.target.value)}
+                  onKeyDown={e => e.key === "Enter" && addSource()}
+                  placeholder="Voeg een databron toe..."
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-sm"
+                />
+                <button
+                  onClick={addSource}
+                  className="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors"
+                >
+                  Toevoegen
+                </button>
+              </div>
+            </div>
+
+            {/* Audit per bron */}
+            <div className="space-y-4">
+              {sources.map(src => (
+                <div key={src.id} className="bg-white rounded-xl border shadow-sm overflow-hidden">
+                  <div className="bg-gray-50 px-5 py-3 flex items-center justify-between border-b">
+                    <div>
+                      <span className="font-bold text-gray-900">{src.name}</span>
+                      <span className="text-sm text-gray-400 ml-2">{src.desc}</span>
+                    </div>
+                    {sources.length > 1 && (
+                      <button
+                        onClick={() => removeSource(src.id)}
+                        className="text-xs text-gray-400 hover:text-red-500"
+                      >
+                        Verwijder
+                      </button>
+                    )}
+                  </div>
+                  <div className="p-5 space-y-4">
+                    {CRITERIA.map(crit => {
+                      const key = scoreKey(src.id, crit.id);
+                      const currentScore = scores[key];
+                      return (
+                        <div key={crit.id}>
+                          <div className="flex items-center justify-between mb-2">
+                            <div>
+                              <span className="font-medium text-sm text-gray-800">{crit.label}</span>
+                              <span className="text-xs text-gray-400 ml-2">{crit.question}</span>
+                            </div>
+                          </div>
+                          <div className="flex gap-2 mb-2">
+                            {SCORE_OPTIONS.map(opt => (
+                              <button
+                                key={opt.value}
+                                onClick={() => handleScore(src.id, crit.id, opt.value)}
+                                className={`flex-1 py-2 px-2 rounded-lg text-xs font-bold transition-all ${
+                                  currentScore === opt.value
+                                    ? "shadow-md scale-105 text-white"
+                                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                                }`}
+                                style={currentScore === opt.value ? { backgroundColor: opt.color } : {}}
+                              >
+                                {opt.label}
+                              </button>
+                            ))}
+                          </div>
+                          {currentScore && (currentScore === "-" || currentScore === "--") && (
+                            <input
+                              type="text"
+                              value={reasons[key] || ""}
+                              onChange={e => handleReason(src.id, crit.id, e.target.value)}
+                              placeholder="Waarom? Geef een voorbeeld..."
+                              className="w-full px-3 py-2 border border-orange-200 rounded-lg text-sm bg-orange-50 focus:ring-2 focus:ring-orange-400 focus:border-transparent outline-none"
+                            />
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Resultaten knop */}
+            <button
+              onClick={() => setShowResults(true)}
+              disabled={!isComplete}
+              className={`mt-6 w-full py-3 rounded-lg font-medium transition-colors ${
+                isComplete
+                  ? "bg-blue-500 text-white hover:bg-blue-600"
+                  : "bg-gray-200 text-gray-400 cursor-not-allowed"
+              }`}
+            >
+              {isComplete ? "Bekijk resultaten" : `Vul alle scores in (${filledCells}/${totalCells})`}
+            </button>
+
+            <div className="mt-6 text-center text-xs text-gray-400">
+              Datakwaliteit-audit framework | AIMM Data Literacy Module 3
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<DataAuditTool />);
+  </script>
+</body>
+</html>

@@ -7,6 +7,73 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde16-lo-ai-fund-198
+
+**Kontext:** Ronde 16: lo-ai-fund-198
+
+Toegevoegd:
+
+- `leerobjecten/lo-ai-fund-198/trainee.md`
+- `kennisbank/ai_fundamentals/ai_ethics_en_bias/ko-ai-fund-198.md`
+- `leerobjecten/lo-ai-fund-198/trainer.md`
+- `leerobjecten/lo-ai-fund-198/draaiboek.md`
+- `leerobjecten/lo-ai-fund-198/werkbladen/wb-01-casus-spuitgietmachine.md`
+- `leerobjecten/lo-ai-fund-198/werkbladen/wb-02-buurman-drie-checks.md`
+- `leerobjecten/lo-ai-fund-198/werkbladen/wb-03-handout-checks-vragen.md`
+- `leerobjecten/lo-ai-fund-198/werkbladen/wb-04-eigen-advies-checks.md`
+- `leerobjecten/lo-ai-fund-198/README.md`
+
+## 2026-05-20 — publish-ronde16-lo-industry40-302
+
+**Kontext:** Ronde 16: lo-industry40-302
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-302/trainee.md`
+- `leerobjecten/lo-industry40-302/trainer.md`
+- `leerobjecten/lo-industry40-302/draaiboek.md`
+- `leerobjecten/lo-industry40-302/werkbladen/wb-01-drie-storingen.md`
+- `leerobjecten/lo-industry40-302/werkbladen/wb-02-buurman-check.md`
+- `leerobjecten/lo-industry40-302/werkbladen/wb-03-pipeline-handout.md`
+- `leerobjecten/lo-industry40-302/werkbladen/wb-04-eigen-pipeline.md`
+- `leerobjecten/lo-industry40-302/README.md`
+
+## 2026-05-20 — publish-ronde16-lo-smart-mfg-203
+
+**Kontext:** Ronde 16: lo-smart-mfg-203
+
+Toegevoegd:
+
+- `leerobjecten/lo-smart-mfg-203/trainee.md`
+- `kennisbank/smart_manufacturing/predictive_maintenance/ko-smart-mfg-203.md`
+- `leerobjecten/lo-smart-mfg-203/trainer.md`
+- `leerobjecten/lo-smart-mfg-203/draaiboek.md`
+- `leerobjecten/lo-smart-mfg-203/werkbladen/wb-anomaliescores-ronde1.md`
+- `leerobjecten/lo-smart-mfg-203/werkbladen/wb-anomaliescores-ronde2.md`
+- `leerobjecten/lo-smart-mfg-203/werkbladen/wb-handout-verkeerslichtmodel.md`
+- `leerobjecten/lo-smart-mfg-203/werkbladen/wb-reflectie-groepsdiscussie.md`
+- `leerobjecten/lo-smart-mfg-203/interactive/model.html`
+- `leerobjecten/lo-smart-mfg-203/README.md`
+
+## 2026-05-20 — publish-ronde16-lo-data-lit-302
+
+**Kontext:** Ronde 16: lo-data-lit-302
+
+Toegevoegd:
+
+- `leerobjecten/lo-data-lit-302/trainee.md`
+- `kennisbank/data_literacy/data_kwaliteit/ko-data-lit-302.md`
+- `leerobjecten/lo-data-lit-302/trainer.md`
+- `leerobjecten/lo-data-lit-302/draaiboek.md`
+- `leerobjecten/lo-data-lit-302/werkbladen/wb-01-ervaren.md`
+- `leerobjecten/lo-data-lit-302/werkbladen/wb-02-reflecteren.md`
+- `leerobjecten/lo-data-lit-302/werkbladen/wb-03-theoretiseren.md`
+- `leerobjecten/lo-data-lit-302/werkbladen/wb-04-experimenteren.md`
+- `leerobjecten/lo-data-lit-302/svg/diagram.svg`
+- `leerobjecten/lo-data-lit-302/interactive/model.html`
+- `leerobjecten/lo-data-lit-302/slidev/presentatie.slidev.md`
+- `leerobjecten/lo-data-lit-302/README.md`
+
 ## 2026-05-20 — publish-ronde15-lo-ai-fund-186
 
 **Kontext:** Ronde 15: lo-ai-fund-186

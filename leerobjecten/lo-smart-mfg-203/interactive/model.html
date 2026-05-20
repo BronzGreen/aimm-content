@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verkeerslichtmodel: Anomaliescores</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    const ZONES = [
+      {
+        name: "Groen", range: [0, 39], color: "#10b981", bgColor: "#d1fae5", borderColor: "#6ee7b7",
+        label: "Normaal",
+        desc: "De machine werkt zoals verwacht. Geen actie nodig.",
+        steps: [
+          { nr: 1, text: "Blijf de standaard procedure volgen." },
+          { nr: 2, text: "Controleer het dashboard bij je volgende ronde." },
+        ]
+      },
+      {
+        name: "Oranje", range: [40, 69], color: "#f59e0b", bgColor: "#fef3c7", borderColor: "#fcd34d",
+        label: "Waarschuwing",
+        desc: "Er is iets ongebruikelijks. Let extra op, maar geen paniek.",
+        steps: [
+          { nr: 1, text: "Kijk of je iets vreemds ziet of hoort bij de machine." },
+          { nr: 2, text: "Noteer het tijdstip en de waarde in het logboek." },
+          { nr: 3, text: "Houd de score de komende 30 minuten in de gaten." },
+          { nr: 4, text: "Meld het bij je teamleider als de score stijgt." },
+        ]
+      },
+      {
+        name: "Rood", range: [70, 100], color: "#ef4444", bgColor: "#fee2e2", borderColor: "#fca5a5",
+        label: "Alarm",
+        desc: "De machine gedraagt zich ongewoon. Actie is nodig.",
+        steps: [
+          { nr: 1, text: "Stop de productie als de kwaliteit in gevaar is." },
+          { nr: 2, text: "Meld het direct bij je teamleider en de monteur." },
+          { nr: 3, text: "Documenteer wat je ziet: geluid, trilling, geur, output." },
+          { nr: 4, text: "Wacht op instructies voor je de machine herstart." },
+          { nr: 5, text: "Vul het storingsformulier in na afhandeling." },
+        ]
+      }
+    ];
+
+    function App() {
+      const [score, setScore] = useState(25);
+
+      const zone = useMemo(() => {
+        return ZONES.find(z => score >= z.range[0] && score <= z.range[1]);
+      }, [score]);
+
+      const handleReset = () => setScore(25);
+
+      const lightSize = 64;
+
+      return (
+        <div style={{ minHeight: "100vh", background: "#f9fafb", fontFamily: "system-ui, sans-serif" }}>
+          <div style={{ background: "white", borderBottom: "1px solid #e5e7eb", padding: "20px 24px" }}>
+            <h1 style={{ fontSize: "22px", fontWeight: "bold", color: "#111827", margin: 0 }}>
+              Verkeerslichtmodel: Anomaliescores
+            </h1>
+            <p style={{ color: "#6b7280", marginTop: "4px", fontSize: "14px" }}>
+              Sleep de schuif om te zien wat je moet doen bij elke score. Groen = normaal, oranje = opletten, rood = actie.
+            </p>
+          </div>
+
+          <div style={{ maxWidth: "700px", margin: "0 auto", padding: "24px" }}>
+            {/* Verkeerslicht */}
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: "32px" }}>
+              <div style={{
+                background: "#1f2937", borderRadius: "20px", padding: "16px",
+                display: "flex", flexDirection: "column", gap: "12px", alignItems: "center",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.2)"
+              }}>
+                {ZONES.map(z => {
+                  const isActive = zone && zone.name === z.name;
+                  return (
+                    <div key={z.name} style={{
+                      width: `${lightSize}px`, height: `${lightSize}px`, borderRadius: "50%",
+                      background: isActive ? z.color : "#374151",
+                      boxShadow: isActive ? `0 0 20px ${z.color}, 0 0 40px ${z.color}40` : "none",
+                      transition: "all 0.4s ease",
+                      opacity: isActive ? 1 : 0.3,
+                    }} />
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Score display */}
+            <div style={{ textAlign: "center", marginBottom: "8px" }}>
+              <span style={{
+                fontSize: "56px", fontWeight: "bold", color: zone ? zone.color : "#6b7280",
+                transition: "color 0.3s"
+              }}>
+                {score}
+              </span>
+              <span style={{ fontSize: "20px", color: "#9ca3af", marginLeft: "4px" }}>/100</span>
+            </div>
+            <div style={{ textAlign: "center", marginBottom: "24px" }}>
+              <span style={{
+                padding: "4px 14px", borderRadius: "20px", fontSize: "14px", fontWeight: "600",
+                background: zone ? zone.bgColor : "#f3f4f6",
+                color: zone ? zone.color : "#6b7280",
+                transition: "all 0.3s"
+              }}>
+                {zone ? zone.label : ""}
+              </span>
+            </div>
+
+            {/* Slider */}
+            <div style={{
+              background: "white", borderRadius: "16px", border: "1px solid #e5e7eb",
+              padding: "24px", marginBottom: "24px"
+            }}>
+              <div style={{ marginBottom: "12px" }}>
+                <input
+                  type="range" min="0" max="100" value={score}
+                  onChange={e => setScore(+e.target.value)}
+                  style={{
+                    width: "100%", height: "8px", borderRadius: "4px",
+                    cursor: "pointer", accentColor: zone ? zone.color : "#3b82f6"
+                  }}
+                />
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <span style={{ fontSize: "12px", color: "#10b981", fontWeight: "600" }}>0 - Normaal</span>
+                <span style={{ fontSize: "12px", color: "#f59e0b", fontWeight: "600" }}>40 - Let op</span>
+                <span style={{ fontSize: "12px", color: "#ef4444", fontWeight: "600" }}>70 - Alarm</span>
+              </div>
+
+              {/* Visuele balk */}
+              <div style={{
+                marginTop: "16px", height: "12px", borderRadius: "6px", overflow: "hidden",
+                background: "linear-gradient(to right, #10b981 0%, #10b981 39%, #f59e0b 40%, #f59e0b 69%, #ef4444 70%, #ef4444 100%)",
+                position: "relative"
+              }}>
+                <div style={{
+                  position: "absolute", top: "-4px",
+                  left: `${score}%`, transform: "translateX(-50%)",
+                  width: "4px", height: "20px", background: "#1f2937",
+                  borderRadius: "2px", transition: "left 0.2s"
+                }} />
+              </div>
+            </div>
+
+            {/* Uitleg zone */}
+            {zone && (
+              <div style={{
+                background: zone.bgColor, borderRadius: "16px",
+                border: `2px solid ${zone.borderColor}`,
+                padding: "24px", marginBottom: "24px",
+                transition: "all 0.3s"
+              }}>
+                <h2 style={{ fontSize: "18px", fontWeight: "bold", color: zone.color, marginTop: 0, marginBottom: "4px" }}>
+                  {zone.name}: {zone.label}
+                </h2>
+                <p style={{ fontSize: "14px", color: "#374151", marginBottom: "16px" }}>{zone.desc}</p>
+
+                <div style={{ fontWeight: "600", fontSize: "14px", color: "#374151", marginBottom: "12px" }}>
+                  Wat doe je? Actieplan:
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                  {zone.steps.map(step => (
+                    <div key={step.nr} style={{
+                      display: "flex", alignItems: "flex-start", gap: "12px",
+                      background: "white", borderRadius: "10px", padding: "12px"
+                    }}>
+                      <div style={{
+                        width: "28px", height: "28px", borderRadius: "50%",
+                        background: zone.color, color: "white", fontSize: "14px", fontWeight: "bold",
+                        display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0
+                      }}>
+                        {step.nr}
+                      </div>
+                      <div style={{ fontSize: "14px", color: "#374151", paddingTop: "4px" }}>{step.text}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Uitleg */}
+            <div style={{
+              background: "#eff6ff", borderRadius: "12px", padding: "16px",
+              fontSize: "13px", color: "#1e40af", marginBottom: "20px"
+            }}>
+              <strong>Wat is een anomaliescore?</strong> Een AI-systeem kijkt naar sensordata van je machine
+              (trillingen, temperatuur, geluid). Het geeft een score van 0 tot 100. Hoe hoger de score,
+              hoe meer de machine afwijkt van normaal gedrag.
+            </div>
+
+            <button onClick={handleReset} style={{
+              display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+              margin: "0 auto", padding: "10px 24px", background: "white", border: "1px solid #d1d5db",
+              borderRadius: "8px", cursor: "pointer", fontSize: "14px", color: "#6b7280"
+            }}>
+              Opnieuw beginnen
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
