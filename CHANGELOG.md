@@ -7,6 +7,21 @@
 > als "Automatische publish".
 ---
 
+## 2026-05-20 — publish-ronde12-lo-industry40-026
+
+**Kontext:** Ronde 12: lo-industry40-026
+
+Toegevoegd:
+
+- `leerobjecten/lo-industry40-026/trainee.md`
+- `leerobjecten/lo-industry40-026/trainer.md`
+- `leerobjecten/lo-industry40-026/draaiboek.md`
+- `leerobjecten/lo-industry40-026/werkbladen/wb-01-casus-fietsfabriek-planning.md`
+- `leerobjecten/lo-industry40-026/werkbladen/wb-02-duo-bijzondere-keuze.md`
+- `leerobjecten/lo-industry40-026/werkbladen/wb-03-human-in-the-loop-handout.md`
+- `leerobjecten/lo-industry40-026/werkbladen/wb-04-eigen-ervaring.md`
+- `leerobjecten/lo-industry40-026/README.md`
+
 ## 2026-05-20 — publish-ronde12-lo-ai-fund-133
 
 **Kontext:** Ronde 12: lo-ai-fund-133
