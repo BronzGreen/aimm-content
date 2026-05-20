@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" font-family="Arial, sans-serif">
+  <title>De kosten-matrix: vier uitkomsten, twee zijn fout</title>
+
+  <defs>
+    <marker id="arrowbig" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- Titel -->
+  <text x="450" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#1a1a1a">
+    De kosten-matrix
+  </text>
+  <text x="450" y="62" text-anchor="middle" font-size="13" fill="#555">
+    Vier uitkomsten. Twee zijn fout. Kosten verschillen per product.
+  </text>
+
+  <!-- Axes labels boven en links -->
+  <text x="550" y="115" text-anchor="middle" font-size="14" fill="#333" font-weight="bold">Model zegt:</text>
+  <text x="390" y="140" text-anchor="middle" font-size="13" fill="#1a1a1a">goed</text>
+  <text x="710" y="140" text-anchor="middle" font-size="13" fill="#1a1a1a">afkeur</text>
+
+  <text x="150" y="250" text-anchor="middle" font-size="14" fill="#333" font-weight="bold" transform="rotate(-90 150 250)">Werkelijkheid:</text>
+  <text x="210" y="220" text-anchor="middle" font-size="13" fill="#1a1a1a">goed</text>
+  <text x="210" y="380" text-anchor="middle" font-size="13" fill="#1a1a1a">defect</text>
+
+  <!-- De vier cellen -->
+  <!-- Cell 1: goed-goed (correct) -->
+  <rect x="250" y="160" width="280" height="140" fill="#e0f0e3" stroke="#2c5f2d" stroke-width="2"/>
+  <text x="390" y="205" text-anchor="middle" font-size="32" fill="#2c5f2d">✓</text>
+  <text x="390" y="240" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">Correct goedgekeurd</text>
+  <text x="390" y="262" text-anchor="middle" font-size="11" fill="#555">Goed product, terecht doorgelaten</text>
+  <text x="390" y="282" text-anchor="middle" font-size="11" fill="#2c5f2d" font-style="italic">Géén kosten</text>
+
+  <!-- Cell 2: goed-afkeur (vals alarm) -->
+  <rect x="570" y="160" width="280" height="140" fill="#fff4d6" stroke="#d4a017" stroke-width="3"/>
+  <text x="710" y="205" text-anchor="middle" font-size="32" fill="#d4a017">⚠</text>
+  <text x="710" y="240" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">VALS ALARM</text>
+  <text x="710" y="262" text-anchor="middle" font-size="11" fill="#555">Goed product onterecht afgekeurd</text>
+  <text x="710" y="282" text-anchor="middle" font-size="11" fill="#d4a017" font-style="italic">Kosten: materiaal + tijd</text>
+
+  <!-- Cell 3: defect-goed (gemist defect) -->
+  <rect x="250" y="320" width="280" height="140" fill="#ffe4e1" stroke="#b5352f" stroke-width="3"/>
+  <text x="390" y="365" text-anchor="middle" font-size="32" fill="#b5352f">✗</text>
+  <text x="390" y="400" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">GEMIST DEFECT</text>
+  <text x="390" y="422" text-anchor="middle" font-size="11" fill="#555">Defect product onterecht doorgelaten</text>
+  <text x="390" y="442" text-anchor="middle" font-size="11" fill="#b5352f" font-style="italic">Kosten: klacht + goodwill + risico</text>
+
+  <!-- Cell 4: defect-afkeur (correct) -->
+  <rect x="570" y="320" width="280" height="140" fill="#e0f0e3" stroke="#2c5f2d" stroke-width="2"/>
+  <text x="710" y="365" text-anchor="middle" font-size="32" fill="#2c5f2d">✓</text>
+  <text x="710" y="400" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">Correct afgekeurd</text>
+  <text x="710" y="422" text-anchor="middle" font-size="11" fill="#555">Defect product terecht tegengehouden</text>
+  <text x="710" y="442" text-anchor="middle" font-size="11" fill="#2c5f2d" font-style="italic">Géén kosten</text>
+
+  <!-- Onder de matrix: context-verschuiving -->
+  <text x="450" y="510" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">
+    Welke fout is duurder? Hangt af van context.
+  </text>
+
+  <!-- Drie context-pijlen -->
+  <g>
+    <rect x="80" y="535" width="220" height="110" rx="6" fill="#ffe4e1" stroke="#b5352f" stroke-width="2"/>
+    <text x="190" y="560" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Medicatie</text>
+    <text x="190" y="580" text-anchor="middle" font-size="11" fill="#555">Gemist defect: patiënt-risico</text>
+    <text x="190" y="600" text-anchor="middle" font-size="11" fill="#555">€€€€ catastrofaal</text>
+    <text x="190" y="625" text-anchor="middle" font-size="12" font-weight="bold" fill="#b5352f">→ Strenge drempel</text>
+  </g>
+
+  <g>
+    <rect x="340" y="535" width="220" height="110" rx="6" fill="#fff4d6" stroke="#d4a017" stroke-width="2"/>
+    <text x="450" y="560" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Verpakkingspapier</text>
+    <text x="450" y="580" text-anchor="middle" font-size="11" fill="#555">Vals alarm: rol weggegooid</text>
+    <text x="450" y="600" text-anchor="middle" font-size="11" fill="#555">€€ goedkope defecten bij klant</text>
+    <text x="450" y="625" text-anchor="middle" font-size="12" font-weight="bold" fill="#d4a017">→ Soepele drempel</text>
+  </g>
+
+  <g>
+    <rect x="600" y="535" width="220" height="110" rx="6" fill="#f3e0f0" stroke="#7a3b82" stroke-width="2"/>
+    <text x="710" y="560" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">Luxe-artikel</text>
+    <text x="710" y="580" text-anchor="middle" font-size="11" fill="#555">Gemist defect: reputatie-schade</text>
+    <text x="710" y="600" text-anchor="middle" font-size="11" fill="#555">€€€ goodwill jaren opgebouwd</text>
+    <text x="710" y="625" text-anchor="middle" font-size="12" font-weight="bold" fill="#7a3b82">→ Strenge drempel</text>
+  </g>
+
+  <!-- Kernboodschap onderaan -->
+  <text x="450" y="675" text-anchor="middle" font-size="11" fill="#1a1a1a" font-style="italic">
+    Techniek is universeel. De drempel die past bij jouw product is dat nooit.
+  </text>
+
+  <!-- Footer -->
+  <text x="450" y="693" text-anchor="middle" font-size="9" fill="#aaa" font-style="italic">
+    AIMM × BronzGreen | ko-smart-mfg-702 | Module 2: Train | MBO-3 operator
+  </text>
+</svg>
