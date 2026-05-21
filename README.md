@@ -47,6 +47,9 @@ eenvoudiger.
 Voor tikfouten of kleine correcties: gebruik de ✏️ "Edit"-knop op een
 bestand om direct een suggestie te openen op de hoofdrepo.
 
+→ **Korte handleiding** voor wie Discussions niet dagelijks gebruikt:
+[`FEEDBACK.md`](./FEEDBACK.md).
+
 ## Hoe is dit gegenereerd
 
 Door `aimm publish` in `BronzGreen/aimm` (ShowcaseRepoAdapter, zie ADR-040).
