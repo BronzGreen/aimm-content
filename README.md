@@ -16,13 +16,11 @@
 ## Wat hier **niet** staat
 
 Code, prompts, configuratie, tests, pipeline-tussenresultaten (bronkaarten,
-classificaties). Die leven in de hoofdrepo `BronzGreen/aimm` en zijn niet
-relevant voor kernteam-review op deze laag.
+classificaties).
 
 ## Status van dit materiaal
 
-Alles in deze repo is door de AIMM-pipeline geproduceerd en door de
-Landelijke Learning Lead **inhoudelijk en didactisch gevalideerd**. Wat je
+Alles in deze repo is door de AIMM-pipeline geproduceerd. Wat je
 hier vindt is:
 
 - **Geschikt voor:** inhoudelijke en didactische feedback, hergebruik van
@@ -52,19 +50,10 @@ bestand om direct een suggestie te openen op de hoofdrepo.
 ## Hoe is dit gegenereerd
 
 Door `aimm publish` in `BronzGreen/aimm` (ShowcaseRepoAdapter, zie ADR-040).
-Deze repo wordt handmatig bijgewerkt na elke validatie-ronde — geen
-automatische sync. Wat hier staat is daarmee altijd "wat we staat achter",
-niet een log van wat in de pipeline gebeurt.
+Deze repo wordt "handmatig" getriggerd na elke validatie-ronde — geen
+automatische sync.
 
 Render-grenzen op GitHub: Markdown, SVG en Mermaid renderen native.
 **Slidev-presentaties en interactieve React-componenten zijn bronbestanden
 in deze repo** — interactieve previews komen in een latere fase (pre-builds
 voor showcase-context).
-
-## Cadans
-
-| Wanneer | Wie | Wat |
-|---|---|---|
-| Wekelijks vr 30 min | Landelijke Learning Lead | Triage Discussions + Issues |
-| Per validatie-ronde | Landelijke Learning Lead | `aimm publish` draaien in hoofdrepo |
-| Maandelijks | Kernteam | Korte review: werkt de showcase-flow? |
