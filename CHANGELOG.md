@@ -7,6 +7,78 @@
 > als "Automatische publish".
 ---
 
+## 2026-11-20 — retract-retract-tenant-scope-2026-11-20-kennisobjecten
+
+**Kontext:** Teruggetrokken: 10 kennisobjecten (`ko-ai-fund-101`, `ko-ai-fund-102`, `ko-ai-fund-103`, `ko-ai-fund-117`, `ko-ai-fund-132`, `ko-ai-fund-135`, `ko-ai-fund-133`, `ko-smart-mfg-601`, `ko-smart-mfg-602`, `ko-smart-mfg-603`). Bron valt sinds ADR-053 onder scope tenant (geen open licentie); niet langer openbaar te publiceren
+
+Tombstone op het oude KO-pad; index bijgewerkt in `kennisbank/RETRACTED.md`. De leerobjecten die op deze KO's bouwen zijn in dezelfde ronde teruggetrokken.
+
+## 2026-11-20 — retract-retract-tenant-scope-2026-11-20
+
+**Kontext:** Teruggetrokken: `lo-smart-mfg-603`. Bron valt sinds ADR-053 onder scope tenant (geen open licentie); niet langer openbaar te publiceren
+
+Tombstone in `leerobjecten/lo-smart-mfg-603/RETRACTED.md`; index bijgewerkt in `leerobjecten/RETRACTED.md`.
+
+## 2026-11-20 — retract-retract-tenant-scope-2026-11-20
+
+**Kontext:** Teruggetrokken: `lo-smart-mfg-602`. Bron valt sinds ADR-053 onder scope tenant (geen open licentie); niet langer openbaar te publiceren
+
+Tombstone in `leerobjecten/lo-smart-mfg-602/RETRACTED.md`; index bijgewerkt in `leerobjecten/RETRACTED.md`.
+
+## 2026-11-20 — retract-retract-tenant-scope-2026-11-20
+
+**Kontext:** Teruggetrokken: `lo-smart-mfg-601-mbo4`. Bron valt sinds ADR-053 onder scope tenant (geen open licentie); niet langer openbaar te publiceren
+
+Tombstone in `leerobjecten/lo-smart-mfg-601-mbo4/RETRACTED.md`; index bijgewerkt in `leerobjecten/RETRACTED.md`.
+
+## 2026-11-20 — retract-retract-tenant-scope-2026-11-20
+
+**Kontext:** Teruggetrokken: `lo-smart-mfg-601`. Bron valt sinds ADR-053 onder scope tenant (geen open licentie); niet langer openbaar te publiceren
+
+Tombstone in `leerobjecten/lo-smart-mfg-601/RETRACTED.md`; index bijgewerkt in `leerobjecten/RETRACTED.md`.
+
+## 2026-11-20 — retract-retract-tenant-scope-2026-11-20
+
+**Kontext:** Teruggetrokken: `lo-ai-fund-135`. Bron valt sinds ADR-053 onder scope tenant (geen open licentie); niet langer openbaar te publiceren
+
+Tombstone in `leerobjecten/lo-ai-fund-135/RETRACTED.md`; index bijgewerkt in `leerobjecten/RETRACTED.md`.
+
+## 2026-11-20 — retract-retract-tenant-scope-2026-11-20
+
+**Kontext:** Teruggetrokken: `lo-ai-fund-133`. Bron valt sinds ADR-053 onder scope tenant (geen open licentie); niet langer openbaar te publiceren
+
+Tombstone in `leerobjecten/lo-ai-fund-133/RETRACTED.md`; index bijgewerkt in `leerobjecten/RETRACTED.md`.
+
+## 2026-11-20 — retract-retract-tenant-scope-2026-11-20
+
+**Kontext:** Teruggetrokken: `lo-ai-fund-132`. Bron valt sinds ADR-053 onder scope tenant (geen open licentie); niet langer openbaar te publiceren
+
+Tombstone in `leerobjecten/lo-ai-fund-132/RETRACTED.md`; index bijgewerkt in `leerobjecten/RETRACTED.md`.
+
+## 2026-11-20 — retract-retract-tenant-scope-2026-11-20
+
+**Kontext:** Teruggetrokken: `lo-ai-fund-117`. Bron valt sinds ADR-053 onder scope tenant (geen open licentie); niet langer openbaar te publiceren
+
+Tombstone in `leerobjecten/lo-ai-fund-117/RETRACTED.md`; index bijgewerkt in `leerobjecten/RETRACTED.md`.
+
+## 2026-11-20 — retract-retract-tenant-scope-2026-11-20
+
+**Kontext:** Teruggetrokken: `lo-ai-fund-103`. Bron valt sinds ADR-053 onder scope tenant (geen open licentie); niet langer openbaar te publiceren
+
+Tombstone in `leerobjecten/lo-ai-fund-103/RETRACTED.md`; index bijgewerkt in `leerobjecten/RETRACTED.md`.
+
+## 2026-11-20 — retract-retract-tenant-scope-2026-11-20
+
+**Kontext:** Teruggetrokken: `lo-ai-fund-102`. Bron valt sinds ADR-053 onder scope tenant (geen open licentie); niet langer openbaar te publiceren
+
+Tombstone in `leerobjecten/lo-ai-fund-102/RETRACTED.md`; index bijgewerkt in `leerobjecten/RETRACTED.md`.
+
+## 2026-11-20 — retract-retract-tenant-scope-2026-11-20
+
+**Kontext:** Teruggetrokken: `lo-ai-fund-101`. Bron valt sinds ADR-053 onder scope tenant (geen open licentie); niet langer openbaar te publiceren
+
+Tombstone in `leerobjecten/lo-ai-fund-101/RETRACTED.md`; index bijgewerkt in `leerobjecten/RETRACTED.md`.
+
 ## 2026-05-20 — publish-ronde28-lo-smart-mfg-802
 
 **Kontext:** Ronde 28: lo-smart-mfg-802

@@ -1,8 +1,13 @@
-# AIMM Content — Showcase
+# AIMM Content — Bouwstenenbank
 
-> Private content-repo voor het AIMM-kernteam. Hier vind je de doorklikbare
-> tussenresultaten van de AIMM × BronzGreen curriculum-pipeline: kennisobjecten,
-> leerobjecten in drie versies, en complete modules.
+> Openbare content-repo voor makers in de AIMM Learning Communities: docenten,
+> trainers en learning designers. Hier vind je de doorklikbare resultaten van de
+> AIMM × BronzGreen curriculum-pipeline: kennisobjecten, leerobjecten in drie
+> versies, en complete modules. Gebruik ze als bouwstenen voor je eigen
+> curriculum en geef feedback. Lerenden volgen afgewerkte modules via BronzGreen Press.
+>
+> **Licentie:** wordt vastgesteld met de Landelijke Learning Lead; tot dan geldt
+> geen open licentie. Neem bij hergebruik contact op met BronzGreen.
 
 ## Wat hier staat
 

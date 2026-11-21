@@ -1,25 +1,18 @@
 ---
 id: ko-ai-fund-103
-title: Onzekerheid en kansrekening in AI
-type: concept_uitleg
-domain: ai_fundamentals
-subdomain: machine_learning_basics
-summary: AI-systemen werken bijna altijd met onzekere informatie. Kansrekening is
-  de wiskundige basis waarmee AI-systemen omgaan met die onzekerheid en toch goede
-  beslissingen nemen.
-source_centrality: 0.7
-source_ref: Russell & Norvig (2010). AI - A Modern Approach, 3rd ed., pp. 8-9
-status: validated
-updated_at: '2026-05-19'
-correlation_id: ronde7-lo-ai-fund-103
+status: retracted
+retracted_at: '2026-11-20'
+correlation_id: retract-tenant-scope-2026-11-20
 ---
 
-# Onzekerheid en kansrekening in AI
+# Teruggetrokken: ko-ai-fund-103
 
-See Markdown file
+Dit kennisobject is **teruggetrokken uit publicatie** op 2026-11-20.
 
-## Praktijkvoorbeeld
+## Reden
 
-*Fictieve illustratie van het concept uit Russell & Norvig 2010, AI — A Modern Approach, 3rd ed., pp. 8-9. Percentages zijn pedagogisch.*
+Bron valt sinds ADR-053 onder scope tenant (geen open licentie); niet langer openbaar te publiceren
 
-Een AI-systeem voor kwaliteitscontrole op een productielijn krijgt camerabeelden van elk product. Het systeem zegt niet "dit product is 100% fout", maar "er is 87% kans dat dit product een defect heeft." De operator ziet dit percentage en kan beslissen of het product handmatig gecontroleerd moet worden. Bij 87% kans is dat verstandig. Bij 15% kans misschien niet. De kans helpt de operator om een goede beslissing te nemen.
+## Voor verwijzers
+
+Eerder geldige links naar dit KO geven nu deze tombstone weer in plaats van een 404. Voor actuele situatie: vraag de Landelijke Learning Lead.
